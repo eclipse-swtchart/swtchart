@@ -860,19 +860,7 @@ public class Axis implements IAxis {
 		tick.getAxisPositionMarker().update(e.x, e.y);
 	}
 
-	/**
-	 * Sets the minimum and maximum limits for the axis range. These limits
-	 * are enforced during dynamic operations such as {@code adjustRange},
-	 * {@code scroll}, and {@code zoom}. However, they do not restrict
-	 * manual range settings through the {@link #setRange(Range, boolean)} method.
-	 *
-	 * @param minRange
-	 *            the minimum value allowed for the axis range.
-	 * @param maxRange
-	 *            the maximum value allowed for the axis range.
-	 * @throws IllegalArgumentException
-	 *             if {@code minRange} is greater than or equal to {@code maxRange}.
-	 */
+	@Override
 	public void setLimitRange(double minRange, double maxRange) {
 
 		if(minRange >= maxRange) {
