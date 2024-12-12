@@ -296,11 +296,11 @@ public interface IAxis {
 	 * manual range settings through the {@link #setRange(Range, boolean)} method.
 	 *
 	 * @param minRange
-	 *            the minimum value allowed for the axis range.
+	 *            the minimum value allowed for the axis range
 	 * @param maxRange
-	 *            the maximum value allowed for the axis range.
+	 *            the maximum value allowed for the axis range
 	 * @throws IllegalArgumentException
-	 *             if {@code minRange} is greater than or equal to {@code maxRange}.
+	 *             if {@code minRange} is greater than or equal to {@code maxRange}
 	 */
 	void setLimitRange(double minRange, double maxRange);
 }
