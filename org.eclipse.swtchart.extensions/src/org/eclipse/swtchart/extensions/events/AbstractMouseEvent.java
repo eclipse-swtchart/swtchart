@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -48,6 +48,7 @@ public abstract class AbstractMouseEvent extends AbstractHandledEventProcessor i
 	protected void postValidateZoom(BaseChart baseChart) {
 
 		RangeRestriction rangeRestriction = baseChart.getRangeRestriction();
+		//
 		IAxisSet axisSet = baseChart.getAxisSet();
 		IAxis xAxis = axisSet.getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = axisSet.getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
@@ -56,14 +57,9 @@ public abstract class AbstractMouseEvent extends AbstractHandledEventProcessor i
 		 * min and max values.
 		 */
 		if(rangeRestriction.isRestrictFrame()) {
-			/*
-			 * Adjust the primary axes.
-			 * The secondary axes are adjusted by setting the range.
-			 */
 			Range rangeX = xAxis.getRange();
 			Range rangeY = yAxis.getRange();
-			baseChart.setRange(xAxis, rangeX.lower, rangeX.upper, true);
-			baseChart.setRange(yAxis, rangeY.lower, rangeY.upper, true);
+			adjustFrame(baseChart, xAxis, rangeX, yAxis, rangeY, true);
 		} else {
 			/*
 			 * Update the secondary axes.
@@ -71,5 +67,15 @@ public abstract class AbstractMouseEvent extends AbstractHandledEventProcessor i
 			baseChart.adjustSecondaryXAxes();
 			baseChart.adjustSecondaryYAxes();
 		}
+	}
+
+	private void adjustFrame(BaseChart baseChart, IAxis xAxis, Range rangeX, IAxis yAxis, Range rangeY, boolean adjustMinMax) {
+
+		/*
+		 * Adjust the primary axes.
+		 * The secondary axes are adjusted by setting the range.
+		 */
+		baseChart.setRange(xAxis, rangeX.lower, rangeX.upper, adjustMinMax);
+		baseChart.setRange(yAxis, rangeY.lower, rangeY.upper, adjustMinMax);
 	}
 }

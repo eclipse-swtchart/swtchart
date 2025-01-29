@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -79,6 +79,7 @@ import org.eclipse.swtchart.extensions.internal.marker.LegendMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PlotCenterMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PositionMarker;
 import org.eclipse.swtchart.extensions.internal.marker.SeriesLabelMarker;
+import org.eclipse.swtchart.extensions.internal.marker.UserRestrictionMarker;
 import org.eclipse.swtchart.extensions.linecharts.LineChart;
 import org.eclipse.swtchart.extensions.linecharts.StepChart;
 import org.eclipse.swtchart.extensions.menu.IChartMenuEntry;
@@ -123,6 +124,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private LegendMarker legendMarker;
 	private AxisZeroMarker axisZeroMarker;
 	private SeriesLabelMarker seriesLabelMarker;
+	private UserRestrictionMarker userRestrictionMarker;
 	/*
 	 * Integer.MAX_VALUE doesn't work under Windows.
 	 */
@@ -810,6 +812,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		setLegendMarker();
 		setAxisZeroMarker();
 		setSeriesLabelMarker();
+		setUserRestrictionMarker();
 	}
 
 	private void setPositionMarker() {
@@ -911,6 +914,18 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		} else {
 			seriesLabelMarker.setDraw(false);
 		}
+	}
+
+	private void setUserRestrictionMarker() {
+
+		IPlotArea plotArea = baseChart.getPlotArea();
+		if(userRestrictionMarker != null) {
+			plotArea.removeCustomPaintListener(userRestrictionMarker);
+		}
+		//
+		userRestrictionMarker = new UserRestrictionMarker(baseChart);
+		plotArea.addCustomPaintListener(userRestrictionMarker);
+		userRestrictionMarker.setDraw(true);
 	}
 
 	private void setMenuItems() {

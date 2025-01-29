@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,7 +34,8 @@ import org.eclipse.swtchart.Resources;
 
 public class ResourceSupport extends Resources {
 
-	public static final String ICON_SET_RANGE = "set_range.gif"; // $NON-NLS-1$7
+	public static final String ICON_SET_RANGE = "set_range.gif"; // $NON-NLS-1$
+	public static final String ICON_RESTRICT_RANGE = "restrict_range.gif"; // $NON-NLS-1$
 	public static final String ICON_HIDE = "hide.gif"; // $NON-NLS-1$
 	public static final String ICON_RESET = "reset.gif"; // $NON-NLS-1$
 	public static final String ICON_CHECKED = "checked.gif"; // $NON-NLS-1$
@@ -161,6 +162,7 @@ public class ResourceSupport extends Resources {
 		//
 		Set<String> imageSet = new HashSet<>();
 		imageSet.add(ICON_SET_RANGE);
+		imageSet.add(ICON_RESTRICT_RANGE);
 		imageSet.add(ICON_HIDE);
 		imageSet.add(ICON_RESET);
 		imageSet.add(ICON_CHECKED);

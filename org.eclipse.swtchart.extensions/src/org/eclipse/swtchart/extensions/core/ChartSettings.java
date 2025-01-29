@@ -46,6 +46,7 @@ import org.eclipse.swtchart.extensions.menu.ResetChartHandler;
 import org.eclipse.swtchart.extensions.menu.ResetSelectedSeriesHandler;
 import org.eclipse.swtchart.extensions.menu.SetRangeChartHandler;
 import org.eclipse.swtchart.extensions.menu.UndoSelectionHandler;
+import org.eclipse.swtchart.extensions.menu.UserRestrictionHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.ToggleAxisZeroMarkerHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.ToggleLabelTooltipsHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.ToggleLegendMarkerHandler;
@@ -162,6 +163,7 @@ public class ChartSettings implements IChartSettings {
 		menuEntries.add(new ResetChartHandler(IChartMenuCategories.STANDARD_OPERATION));
 		menuEntries.add(new SetRangeChartHandler(IChartMenuCategories.STANDARD_OPERATION));
 		menuEntries.add(new UndoSelectionHandler(IChartMenuCategories.STANDARD_OPERATION));
+		menuEntries.add(new UserRestrictionHandler(IChartMenuCategories.STANDARD_OPERATION));
 		/*
 		 * Sub Menu
 		 */

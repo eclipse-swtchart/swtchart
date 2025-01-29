@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -50,6 +50,11 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 	private double maxX;
 	private double minY;
 	private double maxY;
+	/*
+	 * If the user selection is set, it overwrites the
+	 * range restriction settings.
+	 */
+	private UserRestriction userRestriction = new UserRestriction();
 	private RangeRestriction rangeRestriction = new RangeRestriction();
 	/*
 	 * The extended values are only used internally.
@@ -104,6 +109,12 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 	public double getMaxY() {
 
 		return maxY;
+	}
+
+	@Override
+	public UserRestriction getUserRestriction() {
+
+		return userRestriction;
 	}
 
 	@Override
@@ -220,26 +231,38 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				/*
 				 * X-AXIS
 				 */
-				if(rangeRestriction.isZeroX()) {
-					range.lower = (range.lower < 0) ? 0 : range.lower;
+				if(userRestriction.isRestrictFrame()) {
+					Range rangeX = userRestriction.getRangeX();
+					range.lower = (range.lower < rangeX.lower) ? rangeX.lower : range.lower;
+					range.upper = (range.upper > rangeX.upper) ? rangeX.upper : range.upper;
 				} else {
-					range.lower = (range.lower < minX) ? minX : range.lower;
+					if(rangeRestriction.isZeroX()) {
+						range.lower = (range.lower < 0) ? 0 : range.lower;
+					} else {
+						range.lower = (range.lower < minX) ? minX : range.lower;
+					}
+					extendRange(IExtendedChart.X_AXIS, range, extendedMinX, extendedMaxX, rangeRestriction.getExtendMinX(), rangeRestriction.getExtendMaxX());
 				}
-				extendRange(IExtendedChart.X_AXIS, range, extendedMinX, extendedMaxX, rangeRestriction.getExtendMinX(), rangeRestriction.getExtendMaxX());
 			} else {
 				/*
 				 * Y-AXIS
 				 */
-				if(rangeRestriction.isForceZeroMinY()) {
-					range.lower = 0.0d;
+				if(userRestriction.isRestrictFrame()) {
+					Range rangeY = userRestriction.getRangeY();
+					range.lower = (range.lower < rangeY.lower) ? rangeY.lower : range.lower;
+					range.upper = (range.upper > rangeY.upper) ? rangeY.upper : range.upper;
 				} else {
-					if(rangeRestriction.isZeroY()) {
-						range.lower = (range.lower < 0) ? 0 : range.lower;
+					if(rangeRestriction.isForceZeroMinY()) {
+						range.lower = 0.0d;
 					} else {
-						range.lower = (range.lower < minY) ? minY : range.lower;
+						if(rangeRestriction.isZeroY()) {
+							range.lower = (range.lower < 0) ? 0 : range.lower;
+						} else {
+							range.lower = (range.lower < minY) ? minY : range.lower;
+						}
 					}
+					extendRange(IExtendedChart.Y_AXIS, range, extendedMinY, extendedMaxY, rangeRestriction.getExtendMinY(), rangeRestriction.getExtendMaxY());
 				}
-				extendRange(IExtendedChart.Y_AXIS, range, extendedMinY, extendedMaxY, rangeRestriction.getExtendMinY(), rangeRestriction.getExtendMaxY());
 			}
 			/*
 			 * Adjust the range.
