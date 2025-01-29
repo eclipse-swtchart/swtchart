@@ -24,11 +24,7 @@ import org.eclipse.swtchart.extensions.core.UserRestriction;
 
 public class UserRestrictionHandler extends AbstractChartMenuEntry implements IChartMenuEntry {
 
-	private static final String NAME_SELECT = "User Restriction (Select)";
-	private static final String NAME_RESET = "User Restriction (Reset)";
-	//
 	private String category = "";
-	private String name = NAME_SELECT;
 
 	public UserRestrictionHandler() {
 
@@ -49,7 +45,7 @@ public class UserRestrictionHandler extends AbstractChartMenuEntry implements IC
 	@Override
 	public String getName() {
 
-		return name;
+		return "User Restriction";
 	}
 
 	@Override
@@ -65,7 +61,6 @@ public class UserRestrictionHandler extends AbstractChartMenuEntry implements IC
 		UserRestriction userRestriction = baseChart.getUserRestriction();
 		if(userRestriction.isRestrictFrame()) {
 			userRestriction.resetRestriction();
-			name = NAME_SELECT;
 		} else {
 			IAxisSet axisSet = baseChart.getAxisSet();
 			IAxis axisX = axisSet.getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
@@ -73,7 +68,6 @@ public class UserRestrictionHandler extends AbstractChartMenuEntry implements IC
 			Range rangeX = new Range(axisX.getRange());
 			Range rangeY = new Range(axisY.getRange());
 			userRestriction.setRange(rangeX, rangeY);
-			name = NAME_RESET;
 		}
 	}
 }
