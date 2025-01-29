@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,6 +39,7 @@ import org.eclipse.swtchart.extensions.events.ResetSeriesEvent;
 import org.eclipse.swtchart.extensions.events.SelectDataPointEvent;
 import org.eclipse.swtchart.extensions.events.SelectHideSeriesEvent;
 import org.eclipse.swtchart.extensions.events.UndoRedoEvent;
+import org.eclipse.swtchart.extensions.menu.IChartMenuCategories;
 import org.eclipse.swtchart.extensions.menu.IChartMenuEntry;
 import org.eclipse.swtchart.extensions.menu.RedoSelectionHandler;
 import org.eclipse.swtchart.extensions.menu.ResetChartHandler;
@@ -155,9 +156,15 @@ public class ChartSettings implements IChartSettings {
 		 * Default menu entries.
 		 */
 		menuEntries = new HashSet<>();
-		menuEntries.add(new ResetChartHandler());
-		menuEntries.add(new SetRangeChartHandler());
-		menuEntries.add(new ResetSelectedSeriesHandler());
+		/*
+		 * Main Menu
+		 */
+		menuEntries.add(new ResetChartHandler(IChartMenuCategories.STANDARD_OPERATION));
+		menuEntries.add(new SetRangeChartHandler(IChartMenuCategories.STANDARD_OPERATION));
+		menuEntries.add(new UndoSelectionHandler(IChartMenuCategories.STANDARD_OPERATION));
+		/*
+		 * Sub Menu
+		 */
 		menuEntries.add(new ToggleRangeSelectorHandler());
 		menuEntries.add(new ToggleLegendMarkerHandler());
 		menuEntries.add(new TogglePositionMarkerHandler());
@@ -166,6 +173,7 @@ public class ChartSettings implements IChartSettings {
 		menuEntries.add(new ToggleAxisZeroMarkerHandler());
 		menuEntries.add(new ToggleSeriesLabelMarkerHandler());
 		menuEntries.add(new ToggleLabelTooltipsHandler());
+		menuEntries.add(new ResetSelectedSeriesHandler());
 		menuEntries.add(new UndoSelectionHandler());
 		menuEntries.add(new RedoSelectionHandler());
 		/*

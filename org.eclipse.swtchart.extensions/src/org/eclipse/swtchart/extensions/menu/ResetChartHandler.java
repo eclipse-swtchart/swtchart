@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
  * Frank Buloup - Internationalization
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.menu;
@@ -20,10 +20,22 @@ import org.eclipse.swtchart.extensions.core.ScrollableChart;
 
 public class ResetChartHandler extends AbstractChartMenuEntry implements IChartMenuEntry {
 
+	private String category = "";
+
+	public ResetChartHandler() {
+
+		this(IChartMenuCategories.STANDARD_OPERATION);
+	}
+
+	public ResetChartHandler(String category) {
+
+		this.category = category;
+	}
+
 	@Override
 	public String getCategory() {
 
-		return IChartMenuCategories.STANDARD_OPERATION;
+		return category;
 	}
 
 	@Override

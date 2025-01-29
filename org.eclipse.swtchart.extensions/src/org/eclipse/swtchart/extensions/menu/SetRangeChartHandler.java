@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -30,10 +30,22 @@ import org.eclipse.swtchart.extensions.dialogs.ChartRangeValues;
 
 public class SetRangeChartHandler extends AbstractChartMenuEntry implements IChartMenuEntry {
 
+	private String category = "";
+
+	public SetRangeChartHandler() {
+
+		this(IChartMenuCategories.STANDARD_OPERATION);
+	}
+
+	public SetRangeChartHandler(String category) {
+
+		this.category = category;
+	}
+
 	@Override
 	public String getCategory() {
 
-		return IChartMenuCategories.STANDARD_OPERATION;
+		return category;
 	}
 
 	@Override
