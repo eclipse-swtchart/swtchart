@@ -4,10 +4,9 @@ pipeline {
 			label 'centos-7'
 		}
 	}
-	triggers {
-	cron('@midnight')
-	pollSCM('H/5 * * * *')
-	}
+	options {
+            disableConcurrentBuilds()
+        }
 	tools {
 		maven 'apache-maven-latest'
 		jdk 'adoptopenjdk-hotspot-jdk11-latest'
