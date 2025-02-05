@@ -1,17 +1,16 @@
 pipeline {
-    agent {
-      kubernetes {
-        label 'centos-7'
-      }
-    }
-    triggers {
-	cron('@midnight')
-	pollSCM('H/5 * * * *')
-    }
-    tools {
-        maven 'apache-maven-latest'
-        jdk 'adoptopenjdk-hotspot-jdk8-latest'
-    }
+	agent {
+		kubernetes {
+			label 'centos-7'
+		}
+	}
+	options {
+		disableConcurrentBuilds()
+	}
+	tools {
+		maven 'apache-maven-latest'
+		jdk   'adoptopenjdk-hotspot-jdk8-latest'
+	}
 	stages {
 		stage('Build') {
 			steps {
