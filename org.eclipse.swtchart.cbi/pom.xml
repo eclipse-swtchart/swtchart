@@ -84,9 +84,9 @@
   -->
   <properties>
     <!-- VERSIONS -->
-    <tycho.version>4.0.8</tycho.version>
-    <pmd.version>3.22.0</pmd.version>
-    <checkstyle.version>3.3.1</checkstyle.version>
+    <tycho.version>4.0.11</tycho.version>
+    <pmd.version>3.26.0</pmd.version>
+    <checkstyle.version>3.6.0</checkstyle.version>
     <!-- IDS -->
     <tycho.groupid>org.eclipse.tycho</tycho.groupid>
     <maven.groupid>org.apache.maven.plugins</maven.groupid>
@@ -104,7 +104,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>3.5.0</version>
         <executions>
           <execution>
             <id>enforce-maven</id>
@@ -114,7 +114,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                <version>3.9.2</version>
+                  <version>3.9</version>
                 </requireMavenVersion>
               </rules>
             </configuration>
@@ -226,7 +226,7 @@
             <plugin>
               <groupId>org.eclipse.cbi.maven.plugins</groupId>
               <artifactId>eclipse-jarsigner-plugin</artifactId>
-              <version>1.3.2</version>
+              <version>1.5.2</version>
               <executions>
                 <execution>
                   <id>sign</id>
@@ -253,7 +253,7 @@
                <plugin>
                   <groupId>org.sonatype.plugins</groupId>
                   <artifactId>nexus-staging-maven-plugin</artifactId>
-                  <version>1.6.13</version>
+                  <version>1.7.0</version>
                   <extensions>true</extensions>
                   <configuration>
                      <serverId>ossrh</serverId>
@@ -266,7 +266,7 @@
                <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-source-plugin</artifactId>
-                  <version>3.0.1</version>
+                  <version>3.3.1</version>
                   <executions>
                      <execution>
                         <id>attach-sources</id>
