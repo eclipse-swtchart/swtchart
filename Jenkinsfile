@@ -36,4 +36,10 @@ pipeline {
 			}
 		}
 	}
+	post {
+		always {
+			junit allowEmptyResults: true, testResults: '**/target/surefire-reports/*.xml'
+			recordIssues publishAllIssues: true, tools: [java(), mavenConsole(), javaDoc()]
+		}
+	}
 }
