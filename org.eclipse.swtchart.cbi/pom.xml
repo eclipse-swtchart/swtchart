@@ -5,9 +5,9 @@
   This program and the accompanying materials are made
   available under the terms of the Eclipse Public License 2.0
   which is available at https://www.eclipse.org/legal/epl-2.0/
-  
+
   SPDX-License-Identifier: EPL-2.0
- 
+
   Contributors:
   Philip Wenig - created the pom to build the plug-ins
 -->
@@ -33,7 +33,7 @@
     <license>
       <name>EPL v2.0</name>
       <url>https://www.eclipse.org/legal/epl-2.0/</url>
-    </license> 
+    </license>
   </licenses>
   <!--
   DEVELOPERS
@@ -74,17 +74,17 @@
     <module>../org.eclipse.swtchart.export.extended</module>
     <module>../org.eclipse.swtchart.export.extended.test</module>
     <module>../org.eclipse.swtchart.vectorgraphics2d</module>
-    <module>../org.eclipse.swtchart.vectorgraphics2d.test</module>        
+    <module>../org.eclipse.swtchart.vectorgraphics2d.test</module>
     <module>../org.eclipse.swtchart.feature</module>
     <module>../org.eclipse.swtchart.updatesite</module>
-    <module>../org.eclipse.swtchart.bom</module>    
+    <module>../org.eclipse.swtchart.bom</module>
   </modules>
   <!--
   PROPERTIES
   -->
   <properties>
     <!-- VERSIONS -->
-    <tycho.version>4.0.11</tycho.version>
+    <tycho.version>4.0.12</tycho.version>
     <pmd.version>3.26.0</pmd.version>
     <checkstyle.version>3.6.0</checkstyle.version>
     <!-- IDS -->
@@ -99,7 +99,7 @@
   <build>
     <!--
   PLUGINS
-    -->  
+    -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -317,7 +317,7 @@
                </plugin>
             </plugins>
          </build>
-      </profile>      
+      </profile>
     </profiles>
     <pluginRepositories>
       <pluginRepository>
