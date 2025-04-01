@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,6 +22,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.PathIterator;
@@ -56,6 +57,7 @@ class PDFDocument extends SizedDocument {
 
 	private static final float POINTS_PER_INCH = 72; // DPI
 	private static final float POINTS_PER_MM = 1 / (10 * 2.54f) * POINTS_PER_INCH;
+	private static final float BEZIER_CONSTANT = 0.552284749831f;
 	//
 	private PDDocument document = null;
 
@@ -220,9 +222,14 @@ class PDFDocument extends SizedDocument {
 							}
 						} else {
 							/*
-							 * TODO
 							 * Ellipse2D
 							 */
+							if(object instanceof Ellipse2D ellipse2D) {
+								float positionX = (float)ellipse2D.getCenterX();
+								float positionY = height - (float)ellipse2D.getCenterY();
+								float radius = (float)(ellipse2D.getWidth() / 2.0d);
+								drawCircle(contentStream, positionX, positionY, radius);
+							}
 						}
 					}
 				} else if(command instanceof DrawStringCommand c) {
@@ -269,6 +276,18 @@ class PDFDocument extends SizedDocument {
 		}
 		//
 		return document;
+	}
+
+	private void drawCircle(PDPageContentStream contentStream, float positionX, float positionY, float radius) throws IOException {
+
+		float constant = radius * BEZIER_CONSTANT;
+		contentStream.moveTo(positionX + radius, positionY);
+		contentStream.curveTo(positionX + radius, positionY + constant, positionX + constant, positionY + radius, positionX, positionY + radius);
+		contentStream.curveTo(positionX - constant, positionY + radius, positionX - radius, positionY + constant, positionX - radius, positionY);
+		contentStream.curveTo(positionX - radius, positionY - constant, positionX - constant, positionY - radius, positionX, positionY - radius);
+		contentStream.curveTo(positionX + constant, positionY - radius, positionX + radius, positionY - constant, positionX + radius, positionY);
+		contentStream.closePath();
+		contentStream.stroke();
 	}
 
 	private double getRotationDegree(AffineTransform affineTransform) {
