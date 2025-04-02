@@ -286,6 +286,7 @@ class PDFDocument extends SizedDocument {
 		contentStream.curveTo(positionX - constant, positionY + radius, positionX - radius, positionY + constant, positionX - radius, positionY);
 		contentStream.curveTo(positionX - radius, positionY - constant, positionX - constant, positionY - radius, positionX, positionY - radius);
 		contentStream.curveTo(positionX + constant, positionY - radius, positionX + radius, positionY - constant, positionX + radius, positionY);
+		contentStream.fill();
 		contentStream.closePath();
 		contentStream.stroke();
 	}
