@@ -225,6 +225,8 @@ class PDFDocument extends SizedDocument {
 							 * Ellipse2D
 							 */
 							if(object instanceof Ellipse2D ellipse2D) {
+								contentStream.setNonStrokingColor(colorBackground);
+								contentStream.setStrokingColor(colorForeground);
 								float positionX = (float)ellipse2D.getCenterX();
 								float positionY = height - (float)ellipse2D.getCenterY();
 								float radius = (float)(ellipse2D.getWidth() / 2.0d);
@@ -286,6 +288,7 @@ class PDFDocument extends SizedDocument {
 		contentStream.curveTo(positionX - constant, positionY + radius, positionX - radius, positionY + constant, positionX - radius, positionY);
 		contentStream.curveTo(positionX - radius, positionY - constant, positionX - constant, positionY - radius, positionX, positionY - radius);
 		contentStream.curveTo(positionX + constant, positionY - radius, positionX + radius, positionY - constant, positionX + radius, positionY);
+		contentStream.fill();
 		contentStream.closePath();
 		contentStream.stroke();
 	}
