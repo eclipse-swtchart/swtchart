@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -10,6 +10,7 @@
  * Contributors:
  * Erich Seifert - initial API and implementation
  * Michael Seifert - initial API and implementation
+ * Philip Wenig - flexible handling of width/height
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.util;
 
@@ -17,34 +18,22 @@ import java.awt.geom.Rectangle2D;
 
 /**
  * <p>
- * Class that represents a page with a specified origin and size.
+ * Class that represents a page with a specified origin and size (millimeter).
  * The class is immutable and can be initialized with coordinates and
  * dimensions or only dimensions:
  * </p>
- * <pre>PageSize a3 = new PageSize(0.0, 0.0, 297.0, 420.0);
- *PageSize a4 = new PageSize(210.0, 297.0);</pre>
- *
- * <p>
- * For convenience the class contains static constants for common page
- * sizes:
- * </p>
- * <pre>PageSize a4 = PageSize.A4;
- *PageSize letter = PageSize.LETTER;</pre>
+ * <pre>PageSize A3 = new PageSize(0.0, 0.0, 297.0, 420.0);</pre>
+ * <pre>PageSize A4 = new PageSize(210.0, 297.0);</pre>
  */
 public class PageSize {
 
-	private static final double MM_PER_INCH = 2.54;
-	public static final PageSize A3 = new PageSize(297.0, 420.0);
-	public static final PageSize A4 = new PageSize(210.0, 297.0);
-	public static final PageSize A5 = new PageSize(148.0, 210.0);
-	public static final PageSize LETTER = new PageSize(8.5 * MM_PER_INCH, 11.0 * MM_PER_INCH);
-	public static final PageSize LEGAL = new PageSize(8.5 * MM_PER_INCH, 14.0 * MM_PER_INCH);
-	public static final PageSize TABLOID = new PageSize(11.0 * MM_PER_INCH, 17.0 * MM_PER_INCH);
-	public static final PageSize LEDGER = TABLOID.getLandscape();
+	public static final double MM_PER_INCH = 25.4d;
+	public static final double INCH_PER_MM = 1.0d / MM_PER_INCH;
+
 	private final double x;
 	private final double y;
-	private final double width;
-	private final double height;
+	private double width;
+	private double height;
 
 	public PageSize(double x, double y, double width, double height) {
 
@@ -95,8 +84,18 @@ public class PageSize {
 		return width;
 	}
 
+	public void setWidth(double width) {
+
+		this.width = width;
+	}
+
 	public double getHeight() {
 
 		return height;
+	}
+
+	public void setHeight(double height) {
+
+		this.height = height;
 	}
 }
