@@ -3,26 +3,20 @@
       id="org.eclipse.swtchart.export.extended.feature"
       label="SWTChart Export Extended"
       version="1.4.0.qualifier"
-      plugin="org.eclipse.swtchart">
+      plugin="org.eclipse.swtchart"
+      license-feature="org.eclipse.license"
+      license-feature-version="2.0.2.qualifier">
 
    <description url="https://projects.eclipse.org/projects/science.swtchart">
       This is the Eclipse SWTChart Export Extended feature.
    </description>
 
-   <copyright url="https://projects.eclipse.org/projects/science.swtchart">
+   <copyright url="https://www.lablicate.com">
       Copyright (c) 2017, 2024 Lablicate GmbH.
-This program and the accompanying materials are made
-available under the terms of the Eclipse Public License 2.0
-which is available at https://www.eclipse.org/legal/epl-2.0/
-SPDX-License-Identifier: EPL-2.0
    </copyright>
 
-   <license url="https://www.eclipse.org/legal/epl-2.0/">
-      Copyright (c) 2017, 2024 Lablicate GmbH.
-This program and the accompanying materials are made
-available under the terms of the Eclipse Public License 2.0
-which is available at https://www.eclipse.org/legal/epl-2.0/
-SPDX-License-Identifier: EPL-2.0
+   <license url="%licenseURL">
+      %license
    </license>
 
    <plugin
