@@ -1,8 +1,6 @@
 pipeline {
 	agent {
-		kubernetes {
-			label 'ubuntu-latest'
-		}
+		label 'ubuntu-latest'
 	}
 	triggers {
 		pollSCM('H/5 * * * *')
