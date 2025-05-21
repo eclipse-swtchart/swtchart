@@ -6,5 +6,5 @@ Bundle-SymbolicName: org.eclipse.swtchart.test
 Bundle-Version: 1.1.0.qualifier
 Bundle-Vendor: Eclipse SWTChart
 Fragment-Host: org.eclipse.swtchart;bundle-version="1.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Require-Bundle: org.junit;bundle-version="4.12.0"
