@@ -28,4 +28,31 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>eclipse-sign</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-gpg-plugin</artifactId>
+						<version>${tycho.version}</version>
+						<executions>
+							<execution>
+								<id>pgpsigner</id>
+								<goals>
+									<goal>sign-p2-artifacts</goal>
+								</goals>
+								<configuration>
+									<signer>bc</signer>
+									<keyname>FE6B7082</keyname>
+									<skipIfJarsigned>true</skipIfJarsigned>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
