@@ -62,7 +62,6 @@
   MODULES
   -->
   <modules>
-    <module>../org.eclipse.swtchart.targetplatform</module>
     <module>../org.eclipse.swtchart</module>
     <module>../org.eclipse.swtchart.test</module>
     <module>../org.eclipse.swtchart.extensions</module>
@@ -143,11 +142,8 @@
         <version>${tycho.version}</version>
         <configuration>
          <target>
-           <artifact>
-             <groupId>org.eclipse.swtchart</groupId>
-             <artifactId>org.eclipse.swtchart.targetplatform</artifactId>
-             <version>1.1.0</version>
-            </artifact>
+           <file>${maven.multiModuleProjectDirectory}/../org.eclipse.swtchart.targetplatform/org.eclipse.swtchart.targetplatform.target
+            </file>
           </target>
           <environments>
             <environment>
