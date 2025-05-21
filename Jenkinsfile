@@ -1,8 +1,6 @@
 pipeline {
 	agent {
-		kubernetes {
-			label 'ubuntu-latest'
-		}
+		label 'ubuntu-latest'
 	}
 	triggers {
 		pollSCM('H/5 * * * *')
@@ -12,7 +10,7 @@ pipeline {
 	}
 	tools {
 		maven 'apache-maven-latest'
-		jdk   'temurin-jdk17-latest'
+		jdk   'temurin-jdk21-latest'
 	}
 	stages {
 		stage('Build') {
