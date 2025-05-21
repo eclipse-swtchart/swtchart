@@ -17,10 +17,12 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				withCredentials([file(credentialsId: 'secret-subkeys.asc', variable: 'KEYRING'),string(credentialsId: 'gpg-passphrase', variable: 'MAVEN_GPG_PASSPHRASE') ]) {
 				wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
 					sh '''
-						mvn -f org.eclipse.swtchart.cbi/pom.xml -Peclipse-sign clean install
+						mvn -f org.eclipse.swtchart.cbi/pom.xml -Peclipse-sign clean install -Dtycho.pgp.signer.bc.secretKeys="${KEYRING}"
 					'''
+				}
 				}
 			}
 		}
