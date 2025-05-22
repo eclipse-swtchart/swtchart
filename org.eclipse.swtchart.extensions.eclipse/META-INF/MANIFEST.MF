@@ -4,7 +4,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart Eclipse Preference Page
 Bundle-SymbolicName: org.eclipse.swtchart.extensions.eclipse;singleton:=true
 Bundle-Version: 1.1.0.qualifier
-Bundle-Activator: org.eclipse.swtchart.extensions.eclipse.Activator
 Bundle-Vendor: Eclipse SWTChart
 Require-Bundle: org.eclipse.jface,
  org.eclipse.core.runtime,

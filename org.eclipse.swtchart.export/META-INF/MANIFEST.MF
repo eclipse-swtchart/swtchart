@@ -4,7 +4,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart Export Options
 Bundle-SymbolicName: org.eclipse.swtchart.export;singleton:=true
 Bundle-Version: 1.1.0.qualifier
-Bundle-Activator: org.eclipse.swtchart.export.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.swtchart;bundle-version="1.1.0",

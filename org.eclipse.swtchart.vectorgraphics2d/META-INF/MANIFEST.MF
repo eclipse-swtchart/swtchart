@@ -12,7 +12,6 @@ Export-Package: org.eclipse.swtchart.vectorgraphics2d.core,
  org.eclipse.swtchart.vectorgraphics2d.pdf,
  org.eclipse.swtchart.vectorgraphics2d.svg,
  org.eclipse.swtchart.vectorgraphics2d.util
-Bundle-Activator: org.eclipse.swtchart.vectorgraphics2d.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.apache.pdfbox;bundle-version="2.0.26",

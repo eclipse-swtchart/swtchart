@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart Custom Charts
 Bundle-SymbolicName: org.eclipse.swtchart.customcharts
 Bundle-Version: 1.1.0.qualifier
-Bundle-Activator: org.eclipse.swtchart.customcharts.Activator
 Bundle-Vendor: Eclipse SWTChart
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

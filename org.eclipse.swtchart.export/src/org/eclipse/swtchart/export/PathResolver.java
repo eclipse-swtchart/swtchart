@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -18,8 +18,8 @@ import java.net.URL;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 public class PathResolver {
 
@@ -33,7 +33,7 @@ public class PathResolver {
 	 */
 	public static String getAbsolutePath(String string) {
 
-		Bundle bundle = Platform.getBundle(Activator.getDefault().getBundle().getSymbolicName());
+		Bundle bundle = FrameworkUtil.getBundle(PathResolver.class);
 		IPath path = new Path(string);
 		URL url = FileLocator.find(bundle, path, null);
 		try {
