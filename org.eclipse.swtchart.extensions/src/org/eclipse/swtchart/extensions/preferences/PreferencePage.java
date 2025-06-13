@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,8 +17,10 @@ import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPreferencePage;
 
-public class PreferencePage extends FieldEditorPreferencePage {
+public class PreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	public PreferencePage() {
 
@@ -50,5 +52,10 @@ public class PreferencePage extends FieldEditorPreferencePage {
 		addField(new IntegerFieldEditor(PreferenceConstants.P_BITMAP_EXPORT_HEIGHT, Messages.getString(Messages.BITMAP_EXPORT_HEIGHT), getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.P_SHOW_HELP_FOR_EVENTS, Messages.getString(Messages.SHOW_POPUP_ON_CLICKBINDING), getFieldEditorParent()));
 		addField(new IntegerFieldEditor(PreferenceConstants.P_HELP_POPUP_TIME_TO_CLOSE, Messages.getString(Messages.POPUP_CLOSE_TIME), getFieldEditorParent()));
+	}
+
+	@Override
+	public void init(IWorkbench workbench) {
+
 	}
 }

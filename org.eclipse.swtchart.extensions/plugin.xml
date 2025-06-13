@@ -7,5 +7,13 @@
       <initializer
             class="org.eclipse.swtchart.extensions.preferences.PreferenceInitializer">
       </initializer>
-   </extension>          
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.swtchart.extensions.preferences.PreferencePage"
+            id="org.eclipse.swtchart.extensions.preferences.preferencePage"
+            name="SWTChart">
+      </page>
+   </extension>           
 </plugin>
