@@ -8,4 +8,5 @@
    </feature>
    <category-def name="org.eclipse.swtchart" label="Eclipse SWTChart" />
    <category-def name="org.eclipse.swtchart.source" label="Eclipse SWTChart Developer Resources"/>
+   <repository-reference location="https://download.eclipse.org/releases/2025-06/" enabled="true" />
 </site>
