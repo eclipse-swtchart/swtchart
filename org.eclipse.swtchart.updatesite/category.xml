@@ -3,9 +3,6 @@
    <feature id="org.eclipse.swtchart.feature" version="1.1.0.qualifier">
       <category name="org.eclipse.swtchart"/>
    </feature>
-   <feature id="org.eclipse.swtchart.feature.source" version="1.1.0.qualifier">
-      <category name="org.eclipse.swtchart.source"/>
-   </feature>
    <category-def name="org.eclipse.swtchart" label="Eclipse SWTChart" />
-   <category-def name="org.eclipse.swtchart.source" label="Eclipse SWTChart Developer Resources"/>
+   <repository-reference location="https://download.eclipse.org/releases/2025-06/" enabled="true" />
 </site>
