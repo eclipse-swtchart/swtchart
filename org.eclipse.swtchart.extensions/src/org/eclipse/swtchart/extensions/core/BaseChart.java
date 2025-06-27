@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -544,6 +544,11 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		return seriesStatusListeners.remove(seriesSelectionListener);
 	}
 
+	public boolean hasSelectedSeries() {
+
+		return !selectedSeriesIds.isEmpty();
+	}
+
 	/**
 	 * Returns the set of selected series ids.
 	 * The list is unmodifiable.
@@ -999,6 +1004,25 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	public void setShiftConstraints(int shiftConstraints) {
 
 		this.shiftConstraints = shiftConstraints;
+	}
+
+	public void scaleSeriesX(String selectedSeriesId, double startX, double stopX) {
+
+		ISeries<?> dataSeries = getSeriesSet().getSeries(selectedSeriesId);
+		if(dataSeries != null) {
+			if(stopX > startX) {
+				double[] seriesX = dataSeries.getXSeries();
+				int size = seriesX.length;
+				double intervalX = (stopX - startX) / size;
+				double x = startX;
+				for(int i = 0; i < size; i++) {
+					seriesX[i] = x;
+					x += intervalX;
+				}
+				dataSeries.setXSeries(seriesX);
+				fireSeriesModificationEvent();
+			}
+		}
 	}
 
 	public void shiftSeries(String selectedSeriesId, double shiftX, double shiftY) {
