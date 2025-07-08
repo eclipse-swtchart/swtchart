@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -55,6 +55,8 @@ public class SeriesConverter {
 	public static final String BAR_SERIES_2 = "BarSeries2";
 	public static final String BAR_SERIES_3_POSITIVE = "BarSeries3-Positive";
 	public static final String BAR_SERIES_3_NEGATIVE = "BarSeries3-Negative";
+	public static final String BAR_SERIES_4_POSITIVE = "BarSeries4-Positive";
+	public static final String BAR_SERIES_5_NEGATIVE = "BarSeries5-Negative";
 	//
 	public static final String SCATTER_SERIES_1 = "ScatterSeries1";
 	public static final String SCATTER_SERIES_2_1 = "ScatterSeries2_1";
@@ -91,11 +93,10 @@ public class SeriesConverter {
 		double[] xSeries = new double[size];
 		double[] ySeries = new double[size];
 		//
-		BufferedReader bufferedReader = null;
-		try {
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))) {
 			String line;
 			int i = 0;
-			bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)));
+			;
 			while((line = bufferedReader.readLine()) != null) {
 				if(!line.startsWith("#")) {
 					String[] values = line.split("\t");
@@ -105,15 +106,6 @@ public class SeriesConverter {
 				}
 			}
 		} catch(Exception e) {
-			//
-		} finally {
-			if(bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch(IOException e) {
-					//
-				}
-			}
 		}
 		//
 		ISeriesData seriesData = new SeriesData(xSeries, ySeries, id);
