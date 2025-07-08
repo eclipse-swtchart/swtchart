@@ -622,7 +622,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 		maxY = Double.NEGATIVE_INFINITY;
 	}
 
-	private void calculateCoordinates(ISeries<?> series) {
+	protected void calculateCoordinates(ISeries<?> series) {
 
 		double[] xSeries = series.getXSeries();
 		double[] ySeries = series.getYSeries();
@@ -635,10 +635,9 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 			seriesMaxDataPoints = Math.max(seriesMaxDataPoints, xSeries.length);
 			updateCoordinates(seriesMinX, seriesMaxX, seriesMinY, seriesMaxY);
 		}
-		//
 	}
 
-	protected void updateCoordinates(double seriesMinX, double seriesMaxX, double seriesMinY, double seriesMaxY) {
+	private void updateCoordinates(double seriesMinX, double seriesMaxX, double seriesMinY, double seriesMaxY) {
 
 		minX = Math.min(minX, seriesMinX);
 		minX = (rangeRestriction.isZeroX() && minX < 0.0d) ? 0.0d : minX;

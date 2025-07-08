@@ -16,7 +16,6 @@ package org.eclipse.swtchart.extensions.core;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EmptyStackException;
@@ -1001,70 +1000,244 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		return false;
 	}
 
+	/**
+	 * Select the axis via IExtendedChart.X_AXIS or IExtendedChart.Y_AXIS.
+	 * Shift without constraints.
+	 * 
+	 * @param seriesId
+	 * @param axis
+	 * @param start
+	 * @param stop
+	 */
+	public void scaleSeries(String seriesId, String axis, double start, double stop) {
+
+		scaleSeries(seriesId, axis, start, Double.NaN, stop);
+	}
+
+	/**
+	 * Select the axis via IExtendedChart.X_AXIS or IExtendedChart.Y_AXIS.
+	 * Shift without constraints. If center is NaN, then it will be ignored.
+	 * 
+	 * @param seriesId
+	 * @param axis
+	 * @param start
+	 * @param center
+	 * @param stop
+	 */
+	public void scaleSeries(String seriesId, String axis, double start, double center, double stop) {
+
+		ISeries<?> series = getSeriesSet().getSeries(seriesId);
+		if(series != null) {
+			if(stop > start) {
+				boolean calculateCoordinates = false;
+				if(IExtendedChart.X_AXIS.equals(axis)) {
+					/*
+					 * X
+					 */
+					if(Double.isNaN(center)) {
+						/*
+						 * Just use start and stop
+						 */
+						double[] seriesX = series.getXSeries();
+						int size = seriesX.length;
+						double intervalX = (stop - start) / size;
+						double x = start;
+						for(int i = 0; i < size; i++) {
+							seriesX[i] = x;
+							x += intervalX;
+						}
+						series.setXSeries(seriesX);
+						calculateCoordinates = true;
+					} else {
+						if(center >= start && center <= stop) {
+							int index = -1;
+							double[] seriesX = series.getXSeries();
+							int size = seriesX.length;
+							exitloop:
+							for(int i = 0; i < size; i++) {
+								if(seriesX[i] >= center) {
+									index = i;
+									break exitloop;
+								}
+							}
+							if(index > -1) {
+								/*
+								 * Left
+								 */
+								double intervalLeft = (center - start) / index;
+								double xLeft = start;
+								for(int i = 0; i < index; i++) {
+									seriesX[i] = xLeft;
+									xLeft += intervalLeft;
+								}
+								/*
+								 * Right
+								 */
+								double intervalRight = (stop - center) / (size - index);
+								double xRight = center;
+								for(int i = index; i < size; i++) {
+									seriesX[i] = xRight;
+									xRight += intervalRight;
+								}
+								/*
+								 * Adjust
+								 */
+								series.setXSeries(seriesX);
+								calculateCoordinates = true;
+							}
+						}
+					}
+				} else if(IExtendedChart.Y_AXIS.equals(axis)) {
+					/*
+					 * Y
+					 */
+					if(Double.isNaN(center)) {
+						double[] seriesY = series.getYSeries();
+						int size = seriesY.length;
+						double intervalY = (stop - start) / size;
+						double y = start;
+						for(int i = 0; i < size; i++) {
+							seriesY[i] = y;
+							y += intervalY;
+						}
+						series.setYSeries(seriesY);
+						calculateCoordinates = true;
+					} else {
+						if(center >= start && center <= stop) {
+							int index = -1;
+							double[] seriesY = series.getYSeries();
+							int size = seriesY.length;
+							exitloop:
+							for(int i = 0; i < size; i++) {
+								if(seriesY[i] >= center) {
+									index = i;
+									break exitloop;
+								}
+							}
+							if(index > -1) {
+								/*
+								 * Bottom
+								 */
+								double intervalBottom = (center - start) / index;
+								double xBottom = start;
+								for(int i = 0; i < index; i++) {
+									seriesY[i] = xBottom;
+									xBottom += intervalBottom;
+								}
+								/*
+								 * Top
+								 */
+								double intervalTop = (stop - center) / (size - index);
+								double xTop = center;
+								for(int i = index; i < size; i++) {
+									seriesY[i] = xTop;
+									xTop += intervalTop;
+								}
+								/*
+								 * Adjust
+								 */
+								series.setYSeries(seriesY);
+								calculateCoordinates = true;
+							}
+						}
+					}
+				}
+				/*
+				 * Avoid unnecessary calculations
+				 */
+				if(calculateCoordinates) {
+					calculateCoordinates(series);
+					fireSeriesModificationEvent();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Select the axis via IExtendedChart.X_AXIS or IExtendedChart.Y_AXIS.
+	 * Shift without constraints.
+	 * 
+	 * @param seriesId
+	 * @param axis
+	 * @param shift
+	 */
+	public void shiftSeries(String seriesId, String axis, double shift) {
+
+		ISeries<?> series = getSeriesSet().getSeries(seriesId);
+		if(series != null) {
+			if(shift != 0) {
+				boolean calculateCoordinates = false;
+				if(IExtendedChart.X_AXIS.equals(axis)) {
+					/*
+					 * X
+					 */
+					double[] seriesX = series.getXSeries();
+					for(int i = 0; i < seriesX.length; i++) {
+						seriesX[i] += shift;
+					}
+					series.setXSeries(seriesX);
+					calculateCoordinates = true;
+				} else if(IExtendedChart.Y_AXIS.equals(axis)) {
+					/*
+					 * Y
+					 */
+					double[] seriesY = series.getYSeries();
+					for(int i = 0; i < seriesY.length; i++) {
+						seriesY[i] += shift;
+					}
+					series.setYSeries(seriesY);
+					calculateCoordinates = true;
+				}
+				/*
+				 * Avoid unnecessary calculations
+				 */
+				if(calculateCoordinates) {
+					calculateCoordinates(series);
+					fireSeriesModificationEvent();
+				}
+			}
+		}
+	}
+
 	public void setShiftConstraints(int shiftConstraints) {
 
 		this.shiftConstraints = shiftConstraints;
 	}
 
-	public void scaleSeriesX(String selectedSeriesId, double startX, double stopX) {
+	/**
+	 * Shift x and y with constraints.
+	 * 
+	 * @param seriesId
+	 * @param shiftX
+	 * @param shiftY
+	 */
+	public void shiftSeries(String seriesId, double shiftX, double shiftY) {
 
-		ISeries<?> dataSeries = getSeriesSet().getSeries(selectedSeriesId);
+		ISeries<?> dataSeries = getSeriesSet().getSeries(seriesId);
 		if(dataSeries != null) {
-			if(stopX > startX) {
-				double[] seriesX = dataSeries.getXSeries();
-				int size = seriesX.length;
-				double intervalX = (stopX - startX) / size;
-				double x = startX;
-				for(int i = 0; i < size; i++) {
-					seriesX[i] = x;
-					x += intervalX;
-				}
-				dataSeries.setXSeries(seriesX);
-				fireSeriesModificationEvent();
-			}
-		}
-	}
-
-	public void shiftSeries(String selectedSeriesId, double shiftX, double shiftY) {
-
-		ISeries<?> dataSeries = getSeriesSet().getSeries(selectedSeriesId);
-		if(dataSeries != null) {
-			//
 			if(shiftX != 0.0d || shiftY != 0.0d) {
-				//
-				double seriesMinX = Double.MAX_VALUE;
-				double seriesMaxX = Double.MIN_VALUE;
-				double seriesMinY = Double.MAX_VALUE;
-				double seriesMaxY = Double.MIN_VALUE;
-				//
+				/*
+				 * Shift X
+				 */
 				if(shiftX != 0.0d) {
-					/*
-					 * Shift X
-					 */
 					double[] xSeriesShifted = adjustArray(dataSeries.getXSeries(), shiftX, IExtendedChart.X_AXIS);
 					dataSeries.setXSeries(xSeriesShifted);
-					seriesMinX = xSeriesShifted[0];
-					seriesMaxX = xSeriesShifted[xSeriesShifted.length - 1];
 				}
-				//
+				/*
+				 * Shift Y
+				 */
 				if(shiftY != 0.0d) {
-					/*
-					 * Shift Y
-					 */
 					double[] ySeriesShifted = adjustArray(dataSeries.getYSeries(), shiftY, IExtendedChart.Y_AXIS);
 					dataSeries.setYSeries(ySeriesShifted);
-					seriesMinY = ySeriesShifted[0];
-					seriesMaxY = ySeriesShifted[ySeriesShifted.length - 1];
 				}
 				/*
 				 * Track the shifts.
 				 */
 				Range rangeX = getAxisSet().getXAxis(ID_PRIMARY_X_AXIS).getRange();
 				Range rangeY = getAxisSet().getYAxis(ID_PRIMARY_Y_AXIS).getRange();
-				List<double[]> shiftRecord = getShiftRecord(selectedSeriesId);
+				List<double[]> shiftRecord = getShiftRecord(seriesId);
 				shiftRecord.add(new double[]{rangeX.lower, rangeX.upper, shiftX, rangeY.lower, rangeY.upper, shiftY, shiftConstraints});
-				//
-				updateCoordinates(seriesMinX, seriesMaxX, seriesMinY, seriesMaxY);
+				calculateCoordinates(dataSeries);
 				fireSeriesModificationEvent();
 			}
 		}
@@ -1148,24 +1321,17 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 */
 	public void multiplySeries(String selectedSeriesId, String axisId, double factor) {
 
-		ISeries<?> dataSeries = getSeriesSet().getSeries(selectedSeriesId);
-		if(dataSeries != null) {
-			//
-			double[] xSeries = dataSeries.getXSeries();
-			double[] ySeries = dataSeries.getYSeries();
+		ISeries<?> series = getSeriesSet().getSeries(selectedSeriesId);
+		if(series != null) {
+			double[] xSeries = series.getXSeries();
+			double[] ySeries = series.getYSeries();
 			//
 			if(IExtendedChart.X_AXIS.equals(axisId)) {
-				dataSeries.setXSeries(multiplySeries(xSeries, factor));
+				series.setXSeries(multiplySeries(xSeries, factor));
 			} else if(IExtendedChart.Y_AXIS.equals(axisId)) {
-				dataSeries.setYSeries(multiplySeries(ySeries, factor));
+				series.setYSeries(multiplySeries(ySeries, factor));
 			}
-			//
-			double seriesMinX = Arrays.stream(xSeries).min().getAsDouble();
-			double seriesMaxX = Arrays.stream(xSeries).max().getAsDouble();
-			double seriesMinY = Arrays.stream(ySeries).min().getAsDouble();
-			double seriesMaxY = Arrays.stream(ySeries).max().getAsDouble();
-			//
-			updateCoordinates(seriesMinX, seriesMaxX, seriesMinY, seriesMaxY);
+			calculateCoordinates(series);
 			fireSeriesModificationEvent();
 		}
 	}
