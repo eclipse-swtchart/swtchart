@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,7 @@ import java.awt.color.ColorSpace;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 
-public class CmykColorTest extends TestCase {
+public class CmykColorTest extends AbstractTest {
 
 	/**
 	 * @see "http://carback.us/rick/blog/java-cmyk-how-to"

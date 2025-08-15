@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -48,12 +48,12 @@ import javax.swing.event.ListSelectionListener;
 @SuppressWarnings("serial")
 public class TestBrowser extends JFrame {
 
-	private final List<TestCase> testCases;
+	private final List<AbstractTest> testCases;
 	private final ImageComparisonPanel imageComparisonPanel;
 	@SuppressWarnings("rawtypes")
 	private final JComboBox imageFormatSelector;
 	private final JFileChooser fileChooser;
-	private TestCase testCase;
+	private AbstractTest testCase;
 
 	private enum ImageFormat {
 
@@ -254,7 +254,7 @@ public class TestBrowser extends JFrame {
 
 				ImageFormat format = (ImageFormat)itemEvent.getItem();
 				imageComparisonPanel.setImageFormat(format);
-				TestCase test = getTestCase();
+				AbstractTest test = getTestCase();
 				if(test != null) {
 					setTestCase(test);
 				}
@@ -264,7 +264,7 @@ public class TestBrowser extends JFrame {
 		configurableImageComparisonPanel.add(imageComparisonPanel, BorderLayout.CENTER);
 	}
 
-	public void setTestCase(TestCase test) {
+	public void setTestCase(AbstractTest test) {
 
 		BufferedImage reference = test.getReference();
 		imageComparisonPanel.setLeftComponent(new ImageDisplayPanel(reference, null, fileChooser));
@@ -285,7 +285,7 @@ public class TestBrowser extends JFrame {
 		imageComparisonPanel.setRightComponent(imageDisplayPanel);
 	}
 
-	public TestCase getTestCase() {
+	public AbstractTest getTestCase() {
 
 		return testCase;
 	}
