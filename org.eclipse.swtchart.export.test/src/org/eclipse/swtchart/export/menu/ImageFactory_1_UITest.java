@@ -45,7 +45,7 @@ public class ImageFactory_1_UITest extends TestCase {
 
 	public void test1() {
 
-		assertTrue("UI tests can't be executed on a headless build server.", true);
+		assertFalse("UI tests can't be executed on a headless build server.", GraphicsEnvironment.isHeadless());
 	}
 
 	public void test2() {
