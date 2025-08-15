@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,15 +12,17 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class MappingsKey_1_Test extends TestCase {
+public class MappingsKey_1_Test {
 
 	private MappingsType mappingsType = MappingsType.LINE;
 	private String seriesId = "418_01_EditorTab#8_(Extracted Ion Chromatogram,NONE)	418_01 [MSD]";
 
+	@Test
 	public void test1a() {
 
 		String key = MappingsKey.getKey(mappingsType, seriesId);
@@ -34,6 +36,7 @@ public class MappingsKey_1_Test extends TestCase {
 		assertNotEquals(MappingsType.SCATTER, mappingsKey.getMappingsType());
 	}
 
+	@Test
 	public void test1() {
 
 		MappingsKey mappingsKey = new MappingsKey(mappingsType, seriesId);

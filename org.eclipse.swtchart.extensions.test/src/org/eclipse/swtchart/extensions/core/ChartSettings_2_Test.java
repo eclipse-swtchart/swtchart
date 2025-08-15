@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,41 +12,40 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import org.eclipse.swtchart.extensions.menu.toggle.TogglePlotCenterMarkerHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.TogglePositionMarkerHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.ToggleSeriesLegendHandler;
+import org.junit.Before;
+import org.junit.Test;
 
-import junit.framework.TestCase;
-
-public class ChartSettings_2_Test extends TestCase {
+public class ChartSettings_2_Test {
 
 	private ChartSettings chartSettings = new ChartSettings();
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() {
 
-		super.setUp();
 		chartSettings.clearMenuEntries();
 		chartSettings.addMenuEntry(new TogglePositionMarkerHandler());
 		chartSettings.addMenuEntry(new ToggleSeriesLegendHandler());
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
 		assertNotNull(chartSettings.getChartMenuEntryByClass(TogglePositionMarkerHandler.class));
 	}
 
+	@Test
 	public void test2() {
 
 		assertNotNull(chartSettings.getChartMenuEntryByClass(ToggleSeriesLegendHandler.class));
 	}
 
+	@Test
 	public void test3() {
 
 		assertNull(chartSettings.getChartMenuEntryByClass(TogglePlotCenterMarkerHandler.class));

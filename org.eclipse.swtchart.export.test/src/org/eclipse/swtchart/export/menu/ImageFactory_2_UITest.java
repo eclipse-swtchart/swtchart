@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,6 +12,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,78 +30,60 @@ import org.eclipse.swtchart.extensions.barcharts.BarSeriesData;
 import org.eclipse.swtchart.extensions.barcharts.IBarSeriesData;
 import org.eclipse.swtchart.extensions.barcharts.IBarSeriesSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesData;
+import org.junit.Test;
 
-import junit.framework.TestCase;
+public class ImageFactory_2_UITest {
 
-public class ImageFactory_2_UITest extends TestCase {
-
-	@Override
-	protected void setUp() throws Exception {
-
-		super.setUp();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		assertTrue("UI tests can't be executed on a headless build server.", true);
+		assertFalse("UI tests can't be executed on a headless build server.", GraphicsEnvironment.isHeadless());
 	}
 
-	public void test2() {
+	@Test
+	public void test2() throws InstantiationException, IllegalAccessException {
 
-		try {
-			/*
-			 * Create the factory.
-			 */
-			ImageFactory<MassSpectrumChart> imageFactory = new ImageFactory<>(MassSpectrumChart.class, 800, 600);
-			/*
-			 * Modify the chart.
-			 */
-			MassSpectrumChart massSpectrumChart = imageFactory.getChart();
-			massSpectrumChart.setBackground(massSpectrumChart.getBaseChart().getDisplay().getSystemColor(SWT.COLOR_WHITE));
-			List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
-			ISeriesData seriesData = SeriesConverter.getSeriesXY(PathResolver.getAbsolutePath(TestPathHelper.TESTFILE_BAR_SERIES_1));
-			//
-			IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
-			IBarSeriesSettings barSeriesSettings = barSeriesData.getSettings();
-			barSeriesSettings.setDescription("");
-			barSeriesDataList.add(barSeriesData);
-			massSpectrumChart.addSeriesData(barSeriesDataList);
-			/*
-			 * Export the images.
-			 */
-			String exportFolder = PathResolver.getAbsolutePath(TestPathHelper.TESTFOLDER_EXPORT);
-			String prefix = "BarSeries1";
-			//
-			String png = exportFolder + File.separator + prefix + ".png";
-			imageFactory.saveImage(png, SWT.IMAGE_PNG);
-			File filePng = new File(png);
-			assertTrue(filePng.exists());
-			filePng.delete();
-			//
-			String jpg = exportFolder + File.separator + prefix + ".jpg";
-			imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
-			File fileJpg = new File(jpg);
-			assertTrue(fileJpg.exists());
-			fileJpg.delete();
-			//
-			String bmp = exportFolder + File.separator + prefix + ".bmp";
-			imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
-			File fileBmp = new File(bmp);
-			assertTrue(fileBmp.exists());
-			fileBmp.delete();
-			//
-			imageFactory.closeShell();
-			//
-		} catch(InstantiationException e) {
-			e.printStackTrace();
-		} catch(IllegalAccessException e) {
-			e.printStackTrace();
-		}
+		/*
+		 * Create the factory.
+		 */
+		ImageFactory<MassSpectrumChart> imageFactory = new ImageFactory<>(MassSpectrumChart.class, 800, 600);
+		/*
+		 * Modify the chart.
+		 */
+		MassSpectrumChart massSpectrumChart = imageFactory.getChart();
+		massSpectrumChart.setBackground(massSpectrumChart.getBaseChart().getDisplay().getSystemColor(SWT.COLOR_WHITE));
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
+		ISeriesData seriesData = SeriesConverter.getSeriesXY(PathResolver.getAbsolutePath(TestPathHelper.TESTFILE_BAR_SERIES_1));
+
+		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
+		IBarSeriesSettings barSeriesSettings = barSeriesData.getSettings();
+		barSeriesSettings.setDescription("");
+		barSeriesDataList.add(barSeriesData);
+		massSpectrumChart.addSeriesData(barSeriesDataList);
+		/*
+		 * Export the images.
+		 */
+		String exportFolder = PathResolver.getAbsolutePath(TestPathHelper.TESTFOLDER_EXPORT);
+		String prefix = "BarSeries1";
+
+		String png = exportFolder + File.separator + prefix + ".png";
+		imageFactory.saveImage(png, SWT.IMAGE_PNG);
+		File filePng = new File(png);
+		assertTrue(filePng.exists());
+		filePng.delete();
+
+		String jpg = exportFolder + File.separator + prefix + ".jpg";
+		imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
+		File fileJpg = new File(jpg);
+		assertTrue(fileJpg.exists());
+		fileJpg.delete();
+
+		String bmp = exportFolder + File.separator + prefix + ".bmp";
+		imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
+		File fileBmp = new File(bmp);
+		assertTrue(fileBmp.exists());
+		fileBmp.delete();
+
+		imageFactory.closeShell();
 	}
 }

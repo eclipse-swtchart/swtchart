@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,44 +12,44 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-public class RangeRestriction_17_Test extends TestCase {
+import org.junit.Before;
+import org.junit.Test;
+
+public class RangeRestriction_17_Test {
 
 	private RangeRestriction rangeRestriction;
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() {
 
-		super.setUp();
 		rangeRestriction = new RangeRestriction();
 		rangeRestriction.setExtendTypeY(RangeRestriction.ExtendType.RELATIVE);
 		rangeRestriction.setExtendMaxY(2.98d);
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		assertEquals(0.0d, rangeRestriction.getExtendMinX());
+		assertEquals(0.0d, rangeRestriction.getExtendMinX(), 0);
 	}
 
+	@Test
 	public void test2() {
 
-		assertEquals(0.0d, rangeRestriction.getExtendMaxX());
+		assertEquals(0.0d, rangeRestriction.getExtendMaxX(), 0);
 	}
 
+	@Test
 	public void test3() {
 
-		assertEquals(0.0d, rangeRestriction.getExtendMinY());
+		assertEquals(0.0d, rangeRestriction.getExtendMinY(), 0);
 	}
 
+	@Test
 	public void test4() {
 
-		assertEquals(2.98d, rangeRestriction.getExtendMaxY());
+		assertEquals(2.98d, rangeRestriction.getExtendMaxY(), 0);
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,37 +12,29 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.axisconverter;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-public class PassThroughConverter_1_Test extends TestCase {
+import org.junit.Test;
 
-	private PassThroughConverter passThroughConverter;
+public class PassThroughConverter_1_Test {
 
-	@Override
-	protected void setUp() throws Exception {
+	private PassThroughConverter passThroughConverter = new PassThroughConverter();
 
-		super.setUp();
-		passThroughConverter = new PassThroughConverter();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		assertEquals(-1.0d, passThroughConverter.convertToSecondaryUnit(-1.0d));
+		assertEquals(-1.0d, passThroughConverter.convertToSecondaryUnit(-1.0d), 0);
 	}
 
+	@Test
 	public void test2() {
 
-		assertEquals(0.0d, passThroughConverter.convertToSecondaryUnit(0.0d));
+		assertEquals(0.0d, passThroughConverter.convertToSecondaryUnit(0.0d), 0);
 	}
 
+	@Test
 	public void test3() {
 
-		assertEquals(1.0d, passThroughConverter.convertToSecondaryUnit(1.0d));
+		assertEquals(1.0d, passThroughConverter.convertToSecondaryUnit(1.0d), 0);
 	}
 }

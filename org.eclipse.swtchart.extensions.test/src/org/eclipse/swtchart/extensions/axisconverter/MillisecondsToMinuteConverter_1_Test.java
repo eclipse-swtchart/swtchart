@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,32 +12,23 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.axisconverter;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-public class MillisecondsToMinuteConverter_1_Test extends TestCase {
+import org.junit.Test;
 
-	private MillisecondsToMinuteConverter millisecondsToMinuteConverter;
+public class MillisecondsToMinuteConverter_1_Test {
 
-	@Override
-	protected void setUp() throws Exception {
+	private MillisecondsToMinuteConverter millisecondsToMinuteConverter = new MillisecondsToMinuteConverter();
 
-		super.setUp();
-		millisecondsToMinuteConverter = new MillisecondsToMinuteConverter();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		assertEquals(1.0d, millisecondsToMinuteConverter.convertToSecondaryUnit(60000.0d));
+		assertEquals(1.0d, millisecondsToMinuteConverter.convertToSecondaryUnit(60000.0d), 0);
 	}
 
+	@Test
 	public void test2() {
 
-		assertEquals(60000.0d, millisecondsToMinuteConverter.convertToPrimaryUnit(1.0d));
+		assertEquals(60000.0d, millisecondsToMinuteConverter.convertToPrimaryUnit(1.0d), 0);
 	}
 }

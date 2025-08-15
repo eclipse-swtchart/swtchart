@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,7 +38,7 @@ import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
 // import org.ghost4j.Ghostscript;
 // import org.ghost4j.GhostscriptException;
 
-public abstract class TestCase {
+public abstract class AbstractTest {
 
 	@SuppressWarnings("unused")
 	private static final double EPSILON = 1;
@@ -52,7 +52,7 @@ public abstract class TestCase {
 	private BufferedImage rasterizedPDF;
 	private BufferedImage rasterizedSVG;
 
-	public TestCase() throws IOException {
+	public AbstractTest() throws IOException {
 
 		int width = 300;
 		int height = 300;

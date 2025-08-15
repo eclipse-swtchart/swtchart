@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,27 +12,17 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class RangeRestriction_9_Test extends TestCase {
+import org.junit.Test;
 
-	private RangeRestriction rangeRestriction;
+public class RangeRestriction_9_Test {
 
-	@Override
-	protected void setUp() throws Exception {
-
-		super.setUp();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.ZERO_Y | RangeRestriction.RESTRICT_FRAME | RangeRestriction.RESTRICT_SELECT_X | RangeRestriction.RESTRICT_SELECT_Y);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.ZERO_Y | RangeRestriction.RESTRICT_FRAME | RangeRestriction.RESTRICT_SELECT_X | RangeRestriction.RESTRICT_SELECT_Y);
 		assertTrue(rangeRestriction.isZeroX());
 		assertTrue(rangeRestriction.isZeroY());
 		assertTrue(rangeRestriction.isRestrictFrame());
@@ -40,9 +30,10 @@ public class RangeRestriction_9_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test2() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.RESTRICT_FRAME);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.RESTRICT_FRAME);
 		assertTrue(rangeRestriction.isZeroX());
 		assertFalse(rangeRestriction.isZeroY());
 		assertTrue(rangeRestriction.isRestrictFrame());
@@ -50,9 +41,10 @@ public class RangeRestriction_9_Test extends TestCase {
 		assertFalse(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test3() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_Y | RangeRestriction.RESTRICT_FRAME);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_Y | RangeRestriction.RESTRICT_FRAME);
 		assertFalse(rangeRestriction.isZeroX());
 		assertTrue(rangeRestriction.isZeroY());
 		assertTrue(rangeRestriction.isRestrictFrame());
@@ -60,9 +52,10 @@ public class RangeRestriction_9_Test extends TestCase {
 		assertFalse(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test4() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.ZERO_Y);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.ZERO_Y);
 		assertTrue(rangeRestriction.isZeroX());
 		assertTrue(rangeRestriction.isZeroY());
 		assertFalse(rangeRestriction.isRestrictFrame());
@@ -70,9 +63,10 @@ public class RangeRestriction_9_Test extends TestCase {
 		assertFalse(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test5() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.RESTRICT_SELECT_X | RangeRestriction.RESTRICT_SELECT_Y);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.RESTRICT_SELECT_X | RangeRestriction.RESTRICT_SELECT_Y);
 		assertFalse(rangeRestriction.isZeroX());
 		assertFalse(rangeRestriction.isZeroY());
 		assertFalse(rangeRestriction.isRestrictFrame());
@@ -80,9 +74,10 @@ public class RangeRestriction_9_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test6() {
 
-		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.RESTRICT_SELECT_X);
+		RangeRestriction rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.RESTRICT_SELECT_X);
 		assertTrue(rangeRestriction.isZeroX());
 		assertFalse(rangeRestriction.isZeroY());
 		assertFalse(rangeRestriction.isRestrictFrame());
