@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,31 +12,30 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class RangeRestriction_20_Test extends TestCase {
+import org.junit.Before;
+import org.junit.Test;
+
+public class RangeRestriction_20_Test {
 
 	private RangeRestriction rangeRestriction;
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() {
 
-		super.setUp();
 		rangeRestriction = new RangeRestriction(RangeRestriction.RESTRICT_SELECT_X | RangeRestriction.RESTRICT_SELECT_Y);
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
 		assertTrue(rangeRestriction.isRestrictSelectX());
 		assertTrue(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test2() {
 
 		rangeRestriction.setRestrictSelectX(false);
@@ -44,6 +43,7 @@ public class RangeRestriction_20_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictSelectY());
 	}
 
+	@Test
 	public void test3() {
 
 		rangeRestriction.setRestrictSelectY(false);

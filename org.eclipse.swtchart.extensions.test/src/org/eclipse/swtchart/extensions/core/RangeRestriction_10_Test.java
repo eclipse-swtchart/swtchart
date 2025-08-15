@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,25 +12,23 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class RangeRestriction_10_Test extends TestCase {
+import org.junit.Before;
+import org.junit.Test;
+
+public class RangeRestriction_10_Test {
 
 	private RangeRestriction rangeRestriction;
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() {
 
-		super.setUp();
 		rangeRestriction = new RangeRestriction(RangeRestriction.ZERO_X | RangeRestriction.ZERO_Y | RangeRestriction.RESTRICT_FRAME);
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
 		assertTrue(rangeRestriction.isZeroX());
@@ -38,6 +36,7 @@ public class RangeRestriction_10_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictFrame());
 	}
 
+	@Test
 	public void test2() {
 
 		rangeRestriction.setZeroX(false);
@@ -46,6 +45,7 @@ public class RangeRestriction_10_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictFrame());
 	}
 
+	@Test
 	public void test3() {
 
 		rangeRestriction.setZeroY(false);
@@ -54,6 +54,7 @@ public class RangeRestriction_10_Test extends TestCase {
 		assertTrue(rangeRestriction.isRestrictFrame());
 	}
 
+	@Test
 	public void test4() {
 
 		rangeRestriction.setRestrictFrame(false);

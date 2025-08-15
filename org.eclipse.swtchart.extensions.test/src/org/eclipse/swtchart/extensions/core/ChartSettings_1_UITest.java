@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,25 +12,15 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertNotNull;
 
-public class ChartSettings_1_UITest extends TestCase {
+import org.junit.Test;
 
-	private ChartSettings settings;
+public class ChartSettings_1_UITest {
 
-	@Override
-	protected void setUp() throws Exception {
+	private ChartSettings settings = new ChartSettings();
 
-		super.setUp();
-		settings = new ChartSettings();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
 		assertNotNull(settings.getTitleFont());

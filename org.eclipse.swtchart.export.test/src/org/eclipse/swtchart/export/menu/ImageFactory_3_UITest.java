@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,6 +12,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,106 +32,88 @@ import org.eclipse.swtchart.extensions.core.ISeriesData;
 import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesData;
 import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesSettings;
 import org.eclipse.swtchart.extensions.scattercharts.ScatterSeriesData;
+import org.junit.Test;
 
-import junit.framework.TestCase;
-
-public class ImageFactory_3_UITest extends TestCase {
+public class ImageFactory_3_UITest {
 
 	private int SYMBOL_SIZE = 8;
 
-	@Override
-	protected void setUp() throws Exception {
-
-		super.setUp();
-	}
-
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
 		assertFalse("UI tests can't be executed on a headless build server.", GraphicsEnvironment.isHeadless());
 	}
 
-	public void test2() {
+	@Test
+	public void test2() throws InstantiationException, IllegalAccessException {
 
-		try {
+		/*
+		 * Create the factory.
+		 */
+		ImageFactory<PCAChart> imageFactory = new ImageFactory<>(PCAChart.class, 800, 600);
+		/*
+		 * Modify the chart.
+		 */
+		PCAChart pcaChart = imageFactory.getChart();
+		BaseChart baseChart = pcaChart.getBaseChart();
+		pcaChart.setBackground(baseChart.getDisplay().getSystemColor(SWT.COLOR_WHITE));
+		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(PathResolver.getAbsolutePath(TestPathHelper.TESTFILE_SCATTER_SERIES_1));
+		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
+
+		for(ISeriesData seriesData : scatterSeriesList) {
+			IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);
+			IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
 			/*
-			 * Create the factory.
+			 * Set the color and symbol type.
 			 */
-			ImageFactory<PCAChart> imageFactory = new ImageFactory<>(PCAChart.class, 800, 600);
-			/*
-			 * Modify the chart.
-			 */
-			PCAChart pcaChart = imageFactory.getChart();
-			BaseChart baseChart = pcaChart.getBaseChart();
-			pcaChart.setBackground(baseChart.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-			List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(PathResolver.getAbsolutePath(TestPathHelper.TESTFILE_SCATTER_SERIES_1));
-			List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
-			//
-			for(ISeriesData seriesData : scatterSeriesList) {
-				IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);
-				IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
-				/*
-				 * Set the color and symbol type.
-				 */
-				double x = seriesData.getXSeries()[0];
-				double y = seriesData.getYSeries()[0];
-				scatterSeriesSettings.setSymbolSize(SYMBOL_SIZE);
-				//
-				if(x > 0 && y > 0) {
-					scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_RED));
-					scatterSeriesSettings.setSymbolType(PlotSymbolType.SQUARE);
-				} else if(x > 0 && y < 0) {
-					scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_BLUE));
-					scatterSeriesSettings.setSymbolType(PlotSymbolType.TRIANGLE);
-				} else if(x < 0 && y > 0) {
-					scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_MAGENTA));
-					scatterSeriesSettings.setSymbolType(PlotSymbolType.DIAMOND);
-				} else if(x < 0 && y < 0) {
-					scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_CYAN));
-					scatterSeriesSettings.setSymbolType(PlotSymbolType.INVERTED_TRIANGLE);
-				} else {
-					scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_GRAY));
-					scatterSeriesSettings.setSymbolType(PlotSymbolType.CIRCLE);
-				}
-				//
-				scatterSeriesDataList.add(scatterSeriesData);
+			double x = seriesData.getXSeries()[0];
+			double y = seriesData.getYSeries()[0];
+			scatterSeriesSettings.setSymbolSize(SYMBOL_SIZE);
+
+			if(x > 0 && y > 0) {
+				scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_RED));
+				scatterSeriesSettings.setSymbolType(PlotSymbolType.SQUARE);
+			} else if(x > 0 && y < 0) {
+				scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_BLUE));
+				scatterSeriesSettings.setSymbolType(PlotSymbolType.TRIANGLE);
+			} else if(x < 0 && y > 0) {
+				scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_MAGENTA));
+				scatterSeriesSettings.setSymbolType(PlotSymbolType.DIAMOND);
+			} else if(x < 0 && y < 0) {
+				scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_CYAN));
+				scatterSeriesSettings.setSymbolType(PlotSymbolType.INVERTED_TRIANGLE);
+			} else {
+				scatterSeriesSettings.setSymbolColor(baseChart.getDisplay().getSystemColor(SWT.COLOR_GRAY));
+				scatterSeriesSettings.setSymbolType(PlotSymbolType.CIRCLE);
 			}
-			pcaChart.addSeriesData(scatterSeriesDataList);
-			/*
-			 * Export the images.
-			 */
-			String exportFolder = PathResolver.getAbsolutePath(TestPathHelper.TESTFOLDER_EXPORT);
-			String prefix = "ScatterSeries1";
-			//
-			String png = exportFolder + File.separator + prefix + ".png";
-			imageFactory.saveImage(png, SWT.IMAGE_PNG);
-			File filePng = new File(png);
-			assertTrue(filePng.exists());
-			filePng.delete();
-			//
-			String jpg = exportFolder + File.separator + prefix + ".jpg";
-			imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
-			File fileJpg = new File(jpg);
-			assertTrue(fileJpg.exists());
-			fileJpg.delete();
-			//
-			String bmp = exportFolder + File.separator + prefix + ".bmp";
-			imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
-			File fileBmp = new File(bmp);
-			assertTrue(fileBmp.exists());
-			fileBmp.delete();
-			//
-			imageFactory.closeShell();
-			//
-		} catch(InstantiationException e) {
-			e.printStackTrace();
-		} catch(IllegalAccessException e) {
-			e.printStackTrace();
+
+			scatterSeriesDataList.add(scatterSeriesData);
 		}
+		pcaChart.addSeriesData(scatterSeriesDataList);
+		/*
+		 * Export the images.
+		 */
+		String exportFolder = PathResolver.getAbsolutePath(TestPathHelper.TESTFOLDER_EXPORT);
+		String prefix = "ScatterSeries1";
+
+		String png = exportFolder + File.separator + prefix + ".png";
+		imageFactory.saveImage(png, SWT.IMAGE_PNG);
+		File filePng = new File(png);
+		assertTrue(filePng.exists());
+		filePng.delete();
+
+		String jpg = exportFolder + File.separator + prefix + ".jpg";
+		imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
+		File fileJpg = new File(jpg);
+		assertTrue(fileJpg.exists());
+		fileJpg.delete();
+
+		String bmp = exportFolder + File.separator + prefix + ".bmp";
+		imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
+		File fileBmp = new File(bmp);
+		assertTrue(fileBmp.exists());
+		fileBmp.delete();
+
+		imageFactory.closeShell();
 	}
 }

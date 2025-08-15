@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,13 +12,16 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
 
-public class MappingsKey_2_Test extends TestCase {
+import org.junit.Test;
+
+public class MappingsKey_2_Test {
 
 	private MappingsType mappingsType = MappingsType.LINE;
 	private String seriesId = "(.*)(57)";
 
+	@Test
 	public void test1a() {
 
 		String key = MappingsKey.getKey(mappingsType, seriesId);
@@ -28,6 +31,7 @@ public class MappingsKey_2_Test extends TestCase {
 		assertEquals(key, mappingsKey.getKey());
 	}
 
+	@Test
 	public void test1() {
 
 		MappingsKey mappingsKey = new MappingsKey(mappingsType, seriesId);

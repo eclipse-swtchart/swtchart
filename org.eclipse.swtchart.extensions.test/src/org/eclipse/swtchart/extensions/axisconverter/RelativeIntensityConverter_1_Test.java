@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,12 +12,14 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.axisconverter;
 
+import static org.junit.Assert.assertEquals;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swtchart.extensions.core.IChartDataCoordinates;
+import org.junit.Before;
+import org.junit.Test;
 
-import junit.framework.TestCase;
-
-public class RelativeIntensityConverter_1_Test extends TestCase {
+public class RelativeIntensityConverter_1_Test {
 
 	private PercentageConverter relativeIntensityConverter;
 
@@ -54,37 +56,34 @@ public class RelativeIntensityConverter_1_Test extends TestCase {
 		}
 	}
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() {
 
-		super.setUp();
 		relativeIntensityConverter = new PercentageConverter(SWT.VERTICAL, true);
 		relativeIntensityConverter.setChartDataCoordinates(new TestChartDataCoordinates());
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-
-		super.tearDown();
-	}
-
+	@Test
 	public void test1() {
 
-		assertEquals(0.0d, relativeIntensityConverter.convertToSecondaryUnit(0.0d));
+		assertEquals(0.0d, relativeIntensityConverter.convertToSecondaryUnit(0.0d), 0);
 	}
 
+	@Test
 	public void test2() {
 
-		assertEquals(100.0d, relativeIntensityConverter.convertToSecondaryUnit(5000.0d));
+		assertEquals(100.0d, relativeIntensityConverter.convertToSecondaryUnit(5000.0d), 0);
 	}
 
+	@Test
 	public void test3() {
 
-		assertEquals(0.0d, relativeIntensityConverter.convertToPrimaryUnit(0.0d));
+		assertEquals(0.0d, relativeIntensityConverter.convertToPrimaryUnit(0.0d), 0);
 	}
 
+	@Test
 	public void test4() {
 
-		assertEquals(5000.0d, relativeIntensityConverter.convertToPrimaryUnit(100.0d));
+		assertEquals(5000.0d, relativeIntensityConverter.convertToPrimaryUnit(100.0d), 0);
 	}
 }
