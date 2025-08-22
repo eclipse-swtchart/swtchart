@@ -140,13 +140,12 @@ public class LabelMarker extends AbstractBaseChartPaintListener implements IBase
 		this.indexSeries = indexSeries;
 	}
 
-	@SuppressWarnings("rawtypes")
-	private ISeries getSeries() {
+	private ISeries<?> getSeries() {
 
 		if(serie != null) {
 			return serie;
 		}
-		ISeries[] series = getBaseChart().getSeriesSet().getSeries();
+		ISeries<?>[] series = getBaseChart().getSeriesSet().getSeries();
 		if(indexSeries >= 0 && indexSeries < series.length) {
 			return series[indexSeries];
 		}

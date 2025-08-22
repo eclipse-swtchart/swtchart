@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 SWTChart project.
+ * Copyright (c) 2019, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,7 +33,7 @@ import org.eclipse.swtchart.internal.compress.CompressScatterSeries;
 import org.eclipse.swtchart.internal.series.BarSeries;
 import org.eclipse.swtchart.internal.series.LineSeries;
 
-@SuppressWarnings({"rawtypes", "restriction"})
+@SuppressWarnings("restriction")
 public class ChartToGraphics2D {
 
 	/** The chart object to be converted to SVG */
@@ -97,8 +97,8 @@ public class ChartToGraphics2D {
 		 */
 		graphics2D.translate(50, 0);
 		graphics2D.setClip(new java.awt.Rectangle(xBorder, yBorder, width - 2 * xBorder, height - 2 * yBorder));
-		ISeries[] series = chart.getSeriesSet().getSeries();
-		for(ISeries dataSeries : series) {
+		ISeries<?>[] series = chart.getSeriesSet().getSeries();
+		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null) {
 				if(dataSeries.getType() == SeriesType.LINE) {
 					drawLineSeries(dataSeries);
@@ -155,9 +155,9 @@ public class ChartToGraphics2D {
 	/**
 	 * Draw the bar series
 	 */
-	private void drawBarSeries(ISeries dataSeries) {
+	private void drawBarSeries(ISeries<?> dataSeries) {
 
-		BarSeries barSeries = (BarSeries)dataSeries;
+		BarSeries<?> barSeries = (BarSeries<?>)dataSeries;
 		graphics2D.setColor(SwtToAwtUtils.toAwtColor(barSeries.getBarColor()));
 		Rectangle[] rs = barSeries.getBoundsForCompressedSeries();
 		for(int i = 0; i < rs.length; i++) {
@@ -169,9 +169,9 @@ public class ChartToGraphics2D {
 	/**
 	 * Draw the line and scatter series
 	 */
-	private void drawLineSeries(ISeries dataSeries) {
+	private void drawLineSeries(ISeries<?> dataSeries) {
 
-		LineSeries lineSeries = (LineSeries)dataSeries;
+		LineSeries<?> lineSeries = (LineSeries<?>)dataSeries;
 		// draw line series
 		if(lineSeries.getLineStyle() != LineStyle.NONE) {
 			graphics2D.setColor(SwtToAwtUtils.toAwtColor(lineSeries.getLineColor()));

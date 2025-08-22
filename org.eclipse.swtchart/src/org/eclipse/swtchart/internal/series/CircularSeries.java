@@ -163,6 +163,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		return (Compress)compressor;
 	}
 
+	@Override
 	public Node getRootNode() {
 
 		return rootNode;
@@ -249,8 +250,9 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		}
 
 		for(int i = 0; i != length; i++) {
-			if(colors[i] != null)
+			if(colors[i] != null) {
 				nodeDataModel.getNodeById(getLabels()[i]).setSliceColor(colors[i]);
+			}
 		}
 	}
 
