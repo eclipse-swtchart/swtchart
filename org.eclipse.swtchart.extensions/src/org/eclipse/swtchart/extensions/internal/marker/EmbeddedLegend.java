@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -63,12 +63,12 @@ public class EmbeddedLegend extends AbstractBaseChartPaintListener implements IB
 			GC gc = e.gc;
 			int lineStyle = gc.getLineStyle();
 			Color colorForeground = gc.getForeground();
-			//
+
 			BaseChart baseChart = getBaseChart();
 			ISeriesSet seriesSet = baseChart.getSeriesSet();
 			int x0 = x;
 			int y0 = y;
-			//
+
 			for(ISeries<?> series : seriesSet.getSeries()) {
 				if(series.isVisible()) {
 					if(series.isVisibleInLegend()) {

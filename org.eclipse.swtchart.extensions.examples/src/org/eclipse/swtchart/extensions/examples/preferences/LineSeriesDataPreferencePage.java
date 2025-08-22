@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,7 +37,7 @@ public class LineSeriesDataPreferencePage extends FieldEditorPreferencePage impl
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Line Series 1", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_ANTIALIAS_SERIES_1, "Antialias:", PreferenceSupport.ANTIALIAS_OPTIONS, getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_DESCRIPTION_SERIES_1, "Description:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_AREA_SERIES_1, "Enable Area", getFieldEditorParent()));
@@ -51,11 +51,11 @@ public class LineSeriesDataPreferencePage extends FieldEditorPreferencePage impl
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_1, "Symbol Type:", PreferenceSupport.SYMBOL_TYPES, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_SERIES_1, "Visible", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_IN_LEGEND_SERIES_1, "Visible in Legend", getFieldEditorParent()));
-		//
+
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Line Series 1 (Highlight)", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_ANTIALIAS_SERIES_1_HIGHLIGHT, "Antialias:", PreferenceSupport.ANTIALIAS_OPTIONS, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_AREA_SERIES_1_HIGHLIGHT, "Enable Area", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_STACK_SERIES_1_HIGHLIGHT, "Enable Stack", getFieldEditorParent()));
@@ -68,11 +68,11 @@ public class LineSeriesDataPreferencePage extends FieldEditorPreferencePage impl
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_1_HIGHLIGHT, "Symbol Type:", PreferenceSupport.SYMBOL_TYPES, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_SERIES_1_HIGHLIGHT, "Visible", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_IN_LEGEND_SERIES_1_HIGHLIGHT, "Visible in Legend", getFieldEditorParent()));
-		//
+
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Line Series 2", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_ANTIALIAS_SERIES_2, "Antialias:", PreferenceSupport.ANTIALIAS_OPTIONS, getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_DESCRIPTION_SERIES_2, "Description:", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_AREA_SERIES_2, "Enable Area", getFieldEditorParent()));
@@ -86,11 +86,11 @@ public class LineSeriesDataPreferencePage extends FieldEditorPreferencePage impl
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_2, "Symbol Type:", PreferenceSupport.SYMBOL_TYPES, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_SERIES_2, "Visible", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_VISIBLE_IN_LEGEND_SERIES_2, "Visible in Legend", getFieldEditorParent()));
-		//
+
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Line Series 2 (Highlight)", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new ComboFieldEditor(LineSeriesPreferenceConstants.P_ANTIALIAS_SERIES_2_HIGHLIGHT, "Antialias:", PreferenceSupport.ANTIALIAS_OPTIONS, getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_AREA_SERIES_2_HIGHLIGHT, "Enable Area", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_STACK_SERIES_2_HIGHLIGHT, "Enable Stack", getFieldEditorParent()));

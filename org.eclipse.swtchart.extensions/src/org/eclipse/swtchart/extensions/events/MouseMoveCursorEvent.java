@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -47,11 +47,11 @@ public class MouseMoveCursorEvent extends AbstractHandledEventProcessor implemen
 			if(defaultCursor == null) {
 				defaultCursor = display.getSystemCursor(SWT.CURSOR_ARROW);
 			}
-			//
+
 			if(tooltip == null) {
 				tooltip = new ToolTip(display.getActiveShell(), SWT.NONE);
 			}
-			//
+
 			String selectedSeriesId = baseChart.getSelectedseriesId(event);
 			if(selectedSeriesId.equals("")) { //$NON-NLS-1$
 				baseChart.setCursor(defaultCursor);

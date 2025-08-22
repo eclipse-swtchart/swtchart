@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -46,7 +46,7 @@ public class SecondaryAxisChart {
 		shell.setText("Kibibyte Example");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		LineChart scrollableChart = new LineChart(shell, SWT.NONE);
 		shell.open();
 		/*
@@ -70,7 +70,7 @@ public class SecondaryAxisChart {
 		lineSeriesSettings.setEnableArea(false);
 		lineSeriesDataList.add(lineSeriesData);
 		scrollableChart.addSeriesData(lineSeriesDataList);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();
@@ -83,7 +83,7 @@ public class SecondaryAxisChart {
 
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setVisible(false);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setGridLineStyle(LineStyle.NONE);
 		primaryAxisSettingsY.setTitle("KB (kilobyte)");
@@ -94,7 +94,7 @@ public class SecondaryAxisChart {
 		ISecondaryAxisSettings secondaryAxisSettingsY = new SecondaryAxisSettings("KiB (kibibyte)", new ByteToKibibyteConverter());
 		secondaryAxisSettingsY.setPosition(Position.Secondary);
 		secondaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
-		//
+
 		chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY);
 	}
 
@@ -102,16 +102,16 @@ public class SecondaryAxisChart {
 
 		int size = 100;
 		double[] ySeries = new double[size];
-		//
+
 		for(int i = 0; i < size; i++) {
 			ySeries[i] = 500000;
 		}
-		//
+
 		Random random = new Random();
 		for(int i = 35; i < 50; i++) {
 			ySeries[i] = random.nextDouble() * 1000000;
 		}
-		//
+
 		return new SeriesData(ySeries, "Demo");
 	}
 }

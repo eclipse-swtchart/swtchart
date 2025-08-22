@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -35,14 +35,14 @@ import org.eclipse.swtchart.extensions.preferences.PreferenceConstants;
 public class BitmapExportSettingsDialog extends TitleAreaDialog {
 
 	private Rectangle boundsMax;
-	//
+
 	private boolean customSize = false;
 	private int customWidth = 0;
 	private int customHeight = 0;
-	//
+
 	private Text textWidth;
 	private Text textHeight;
-	//
+
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 
 	public BitmapExportSettingsDialog(Shell parent) {
@@ -80,21 +80,21 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 		customSize = preferenceStore != null ? preferenceStore.getBoolean(PreferenceConstants.P_BITMAP_EXPORT_CUSTOM_SIZE) : PreferenceConstants.DEF_BITMAP_EXPORT_CUSTOM_SIZE;
 		customWidth = preferenceStore != null ? preferenceStore.getInt(PreferenceConstants.P_BITMAP_EXPORT_WIDTH) : PreferenceConstants.DEF_BITMAP_EXPORT_WIDTH;
 		customHeight = preferenceStore != null ? preferenceStore.getInt(PreferenceConstants.P_BITMAP_EXPORT_HEIGHT) : PreferenceConstants.DEF_BITMAP_EXPORT_HEIGHT;
-		//
+
 		Composite container = (Composite)super.createDialogArea(parent);
-		//
+
 		Composite composite = new Composite(container, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(2, false);
 		composite.setLayout(layout);
-		//
+
 		createLabelInfo(composite);
 		createSectionCustomSize(composite);
 		textWidth = createSectionWidth(composite);
 		textHeight = createSectionHeight(composite);
-		//
+
 		updateWidgets();
-		//
+
 		return container;
 	}
 
@@ -127,7 +127,7 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 2;
 		button.setLayoutData(gridData);
-		//
+
 		button.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -143,7 +143,7 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 
 		Label label = new Label(parent, SWT.NONE);
 		label.setText("Custom Width");
-		//
+
 		Text text = new Text(parent, SWT.BORDER);
 		text.setText(Integer.toString(customWidth));
 		text.setToolTipText("Max width: " + boundsMax.width);
@@ -163,7 +163,7 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 				}
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -171,7 +171,7 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 
 		Label label = new Label(parent, SWT.NONE);
 		label.setText("Custom Height");
-		//
+
 		Text text = new Text(parent, SWT.BORDER);
 		text.setText(Integer.toString(customHeight));
 		text.setToolTipText("Max height: " + boundsMax.height);
@@ -191,7 +191,7 @@ public class BitmapExportSettingsDialog extends TitleAreaDialog {
 				}
 			}
 		});
-		//
+
 		return text;
 	}
 

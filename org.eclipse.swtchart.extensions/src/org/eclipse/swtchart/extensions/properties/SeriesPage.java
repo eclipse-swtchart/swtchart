@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -414,15 +414,15 @@ public class SeriesPage extends AbstractSelectorPage {
 		lineColorButton.setEnabled(enabled);
 		lineStyleCombo.setEnabled(enabled);
 		stackedButton.setEnabled(enabled);
-		//
+
 		if(xAxisIdCombo != null) {
 			xAxisIdCombo.setEnabled(enabled);
 		}
-		//
+
 		if(yAxisIdCombo != null) {
 			yAxisIdCombo.setEnabled(enabled);
 		}
-		//
+
 		barColorButton.setEnabled(enabled);
 		paddingSizeSpinner.setEnabled(enabled);
 	}
@@ -456,7 +456,7 @@ public class SeriesPage extends AbstractSelectorPage {
 				stackedStates[i] = false;
 				stackedButton.setSelection(false);
 			}
-			//
+
 			series[i].setXAxisId(xAxisIds[i]);
 			series[i].setYAxisId(yAxisIds[i]);
 		}
@@ -470,11 +470,11 @@ public class SeriesPage extends AbstractSelectorPage {
 		if(xAxisIdCombo != null) {
 			xAxisIds[selectedIndex] = 0;
 		}
-		//
+
 		if(yAxisIdCombo != null) {
 			yAxisIds[selectedIndex] = 0;
 		}
-		//
+
 		if(series[selectedIndex] instanceof ILineSeries) {
 			lineStyles[selectedIndex] = LineStyle.SOLID;
 			lineColors[selectedIndex] = Display.getDefault().getSystemColor(SWT.COLOR_BLUE).getRGB();
@@ -485,7 +485,7 @@ public class SeriesPage extends AbstractSelectorPage {
 			barColors[selectedIndex] = Display.getDefault().getSystemColor(SWT.COLOR_BLUE).getRGB();
 			paddings[selectedIndex] = 20;
 		}
-		//
+
 		updateControlSelections();
 		super.performDefaults();
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,23 +32,23 @@ public class PreferenceSupport {
 			{Messages.getString(Messages.TOP), Integer.toString(SWT.TOP)}, //
 			{Messages.getString(Messages.BOTTOM), Integer.toString(SWT.BOTTOM)} //
 	};
-	//
+
 	public static final String[][] ORIENTATIONS = new String[][]{ //
 			{Messages.getString(Messages.HORIZONTAL), Integer.toString(SWT.HORIZONTAL)}, //
 			{Messages.getString(Messages.VERTICAL), Integer.toString(SWT.VERTICAL)} //
 	};
-	//
+
 	public static final String[][] AXIS_POSITIONS = new String[][]{ //
 			{Messages.getString(Messages.PRIMARY), Position.Primary.toString()}, //
 			{Messages.getString(Messages.SECONDARY), Position.Secondary.toString()} //
 	};
-	//
+
 	public static final String[][] LOCALES = new String[][]{ //
 			{Messages.getString(Messages.ENGLISH), Locale.ENGLISH.getLanguage()}, //
 			{Messages.getString(Messages.US), Locale.US.getLanguage()}, //
 			{Messages.getString(Messages.GERMAN), Locale.GERMAN.getLanguage()} //
 	};
-	//
+
 	public static final String[][] LINE_STYLES = new String[][]{ //
 			{Messages.getString(Messages.NONE), LineStyle.NONE.toString()}, //
 			{Messages.getString(Messages.SOLID), LineStyle.SOLID.toString()}, //
@@ -57,13 +57,13 @@ public class PreferenceSupport {
 			{Messages.getString(Messages.DASH_DOT), LineStyle.DASHDOT.toString()}, //
 			{Messages.getString(Messages.DASH_DOT_DOT), LineStyle.DASHDOTDOT.toString()} //
 	};
-	//
+
 	public static final String[][] ANTIALIAS_OPTIONS = new String[][]{ //
 			{Messages.getString(Messages.DEFAULT), Integer.toString(SWT.DEFAULT)}, //
 			{Messages.getString(Messages.ON), Integer.toString(SWT.ON)}, //
 			{Messages.getString(Messages.OFF), Integer.toString(SWT.OFF)} //
 	};
-	//
+
 	public static final String[][] SYMBOL_TYPES = new String[][]{//
 			{Messages.getString(Messages.NONE), PlotSymbolType.NONE.toString()}, //
 			{Messages.getString(Messages.CIRCLE), PlotSymbolType.CIRCLE.toString()}, //
@@ -75,12 +75,12 @@ public class PreferenceSupport {
 			{Messages.getString(Messages.TRIANGLE), PlotSymbolType.TRIANGLE.toString()}, //
 			{Messages.getString(Messages.EMOJI), PlotSymbolType.EMOJI.toString()} //
 	};
-	//
+
 	public static final String[][] BAR_WIDTH_STYLES = new String[][]{//
 			{Messages.getString(Messages.FIXED), BarWidthStyle.FIXED.toString()}, //
 			{Messages.getString(Messages.STRETCHED), BarWidthStyle.STRETCHED.toString()} //
 	};
-	//
+
 	public static final String[][] EXTEND_TYPES = new String[][]{//
 			{Messages.getString(Messages.RELATIVE), RangeRestriction.ExtendType.RELATIVE.toString()}, //
 			{Messages.getString(Messages.ABSOLUTE), RangeRestriction.ExtendType.ABSOLUTE.toString()} //

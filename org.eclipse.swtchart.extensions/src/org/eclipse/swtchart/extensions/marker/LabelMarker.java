@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -75,24 +75,24 @@ public class LabelMarker extends AbstractBaseChartPaintListener implements IBase
 			if(serie == null) {
 				return;
 			}
-			//
+
 			BaseChart baseChart = getBaseChart();
 			IPlotArea plotArea = baseChart.getPlotArea();
-			//
+
 			Rectangle rectangle;
 			if(plotArea instanceof Scrollable) {
 				rectangle = ((Scrollable)plotArea).getClientArea();
 			} else {
 				rectangle = plotArea.getBounds();
 			}
-			//
+
 			int size = serie.getXSeries().length;
 			Transform transform = null;
 			if(orientation == SWT.VERTICAL) {
 				transform = new Transform(e.gc.getDevice());
 				transform.rotate(-90);
 			}
-			//
+
 			try {
 				for(int index : labels.keySet()) {
 					if(index < size) {
@@ -105,7 +105,7 @@ public class LabelMarker extends AbstractBaseChartPaintListener implements IBase
 							continue;
 						}
 						Point point = serie.getPixelCoordinates(index);
-						//
+
 						if(point.x > 0 && rectangle.contains(point)) {
 							/*
 							 * Calculate x and y

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -43,7 +43,7 @@ public class DemoBoxPlotChart {
 		shell.setText("Box Plot Chart");
 		shell.setSize(1024, 768);
 		shell.setLayout(new FillLayout());
-		//
+
 		BoxPlotChart boxPlotChart = new BoxPlotChart(shell, SWT.NONE);
 		shell.open();
 		/*
@@ -75,7 +75,7 @@ public class DemoBoxPlotChart {
 		 */
 		Color colorBlue = Display.getDefault().getSystemColor(SWT.COLOR_BLUE);
 		Color colorRed = Display.getDefault().getSystemColor(SWT.COLOR_RED);
-		//
+
 		List<ISeriesData> boxPlotSeriesList = SeriesConverter.getSeriesBoxPlot(SeriesConverter.BOXPLOT_SERIES_1);
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
 		for(int i = 0; i < boxPlotSeriesList.size(); i++) {
@@ -89,13 +89,13 @@ public class DemoBoxPlotChart {
 			scatterSeriesDataList.add(scatterSeriesData);
 		}
 		boxPlotChart.addSeriesData(scatterSeriesDataList);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();
 			}
 		}
-		//
+
 		display.dispose();
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,33 +33,33 @@ public class MappingsFilter extends ViewerFilter {
 		if(searchText == null || searchText.equals("")) {
 			return true;
 		}
-		//
+
 		if(element instanceof MappedSeriesSettings) {
 			MappedSeriesSettings mappedSeriesSettings = (MappedSeriesSettings)element;
 			String mappingsType = mappedSeriesSettings.getMappingsType().label();
 			String identifier = mappedSeriesSettings.getIdentifier();
 			String description = mappedSeriesSettings.getDescription();
-			//
+
 			if(!caseSensitive) {
 				searchText = searchText.toLowerCase();
 				mappingsType = mappingsType.toLowerCase();
 				identifier = identifier.toLowerCase();
 				description = description.toLowerCase();
 			}
-			//
+
 			if(mappingsType.contains(searchText)) {
 				return true;
 			}
-			//
+
 			if(identifier.contains(searchText)) {
 				return true;
 			}
-			//
+
 			if(description.contains(searchText)) {
 				return true;
 			}
 		}
-		//
+
 		return false;
 	}
 }

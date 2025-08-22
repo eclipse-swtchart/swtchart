@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -77,7 +77,7 @@ public class StepChart extends ScrollableChart implements ICompressionSupport {
 					ILineSeries<?> lineSeries = (ILineSeries<?>)createSeries(optimizedSeriesData, lineSeriesSettings);
 					baseChart.applySeriesSettings(lineSeries, lineSeriesSettings);
 				} catch(SeriesException e) {
-					//
+
 				}
 			}
 			baseChart.suspendUpdate(false);

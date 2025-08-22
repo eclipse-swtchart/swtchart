@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -58,17 +58,17 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		 */
 		IChartSettings chartSettings = getChartSettings();
 		chartSettings.setCreateMenu(true);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setTitle("1st Dimension");
 		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle("2nd Dimension");
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.000"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.
@@ -83,7 +83,7 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		colors.put(7, getDisplay().getSystemColor(SWT.COLOR_GREEN));
 		colors.put(8, getDisplay().getSystemColor(SWT.COLOR_DARK_YELLOW));
 		colors.put(9, getDisplay().getSystemColor(SWT.COLOR_DARK_BLUE));
-		//
+
 		Map<Integer, String> descriptions = new HashMap<Integer, String>();
 		descriptions.put(1, "Benzothiophene");
 		descriptions.put(2, "Cyclische Alkane");
@@ -94,7 +94,7 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		descriptions.put(7, "Polyaromaten");
 		descriptions.put(8, "Triaromaten");
 		descriptions.put(9, "Unknown");
-		//
+
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
 		for(int i = 1; i <= 9; i++) {
 			String id = descriptions.get(i);

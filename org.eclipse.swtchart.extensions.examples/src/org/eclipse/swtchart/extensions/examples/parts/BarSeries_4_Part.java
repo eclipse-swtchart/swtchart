@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -56,7 +56,7 @@ public class BarSeries_4_Part extends BarChart {
 		indexSeries = 0;
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
-		//
+
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		/*
@@ -72,7 +72,7 @@ public class BarSeries_4_Part extends BarChart {
 		labels.put(21, "2-Methoxy-4-vinylphenol");
 		labels.put(40, "Ethanone, 1-(2-hydroxy-5-methylphenyl)-");
 		labels.put(64, "4-Hydroxy-3-methylacetophenone");
-		//
+
 		labelMarker.setLabels(labels, indexSeries, SWT.VERTICAL);
 		plotArea.addCustomPaintListener(labelMarker);
 	}

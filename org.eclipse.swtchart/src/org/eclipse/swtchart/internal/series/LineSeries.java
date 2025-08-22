@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -348,15 +348,15 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		int oldLineWidth = gc.getLineWidth();
 		gc.setAntialias(antialias);
 		gc.setLineWidth(lineWidth);
-		//
+
 		if(lineStyle != LineStyle.NONE) {
 			drawLineAndArea(gc, width, height, xAxis, yAxis);
 		}
-		//
+
 		if(symbolType != PlotSymbolType.NONE || getLabel().isVisible() || getXErrorBar().isVisible() || getYErrorBar().isVisible()) {
 			drawSymbolAndLabel(gc, width, height, xAxis, yAxis);
 		}
-		//
+
 		gc.setAntialias(oldAntialias);
 		gc.setLineWidth(oldLineWidth);
 	}
@@ -383,14 +383,14 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		if(xseries.length == 0 || yseries.length == 0) {
 			return;
 		}
-		//
+
 		int[] indexes = compressor.getCompressedIndexes();
 		if(xAxis.isValidCategoryAxis()) {
 			for(int i = 0; i < xseries.length; i++) {
 				xseries[i] = indexes[i];
 			}
 		}
-		//
+
 		gc.setLineStyle(lineStyle.value());
 		Color oldForeground = gc.getForeground();
 		gc.setForeground(getLineColor());
@@ -415,7 +415,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 			int[] idx = useAreaStrict ? IntStream.range(0, x.length - 1).toArray() : null;
 			int[] p0 = useAreaStrict ? getLinePoints(x, y, idx, 0, xAxis, yAxis) : null;
 			int[] pn = useAreaStrict ? getLinePoints(x, y, idx, idx.length - 1, xAxis, yAxis) : null;
-			//
+
 			for(int i = 0; i < length; i++) {
 				int[] p = getLinePoints(xseries, yseries, indexes, i, xAxis, yAxis);
 				/*
@@ -637,7 +637,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		gc.setAlpha(ALPHA);
 		Color oldBackground = gc.getBackground();
 		gc.setBackground(getLineColor());
-		//
+
 		int[] pointArray;
 		if(stepEnabled) {
 			if(isHorizontal) {
@@ -648,7 +648,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		} else {
 			pointArray = new int[]{p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[0], p[1]};
 		}
-		//
+
 		gc.fillPolygon(pointArray);
 		gc.setAlpha(alpha);
 		gc.setBackground(oldBackground);

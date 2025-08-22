@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -79,9 +79,9 @@ public class MultiLevelDoughnutChart {
 		multiLevelDoughnut.setSeries(continentLabels, continentValues);
 		// adding Asian countries. These go in as second level
 		multiLevelDoughnut.getNodeById("Asia").addChildren(AsianCountriesLabels, AsianCountriesValues);
-		//
+
 		multiLevelDoughnut.getNodeById("Africa").addChildren(AfricanCountriesLabels, AfricanCountriesValues);
-		//
+
 		multiLevelDoughnut.getNodeById("North America").addChildren(NorthAmericanCountriesLabels, NorthAmericanCountriesValues);
 		/*
 		 * Adding Indian states. These go as third level.
@@ -90,7 +90,7 @@ public class MultiLevelDoughnutChart {
 		multiLevelDoughnut.getNodeById("India").addChildren(IndianStatesLabels, IndianStateValues);
 		// Another API
 		multiLevelDoughnut.getNodeById("Europe").addChild("Germany", 137847);
-		//
+
 		return chart;
 	}
 }

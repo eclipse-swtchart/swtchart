@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -47,7 +47,7 @@ public class BarSeries_2_2_Part extends MassSpectrumChart {
 		rangeRestriction.setExtendTypeY(RangeRestriction.ExtendType.RELATIVE);
 		rangeRestriction.setExtendMaxY(0.1d);
 		applySettings(chartSettings);
-		//
+
 		setNumberOfHighestIntensitiesToLabel(5);
 		setLabelOption(LabelOption.EXACT);
 		setCustomLabels(null);
@@ -56,7 +56,7 @@ public class BarSeries_2_2_Part extends MassSpectrumChart {
 		 */
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_2);
-		//
+
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		/*

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,7 +38,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 	public LegendMarker(BaseChart baseChart) {
 
 		super(baseChart);
-		//
+
 		stringBuilder = new StringBuilder();
 		axisLabelsX = baseChart.getAxisLabels(IExtendedChart.X_AXIS);
 		decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
@@ -53,7 +53,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 			stringBuilder.delete(0, stringBuilder.length());
 			e.gc.setForeground(getForegroundColor());
 			e.gc.setBackground(getBackgroundColor());
-			//
+
 			BaseChart baseChart = getBaseChart();
 			double primaryValueX = baseChart.getSelectedPrimaryAxisValue(getX(), IExtendedChart.X_AXIS);
 			double primaryValueY = baseChart.getSelectedPrimaryAxisValue(getY(), IExtendedChart.Y_AXIS);
@@ -79,7 +79,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 		String id = "---";
 		String value = "---";
 		String percentage = "---";
-		//
+
 		Node node = series.getPieSliceFromPosition(primaryValueX, primaryValueY);
 		if(node != null) {
 			id = node.getDescription().isEmpty() ? node.getId() : node.getDescription();
@@ -88,12 +88,12 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 			value = decimalFormat.format(node.getValue());
 			percentage = decimalFormat.format(percent);
 		}
-		//
+
 		String nodeClass = getBaseChart().getAxisSet().getXAxis(0).getTitle().getText();
 		String valueClass = getBaseChart().getAxisSet().getYAxis(0).getTitle().getText();
 		stringBuilder.append(nodeClass + " : " + id + "\n");
 		stringBuilder.append(valueClass + " : " + value + "\n");
-		//
+
 		if(node != null) {
 			stringBuilder.append("Percent of " + node.getDataModel().getRootPointer().getId() + " : " + percentage + "%\n");
 		}
@@ -111,7 +111,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 			stringBuilder.append(": "); //$NON-NLS-1$
 			stringBuilder.append(decimalFormatX.format(primaryValueX));
 		}
-		//
+
 		for(int id : baseChart.getAxisSet().getXAxisIds()) {
 			if(id != BaseChart.ID_PRIMARY_X_AXIS) {
 				IAxisSettings axisSettings = baseChart.getXAxisSettings(id);
@@ -145,7 +145,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 			stringBuilder.append(": "); //$NON-NLS-1$
 			stringBuilder.append(decimalFormatY.format(primaryValueY));
 		}
-		//
+
 		for(int id : baseChart.getAxisSet().getYAxisIds()) {
 			if(id != BaseChart.ID_PRIMARY_Y_AXIS) {
 				IAxisSettings axisSettings = baseChart.getYAxisSettings(id);

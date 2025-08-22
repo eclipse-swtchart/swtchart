@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -55,17 +55,17 @@ public class HighlightedPieChart_Part extends HighlightedStaticPie {
 		 * Create series.
 		 */
 		ICircularSeriesData multiLevelDoughnut = new CircularSeriesData();
-		//
+
 		multiLevelDoughnut.setTitle("World");
 		multiLevelDoughnut.setNodeClass("Landmass Name");
 		multiLevelDoughnut.setValueClass("Area in sq miles");
-		//
+
 		multiLevelDoughnut.setSeries(continentLabels, continentValues);
 		// adding Asian countries. These go in as second level
 		multiLevelDoughnut.getNodeById("Asia").addChildren(AsianCountriesLabels, AsianCountriesValues);
-		//
+
 		multiLevelDoughnut.getNodeById("Africa").addChildren(AfricanCountriesLabels, AfricanCountriesValues);
-		//
+
 		multiLevelDoughnut.getNodeById("North America").addChildren(NorthAmericanCountriesLabels, NorthAmericanCountriesValues);
 		/*
 		 * Adding Indian states. These go as third level.
@@ -74,12 +74,12 @@ public class HighlightedPieChart_Part extends HighlightedStaticPie {
 		multiLevelDoughnut.getNodeById("India").addChildren(IndianStatesLabels, IndianStateValues);
 		// Another API
 		multiLevelDoughnut.getNodeById("Europe").addChild("Germany", 137847);
-		//
-		//
+
+
 		ICircularSeriesSettings settings = multiLevelDoughnut.getSettings();
 		settings.setDescription("Landmass Distribultion");
 		settings.setBorderStyle(LineStyle.SOLID);
-		//
+
 		multiLevelDoughnut.getSettings().setSeriesType(SeriesType.DOUGHNUT);
 		/*
 		 * Set series.

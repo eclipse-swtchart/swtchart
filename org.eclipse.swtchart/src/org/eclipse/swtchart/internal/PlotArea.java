@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -56,17 +56,17 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 	/** the custom paint listeners */
 	private List<ICustomPaintListener> paintListeners;
 	private DisposeListener disposeListener;
-	//
+
 	private Image image = null;
 	private int imagePositionX = 0;
 	private int imagePositionY = 0;
-	//
+
 	private String text = "";
 	private Font fontText = Display.getDefault().getSystemFont();
 	private Color colorText = Display.getDefault().getSystemColor(SWT.COLOR_BLACK);
 	private int textPositionX = 0;
 	private int textPositionY = 0;
-	//
+
 	private boolean buffered = false;
 
 	/**
@@ -199,7 +199,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		 */
 		Font fontDefault = gc.getFont();
 		Color colorDefault = gc.getForeground();
-		//
+
 		gc.setFont(fontText);
 		gc.setForeground(colorText);
 		if(image != null) {
@@ -208,7 +208,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		} else {
 			drawText(gc, sizePlotArea, text, textPositionX, textPositionY, 0);
 		}
-		//
+
 		gc.setForeground(colorDefault);
 		gc.setFont(fontDefault);
 		/*
@@ -229,13 +229,13 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 				((Series<?>)series).draw(gc, sizePlotArea.x, sizePlotArea.y);
 			}
 		}
-		//
+
 		for(ISeries<?> series : chart.getSeriesSet().getSeries()) {
 			if(series instanceof ILineSeries) {
 				((Series<?>)series).draw(gc, sizePlotArea.x, sizePlotArea.y);
 			}
 		}
-		//
+
 		for(ISeries<?> series : chart.getSeriesSet().getSeries()) {
 			if(series instanceof ICircularSeries) {
 				((Series<?>)series).draw(gc, sizePlotArea.x, sizePlotArea.y);
@@ -257,7 +257,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		Point chartSize = getSize();
 		Image image = null;
 		GC gc = null;
-		//
+
 		try {
 			image = new Image(getDisplay(), new ImageData(chartSize.x, chartSize.y, 32, new PaletteData(0xFF, 0xFF00, 0xFF0000)));
 			gc = new GC(this);
@@ -277,7 +277,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 				image.dispose();
 			}
 		}
-		//
+
 		return imageData;
 	}
 
@@ -302,7 +302,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		int x = imagePositionX;
 		int y = imagePositionY;
 		int offset = rectangle.height;
-		//
+
 		if(imagePositionX == POSITION_CENTER_X && imagePositionY == POSITION_CENTER_Y) {
 			x = (int)(sizePlotArea.x / 2.0d - rectangle.width / 2.0d);
 			y = (int)(sizePlotArea.y / 2.0d - rectangle.height / 2.0d);
@@ -324,7 +324,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 			int x = textPositionX;
 			int y = textPositionY;
 			Point sizeText = gc.textExtent(text);
-			//
+
 			if(textPositionX == POSITION_CENTER_X && textPositionY == POSITION_CENTER_Y) {
 				x = (int)(sizePlotArea.x / 2.0d - sizeText.x / 2.0d);
 				y = (int)(sizePlotArea.y / 2.0d - sizeText.y);

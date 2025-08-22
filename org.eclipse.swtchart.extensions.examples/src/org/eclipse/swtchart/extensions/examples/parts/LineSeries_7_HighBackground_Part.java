@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -47,9 +47,9 @@ public class LineSeries_7_HighBackground_Part extends ChromatogramChart {
 		IChartSettings chartSettings = getChartSettings();
 		chartSettings.getRangeRestriction().setForceZeroMinY(true);
 		applySettings(chartSettings);
-		//
+
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
-		//
+
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;

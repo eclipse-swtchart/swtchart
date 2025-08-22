@@ -98,7 +98,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		gridDataComposite.horizontalAlignment = SWT.END;
 		compositeButtons.setLayoutData(gridDataComposite);
 		compositeButtons.setLayout(new GridLayout(1, false));
-		//
+
 		Button buttonOpenSettings = new Button(compositeButtons, SWT.PUSH);
 		modifySettingsButton(buttonOpenSettings);
 		buttonOpenSettings.addSelectionListener(new SelectionAdapter() {
@@ -114,14 +114,14 @@ public class BarSeries_Preferences_Part extends Composite {
 				preferenceSecondaryAxesPage.setTitle("Secondary Axes");
 				IPreferencePage preferenceDataPage = new BarSeriesDataPreferencePage();
 				preferenceDataPage.setTitle("Series Data");
-				//
+
 				PreferenceManager preferenceManager = new PreferenceManager();
 				preferenceManager.addToRoot(new PreferenceNode("1", preferencePage));
 				preferenceManager.addToRoot(new PreferenceNode("2", preferencePrimaryAxesPage));
 				preferenceManager.addToRoot(new PreferenceNode("3", preferenceSecondaryAxesPage));
 				preferenceManager.addToRoot(new PreferenceNode("4", preferenceDataPage));
-				//
-				//
+
+
 				PreferenceDialog preferenceDialog = new PreferenceDialog(e.display.getActiveShell(), preferenceManager);
 				preferenceDialog.create();
 				preferenceDialog.setMessage("Settings");
@@ -135,10 +135,10 @@ public class BarSeries_Preferences_Part extends Composite {
 				}
 			}
 		});
-		//
+
 		barChart = new BarChart(this, SWT.NONE);
 		barChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		applyChartSettings();
 		applySeriesSettings();
 	}
@@ -154,7 +154,7 @@ public class BarSeries_Preferences_Part extends Composite {
 
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		//
+
 		Color colorHintRangeSelector = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
 		Color colorTitle = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_TITLE_COLOR));
 		Color colorBackground = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BACKGROUND));
@@ -171,7 +171,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		Color colorLegendMarker = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
 		Color colorAxisZeroMarker = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
 		Color colorSeriesLabelMarker = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
-		//
+
 		IChartSettings chartSettings = barChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
 		chartSettings.setShowRangeSelectorInitially(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY));
@@ -203,7 +203,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		rangeRestriction.setExtendTypeY(RangeRestriction.ExtendType.valueOf(preferenceStore.getString(BarSeriesPreferenceConstants.P_EXTEND_TYPE_Y)));
 		rangeRestriction.setExtendMinY(preferenceStore.getDouble(BarSeriesPreferenceConstants.P_EXTEND_MIN_Y));
 		rangeRestriction.setExtendMaxY(preferenceStore.getDouble(BarSeriesPreferenceConstants.P_EXTEND_MAX_Y));
-		//
+
 		chartSettings.setShowPositionMarker(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_SHOW_POSITION_MARKER));
 		chartSettings.setColorPositionMarker(colorPositionMarker);
 		chartSettings.setShowPlotCenterMarker(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_SHOW_PLOT_CENTER_MARKER));
@@ -214,7 +214,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		chartSettings.setColorLegendMarker(colorAxisZeroMarker);
 		chartSettings.setShowSeriesLabelMarker(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_SHOW_SERIES_LABEL_MARKER));
 		chartSettings.setColorSeriesLabelMarker(colorSeriesLabelMarker);
-		//
+
 		chartSettings.setCreateMenu(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_CREATE_MENU));
 		/*
 		 * Primary X-Axis
@@ -259,7 +259,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		secondaryAxisSettingsY.setLogScaleBase(preferenceStore.getDouble(BarSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_LOG_SCALE_BASE));
 		secondaryAxisSettingsY.setExtraSpaceTitle(preferenceStore.getInt(BarSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_EXTRA_SPACE_TITLE));
 		chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY);
-		//
+
 		barChart.applySettings(chartSettings);
 	}
 
@@ -268,7 +268,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		Color barColorSeries1 = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BAR_COLOR_SERIES_1));
 		Color barColorSeries1Highlight = getColor(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BAR_COLOR_SERIES_1_HIGHLIGHT));
-		//
+
 		barChart.deleteSeries();
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
 		ISeriesData seriesData;
@@ -281,14 +281,14 @@ public class BarSeries_Preferences_Part extends Composite {
 		barSeriesData = new BarSeriesData(seriesData);
 		barSeriesSettings = barSeriesData.getSettings();
 		barSeriesSettings.setDescription(preferenceStore.getString(BarSeriesPreferenceConstants.P_DESCRIPTION_SERIES_1));
-		//
+
 		barSeriesSettings.setVisible(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_VISIBLE_SERIES_1));
 		barSeriesSettings.setVisibleInLegend(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_VISIBLE_IN_LEGEND_SERIES_1));
 		barSeriesSettings.setBarColor(barColorSeries1);
 		barSeriesSettings.setBarPadding(preferenceStore.getInt(BarSeriesPreferenceConstants.P_BAR_PADDING_SERIES_1));
 		barSeriesSettings.setBarWidth(preferenceStore.getInt(BarSeriesPreferenceConstants.P_BAR_WIDTH_SERIES_1));
 		barSeriesSettings.setBarWidthStyle(BarWidthStyle.valueOf(preferenceStore.getString(BarSeriesPreferenceConstants.P_BAR_WIDTH_STYLE_SERIES_1)));
-		//
+
 		IBarSeriesSettings barSeriesSettingsHighlight = (IBarSeriesSettings)barSeriesSettings.getSeriesSettingsHighlight();
 		barSeriesSettingsHighlight.setVisible(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_VISIBLE_SERIES_1_HIGHLIGHT));
 		barSeriesSettingsHighlight.setVisibleInLegend(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_VISIBLE_IN_LEGEND_SERIES_1_HIGHLIGHT));
@@ -296,9 +296,9 @@ public class BarSeries_Preferences_Part extends Composite {
 		barSeriesSettingsHighlight.setBarPadding(preferenceStore.getInt(BarSeriesPreferenceConstants.P_BAR_PADDING_SERIES_1_HIGHLIGHT));
 		barSeriesSettingsHighlight.setBarWidth(preferenceStore.getInt(BarSeriesPreferenceConstants.P_BAR_WIDTH_SERIES_1_HIGHLIGHT));
 		barSeriesSettingsHighlight.setBarWidthStyle(BarWidthStyle.valueOf(preferenceStore.getString(BarSeriesPreferenceConstants.P_BAR_WIDTH_STYLE_SERIES_1_HIGHLIGHT)));
-		//
+
 		barSeriesDataList.add(barSeriesData);
-		//
+
 		barChart.addSeriesData(barSeriesDataList);
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,7 +29,7 @@ public class SimplePieChartExample {
 		shell.setText("PieChart");
 		shell.setSize(700, 600);
 		shell.setLayout(new FillLayout());
-		//
+
 		boolean doughnut = true;
 		boolean highlightSeries = false;
 		SimplePieChart simplePieChart = new SimplePieChart(shell, doughnut, highlightSeries);
@@ -39,7 +39,7 @@ public class SimplePieChartExample {
 		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		simplePieChart.applySettings(chartSettings);
 		shell.open();
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

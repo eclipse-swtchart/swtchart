@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,12 +34,12 @@ public class MappingsListUI extends TableViewer {
 
 	private static final String[] TITLES = MappingsLabelProvider.TITLES;
 	private static final int[] BOUNDS = MappingsLabelProvider.BOUNDS;
-	//
+
 	private ILabelProvider labelProvider = new MappingsLabelProvider();
 	private IContentProvider contentProvider = ArrayContentProvider.getInstance();
 	private MappingsComparator comparator = new MappingsComparator();
 	private MappingsFilter filter = new MappingsFilter();
-	//
+
 	private List<TableViewerColumn> columns = new ArrayList<>();
 
 	public MappingsListUI(Composite parent, int style) {

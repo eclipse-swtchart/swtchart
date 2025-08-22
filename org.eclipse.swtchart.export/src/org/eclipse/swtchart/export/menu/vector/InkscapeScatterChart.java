@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -36,19 +36,19 @@ public class InkscapeScatterChart extends AbstractInkscapeLineChart {
 	public String generate(ScrollableChart scrollableChart, AxisSettings axisSettings) throws Exception {
 
 		StringBuilder builder = new StringBuilder();
-		//
+
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
 		boolean isReversedX = axisSettingsX.isReversed();
 		boolean isReversedY = axisSettingsY.isReversed();
 		DecimalFormat formatX = axisSettingsX.getDecimalFormat();
 		DecimalFormat formatY = axisSettingsY.getDecimalFormat();
-		//
+
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		boolean isShowAxisZeroMarker = baseChart.getChartSettings().isShowAxisZeroMarker();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
 		String template = TEMPLATE_SCATTER_CHART;
-		//
+
 		try (BufferedReader in = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(template)))) {
 			double xTicks[] = baseChart.getAxisSet().getXAxis(axisSettings.getIndexAxisX()).getTick().getTickLabelValues();
 			double yTicks[] = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getTick().getTickLabelValues();
@@ -252,7 +252,7 @@ public class InkscapeScatterChart extends AbstractInkscapeLineChart {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		//
+
 		return builder.toString();
 	}
 }

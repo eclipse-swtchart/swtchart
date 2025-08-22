@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -370,7 +370,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 			if(!seriesArray[i].isVisibleInLegend()) {
 				continue;
 			}
-			//
+
 			if(seriesArray[i] instanceof ICircularSeries) {
 				ICircularSeries<?> pieSeries = (ICircularSeries<?>)seriesArray[i];
 				String[] labels = pieSeries.getLabels();

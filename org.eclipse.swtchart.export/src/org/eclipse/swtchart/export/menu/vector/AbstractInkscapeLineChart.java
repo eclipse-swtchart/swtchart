@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,12 +39,12 @@ public abstract class AbstractInkscapeLineChart extends AbstractInkscapeTemplate
 		int indexAxisY = axisSettings.getIndexAxisY();
 		IAxisScaleConverter axisScaleConverterX = axisSettings.getAxisScaleConverterX();
 		IAxisScaleConverter axisScaleConverterY = axisSettings.getAxisScaleConverterY();
-		//
+
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		String split[] = data.toString().split(SPLIT_LINE_DELIMITER);
 		int size = dataSeries.getXSeries().length;
-		//
+
 		String match1 = ".*%COLOR%.*";
 		String match2 = ".*%x-coordinate%.*";
 		String match3 = ".*%y-coordinate%.*";

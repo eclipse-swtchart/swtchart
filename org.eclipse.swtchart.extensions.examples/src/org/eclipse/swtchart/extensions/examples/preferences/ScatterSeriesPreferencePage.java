@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,7 +37,7 @@ public class ScatterSeriesPreferencePage extends FieldEditorPreferencePage imple
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Chart Settings", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new BooleanFieldEditor(ScatterSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR, "Enable Range Selector", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(ScatterSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY, "Show Range Selector Initially", getFieldEditorParent()));
 		addField(new ColorFieldEditor(ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR, "Color Hint Range Selector:", getFieldEditorParent()));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -51,13 +51,13 @@ public class ScatterSeries_Edit_Part extends Composite {
 	private Color COLOR_MAGENTA = getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
 	private Color COLOR_CYAN = getDisplay().getSystemColor(SWT.COLOR_CYAN);
 	private Color COLOR_GRAY = getDisplay().getSystemColor(SWT.COLOR_GRAY);
-	//
+
 	private int SYMBOL_SIZE = 8;
-	//
+
 	private static final int KEY_CODE_R = 114;
 	private static final int KEY_CODE_S = 115;
 	private boolean isCustomSelection = false;
-	//
+
 	private TabFolder tabFolder;
 	private Table table;
 	private HandledChart handledChart;
@@ -75,7 +75,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 
 			super.handleKeyUpEvent(event);
 			isCustomSelection = false;
-			//
+
 			if(event.keyCode == KEY_CODE_R) {
 				/*
 				 * Reset Selection
@@ -88,7 +88,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 				 */
 				isCustomSelection = true;
 			}
-			//
+
 			enableButtons();
 		}
 
@@ -96,7 +96,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 		public void handleMouseUpEvent(Event event) {
 
 			super.handleMouseUpEvent(event);
-			//
+
 			if(isCustomSelection) {
 				/*
 				 * Set Selection
@@ -104,13 +104,13 @@ public class ScatterSeries_Edit_Part extends Composite {
 				BaseChart baseChart = getBaseChart();
 				Point plotAreaBounds = baseChart.getPlotArea().getSize();
 				ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
-				//
+
 				for(ISeries<?> scatterSeries : series) {
 					if(scatterSeries != null) {
-						//
+
 						int size = scatterSeries.getXSeries().length;
 						String id = scatterSeries.getId();
-						//
+
 						for(int i = 0; i < size; i++) {
 							Point point = scatterSeries.getPixelCoordinates(i);
 							if(isPointVisible(point, plotAreaBounds)) {
@@ -119,11 +119,11 @@ public class ScatterSeries_Edit_Part extends Composite {
 						}
 					}
 				}
-				//
+
 				baseChart.redraw();
 				isCustomSelection = false;
 			}
-			//
+
 			enableButtons();
 		}
 	}
@@ -192,9 +192,9 @@ public class ScatterSeries_Edit_Part extends Composite {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		addTableColumn(table, "Selected Series", 500);
-		//
+
 		return table;
 	}
 
@@ -224,10 +224,10 @@ public class ScatterSeries_Edit_Part extends Composite {
 		gridDataComposite.horizontalAlignment = SWT.END;
 		compositeButtons.setLayoutData(gridDataComposite);
 		compositeButtons.setLayout(new GridLayout(2, false));
-		//
+
 		createButtonEnableSelection(compositeButtons);
 		createButtonReset(compositeButtons);
-		//
+
 		createChart(parent);
 	}
 
@@ -271,12 +271,12 @@ public class ScatterSeries_Edit_Part extends Composite {
 
 		handledChart = new HandledChart(parent, SWT.BORDER);
 		handledChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		IChartSettings chartSettings = handledChart.getChartSettings();
 		chartSettings.setCreateMenu(true);
 		chartSettings.setSupportDataShift(true);
 		handledChart.applySettings(chartSettings);
-		//
+
 		loadScatterData();
 	}
 
@@ -293,7 +293,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 		 */
 		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(SeriesConverter.SCATTER_SERIES_1);
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
-		//
+
 		for(ISeriesData seriesData : scatterSeriesList) {
 			IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);
 			IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
@@ -323,7 +323,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 	private void applySettings(IScatterSeriesSettings scatterSeriesSettings, double x, double y, int symbolSize) {
 
 		scatterSeriesSettings.setSymbolSize(SYMBOL_SIZE);
-		//
+
 		if(x > 0 && y > 0) {
 			scatterSeriesSettings.setSymbolColor(COLOR_RED);
 			scatterSeriesSettings.setSymbolType(PlotSymbolType.SQUARE);
@@ -337,7 +337,7 @@ public class ScatterSeries_Edit_Part extends Composite {
 			scatterSeriesSettings.setSymbolColor(COLOR_CYAN);
 			scatterSeriesSettings.setSymbolType(PlotSymbolType.INVERTED_TRIANGLE);
 		}
-		//
+
 		IScatterSeriesSettings scatterSeriesSettingsHighlight = (IScatterSeriesSettings)scatterSeriesSettings.getSeriesSettingsHighlight();
 		scatterSeriesSettingsHighlight.setSymbolColor(COLOR_GRAY);
 		scatterSeriesSettingsHighlight.setSymbolType(PlotSymbolType.CIRCLE);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -85,14 +85,14 @@ public class LineSeries_2_Part extends LineChart {
 		secondaryAxisSettingsX1.setDecimalFormat(new DecimalFormat(("0"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		secondaryAxisSettingsX1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		chartSettings.getSecondaryAxisSettingsListX().add(secondaryAxisSettingsX1);
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.
 		 */
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES_2);
-		//
+
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 		ILineSeriesSettings lineSeriesSettings = lineSeriesData.getSettings();
 		lineSeriesSettings.setEnableArea(false);

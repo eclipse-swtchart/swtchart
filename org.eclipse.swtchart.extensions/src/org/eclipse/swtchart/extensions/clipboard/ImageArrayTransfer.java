@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,10 +27,10 @@ public class ImageArrayTransfer extends ByteArrayTransfer {
 
 	private static final String TYPE_NAME_BMP = "image/bmp";
 	private static final String TYPE_NAME_PNG = "image/png";
-	//
+
 	private static final ImageArrayTransfer WINDOWS = new ImageArrayTransfer(TYPE_NAME_BMP);
 	private static final ImageArrayTransfer LINUX = new ImageArrayTransfer(TYPE_NAME_PNG);
-	//
+
 	private IImageClipboardSupplier clipboardSupplier = null;
 	private String[] typeNames;
 	private int[] typeIds;
@@ -115,7 +115,7 @@ public class ImageArrayTransfer extends ByteArrayTransfer {
 
 		int imageCode;
 		String typeName = typeNames[0];
-		//
+
 		switch(typeName) {
 			case TYPE_NAME_BMP:
 				imageCode = SWT.IMAGE_BMP;
@@ -127,7 +127,7 @@ public class ImageArrayTransfer extends ByteArrayTransfer {
 				imageCode = SWT.IMAGE_JPEG;
 				break;
 		}
-		//
+
 		return imageCode;
 	}
 }

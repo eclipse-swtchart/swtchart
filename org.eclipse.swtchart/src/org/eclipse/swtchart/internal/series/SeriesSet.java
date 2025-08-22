@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -251,7 +251,7 @@ public class SeriesSet implements ISeriesSet {
 		if(!chart.isCompressEnabled()) {
 			return;
 		}
-		//
+
 		try {
 			CompressConfig config = new CompressConfig();
 			final int PRECISION = 2;

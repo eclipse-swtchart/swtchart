@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,7 +16,7 @@ public interface IKeyboardSupport extends IMouseSupport {
 
 	int EVENT_KEY_DOWN = 6;
 	int EVENT_KEY_UP = 7;
-	//
+
 	int KEY_CODE_UC_A = 65;
 	int KEY_CODE_UC_B = 66;
 	int KEY_CODE_UC_C = 67;
@@ -43,7 +43,7 @@ public interface IKeyboardSupport extends IMouseSupport {
 	int KEY_CODE_UC_X = 88;
 	int KEY_CODE_UC_Y = 89;
 	int KEY_CODE_UC_Z = 90;
-	//
+
 	int KEY_CODE_LC_A = 97;
 	int KEY_CODE_LC_B = 98;
 	int KEY_CODE_LC_C = 99;

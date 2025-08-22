@@ -33,7 +33,7 @@ public class DemoBarChart {
 		shell.setText("DemoBarChart");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		ScrollableChart scrollableChart = new BarSeries_5_Part(shell);
 		scrollableChart.setFileName("NegativeX");
 		shell.open();
@@ -51,7 +51,7 @@ public class DemoBarChart {
 		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
 		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		scrollableChart.applySettings(chartSettings);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

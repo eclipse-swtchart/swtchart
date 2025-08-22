@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 SWTChart project.
+ * Copyright (c) 2023, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -36,7 +36,7 @@ public class DemoChartDialog {
 		shell.setText("DemoChartDialog");
 		shell.setSize(250, 100);
 		shell.setLayout(new FillLayout());
-		//
+
 		Button button = new Button(shell, SWT.PUSH);
 		button.setText("Open Chart Dynamically");
 		button.setToolTipText("https://github.com/eclipse/swtchart/issues/372");
@@ -57,11 +57,11 @@ public class DemoChartDialog {
 						chart.getTitle().setText("Bar Chart");
 						chart.getAxisSet().getXAxis(0).getTitle().setText("Data Points");
 						chart.getAxisSet().getYAxis(0).getTitle().setText("Amplitude");
-						//
+
 						IBarSeries<?> barSeries = (IBarSeries<?>)chart.getSeriesSet().createSeries(SeriesType.BAR, "bar series");
 						barSeries.setYSeries(ySeries);
 						chart.getAxisSet().adjustRange();
-						//
+
 						parent.addDisposeListener(new DisposeListener() {
 
 							@Override
@@ -95,15 +95,15 @@ public class DemoChartDialog {
 				shell.setText("Bar Chart");
 				shell.setSize(650, 500);
 				shell.setLayout(new FillLayout());
-				//
+
 				BarChartView barChartView = new BarChartView();
 				barChartView.createPartControl(shell);
-				//
+
 				shell.open();
 			}
 		});
 		shell.open();
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

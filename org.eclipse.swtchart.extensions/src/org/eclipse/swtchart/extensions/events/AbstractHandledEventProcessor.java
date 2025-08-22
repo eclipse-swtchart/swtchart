@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -45,7 +45,7 @@ public abstract class AbstractHandledEventProcessor implements IHandledEventProc
 		} else if((getStateMask() & SWT.MOD3) == SWT.MOD3) {
 			modifier = "ALT";
 		}
-		//
+
 		String button = "";
 		switch(getButton()) {
 			case IMouseSupport.MOUSE_BUTTON_LEFT:
@@ -58,7 +58,7 @@ public abstract class AbstractHandledEventProcessor implements IHandledEventProc
 				button = "Right";
 				break;
 		}
-		//
+
 		String event = "";
 		switch(getEvent()) {
 			case IMouseSupport.EVENT_MOUSE_DOUBLE_CLICK:

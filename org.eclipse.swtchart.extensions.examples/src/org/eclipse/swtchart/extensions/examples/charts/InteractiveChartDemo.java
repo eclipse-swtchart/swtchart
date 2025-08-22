@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 SWTChart project.
+ * Copyright (c) 2024, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,10 +27,10 @@ public class InteractiveChartDemo {
 		shell.setText("InteractiveChartDemo");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		new InteractiveChart(shell, SWT.NONE);
 		shell.open();
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

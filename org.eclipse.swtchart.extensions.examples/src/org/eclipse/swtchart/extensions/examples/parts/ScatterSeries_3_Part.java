@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -65,17 +65,17 @@ public class ScatterSeries_3_Part extends ScatterChart {
 		rangeRestriction.setExtendMaxY(0.1d);
 		rangeRestriction.setRestrictFrame(false);
 		chartSettings.setCreateMenu(true);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setTitle("1st Dimension");
 		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle("2nd Dimension");
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.000"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.
@@ -92,7 +92,7 @@ public class ScatterSeries_3_Part extends ScatterChart {
 		colors.put(9, getDisplay().getSystemColor(SWT.COLOR_DARK_CYAN));
 		colors.put(10, getDisplay().getSystemColor(SWT.COLOR_DARK_GREEN));
 		colors.put(11, getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
-		//
+
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
 		for(int i = 1; i <= 5; i++) {
 			for(int j = 1; j <= 20; j++) {

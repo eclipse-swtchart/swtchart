@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,7 +42,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 
 	private static final String FILE_EXTENSION = "*.tex"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.LATEX_TABLE), FILE_EXTENSION);
-	//
+
 	private static final String TITLE = Messages.getString(Messages.SAVE_AS_LATEX);
 	private static final String TAB = "\t"; //$NON-NLS-1$
 	private static final String DELIMITER = " & "; //$NON-NLS-1$
@@ -73,7 +73,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 		fileDialog.setText(TITLE);
 		fileDialog.setFilterExtensions(new String[]{FILE_EXTENSION});
 		fileDialog.setFileName(scrollableChart.getFileName());
-		//
+
 		String fileName = fileDialog.open();
 		if(fileName != null) {
 			/*
@@ -82,10 +82,10 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 			VectorExportSettingsDialog exportSettingsDialog = new VectorExportSettingsDialog(shell, baseChart);
 			exportSettingsDialog.create();
 			if(exportSettingsDialog.open() == Window.OK) {
-				//
+
 				int indexAxisX = exportSettingsDialog.getIndexAxisSelectionX();
 				int indexAxisY = exportSettingsDialog.getIndexAxisSelectionY();
-				//
+
 				if(indexAxisX >= 0 && indexAxisY >= 0) {
 					/*
 					 * X Axis Settings
@@ -114,7 +114,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 						 */
 						printWriter.println("\\begin{center}"); //$NON-NLS-1$
 						printWriter.println("\\begin{tabular}{ c c }"); //$NON-NLS-1$
-						//
+
 						printWriter.print(TAB);
 						printWriter.print(axisSettingsX.getLabel());
 						printWriter.print(DELIMITER);
@@ -140,7 +140,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 								exportSeries(dataSeries, widthPlotArea, axisSettings, printWriter);
 							}
 						}
-						//
+
 						printWriter.println("\\end{tabular}"); //$NON-NLS-1$
 						printWriter.println("\\end{center}"); //$NON-NLS-1$
 						printWriter.flush();
@@ -151,7 +151,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 					}
 				}
 			}
-			//
+
 			exportSettingsDialog.reset();
 			scrollableChart.updateLegend();
 		}
@@ -173,11 +173,11 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 		printWriter.println(TAB + HORIZONTAL_LINE);
 		printWriter.println(TAB + getIdentifier(dataSeries) + DELIMITER + LINE_END);
 		printWriter.println(TAB + HORIZONTAL_LINE);
-		//
+
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		int size = dataSeries.getXSeries().length;
-		//
+
 		for(int i = 0; i < size; i++) {
 			/*
 			 * Only export if the data point is visible.
@@ -191,7 +191,7 @@ public class LaTeXTableExportHandler extends AbstractSeriesExportHandler impleme
 				printWriter.println(LINE_END);
 			}
 		}
-		//
+
 		printWriter.print(TAB);
 		printWriter.print(DELIMITER);
 		printWriter.println(LINE_END);

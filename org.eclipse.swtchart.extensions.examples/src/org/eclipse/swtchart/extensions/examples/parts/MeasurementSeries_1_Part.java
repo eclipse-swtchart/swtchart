@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -75,7 +75,7 @@ public class MeasurementSeries_1_Part extends LineChart {
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		primaryAxisSettingsY.setGridLineStyle(LineStyle.DOT);
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -66,13 +66,13 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 	 * Hence, cache the original settings.
 	 */
 	private Map<String, ISeriesSettings> cachedSeriesSettings = new HashMap<>();
-	//
+
 	private Combo comboScaleX;
 	private Combo comboScaleY;
-	//
+
 	private int indexAxisX;
 	private int indexAxisY;
-	//
+
 	private BaseChart baseChart = null;
 
 	public VectorExportSettingsDialog(Shell parent, BaseChart baseChart) {
@@ -112,11 +112,11 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 		container.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(2, false);
 		container.setLayout(layout);
-		//
+
 		createSelectionAxisX(container);
 		createSelectionAxisY(container);
 		createSeriesSection(container);
-		//
+
 		return composite;
 	}
 
@@ -127,7 +127,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 		gridData.horizontalSpan = 2;
 		tabFolder.setLayoutData(gridData);
 		tabFolder.setLayout(new GridLayout(1, true));
-		//
+
 		createStandardSeriesList(tabFolder);
 		createCustomSeriesList(tabFolder);
 	}
@@ -136,14 +136,14 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 
 		TabItem tabItem = new TabItem(tabFolder, SWT.NONE);
 		tabItem.setText("Standard Series");
-		//
+
 		SeriesListUI seriesListUI = new SeriesListUI(tabFolder, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		seriesListUI.setTableSortable(preferenceStore.getBoolean(PreferenceConstants.P_SORT_LEGEND_TABLE));
 		Table table = seriesListUI.getTable();
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
 		seriesListUI.setInput(baseChart.getSeriesSet());
 		seriesListUI.setBaseChart(baseChart);
-		//
+
 		table.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -185,7 +185,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 				}
 			}
 		});
-		//
+
 		listControl.set(seriesListUI);
 		tabItem.setControl(seriesListUI.getTable());
 	}
@@ -194,13 +194,13 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 
 		TabItem tabItem = new TabItem(tabFolder, SWT.NONE);
 		tabItem.setText("Custom Series");
-		//
+
 		CustomSeriesListUI seriesListUI = new CustomSeriesListUI(tabFolder, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		// seriesListUI.setTableSortable(preferenceStore.getBoolean(PreferenceConstants.P_SORT_LEGEND_TABLE));
 		Table table = seriesListUI.getTable();
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
 		seriesListUI.setInput(baseChart.getCustomSeries().toArray());
-		//
+
 		tabItem.setControl(seriesListUI.getTable());
 	}
 
@@ -217,7 +217,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 
 		Label label = new Label(container, SWT.NONE);
 		label.setText(Messages.getString(Messages.X_AXIS));
-		//
+
 		String[] axisLabelsX = baseChart.getAxisLabels(IExtendedChart.X_AXIS);
 		comboScaleX = ExtendedCombo.create(container, SWT.READ_ONLY);
 		comboScaleX.setItems(axisLabelsX);
@@ -252,7 +252,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 
 		Label label = new Label(container, SWT.NONE);
 		label.setText(Messages.getString(Messages.Y_AXIS));
-		//
+
 		String[] axisLabelsY = baseChart.getAxisLabels(IExtendedChart.Y_AXIS);
 		comboScaleY = ExtendedCombo.create(container, SWT.READ_ONLY);
 		comboScaleY.setItems(axisLabelsY);

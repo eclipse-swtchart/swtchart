@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,7 +37,7 @@ public class AxisPositionMarker implements PaintListener {
 	private static final int OFFSET_LINE_Y = 2;
 	private static final int ARC_WIDTH = 5;
 	private static final int ARC_HEIGHT = 3;
-	//
+
 	private Chart chart;
 	private Axis axis;
 	private Rectangle bounds;
@@ -101,17 +101,17 @@ public class AxisPositionMarker implements PaintListener {
 				gc.setForeground(e.display.getSystemColor(SWT.COLOR_WHITE));
 				gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
 				Font font = gc.getFont();
-				//
+
 				AxisTick axisTick = axis.getTick();
 				Format axisFormat = axisTick.getFormat();
 				gc.setFont(axisTick.getFont());
-				//
+
 				if(axis.isHorizontalAxis()) {
 					drawPositionMarkerX(e.gc, axisFormat);
 				} else {
 					drawPositionMarkerY(e.gc, axisFormat);
 				}
-				//
+
 				gc.setForeground(foreground);
 				gc.setBackground(background);
 				gc.setFont(font);
@@ -129,7 +129,7 @@ public class AxisPositionMarker implements PaintListener {
 
 		String textValue = getTextValue(format, getValueX());
 		Point textExtend = getTextExtend(gc, textValue);
-		//
+
 		if(axis.getPosition() == Position.Primary) {
 			drawPrimaryMarkerX(gc, textValue, textExtend);
 		} else {
@@ -141,7 +141,7 @@ public class AxisPositionMarker implements PaintListener {
 
 		String textValue = getTextValue(format, getValueY());
 		Point textExtend = getTextExtend(gc, textValue);
-		//
+
 		if(axis.getPosition() == Position.Primary) {
 			drawPrimaryMarkerY(gc, textValue, textExtend);
 		} else {
@@ -154,7 +154,7 @@ public class AxisPositionMarker implements PaintListener {
 		int offsetX = textExtend.x / 2;
 		int positionX = bounds.x + x - offsetX;
 		int positionY = bounds.y + OFFSET_RECTANGLE_X;
-		//
+
 		drawTrianglePrimaryX(gc);
 		fillRoundRectangle(gc, positionX, positionY, textExtend.x, textExtend.y);
 		drawText(gc, positionX + OFFSET_TEXT_X, positionY + OFFSET_TEXT_Y, textValue);
@@ -166,7 +166,7 @@ public class AxisPositionMarker implements PaintListener {
 		int offsetY = textExtend.y / 2;
 		int positionX = bounds.x + x - offsetX;
 		int positionY = bounds.y - offsetY - OFFSET_RECTANGLE_X;
-		//
+
 		drawTriangleSecondaryX(gc);
 		fillRoundRectangle(gc, positionX, positionY - OFFSET_SPACE_Y, textExtend.x, textExtend.y);
 		drawText(gc, positionX + OFFSET_TEXT_X, positionY - OFFSET_SPACE_Y, textValue);
@@ -177,7 +177,7 @@ public class AxisPositionMarker implements PaintListener {
 		int offsetY = textExtend.y / 2;
 		int positionX = bounds.x - textExtend.x + OFFSET_RECTANGLE_X;
 		int positionY = bounds.y + y - offsetY - OFFSET_LINE_Y;
-		//
+
 		drawTrianglePrimaryY(gc);
 		fillRoundRectangle(gc, positionX - OFFSET_TEXT_Y, positionY, textExtend.x - OFFSET_TEXT_X, textExtend.y);
 		drawText(gc, positionX, positionY + OFFSET_TEXT_Y, textValue);
@@ -188,7 +188,7 @@ public class AxisPositionMarker implements PaintListener {
 		int offsetY = textExtend.y / 2;
 		int positionX = bounds.x + OFFSET_RECTANGLE_X;
 		int positionY = bounds.y + y - offsetY - OFFSET_LINE_Y;
-		//
+
 		drawTriangleSecondaryY(gc);
 		fillRoundRectangle(gc, positionX, positionY, textExtend.x + OFFSET_TEXT_X, textExtend.y);
 		drawText(gc, positionX + OFFSET_TEXT_X + TRIANGLE_DELTA, positionY + OFFSET_TEXT_Y, textValue);
@@ -204,7 +204,7 @@ public class AxisPositionMarker implements PaintListener {
 		int y2 = positionY + OFFSET_RECTANGLE_X;
 		int x3 = positionX - OFFSET_RECTANGLE_X + TRIANGLE_DELTA;
 		int y3 = positionY + OFFSET_RECTANGLE_X;
-		//
+
 		drawTriangle(gc, x1, y1, x2, y2, x3, y3);
 	}
 
@@ -218,7 +218,7 @@ public class AxisPositionMarker implements PaintListener {
 		int y2 = positionY;
 		int x3 = positionX;
 		int y3 = positionY + OFFSET_RECTANGLE_X;
-		//
+
 		drawTriangle(gc, x1, y1, x2, y2, x3, y3);
 	}
 
@@ -232,7 +232,7 @@ public class AxisPositionMarker implements PaintListener {
 		int y2 = positionY + OFFSET_RECTANGLE_X - TRIANGLE_DELTA;
 		int x3 = positionX + OFFSET_RECTANGLE_X;
 		int y3 = positionY;
-		//
+
 		drawTriangle(gc, x1, y1, x2, y2, x3, y3);
 	}
 
@@ -246,7 +246,7 @@ public class AxisPositionMarker implements PaintListener {
 		int y2 = positionY + OFFSET_RECTANGLE_X - TRIANGLE_DELTA;
 		int x3 = positionX;
 		int y3 = positionY;
-		//
+
 		drawTriangle(gc, x1, y1, x2, y2, x3, y3);
 	}
 

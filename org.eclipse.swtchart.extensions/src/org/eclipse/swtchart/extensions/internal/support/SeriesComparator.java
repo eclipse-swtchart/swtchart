@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ import org.eclipse.swtchart.extensions.core.SeriesMapper;
 public class SeriesComparator extends ViewerComparator {
 
 	private static final int DESCENDING = 1;
-	//
+
 	private int propertyIndex = 0;
 	private int direction = DESCENDING;
 
@@ -58,7 +58,7 @@ public class SeriesComparator extends ViewerComparator {
 			ISeries<?> series2 = (ISeries<?>)e2;
 			ISeriesSettings seriesSettings2 = baseChart.getSeriesSettings(series2.getId());
 			Color color2 = SeriesLabelProvider.getColor(seriesSettings2);
-			//
+
 			switch(propertyIndex) {
 				case 0:
 					sortOrder = series1.getId().compareTo(series2.getId());
@@ -93,7 +93,7 @@ public class SeriesComparator extends ViewerComparator {
 					break;
 			}
 		}
-		//
+
 		if(direction == DESCENDING) {
 			sortOrder = -sortOrder;
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -35,7 +35,7 @@ import org.eclipse.swtchart.extensions.core.ScrollableChart;
 public class InkscapeLineChart extends AbstractInkscapeLineChart {
 
 	private static final String TEMPLATE_LINE_CHART = "Template_LineChart.svg";
-	//
+
 	private static final String X_AXIS_TICKS = "%X-AXIS_TICKS%";
 	private static final String Y_AXIS_TICKS = "%Y-AXIS_TICKS%";
 	private static final String PLACEHOLDER_X_AXIS = "%PLACEHOLDER X-AXIS%";
@@ -54,7 +54,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 	private static final String X2_COORDINATE = "%X2-COORDINATE%";
 	private static final String Y1_COORDINATE = "%Y1-COORDINATE%";
 	private static final String Y2_COORDINATE = "%Y2-COORDINATE%";
-	//
+
 	private static final String HEADER_TICK_X = "<path\n" //
 			+ "                       inkscape:connector-curvature=\"0\"\n" //
 			+ "                       id=\"path888\"\n" //
@@ -71,7 +71,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			+ "                         y=\"289.01782\"\n" //
 			+ "                         x=\"" + X_COORDINATE + "\"\n" //
 			+ "                         sodipodi:role=\"line\">" + X_01 + "</tspan></text>";
-	//
+
 	private static final String HEADER_TICK_Y = "<path\n" //
 			+ "                       inkscape:connector-curvature=\"0\"\n" //
 			+ "                       id=\"path1299\"\n" //
@@ -88,7 +88,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			+ "                         x=\"14.211229\"\n" //
 			+ "                         y=\"" + Y_COORDINATE + "\"\n" //
 			+ "                         style=\"font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777767px;font-family:arial;-inkscape-font-specification:arial;text-align:end;text-anchor:end;stroke-width:0.26458332\">" + Y_01 + "</tspan></text>";
-	//
+
 	private static final String HEADER_LEGEND = "<path\n" //
 			+ "                   style=\"fill:url(#linearGradient3662);fill-opacity:1;stroke:" + COLOR + ";stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\"\n" //
 			+ "                   d=\"m 209.71446," + Y1_COORDINATE + " h 20.93268\"\n" //
@@ -105,13 +105,13 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			+ "                     x=\"230.91121\"\n" //
 			+ "                     y=\"" + Y2_COORDINATE + "\"\n" //
 			+ "                     style=\"font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Arial;-inkscape-font-specification:Arial;fill:url(#linearGradient4353);fill-opacity:1;stroke-width:0.26458332\">" + SERIES_A + "</tspan></text>";
-	//
+
 	private static final String HEADER_LABEL = "                     <path\n" //
 			+ "         style=\"fill:none;stroke:#000000;stroke-width:0.26499999;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.52999998,0.52999998;stroke-dashoffset:0;opacity:1\"\n" //
 			+ "         d=\"M " + X1_COORDINATE + "," + Y1_COORDINATE + " L " + X2_COORDINATE + "," + Y2_COORDINATE + "\"\n" //
 			+ "         id=\"path850\"\n" //
 			+ "         inkscape:connector-curvature=\"0\" />";
-	//
+
 	private static final String HEADER_DATA = "                    <path\n" //
 			+ "               style=\"fill:none;stroke:" + COLOR + ";stroke-width:0.45888707;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1\"\n" //
 			+ "               d=\"M " + DATA_POINTS + "\"\n" //
@@ -122,7 +122,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 	public String generate(ScrollableChart scrollableChart, AxisSettings axisSettings) throws Exception {
 
 		StringBuilder builder = new StringBuilder();
-		//
+
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
 		boolean isReversedX = axisSettingsX.isReversed();
@@ -130,17 +130,17 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		DecimalFormat formatX = axisSettingsX.getDecimalFormat();
 		DecimalFormat formatY = axisSettingsY.getDecimalFormat();
 		BaseChart baseChart = scrollableChart.getBaseChart();
-		//
+
 		boolean isShowAxisZeroMarker = baseChart.getChartSettings().isShowAxisZeroMarker();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
-		//
+
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(TEMPLATE_LINE_CHART)))) {
 			/*
 			 * Ticks
 			 */
 			double xTicks[] = baseChart.getAxisSet().getXAxis(axisSettings.getIndexAxisX()).getTick().getTickLabelValues();
 			double yTicks[] = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getTick().getTickLabelValues();
-			//
+
 			StringBuilder tickX = new StringBuilder(HEADER_TICK_X);
 			StringBuilder tickY = new StringBuilder(HEADER_TICK_Y);
 			StringBuilder legend = new StringBuilder(HEADER_LEGEND);
@@ -152,7 +152,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			String data_series = getRegularExpression(DATA_SERIES);
 			String regex_legend = getRegularExpression(LEGEND);
 			String axis_label = getRegularExpression(AXIS_LABELS);
-			//
+
 			String line;
 			while((line = bufferedReader.readLine()) != null) {
 				if(Pattern.matches(regexX, line)) {
@@ -175,7 +175,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		//
+
 		return builder.toString();
 	}
 
@@ -187,19 +187,19 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		StringBuilder builder = new StringBuilder("");
 		double upper = baseChart.getAxisSet().getXAxis(axisSettings.getIndexAxisX()).getRange().upper;
 		double lower = baseChart.getAxisSet().getXAxis(axisSettings.getIndexAxisX()).getRange().lower;
-		//
+
 		for(int count = 0; count < ticklabel_size; count++) {
 			String split[] = tickX.toString().split(SPLIT_LINE_DELIMITER);
 			String matchXCoordinate = getRegularExpression(X_COORDINATE);
 			String matchX01 = getRegularExpression(X_01);
 			double x;
-			//
+
 			if(!isReversedX) {
 				x = start + ((xTicks[count] - lower) / (upper - lower) * height);
 			} else {
 				x = ((start + height) - (((xTicks[count] - lower) / (upper - lower) * height)));
 			}
-			//
+
 			for(String string : split) {
 				if(Pattern.matches(matchXCoordinate, string)) {
 					string = string.replace(X_COORDINATE, String.valueOf(x));
@@ -211,7 +211,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			}
 			builder.append(LINE_DELIMITER);
 		}
-		//
+
 		return line.replaceAll(regexX, builder.toString());
 	}
 
@@ -223,19 +223,19 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		StringBuilder builder = new StringBuilder("");
 		double upper = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getRange().upper;
 		double lower = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getRange().lower;
-		//
+
 		for(int count = 0; count < ticklabel_size; count++) {
 			String split[] = tickY.toString().split(SPLIT_LINE_DELIMITER);
 			String matchYCoordinate = getRegularExpression(Y_COORDINATE);
 			String matchY01 = getRegularExpression(Y_01);
 			double y;
-			//
+
 			if(!isReversedY) {
 				y = start - (height - ((upper - yTicks[count]) / (upper - lower) * height));
 			} else {
 				y = ((start - height) + (height - ((upper - yTicks[count]) / (upper - lower) * height)));
 			}
-			//
+
 			for(String string : split) {
 				if(Pattern.matches(matchYCoordinate, string)) {
 					string = string.replace(Y_COORDINATE, String.valueOf(y));
@@ -247,7 +247,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			}
 			builder.append(LINE_DELIMITER);
 		}
-		//
+
 		return line.replaceAll(regexY, builder.toString());
 	}
 
@@ -257,7 +257,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		double start2 = 102.06668;
 		StringBuilder builder = new StringBuilder("");
 		int count = 0;
-		//
+
 		for(ISeries<?> serie : series) {
 			if(serie.isVisible()) {
 				ILineSeries<?> lineSerie = (ILineSeries<?>)serie;
@@ -274,7 +274,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 				String matchY2Coordinate = getRegularExpression(Y2_COORDINATE);
 				String matchColor = getRegularExpression(COLOR);
 				String matchSeriesA = getRegularExpression(SERIES_A);
-				//
+
 				for(String string : split) {
 					if(Pattern.matches(matchY1Coordinate, string)) {
 						string = string.replace(Y1_COORDINATE, String.valueOf(y1));
@@ -292,14 +292,14 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 				count++;
 			}
 		}
-		//
+
 		return line.replaceAll(regex_legend, builder.toString());
 	}
 
 	private String getAxisLabel(BaseChart baseChart, AxisSettings axisSettings, StringBuilder axisLabel, boolean isReversedX, boolean isReversedY, boolean isShowAxisZeroMarker, String axis_label, String line) {
 
 		String label = "";
-		//
+
 		if(isShowAxisZeroMarker) {
 			StringBuilder builder = new StringBuilder("");
 			String split[] = axisLabel.toString().split(SPLIT_LINE_DELIMITER);
@@ -341,13 +341,13 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			double upper2 = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getRange().upper;
 			double lower2 = baseChart.getAxisSet().getYAxis(axisSettings.getIndexAxisY()).getRange().lower;
 			double y1;
-			//
+
 			if(!isReversedY) {
 				y1 = start2 - (height2 - ((upper2 - 0.0) / (upper2 - lower2) * height2));
 			} else {
 				y1 = ((start2 - height2) + (height2 - ((upper2 - 0.0) / (upper2 - lower2) * height2)));
 			}
-			//
+
 			if(y1 <= start2 && y1 >= start2 - height2) {
 				for(String string : split) {
 					if(Pattern.matches(matchX1Coordinate, string)) {
@@ -368,7 +368,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 			}
 			label = line.replaceAll(axis_label, builder.toString());
 		}
-		//
+
 		return label;
 	}
 
@@ -392,7 +392,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 				builder.append(string);
 			}
 		}
-		//
+
 		return line.replaceAll(data_series, builder.toString());
 	}
 
@@ -410,12 +410,12 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		int indexAxisY = axisSettings.getIndexAxisY();
 		IAxisScaleConverter axisScaleConverterX = axisSettings.getAxisScaleConverterX();
 		IAxisScaleConverter axisScaleConverterY = axisSettings.getAxisScaleConverterY();
-		//
+
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		String split[] = data.toString().split(SPLIT_LINE_DELIMITER);
 		int size = dataSeries.getXSeries().length;
-		//
+
 		String match1 = getRegularExpression(COLOR);
 		String match2 = getRegularExpression(DATA_POINTS);
 		for(String string : split) {

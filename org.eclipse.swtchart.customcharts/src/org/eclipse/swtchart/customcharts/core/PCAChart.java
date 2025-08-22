@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,7 +34,7 @@ import org.eclipse.swtchart.extensions.scattercharts.ScatterChart;
 public class PCAChart extends ScatterChart {
 
 	private Color colorBlack = getDisplay().getSystemColor(SWT.COLOR_BLACK);
-	//
+
 	private String chartTitle = ""; //$NON-NLS-1$
 	private String xAxisTitle = "PC1"; //$NON-NLS-1$
 	private String yAxisTitle = "PC2"; //$NON-NLS-1$
@@ -67,7 +67,7 @@ public class PCAChart extends ScatterChart {
 		this.chartTitle = chartTitle;
 		this.xAxisTitle = xAxisTitle;
 		this.yAxisTitle = yAxisTitle;
-		//
+
 		IChartSettings chartSettings = getChartSettings();
 		chartSettings.setTitle(chartTitle);
 		chartSettings.setTitleVisible(true);
@@ -79,7 +79,7 @@ public class PCAChart extends ScatterChart {
 	public void setDecimalFormat(DecimalFormat decimalFormat) {
 
 		this.decimalFormat = decimalFormat;
-		//
+
 		IChartSettings chartSettings = getChartSettings();
 		chartSettings.getPrimaryAxisSettingsX().setDecimalFormat(decimalFormat);
 		chartSettings.getPrimaryAxisSettingsY().setDecimalFormat(decimalFormat);
@@ -112,10 +112,10 @@ public class PCAChart extends ScatterChart {
 		chartSettings.setColorAxisZeroMarker(colorBlack);
 		chartSettings.setShowSeriesLabelMarker(true);
 		chartSettings.setColorSeriesLabelMarker(colorBlack);
-		//
+
 		setPrimaryAxisSet(chartSettings);
 		addSecondaryAxisSet(chartSettings);
-		//
+
 		applySettings(chartSettings);
 		setData("org.eclipse.e4.ui.css.CssClassName", "PCAChart");
 	}
@@ -126,7 +126,7 @@ public class PCAChart extends ScatterChart {
 		primaryAxisSettingsX.setTitle(xAxisTitle);
 		primaryAxisSettingsX.setDecimalFormat(decimalFormat);
 		primaryAxisSettingsX.setColor(colorBlack);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle(yAxisTitle);
 		primaryAxisSettingsY.setDecimalFormat(decimalFormat);
@@ -141,7 +141,7 @@ public class PCAChart extends ScatterChart {
 		secondaryAxisSettingsX.setDecimalFormat(decimalFormat);
 		secondaryAxisSettingsX.setColor(colorBlack);
 		chartSettings.getSecondaryAxisSettingsListX().add(secondaryAxisSettingsX);
-		//
+
 		ISecondaryAxisSettings secondaryAxisSettingsY = new SecondaryAxisSettings(yAxisTitle, new PassThroughConverter());
 		secondaryAxisSettingsY.setPosition(Position.Secondary);
 		secondaryAxisSettingsY.setDecimalFormat(decimalFormat);

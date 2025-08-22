@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -68,7 +68,7 @@ public abstract class AbstractBitmapExportHandler extends AbstractSeriesExportHa
 		fileDialog.setText(name);
 		fileDialog.setFilterExtensions(filterExtensions); // $NON-NLS-1$ //$NON-NLS-2$
 		fileDialog.setFileName(scrollableChart.getFileName());
-		//
+
 		String fileName = fileDialog.open();
 		if(fileName != null) {
 			/*
@@ -122,7 +122,7 @@ public abstract class AbstractBitmapExportHandler extends AbstractSeriesExportHa
 				baseChart.updateLayout();
 			}
 		});
-		//
+
 		imageShell.open();
 		while(!imageShell.isDisposed()) {
 			if(!display.readAndDispatch()) {

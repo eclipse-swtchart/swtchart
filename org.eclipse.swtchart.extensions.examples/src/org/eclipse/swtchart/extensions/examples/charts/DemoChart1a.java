@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,10 +39,10 @@ public class DemoChart1a {
 		shell.setText("Area Strict Example (Experimental)");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		ScrollableChart scrollableChart = new LineSeries_1a_Part(shell);
 		scrollableChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		shell.open();
 		/*
 		 * Demo Chart Background (experimental)
@@ -59,7 +59,7 @@ public class DemoChart1a {
 		addOrientationOption(chartSettings);
 		addAreaStrictOption(chartSettings);
 		scrollableChart.applySettings(chartSettings);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

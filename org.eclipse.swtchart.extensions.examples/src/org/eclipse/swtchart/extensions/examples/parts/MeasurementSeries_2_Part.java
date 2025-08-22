@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -78,7 +78,7 @@ public class MeasurementSeries_2_Part extends LineChart {
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		primaryAxisSettingsY.setGridLineStyle(LineStyle.DOT);
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.
@@ -87,13 +87,13 @@ public class MeasurementSeries_2_Part extends LineChart {
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
-		//
+
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;
 		ILineSeriesSettings lineSeriesSettingsHighlight;
-		//
+
 		for(int i = 1; i <= 3; i++) {
 			/*
 			 * Readings

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -54,7 +54,7 @@ public class BarSeries_1_1_Part extends MassSpectrumChart {
 		 */
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
-		//
+
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		/*

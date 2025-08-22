@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -66,10 +66,10 @@ public class MouseMoveShiftEvent extends AbstractHandledEventProcessor implement
 						 */
 						showClickbindingHelp(baseChart, "Shift series", "Shift the selected series.");
 						baseChart.setMoveStartTime(System.currentTimeMillis());
-						//
+
 						double shiftX = baseChart.getShiftValue(baseChart.getXMoveStart(), event.x, IExtendedChart.X_AXIS);
 						double shiftY = baseChart.getShiftValue(baseChart.getYMoveStart(), event.y, IExtendedChart.Y_AXIS);
-						//
+
 						for(String selectedSeriesId : selectedSeriesIds) {
 							ISeries<?> dataSeries = baseChart.getSeriesSet().getSeries(selectedSeriesId);
 							if(dataSeries != null) {
@@ -77,7 +77,7 @@ public class MouseMoveShiftEvent extends AbstractHandledEventProcessor implement
 							}
 						}
 						baseChart.redraw();
-						//
+
 						baseChart.setXMoveStart(event.x);
 						baseChart.setYMoveStart(event.y);
 					} else {

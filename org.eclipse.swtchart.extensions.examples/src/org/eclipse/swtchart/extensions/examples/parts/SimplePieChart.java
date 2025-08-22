@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,7 +38,7 @@ public class SimplePieChart extends PieChart {
 	private static final double[] NorthAmericanCountriesValues = {3900261, 3761363};
 	private static final String[] IndianStatesLabels = {"Maharashtra", "Rajasthan", "Uttar Pradesh", "Madhya Pradesh"};
 	private static final double[] IndianStateValues = {92320, 213900, 150580, 192718};
-	//
+
 	private boolean doughnut = true;
 	private boolean highlightSeries = false;
 
@@ -61,25 +61,25 @@ public class SimplePieChart extends PieChart {
 		 * Create series.
 		 */
 		ICircularSeriesData circularSeriesData = new CircularSeriesData();
-		//
+
 		circularSeriesData.setTitle("World");
 		circularSeriesData.setNodeClass("Landmass Name");
 		circularSeriesData.setValueClass("Area in square miles");
-		//
+
 		circularSeriesData.setSeries(continentLabels, continentValues);
 		circularSeriesData.getNodeById("Asia").addChildren(AsianCountriesLabels, AsianCountriesValues);
 		circularSeriesData.getNodeById("Africa").addChildren(AfricanCountriesLabels, AfricanCountriesValues);
 		circularSeriesData.getNodeById("North America").addChildren(NorthAmericanCountriesLabels, NorthAmericanCountriesValues);
 		circularSeriesData.getNodeById("India").addChildren(IndianStatesLabels, IndianStateValues);
 		circularSeriesData.getNodeById("Europe").addChild("Germany", 137847);
-		//
+
 		ICircularSeriesSettings settings = circularSeriesData.getSettings();
 		settings.setDescription("Landmass Distribution");
 		settings.setSliceColor(null);
 		settings.setBorderWidth(1);
 		settings.setBorderStyle(LineStyle.SOLID);
 		settings.setSeriesType(doughnut ? SeriesType.DOUGHNUT : SeriesType.PIE);
-		//
+
 		if(highlightSeries) {
 			settings.setRedrawOnClick(false);
 			ISeriesSettings seriesSettingsHighlight = settings.getSeriesSettingsHighlight();

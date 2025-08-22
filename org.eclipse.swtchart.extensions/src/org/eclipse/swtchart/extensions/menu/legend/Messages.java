@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,7 @@ public class Messages {
 
 	private static final String BUNDLE_NAME = "org.eclipse.swtchart.extensions.menu.legend.messages"; //$NON-NLS-1$
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
-	//
+
 	public static final String ADD_SERIES_MAPPING = "ADD_SERIES_MAPPING";
 	public static final String REMOVE_SERIES_MAPPING = "REMOVE_SERIES_MAPPING";
 	public static final String ADD_REMOVE_SERIES_MAPPING = "ADD_REMOVE_SERIES_MAPPING";

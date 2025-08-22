@@ -60,13 +60,13 @@ import org.eclipse.swtchart.extensions.preferences.PreferenceConstants;
 public class ChartSettings implements IChartSettings {
 
 	private boolean bufferSelection = false;
-	//
+
 	private boolean enableRangeSelector = false;
 	private boolean showRangeSelectorInitially = true;
 	private Color colorHintRangeSelector;
 	private int rangeSelectorDefaultAxisX = 0;
 	private int rangeSelectorDefaultAxisY = 0;
-	//
+
 	private boolean verticalSliderVisible = false;
 	private boolean horizontalSliderVisible = true;
 	/*
@@ -78,23 +78,23 @@ public class ChartSettings implements IChartSettings {
 	private boolean titleVisible = false;
 	private Color titleColor;
 	private Font titleFont;
-	//
+
 	private int legendPosition = SWT.RIGHT;
 	private boolean legendVisible = false;
 	private boolean legendExtendedVisible = false;
-	//
+
 	private IPrimaryAxisSettings primaryAxisSettingsX = new PrimaryAxisSettings(BaseChart.DEFAULT_TITLE_X_AXIS);
 	private IPrimaryAxisSettings primaryAxisSettingsY = new PrimaryAxisSettings(BaseChart.DEFAULT_TITLE_Y_AXIS);
 	private List<ISecondaryAxisSettings> secondaryAxisSettingsListX = new ArrayList<>();
 	private List<ISecondaryAxisSettings> secondaryAxisSettingsListY = new ArrayList<>();
-	//
+
 	private int orientation = SWT.HORIZONTAL;
 	private Color background;
 	private Color backgroundChart;
 	private Color backgroundPlotArea;
 	private boolean enableCompress = true;
 	private RangeRestriction rangeRestriction = new RangeRestriction();
-	//
+
 	private boolean showPositionMarker = false;
 	private Color colorPositionMarker;
 	private boolean showPlotCenterMarker = false;
@@ -106,11 +106,11 @@ public class ChartSettings implements IChartSettings {
 	private Color colorAxisZeroMarker;
 	private boolean showSeriesLabelMarker = false;
 	private Color colorSeriesLabelMarker;
-	//
+
 	private boolean createMenu = true;
 	private Set<IChartMenuEntry> menuEntries;
 	private Set<IHandledEventProcessor> handledEventProcessors;
-	//
+
 	private boolean supportDataShift = false;
 	private boolean enableTooltips = false; // It was set to true before, but this leads to some conflicts when performing selection operations.
 	/*
@@ -121,25 +121,25 @@ public class ChartSettings implements IChartSettings {
 	public ChartSettings() {
 
 		Display display = Display.getDefault();
-		//
+
 		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 		if(preferenceStore != null) {
 			setBufferSelection(preferenceStore.getBoolean(PreferenceConstants.P_BUFFER_SELECTION));
 		}
-		//
+
 		colorHintRangeSelector = display.getSystemColor(SWT.COLOR_RED);
-		//
+
 		if(Display.isSystemDarkTheme()) {
 			titleColor = display.getSystemColor(SWT.COLOR_WHITE);
 		} else {
 			titleColor = display.getSystemColor(SWT.COLOR_BLACK);
 		}
 		titleFont = defaultFont;
-		//
+
 		rangeRestriction.setZeroX(true);
 		rangeRestriction.setZeroY(true);
 		rangeRestriction.setRestrictFrame(true);
-		//
+
 		if(Display.isSystemDarkTheme()) {
 			colorPositionMarker = display.getSystemColor(SWT.COLOR_GRAY);
 			colorPlotCenterMarker = display.getSystemColor(SWT.COLOR_GRAY);
@@ -675,7 +675,7 @@ public class ChartSettings implements IChartSettings {
 				return chartMenuEntry;
 			}
 		}
-		//
+
 		return null;
 	}
 

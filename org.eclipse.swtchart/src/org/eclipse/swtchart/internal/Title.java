@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -177,7 +177,7 @@ public class Title implements ITitle, PaintListener {
 		initializeTextLayout();
 		TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 		textLayout.setText(text);
-		//
+
 		styleRanges = ranges;
 		if(styleRanges != null) {
 			for(StyleRange styleRange : styleRanges) {
@@ -405,7 +405,7 @@ public class Title implements ITitle, PaintListener {
 		if(useTextLayout && textLayoutUUID == null) {
 			initializeTextLayout();
 		}
-		//
+
 		return useTextLayout;
 	}
 

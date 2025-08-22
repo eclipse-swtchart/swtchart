@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,7 +33,7 @@ public class MouseWheelZoomEvent extends AbstractMouseEvent {
 		IAxisSet axisSet = baseChart.getAxisSet();
 		IAxis xAxis = axisSet.getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = axisSet.getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-		//
+
 		if(baseChart.isZoomXY(rangeRestriction)) {
 			/*
 			 * X and Y zoom.

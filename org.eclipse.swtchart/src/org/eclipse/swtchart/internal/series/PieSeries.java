@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -46,11 +46,11 @@ public class PieSeries extends CircularSeries {
 				drawNode(nodes, gc, xAxis, yAxis);
 			}
 		}
-		//
+
 		if(node.isVisible() == false) {
 			return;
 		}
-		//
+
 		int level = node.getLevel() - getRootPointer().getLevel();
 		/*
 		 * the center of the chart is (0,0). The x and y axis are set such that
@@ -77,7 +77,7 @@ public class PieSeries extends CircularSeries {
 		double yStartCoordinate = level * Math.sin(Math.toRadians(angleStart));
 		int xStartPixelCoordinate = xAxis.getPixelCoordinate(xStartCoordinate);
 		int yStartPixelCoordinate = yAxis.getPixelCoordinate(yStartCoordinate);
-		//
+
 		gc.drawLine(xZero, yZero, xStartPixelCoordinate, yStartPixelCoordinate);
 		/*
 		 * drawing the end boundary
@@ -86,7 +86,7 @@ public class PieSeries extends CircularSeries {
 		double yEndCoordinate = level * Math.sin(Math.toRadians(angleStart + angleWidth));
 		int xEndPixelCoordinate = xAxis.getPixelCoordinate(xEndCoordinate);
 		int yEndPixelCoordinate = yAxis.getPixelCoordinate(yEndCoordinate);
-		//
+
 		gc.drawLine(xZero, yZero, xEndPixelCoordinate, yEndPixelCoordinate);
 	}
 
@@ -140,7 +140,7 @@ public class PieSeries extends CircularSeries {
 		if(angleOfInspection < 0.0) {
 			angleOfInspection += 2 * Math.PI;
 		}
-		//
+
 		if(level < getNodeDataModel().getNodes().length) {
 			for(Node nodeX : getNodeDataModel().getNodes()[level]) {
 				double lowerBound = (nodeX.getAngleBounds().x * Math.PI) / (double)180.0;
@@ -151,7 +151,7 @@ public class PieSeries extends CircularSeries {
 				}
 			}
 		}
-		//
+
 		return node;
 	}
 }

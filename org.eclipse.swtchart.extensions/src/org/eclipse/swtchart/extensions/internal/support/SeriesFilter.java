@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,17 +39,17 @@ public class SeriesFilter extends ViewerFilter {
 		if(searchText == null || searchText.equals("")) {
 			return true;
 		}
-		//
+
 		if(element instanceof ISeries<?>) {
 			ISeries<?> series = (ISeries<?>)element;
-			//
+
 			if(preparedTerm(series.getId()).contains(searchText)) {
 				return true;
 			} else if(preparedTerm(series.getDescription()).contains(searchText)) {
 				return true;
 			}
 		}
-		//
+
 		return false;
 	}
 

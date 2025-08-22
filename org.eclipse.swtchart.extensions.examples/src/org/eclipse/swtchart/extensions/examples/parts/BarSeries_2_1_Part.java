@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -48,24 +48,24 @@ public class BarSeries_2_1_Part extends BarChart {
 		chartSettings.setVerticalSliderVisible(true);
 		chartSettings.getRangeRestriction().setZeroX(false);
 		chartSettings.getRangeRestriction().setZeroY(false);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setTitle("m/z");
 		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0##"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle("Intensity");
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.
 		 */
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_2);
-		//
+
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		/*

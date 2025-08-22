@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,15 +41,15 @@ public class SeriesListUI extends AbstractSeriesListUI {
 
 	private static final String[] TITLES = SeriesLabelProvider.TITLES;
 	private static final int[] BOUNDS = SeriesLabelProvider.BOUNDS;
-	//
+
 	private static final String COLUMN_DELIMITER = " "; //$NON-NLS-1$
-	//
+
 	private SeriesLabelProvider labelProvider = new SeriesLabelProvider();
 	private IContentProvider contentProvider = new SeriesContentProvider();
 	private SeriesComparator comparator = new SeriesComparator();
 	private SeriesFilter filter = new SeriesFilter();
 	private List<TableViewerColumn> columns = new ArrayList<>();
-	//
+
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 	private BaseChart baseChart = null;
 
@@ -234,7 +234,7 @@ public class SeriesListUI extends AbstractSeriesListUI {
 				e.printStackTrace();
 			}
 		}
-		//
+
 		return columns;
 	}
 
@@ -250,7 +250,7 @@ public class SeriesListUI extends AbstractSeriesListUI {
 			builder.append(i);
 			builder.append(COLUMN_DELIMITER);
 		}
-		//
+
 		return builder.toString().trim();
 	}
 }

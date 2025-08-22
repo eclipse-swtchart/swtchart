@@ -1,5 +1,5 @@
 /*******************************************************************************
- * * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,7 +24,7 @@ public class CSVExportHandler extends AbstractSeparatedValueHandler implements I
 
 	private static final String FILE_EXTENSION = "*.csv"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.COMMA_SEPARATED_VALUES), FILE_EXTENSION);
-	//
+
 	private static final String TITLE = Messages.getString(Messages.SAVE_AS_COMMA_SEPARATED);
 	private static final String DELIMITER = ","; //$NON-NLS-1$
 

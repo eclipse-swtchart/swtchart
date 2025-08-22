@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -104,7 +104,7 @@ public class SeriesEditingSupport extends EditingSupport {
 			ISeries<?> series = (ISeries<?>)element;
 			BaseChart baseChart = seriesListUI.getBaseChart();
 			ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
-			//
+
 			switch(columnIndex) {
 				case SeriesLabelProvider.INDEX_VISIBLE:
 					object = seriesSettings.isVisible();
@@ -140,7 +140,7 @@ public class SeriesEditingSupport extends EditingSupport {
 			ISeries<?> series = (ISeries<?>)element;
 			BaseChart baseChart = getBaseChart();
 			ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
-			//
+
 			switch(columnIndex) {
 				case SeriesLabelProvider.INDEX_VISIBLE:
 					seriesSettings.setVisible(Boolean.valueOf(object.toString()));
@@ -166,7 +166,7 @@ public class SeriesEditingSupport extends EditingSupport {
 					}
 					break;
 			}
-			//
+
 			baseChart.applySeriesSettings(series, seriesSettings, true);
 			refresh();
 		}

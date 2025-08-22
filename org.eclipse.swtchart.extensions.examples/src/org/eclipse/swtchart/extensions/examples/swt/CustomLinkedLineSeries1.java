@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,11 +32,11 @@ public class CustomLinkedLineSeries1 extends Composite {
 	public void setChartInfo(String trace, String sample, String reference) {
 
 		ITitle title;
-		//
+
 		title = sampleChart.getBaseChart().getTitle();
 		title.setText(sample + " (" + trace + ")");
 		title.setForeground(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-		//
+
 		title = referenceChart.getBaseChart().getTitle();
 		title.setText(reference + " (" + trace + ")");
 		title.setForeground(getDisplay().getSystemColor(SWT.COLOR_BLACK));
@@ -45,10 +45,10 @@ public class CustomLinkedLineSeries1 extends Composite {
 	private void createControl() {
 
 		setLayout(new GridLayout(1, true));
-		//
+
 		sampleChart = new CustomLineChart1(this, SWT.NONE, true, false, false, SeriesConverter.LINE_SERIES_4_3);
 		sampleChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		referenceChart = new CustomLineChart1(this, SWT.NONE, false, true, true, SeriesConverter.LINE_SERIES_4_4);
 		referenceChart.setLayoutData(new GridData(GridData.FILL_BOTH));
 		/*

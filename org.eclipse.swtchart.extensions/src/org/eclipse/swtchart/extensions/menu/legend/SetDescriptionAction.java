@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -56,7 +56,7 @@ public class SetDescriptionAction extends AbstractMenuListener {
 				SeriesListUI seriesListUI = getSeriesListUI();
 				Table table = seriesListUI.getTable();
 				List<ISeries<?>> selectedSeries = getSelectedSeries();
-				//
+
 				if(!selectedSeries.isEmpty()) {
 					String firstDescription = selectedSeries.get(0).getDescription();
 					InputDialog dialog = new InputDialog(table.getShell(), Messages.getString(Messages.DESCRIPTION), Messages.getString(Messages.SET_DESCRIPTION), firstDescription, new IInputValidator() {
@@ -72,11 +72,11 @@ public class SetDescriptionAction extends AbstractMenuListener {
 									return Messages.DESCRIPTION_MUST_NOT_BE_EMPTY;
 								}
 							}
-							//
+
 							return null;
 						}
 					});
-					//
+
 					if(IDialogConstants.OK_ID == dialog.open()) {
 						String description = dialog.getValue();
 						for(ISeries<?> series : selectedSeries) {

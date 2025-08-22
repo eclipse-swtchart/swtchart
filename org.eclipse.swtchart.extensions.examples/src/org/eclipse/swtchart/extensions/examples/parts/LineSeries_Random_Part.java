@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,12 +38,12 @@ public class LineSeries_Random_Part extends Composite {
 	private static final String ID = "LINE_SERIES_RANDOM";
 	private static int x = 0;
 	private static int xDelta = 10;
-	//
+
 	private Button buttonStart;
 	private Button buttonStop;
 	private Button buttonReset;
 	private ChromatogramChart chromatogramChart;
-	//
+
 	private Display display = getDisplay();
 	private Acquisition acquisition;
 	private Recording recording;
@@ -100,7 +100,7 @@ public class LineSeries_Random_Part extends Composite {
 		gridDataComposite.horizontalAlignment = SWT.END;
 		compositeButtons.setLayoutData(gridDataComposite);
 		compositeButtons.setLayout(new GridLayout(3, false));
-		//
+
 		buttonStart = new Button(compositeButtons, SWT.PUSH);
 		buttonStart.setToolTipText("Start Recording");
 		buttonStart.setText(Activator.getDefault() != null ? "" : "Start");
@@ -113,11 +113,11 @@ public class LineSeries_Random_Part extends Composite {
 
 				acquisition.setRecordData(true);
 				display.asyncExec(recording);
-				//
+
 				setButtonsEnabled(true);
 			}
 		});
-		//
+
 		buttonStop = new Button(compositeButtons, SWT.PUSH);
 		buttonStop.setToolTipText("Stop Recording");
 		buttonStop.setText(Activator.getDefault() != null ? "" : "Stop");
@@ -130,11 +130,11 @@ public class LineSeries_Random_Part extends Composite {
 
 				acquisition.setRecordData(false);
 				display.timerExec(-1, recording);
-				//
+
 				setButtonsEnabled(false);
 			}
 		});
-		//
+
 		buttonReset = new Button(compositeButtons, SWT.PUSH);
 		buttonReset.setToolTipText("Reset");
 		buttonReset.setText(Activator.getDefault() != null ? "" : "Reset");
@@ -147,10 +147,10 @@ public class LineSeries_Random_Part extends Composite {
 
 				acquisition.setRecordData(false);
 				display.timerExec(-1, recording);
-				//
+
 				chromatogramChart.deleteSeries();
 				x = 0;
-				//
+
 				List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 				ISeriesData seriesData = getRandomSeriesData();
 				ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
@@ -168,7 +168,7 @@ public class LineSeries_Random_Part extends Composite {
 		 */
 		chromatogramChart = new ChromatogramChart(this, SWT.BORDER);
 		chromatogramChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		ISeriesData seriesData = getRandomSeriesData();
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
@@ -193,11 +193,11 @@ public class LineSeries_Random_Part extends Composite {
 		int length = 101;
 		double[] xSeries = new double[length];
 		double[] ySeries = new double[length];
-		//
+
 		double a = Math.random(); // height
 		double i = -5.0d;
 		double iDelta = 0.1d;
-		//
+
 		for(int j = 0; j < length; j++) {
 			xSeries[j] = x;
 			ySeries[j] = a * Math.exp(-i * i / 2) / Math.sqrt(2 * Math.PI);

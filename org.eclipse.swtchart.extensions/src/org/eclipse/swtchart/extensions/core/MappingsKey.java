@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,7 +17,7 @@ import java.util.Objects;
 public class MappingsKey {
 
 	private static final String KEY_DELIMITER = "_"; //$NON-NLS-1$
-	//
+
 	private MappingsType mappingsType = MappingsType.NONE;
 	private String id = ""; //$NON-NLS-1$
 	private String key = ""; //$NON-NLS-1$

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,7 +22,7 @@ import org.eclipse.swtchart.model.NodeDataModel;
 public class CircularSeriesData extends SeriesData implements ICircularSeriesData {
 
 	public static final String ID = "Circular Series";
-	//
+
 	private NodeDataModel nodeDataModel;
 	private Node rootNode;
 	private ICircularSeriesSettings seriesSettings;

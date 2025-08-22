@@ -97,10 +97,10 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	 */
 	private static final String EXTENSION_POINT_MENU_ITEMS = "org.eclipse.swtchart.extensions.menuitems"; //$NON-NLS-1$
 	private static final String EXTENSION_POINT_MENU_ENTRY = "MenuEntry"; //$NON-NLS-1$
-	//
+
 	private Map<String, Set<IChartMenuEntry>> categoryMenuEntriesMap = new HashMap<>();
 	private Map<String, IChartMenuEntry> menuEntryMap = new HashMap<>();
-	//
+
 	private AtomicReference<Slider> sliderVerticalControl = new AtomicReference<>();
 	private AtomicReference<Slider> sliderHorizontalControl = new AtomicReference<>();
 	private RangeSelector rangeSelector;
@@ -109,7 +109,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private Composite compositeChart;
 	private BaseChart baseChart;
 	private ExtendedLegendUI extendedLegendUI;
-	//
+
 	private static final int MILLISECONDS_SHOW_RANGE_INFO_HINT = 1000;
 	private boolean showRangeSelectorHint = false;
 	private RangeHintPaintListener rangeHintPaintListener;
@@ -118,7 +118,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	 * that are linked with the current editor.
 	 */
 	private List<ScrollableChart> linkedScrollableCharts = new ArrayList<>();
-	//
+
 	private PositionMarker positionMarker;
 	private PlotCenterMarker plotCenterMarker;
 	private LegendMarker legendMarker;
@@ -130,11 +130,11 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	 */
 	private static final int HORIZONTAL_SCROLL_LENGTH = 1000000;
 	private static final int VERTICAL_SCROLL_LENGTH = 1000000;
-	//
+
 	private static final int MAX_WEIGHT = 1000;
 	private static final int MIN_WEIGHT = 0;
 	private static final int[] DEFAULT_WEIGHTS = new int[]{MAX_WEIGHT, MIN_WEIGHT};
-	//
+
 	private int[] currentWeights = new int[]{700, 300};
 	/*
 	 * The chart type is automatically set in most cases, see setChartType();
@@ -179,13 +179,13 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(color == null) {
 			return;
 		}
-		//
+
 		super.setBackground(color);
 		sashForm.setBackground(color);
 		if(chartSection != null) {
 			chartSection.setBackground(color);
 		}
-		//
+
 		if(compositeChart != null) {
 			compositeChart.setBackground(color);
 		}
@@ -241,7 +241,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 					e.gc.setLineWidth(lineWidth);
 					Rectangle rectangleInfo = new Rectangle(0, 0, width, 26);
 					e.gc.drawRectangle(rectangleInfo);
-					//
+
 					ITitle title = getBaseChart().getTitle();
 					if(title.getForeground().equals(baseChart.getBackground())) {
 						/*
@@ -351,9 +351,9 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(!wasSuspend) {
 			baseChart.suspendUpdate(true);
 		}
-		//
+
 		baseChart.deleteSeries();
-		//
+
 		if(!wasSuspend) {
 			baseChart.suspendUpdate(false);
 		}
@@ -463,12 +463,12 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	public void handleMouseMoveEvent(Event event) {
 
 		baseChart.handleMouseMoveEvent(event);
-		//
+
 		if(positionMarker.isDraw()) {
 			positionMarker.setActualPosition(event.x, event.y);
 			redrawPlotArea();
 		}
-		//
+
 		if(legendMarker.isDraw()) {
 			legendMarker.setActualPosition(event.x, event.y);
 			redrawPlotArea();
@@ -605,7 +605,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		double[] xSeries = seriesData.getXSeries();
 		double[] ySeries = seriesData.getYSeries();
 		int seriesLength = ySeries.length;
-		//
+
 		if(seriesLength > compressToLength) {
 			/*
 			 * Capture the compressed data.
@@ -618,7 +618,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			 */
 			xSeriesCompressed.add(xSeries[0]);
 			ySeriesCompressed.add(ySeries[0]);
-			//
+
 			int moduloValue = seriesLength / compressToLength;
 			for(int i = 1; i < ySeries.length - 1; i++) {
 				/*
@@ -626,11 +626,11 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				 */
 				double y = ySeries[i];
 				boolean addValue = false;
-				//
+
 				if(moduloValue > 0 && i % moduloValue == 0) {
 					addValue = true;
 				}
-				//
+
 				if(addValue) {
 					xSeriesCompressed.add(xSeries[i]);
 					ySeriesCompressed.add(y);
@@ -646,7 +646,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			 */
 			double[] xCompressed = xSeriesCompressed.stream().mapToDouble(d -> d).toArray();
 			double[] yCompressed = ySeriesCompressed.stream().mapToDouble(d -> d).toArray();
-			//
+
 			return new SeriesData(xCompressed, yCompressed, seriesData.getId());
 		} else {
 			/*
@@ -731,18 +731,18 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		IChartSettings chartSettings = baseChart.getChartSettings();
 		setSliderVisibility(chartSettings);
 		setRangeInfoVisibility(chartSettings);
-		//
+
 		ITitle title = baseChart.getTitle();
 		title.setText(chartSettings.getTitle());
 		title.setVisible(chartSettings.isTitleVisible());
 		title.setForeground(chartSettings.getTitleColor());
 		title.setFont(chartSettings.getTitleFont());
-		//
+
 		ILegend legend = baseChart.getLegend();
 		legend.setPosition(chartSettings.getLegendPosition());
 		legend.setVisible(chartSettings.isLegendVisible());
 		setLegendExtendedVisible(chartSettings.isLegendExtendedVisible());
-		//
+
 		setBackground(chartSettings.getBackground());
 		baseChart.setOrientation(chartSettings.getOrientation());
 		baseChart.setBackground(chartSettings.getBackgroundChart());
@@ -821,15 +821,15 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IPlotArea plotArea = baseChart.getPlotArea();
 		IChartSettings chartSettings = baseChart.getChartSettings();
-		//
+
 		if(positionMarker != null) {
 			plotArea.removeCustomPaintListener(positionMarker);
 		}
-		//
+
 		positionMarker = new PositionMarker(baseChart);
 		positionMarker.setForegroundColor(chartSettings.getColorPositionMarker());
 		plotArea.addCustomPaintListener(positionMarker);
-		//
+
 		if(chartSettings.isShowPositionMarker()) {
 			positionMarker.setDraw(true);
 		} else {
@@ -841,15 +841,15 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IPlotArea plotArea = baseChart.getPlotArea();
 		IChartSettings chartSettings = baseChart.getChartSettings();
-		//
+
 		if(plotCenterMarker != null) {
 			plotArea.removeCustomPaintListener(plotCenterMarker);
 		}
-		//
+
 		plotCenterMarker = new PlotCenterMarker(baseChart);
 		plotCenterMarker.setForegroundColor(chartSettings.getColorPlotCenterMarker());
 		plotArea.addCustomPaintListener(plotCenterMarker);
-		//
+
 		if(chartSettings.isShowPlotCenterMarker()) {
 			plotCenterMarker.setDraw(true);
 		} else {
@@ -861,15 +861,15 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IPlotArea plotArea = baseChart.getPlotArea();
 		IChartSettings chartSettings = baseChart.getChartSettings();
-		//
+
 		if(legendMarker != null) {
 			plotArea.removeCustomPaintListener(legendMarker);
 		}
-		//
+
 		legendMarker = new LegendMarker(baseChart);
 		legendMarker.setForegroundColor(chartSettings.getColorLegendMarker());
 		plotArea.addCustomPaintListener(legendMarker);
-		//
+
 		if(chartSettings.isShowLegendMarker()) {
 			legendMarker.setDraw(true);
 		} else {
@@ -881,15 +881,15 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IPlotArea plotArea = baseChart.getPlotArea();
 		IChartSettings chartSettings = baseChart.getChartSettings();
-		//
+
 		if(axisZeroMarker != null) {
 			plotArea.removeCustomPaintListener(axisZeroMarker);
 		}
-		//
+
 		axisZeroMarker = new AxisZeroMarker(baseChart);
 		axisZeroMarker.setForegroundColor(chartSettings.getColorAxisZeroMarker());
 		plotArea.addCustomPaintListener(axisZeroMarker);
-		//
+
 		if(chartSettings.isShowAxisZeroMarker()) {
 			axisZeroMarker.setDraw(true);
 		} else {
@@ -901,16 +901,16 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IPlotArea plotArea = baseChart.getPlotArea();
 		IChartSettings chartSettings = baseChart.getChartSettings();
-		//
+
 		if(seriesLabelMarker != null) {
 			plotArea.removeCustomPaintListener(seriesLabelMarker);
 		}
-		//
+
 		seriesLabelMarker = new SeriesLabelMarker(baseChart);
 		seriesLabelMarker.setForegroundColor(chartSettings.getColorSeriesLabelMarker());
 		seriesLabelMarker.setUseDescription(chartSettings.isUseSeriesLabelDescription());
 		plotArea.addCustomPaintListener(seriesLabelMarker);
-		//
+
 		if(chartSettings.isShowSeriesLabelMarker()) {
 			seriesLabelMarker.setDraw(true);
 		} else {
@@ -924,7 +924,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(userRestrictionMarker != null) {
 			plotArea.removeCustomPaintListener(userRestrictionMarker);
 		}
-		//
+
 		userRestrictionMarker = new UserRestrictionMarker(baseChart);
 		plotArea.addCustomPaintListener(userRestrictionMarker);
 		userRestrictionMarker.setDraw(true);
@@ -1011,12 +1011,12 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		GridData gridDataVertical = (GridData)sliderVertical.getLayoutData();
 		gridDataVertical.exclude = !chartSettings.isVerticalSliderVisible();
 		sliderVertical.setVisible(chartSettings.isVerticalSliderVisible());
-		//
+
 		Slider sliderHorizontal = sliderHorizontalControl.get();
 		GridData gridDataHorizontal = (GridData)sliderHorizontal.getLayoutData();
 		gridDataHorizontal.exclude = !chartSettings.isHorizontalSliderVisible();
 		sliderHorizontal.setVisible(chartSettings.isHorizontalSliderVisible());
-		//
+
 		layout(false);
 	}
 
@@ -1025,7 +1025,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(rangeHintPaintListener != null) {
 			baseChart.removePaintListener(rangeHintPaintListener);
 		}
-		//
+
 		rangeHintPaintListener = new RangeHintPaintListener();
 		baseChart.addPaintListener(rangeHintPaintListener);
 	}
@@ -1059,24 +1059,24 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-		//
+
 		if(xAxis != null && yAxis != null) {
 			/*
 			 * Relative binding to Integer.MAX_VALUE.
 			 */
 			int maxX = HORIZONTAL_SCROLL_LENGTH;
 			int maxY = VERTICAL_SCROLL_LENGTH;
-			//
+
 			double deltaX = baseChart.getMaxX() - baseChart.getMinX();
 			double deltaY = baseChart.getMaxY() - baseChart.getMinY();
-			//
+
 			if(deltaX > 0 && deltaY > 0) {
 				/*
 				 * Coefficients
 				 */
 				double coeffX = maxX / deltaX;
 				double coeffY = maxY / deltaY;
-				//
+
 				double minRangeX = (xAxis.getRange().lower - baseChart.getMinX()) * coeffX;
 				double maxRangeX = (xAxis.getRange().upper - baseChart.getMinX()) * coeffX;
 				double thumbRangeX = maxRangeX - minRangeX;
@@ -1086,7 +1086,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				if(Double.isNaN(minRangeX) || Double.isNaN(maxRangeX)) {
 					return;
 				}
-				//
+
 				double maxRangeY = (baseChart.getMaxY() - yAxis.getRange().upper) * coeffY;
 				double minRangeY = (baseChart.getMaxY() - yAxis.getRange().lower) * coeffY;
 				double thumbRangeY = Math.abs(minRangeY - maxRangeY);
@@ -1101,18 +1101,18 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				 */
 				int minSelectionX = (minRangeX < 0) ? 0 : (int)minRangeX;
 				int thumbSelectionX = (thumbRangeX < 1) ? 1 : (int)thumbRangeX;
-				//
+
 				int maxSelectionY = (maxRangeY < 0) ? 0 : (int)maxRangeY;
 				int thumbSelectionY = (thumbRangeY < 1) ? 1 : (int)thumbRangeY;
-				//
+
 				boolean isHorizontal = RangeSupport.isOrientationHorizontal(baseChart);
-				//
+
 				Slider sliderVertical = sliderVerticalControl.get();
 				sliderVertical.setMinimum(0);
 				sliderVertical.setMaximum((isHorizontal) ? maxY : maxX);
 				sliderVertical.setThumb((isHorizontal) ? thumbSelectionY : thumbSelectionX);
 				sliderVertical.setSelection((isHorizontal) ? maxSelectionY : minSelectionX);
-				//
+
 				Slider sliderHorizontal = sliderHorizontalControl.get();
 				sliderHorizontal.setMinimum(0);
 				sliderHorizontal.setMaximum((isHorizontal) ? maxX : maxY);
@@ -1216,21 +1216,21 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private void setAxisSettings(IAxis axis, IAxisSettings axisSettings) {
 
 		if(axis != null && axisSettings != null) {
-			//
+
 			String axisText = axisSettings.getTitle();
 			ITitle title = axis.getTitle();
 			title.setText(axisText);
 			title.setVisible(axisSettings.isVisible() && axisSettings.isTitleVisible());
 			title.setFont(axisSettings.getTitleFont());
-			//
+
 			IAxisTick axisTick = axis.getTick();
 			axisTick.setFormat(axisSettings.getDecimalFormat());
 			axisTick.setVisible(axisSettings.isVisible());
-			//
+
 			IGrid grid = axis.getGrid();
 			grid.setForeground(axisSettings.getGridColor());
 			grid.setStyle(axisSettings.getGridLineStyle());
-			//
+
 			axis.setPosition(axisSettings.getPosition());
 			/*
 			 * Set the color on demand.
@@ -1251,7 +1251,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			styleRange.font = font;
 			styleRange.rise = getAxisExtraSpaceTitle(axis, axisSettings);
 			title.setStyleRanges(new StyleRange[]{styleRange});
-			//
+
 			axis.enableLogScale(axisSettings.isEnableLogScale());
 			axis.setLogScaleBase(axisSettings.getLogScaleBase());
 			axis.setReversed(axisSettings.isReversed());
@@ -1306,7 +1306,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(orientation == SWT.VERTICAL) {
 			extraSpaceTitle *= -1;
 		}
-		//
+
 		return extraSpaceTitle;
 	}
 
@@ -1325,7 +1325,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 		this.setLayout(new FillLayout());
 		sashForm = new SashForm(this, SWT.HORIZONTAL);
-		//
+
 		chartSection = createChartSection(sashForm);
 		extendedLegendUI = createLegendSection(sashForm);
 		/*
@@ -1353,7 +1353,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		createSliderVertical(composite);
 		compositeChart = createChart(composite);
 		createSliderHorizontal(composite);
-		//
+
 		return composite;
 	}
 
@@ -1362,7 +1362,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		ExtendedLegendUI extendedLegendUI = new ExtendedLegendUI(parent, SWT.NONE);
 		extendedLegendUI.setScrollableChart(this);
 		extendedLegendUI.setLayout(new GridLayout(1, true));
-		//
+
 		return extendedLegendUI;
 	}
 
@@ -1372,7 +1372,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		slider.setLayoutData(new GridData(GridData.FILL_VERTICAL));
 		slider.setOrientation(SWT.RIGHT_TO_LEFT); // See Bug #511257
 		slider.setVisible(true);
-		//
+
 		slider.addListener(SWT.Selection, new Listener() {
 
 			@Override
@@ -1380,7 +1380,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 				IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 				IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-				//
+
 				if(xAxis != null && yAxis != null) {
 					Range range = RangeSupport.calculateShiftedRange(baseChart, yAxis.getRange(), slider.getSelection(), SWT.VERTICAL);
 					if(RangeSupport.applyVerticalSlide(baseChart, xAxis, yAxis, range, event)) {
@@ -1390,7 +1390,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				}
 			}
 		});
-		//
+
 		sliderVerticalControl.set(slider);
 	}
 
@@ -1399,10 +1399,10 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		composite.setLayout(new GridLayout(1, true));
-		//
+
 		createRangeInfoUI(composite);
 		createBaseChart(composite);
-		//
+
 		return composite;
 	}
 
@@ -1445,7 +1445,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				int x = e.x;
 				int y = e.y;
 				Rectangle boundsPlotArea = baseChart.getPlotArea().getBounds();
-				//
+
 				if(x >= boundsPlotArea.x && x <= (boundsPlotArea.x + boundsPlotArea.width)) {
 					if(y >= boundsPlotArea.y + boundsPlotArea.height) {
 						/*
@@ -1493,7 +1493,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		slider.setLayoutData(gridData);
 		slider.setOrientation(SWT.LEFT_TO_RIGHT);
 		slider.setVisible(true);
-		//
+
 		slider.addListener(SWT.Selection, new Listener() {
 
 			@Override
@@ -1501,7 +1501,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 				IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 				IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-				//
+
 				if(xAxis != null && yAxis != null) {
 					Range range = RangeSupport.calculateShiftedRange(baseChart, xAxis.getRange(), slider.getSelection(), SWT.HORIZONTAL);
 					if(RangeSupport.applyHorizontalSlide(baseChart, xAxis, yAxis, range, event)) {
@@ -1511,7 +1511,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				}
 			}
 		});
-		//
+
 		sliderHorizontalControl.set(slider);
 	}
 
@@ -1553,7 +1553,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			}
 			plotArea.setMenu(menu);
 			createMenuItems(menu);
-			//
+
 			menu.addMenuListener(new MenuListener() {
 
 				@Override

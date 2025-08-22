@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -74,16 +74,16 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Composite container = (Composite)super.createDialogArea(parent);
-		//
+
 		Composite composite = new Composite(container, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(2, false);
 		composite.setLayout(layout);
-		//
+
 		createSectionDescription(composite);
 		createSectionType(composite);
 		createSectionRegex(composite);
-		//
+
 		initialize();
 		return container;
 	}
@@ -125,7 +125,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 				validate();
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -142,11 +142,11 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 				if(element instanceof IEnumLabel) {
 					return ((IEnumLabel)element).label();
 				}
-				//
+
 				return null;
 			}
 		});
-		//
+
 		Combo combo = comboViewer.getCombo();
 		combo.setToolTipText("Select the mappings type.");
 		combo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
@@ -162,9 +162,9 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 				validate();
 			}
 		});
-		//
+
 		comboViewer.setSelection(new StructuredSelection(mappingsType));
-		//
+
 		return comboViewer;
 	}
 
@@ -182,7 +182,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 				validate();
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -198,7 +198,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 		if(MappingsType.NONE.equals(mappingsType)) {
 			message = "Please select a valid mappings type.";
 		}
-		//
+
 		if(regularExpression == null || regularExpression.isEmpty()) {
 			message = "Please type in a regular expression.";
 		} else {
@@ -208,7 +208,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 				message = "The regular expression is not valid.";
 			}
 		}
-		//
+
 		setErrorMessage(message);
 	}
 }

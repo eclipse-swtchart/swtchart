@@ -102,7 +102,7 @@ public class SetRangeChartHandler extends AbstractChartMenuEntry implements ICha
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		DecimalFormat decimalFormat;
 		int selectedAxis;
-		//
+
 		if(axis.equals(IExtendedChart.X_AXIS)) {
 			selectedAxis = chartRangeValues.getAxisX();
 			decimalFormat = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, selectedAxis);
@@ -115,7 +115,7 @@ public class SetRangeChartHandler extends AbstractChartMenuEntry implements ICha
 		 */
 		double valueStart;
 		double valueStop;
-		//
+
 		if(axis.equals(IExtendedChart.X_AXIS)) {
 			valueStart = decimalFormat.parse(chartRangeValues.getStartX()).doubleValue();
 			valueStop = decimalFormat.parse(chartRangeValues.getStopX()).doubleValue();
@@ -137,7 +137,7 @@ public class SetRangeChartHandler extends AbstractChartMenuEntry implements ICha
 				range = new Range(valueStart, valueStop);
 			}
 		}
-		//
+
 		return range;
 	}
 }

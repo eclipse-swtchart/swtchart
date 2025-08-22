@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -79,7 +79,7 @@ public class PieChart extends ScrollableChart {
 				ICircularSeries<?> circularSeries = createCircularSeries(seriesData, seriesSettings);
 				baseChart.applySeriesSettings(circularSeries, seriesSettings);
 			} catch(SeriesException e) {
-				//
+
 			}
 			/*
 			 * Finish
@@ -116,11 +116,11 @@ public class PieChart extends ScrollableChart {
 				break;
 			}
 		}
-		//
+
 		if(handledEventProcessor != null) {
 			chartSettings.removeHandledEventProcessor(handledEventProcessor);
 		}
-		//
+
 		IHandledEventProcessor circularHandledEventProcessor = new CircularMouseDownEvent(this);
 		chartSettings.addHandledEventProcessor(circularHandledEventProcessor);
 	}

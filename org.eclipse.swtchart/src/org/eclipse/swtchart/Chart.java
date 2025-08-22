@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -57,7 +57,7 @@ public class Chart extends Composite implements Listener {
 	 * Data Series
 	 */
 	protected SeriesSet seriesSet;
-	//
+
 	private final Title title;
 	private final Legend legend;
 	private final AxisSet axisSet;
@@ -65,7 +65,7 @@ public class Chart extends Composite implements Listener {
 	private int orientation; // SWT.HORIZONTAL or SWT.VERTICAL
 	private boolean compressEnabled;
 	private boolean updateSuspended;
-	//
+
 	private final List<PaintListener> paintListener = new ArrayList<>();
 
 	public Chart(Composite parent, int style) {

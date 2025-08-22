@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2021 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,7 +27,7 @@ public class DemoChart {
 		shell.setText("DemoChart (macOS)");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		LineChartX lineChartX = new LineChartX(shell);
 		shell.open();
 		/*
@@ -44,7 +44,7 @@ public class DemoChart {
 		chartSettings.addHandledEventProcessor(new MouseMoveShiftEventX());
 		chartSettings.addHandledEventProcessor(new MouseUpEventX());
 		lineChartX.applySettings(chartSettings);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

@@ -64,7 +64,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	public static final int ID_PRIMARY_Y_AXIS = 0;
 	public static final String DEFAULT_TITLE_X_AXIS = Messages.getString(Messages.X_AXIS);
 	public static final String DEFAULT_TITLE_Y_AXIS = Messages.getString(Messages.Y_AXIS);
-	//
+
 	public static final String SELECTED_SERIES_NONE = Messages.getString(Messages.NONE);
 	/*
 	 * see: IHandledEventProcessor
@@ -93,12 +93,12 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 */
 	private int redrawFrequency = 1;
 	private int redrawCounter = 0;
-	//
+
 	private List<ICustomSelectionHandler> customRangeSelectionHandlers;
 	private List<ICustomSelectionHandler> customPointSelectionHandlers;
 	private List<ISeriesModificationListener> seriesModificationListeners;
 	private List<ISeriesStatusListener> seriesStatusListeners;
-	//
+
 	private UserSelection userSelection;
 	private long clickStartTime;
 	private Set<String> selectedSeriesIds;
@@ -118,9 +118,9 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	public static final int SHIFT_CONSTRAINT_STRETCH_X = 1 << 4;
 	public static final int SHIFT_CONSTRAINT_BROADEN_X = 1 << 5;
 	public static final int SHIFT_CONSTRAINT_NARROW_X = 1 << 6;
-	//
+
 	private int shiftConstraints = SHIFT_CONSTRAINT_NONE;
-	//
+
 	public static final long DELTA_MOVE_TIME = 350;
 	private long moveStartTime = 0;
 	private int xMoveStart = 0;
@@ -134,15 +134,15 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 * Custom Paint Series (Experimental)
 	 */
 	private List<ICustomSeries> customSeriesList = new ArrayList<>();
-	//
+
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
-	//
+
 	private ClickBindingHelpDialog clickBindingPopup;
 
 	public BaseChart(Composite parent, int style) {
 
 		super(parent, style);
-		//
+
 		chartSettings = new ChartSettings();
 		/*
 		 * Rectangle range selection.
@@ -158,7 +158,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		 * Create the default x and y axis.
 		 */
 		IAxisSet axisSet = getAxisSet();
-		//
+
 		IAxis xAxisPrimary = axisSet.getXAxis(ID_PRIMARY_X_AXIS);
 		ITitle titleX = xAxisPrimary.getTitle();
 		titleX.setText(DEFAULT_TITLE_X_AXIS);
@@ -171,7 +171,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		xAxisPrimary.setDrawAxisLine(true);
 		xAxisPrimary.setCategorySeries(new String[]{});
 		xAxisPrimary.setIntegerDataPointAxis(false);
-		//
+
 		IAxis yAxisPrimary = axisSet.getYAxis(ID_PRIMARY_Y_AXIS);
 		ITitle titleY = yAxisPrimary.getTitle();
 		titleY.setText(DEFAULT_TITLE_Y_AXIS);
@@ -183,12 +183,12 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		yAxisPrimary.setReversed(false);
 		yAxisPrimary.setDrawAxisLine(true);
 		yAxisPrimary.setIntegerDataPointAxis(false);
-		//
+
 		handledSelectionEvents = new Stack<>();
 		redoSelection = null;
-		//
+
 		dataShiftHistory = new HashMap<>();
-		//
+
 		setData("org.eclipse.e4.ui.css.CssClassName", "BaseChart"); //$NON-NLS-1$ //$NON-NLS-2$
 		/*
 		 * Draw the custom paint series elements (Experimental).
@@ -222,7 +222,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		customSeries.setLabel(label);
 		customSeries.setDescription(description);
 		customSeriesList.add(customSeries);
-		//
+
 		return customSeries;
 	}
 
@@ -242,7 +242,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				break exitloop;
 			}
 		}
-		//
+
 		if(customSeriesDelete != null) {
 			customSeriesList.remove(customSeriesDelete);
 		}
@@ -396,13 +396,13 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			stop = axis.getRange().upper;
 			length = getPlotArea().getSize().y;
 		}
-		//
+
 		if(positionStart > 0 && positionStop > 0 && positionStart < length && positionStop < length) {
-			//
+
 			double delta = stop - start;
 			double percentageStart;
 			double percentageStop;
-			//
+
 			if(orientation.equals(IExtendedChart.X_AXIS)) {
 				percentageStart = ((100.0d / length) * positionStart) / 100.0d;
 				percentageStop = ((100.0d / length) * positionStop) / 100.0d;
@@ -410,7 +410,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				percentageStart = (100.0d - ((100.0d / length) * positionStart)) / 100.0d;
 				percentageStop = (100.0d - ((100.0d / length) * positionStop)) / 100.0d;
 			}
-			//
+
 			shiftValue = (start + delta * percentageStop) - (start + delta * percentageStart);
 		}
 		return shiftValue;
@@ -463,7 +463,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		double start;
 		double stop;
 		int length;
-		//
+
 		if(orientation.equals(IExtendedChart.X_AXIS)) {
 			IAxis axis = getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 			if(axis.isReversed()) {
@@ -485,7 +485,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			}
 			length = getPlotArea().getSize().y;
 		}
-		//
+
 		if(position <= 0) {
 			primaryValue = start;
 		} else if(position > length) {
@@ -571,7 +571,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		for(ISeries<?> serie : series) {
 			seriesIds.add(serie.getId());
 		}
-		//
+
 		return seriesIds;
 	}
 
@@ -589,12 +589,12 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			 */
 			int currentLineStyle = e.gc.getLineStyle();
 			e.gc.setLineStyle(SWT.LINE_DOT);
-			//
+
 			int xMin = Math.min(userSelection.getStartX(), userSelection.getStopX());
 			int xMax = Math.max(userSelection.getStartX(), userSelection.getStopX());
 			int yMin = Math.min(userSelection.getStartY(), userSelection.getStopY());
 			int yMax = Math.max(userSelection.getStartY(), userSelection.getStopY());
-			//
+
 			RangeRestriction rangeRestriction = getRangeRestriction();
 			if(isSelectXY(rangeRestriction)) {
 				/*
@@ -611,7 +611,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 					e.gc.drawLine(xMin, yMin, xMin, yMax);
 				}
 			}
-			//
+
 			e.gc.setLineStyle(currentLineStyle);
 		}
 	}
@@ -680,7 +680,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 					if(eventMask == SWT.NONE) {
 						continue;
 					}
-					//
+
 					if((event.stateMask & eventMask) == eventMask) {
 						List<IEventProcessor> eventProcessors = eventProcessorMap.get(eventMask);
 						handleEventProcessors(eventProcessors, event);
@@ -819,7 +819,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			 */
 			String originalDescriptionSeries = seriesSettings.getDescription();
 			String originalDescriptionMapping = seriesSettingsMapping.getDescription();
-			//
+
 			if(seriesSettings.isHighlight()) {
 				/*
 				 * Highlight Series Settings
@@ -883,7 +883,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				 * Pie Series
 				 */
 				applyCircularSeriesSettings(circularSeries, circularSeriesSettings);
-				//
+
 				String id = circularSeries.getId();
 				NodeDataModel nodeDataModel = circularSeries.getNodeDataModel();
 				if(nodeDataModel != null) {
@@ -949,12 +949,12 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		applyBaseSeriesSettings(circularSeries, circularSeriesSettings);
 		this.getTitle().setText(circularSeriesSettings.getDescription());
-		//
+
 		circularSeries.setSliceColor(circularSeriesSettings.getSliceColor());
 		circularSeries.setBorderColor(circularSeriesSettings.getBorderColor());
 		circularSeries.setBorderWidth(circularSeriesSettings.getBorderWidth());
 		circularSeries.setBorderStyle(circularSeriesSettings.getBorderStyle().value());
-		//
+
 		ISeriesSettings seriesSettingsHighlight = circularSeriesSettings.getSeriesSettingsHighlight();
 		if(seriesSettingsHighlight instanceof ICircularSeriesSettings circularSeriesSettingsHighlight) {
 			circularSeries.setSliceColorHighlight(circularSeriesSettingsHighlight.getSliceColor());
@@ -1299,7 +1299,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				series[i] = 0;
 			}
 		}
-		//
+
 		return series;
 	}
 
@@ -1325,7 +1325,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		if(series != null) {
 			double[] xSeries = series.getXSeries();
 			double[] ySeries = series.getYSeries();
-			//
+
 			if(IExtendedChart.X_AXIS.equals(axisId)) {
 				series.setXSeries(multiplySeries(xSeries, factor));
 			} else if(IExtendedChart.Y_AXIS.equals(axisId)) {
@@ -1349,7 +1349,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		List<IAxisSettings> axisSettingsList = getAxisSettings(axisOrientation);
 		int size = axisSettingsList.size();
 		String[] items = new String[size];
-		//
+
 		for(int i = 0; i < size; i++) {
 			IAxisSettings axisSettings = axisSettingsList.get(i);
 			String label;
@@ -1360,7 +1360,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			}
 			items[i] = label;
 		}
-		//
+
 		return items;
 	}
 
@@ -1368,14 +1368,14 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		List<IAxisSettings> axisSettingsList = new ArrayList<>();
 		IAxis[] axes = getAxes(axisOrientation);
-		//
+
 		for(int i = 0; i < axes.length; i++) {
 			IAxisSettings axisSettings = getAxisSettings(axisOrientation, i);
 			if(axisSettings != null) {
 				axisSettingsList.add(axisSettings);
 			}
 		}
-		//
+
 		return axisSettingsList;
 	}
 
@@ -1383,7 +1383,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		DecimalFormat decimalFormat;
 		IAxisSettings axisSettings = getAxisSettings(axisOrientation, id);
-		//
+
 		if(axisSettings != null) {
 			decimalFormat = axisSettings.getDecimalFormat();
 		} else {
@@ -1408,17 +1408,17 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		IAxisScaleConverter axisScaleConverter = null;
 		IAxisSettings axisSettings = null;
-		//
+
 		if(axisOrientation.equals(IExtendedChart.X_AXIS)) {
 			axisSettings = getXAxisSettings(id);
 		} else {
 			axisSettings = getYAxisSettings(id);
 		}
-		//
+
 		if(axisSettings instanceof ISecondaryAxisSettings secondaryAxisSettings) {
 			axisScaleConverter = secondaryAxisSettings.getAxisScaleConverter();
 		}
-		//
+
 		return axisScaleConverter;
 	}
 
@@ -1508,10 +1508,10 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	public void zoomX(IAxis xAxis, Event event) {
 
 		trackUndoSelection();
-		//
+
 		boolean isZoomReferenceX0 = getChartSettings().getRangeRestriction().isReferenceZoomZeroX();
 		double coordinateX = isZoomReferenceX0 ? 0.0d : xAxis.getDataCoordinate(event.x);
-		//
+
 		if(event.count > 0) {
 			xAxis.zoomIn(coordinateX);
 		} else {
@@ -1521,17 +1521,17 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				xAxis.zoomOut(coordinateX);
 			}
 		}
-		//
+
 		trackRedoSelection();
 	}
 
 	public void zoomY(IAxis yAxis, Event event) {
 
 		trackUndoSelection();
-		//
+
 		boolean isZoomReferenceY0 = getChartSettings().getRangeRestriction().isReferenceZoomZeroY();
 		double coordinateY = isZoomReferenceY0 ? 0.0d : yAxis.getDataCoordinate(event.y);
-		//
+
 		if(event.count > 0) {
 			yAxis.zoomIn(coordinateY);
 		} else {
@@ -1541,7 +1541,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				yAxis.zoomOut(coordinateY);
 			}
 		}
-		//
+
 		trackRedoSelection();
 	}
 
@@ -1565,7 +1565,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				}
 			}
 		}
-		//
+
 		return selectedSeriesId;
 	}
 
@@ -1585,7 +1585,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		int minSelectedHeight;
 		int deltaWidth;
 		int deltaHeight;
-		//
+
 		Point point = getPlotArea().getSize();
 		if((getOrientation() == SWT.HORIZONTAL)) {
 			minSelectedWidth = point.x / MIN_SELECTION_PERCENTAGE;
@@ -1611,7 +1611,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				handleUserSelectionXY(event);
 			}
 		}
-		//
+
 		userSelection.reset();
 		redraw();
 	}
@@ -1701,7 +1701,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		IAxis xAxis = getAxisSet().getXAxis(ID_PRIMARY_X_AXIS);
 		IAxis yAxis = getAxisSet().getYAxis(ID_PRIMARY_Y_AXIS);
-		//
+
 		if((getOrientation() == SWT.HORIZONTAL)) {
 			setHorizontalRange(xAxis, yAxis, xStart, xStop, yStart, yStop);
 		} else {
@@ -1754,7 +1754,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	private IAxis[] getAxes(String axisOrientation) {
 
 		IAxisSet axisSet = getAxisSet();
-		//
+
 		if(axisOrientation.equals(IExtendedChart.X_AXIS)) {
 			return axisSet.getXAxes();
 		} else {
@@ -1793,7 +1793,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		} else if(rangeRestriction.isRestrictSelectX() && rangeRestriction.isRestrictSelectY()) {
 			enableAction = true;
 		}
-		//
+
 		return enableAction;
 	}
 
@@ -1805,7 +1805,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		} else if(rangeRestriction.isRestrictZoomX() && rangeRestriction.isRestrictZoomY()) {
 			enableAction = true;
 		}
-		//
+
 		return enableAction;
 	}
 

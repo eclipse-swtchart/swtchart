@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -63,7 +63,7 @@ public class LineSeries_4_Part extends ChromatogramChart {
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 		colors.put(4, getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
 		colors.put(5, getDisplay().getSystemColor(SWT.COLOR_GRAY));
-		//
+
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		for(int i = 1; i <= 5; i++) {
 			ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES + "4_" + i);
@@ -75,7 +75,7 @@ public class LineSeries_4_Part extends ChromatogramChart {
 			lineSeriesSettingsHighlight.setLineWidth(2);
 			lineSeriesDataList.add(lineSeriesData);
 		}
-		//
+
 		addSeriesData(lineSeriesDataList, LineChart.MEDIUM_COMPRESSION);
 	}
 }

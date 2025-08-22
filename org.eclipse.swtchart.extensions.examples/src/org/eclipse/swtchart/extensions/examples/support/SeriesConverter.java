@@ -26,7 +26,7 @@ public class SeriesConverter {
 
 	public static final String LINE_SERIES = "LineSeries";
 	public static final String SCATTER_SERIES = "ScatterSeries";
-	//
+
 	public static final String LINE_SERIES_1 = "LineSeries1";
 	public static final String LINE_SERIES_1A = "LineSeries1a";
 	public static final String LINE_SERIES_1_ACTIVE_PEAKS = "LineSeries1_ActivePeaks";
@@ -50,14 +50,14 @@ public class SeriesConverter {
 	public static final String LINE_SERIES_5_NEGATIVE = "LineSeries5_Negative";
 	public static final String LINE_SERIES_6 = "LineSeries6";
 	public static final String LINE_SERIES_7 = "LineSeries7";
-	//
+
 	public static final String BAR_SERIES_1 = "BarSeries1";
 	public static final String BAR_SERIES_2 = "BarSeries2";
 	public static final String BAR_SERIES_3_POSITIVE = "BarSeries3-Positive";
 	public static final String BAR_SERIES_3_NEGATIVE = "BarSeries3-Negative";
 	public static final String BAR_SERIES_4_POSITIVE = "BarSeries4-Positive";
 	public static final String BAR_SERIES_5_NEGATIVE = "BarSeries5-Negative";
-	//
+
 	public static final String SCATTER_SERIES_1 = "ScatterSeries1";
 	public static final String SCATTER_SERIES_2_1 = "ScatterSeries2_1";
 	public static final String SCATTER_SERIES_2_2 = "ScatterSeries2_2";
@@ -68,9 +68,9 @@ public class SeriesConverter {
 	public static final String SCATTER_SERIES_2_7 = "ScatterSeries2_7";
 	public static final String SCATTER_SERIES_2_8 = "ScatterSeries2_8";
 	public static final String SCATTER_SERIES_2_9 = "ScatterSeries2_9";
-	//
+
 	public static final String BOXPLOT_SERIES_1 = "BoxPlotSeries1";
-	//
+
 	public static final String MEASUREMENT_SERIES_1_READINGS = "Measurement1_Readings";
 	public static final String MEASUREMENT_SERIES_1_REGRESSION = "Measurement1_Regression";
 	public static final String MEASUREMENT_SERIES_2_READINGS_1 = "Measurement2_Readings_1";
@@ -92,7 +92,7 @@ public class SeriesConverter {
 		int size = getNumberOfLines(fileName);
 		double[] xSeries = new double[size];
 		double[] ySeries = new double[size];
-		//
+
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))) {
 			String line;
 			int i = 0;
@@ -107,7 +107,7 @@ public class SeriesConverter {
 			}
 		} catch(Exception e) {
 		}
-		//
+
 		ISeriesData seriesData = new SeriesData(xSeries, ySeries, id);
 		return seriesData;
 	}
@@ -116,7 +116,7 @@ public class SeriesConverter {
 
 		int size = getNumberOfLines(fileName);
 		double[] ySeries = new double[size];
-		//
+
 		BufferedReader bufferedReader = null;
 		try {
 			String line;
@@ -126,17 +126,17 @@ public class SeriesConverter {
 				ySeries[i++] = Double.parseDouble(line.trim());
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}
-		//
+
 		ISeriesData seriesData = new SeriesData(ySeries, fileName);
 		return seriesData;
 	}
@@ -144,7 +144,7 @@ public class SeriesConverter {
 	public static List<ISeriesData> getSeriesScatter(String fileName) {
 
 		List<ISeriesData> scatterSeriesList = new ArrayList<ISeriesData>();
-		//
+
 		BufferedReader bufferedReader = null;
 		try {
 			String line;
@@ -158,13 +158,13 @@ public class SeriesConverter {
 				scatterSeriesList.add(seriesData);
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}
@@ -199,7 +199,7 @@ public class SeriesConverter {
 			}
 		} catch(Exception e) {
 		}
-		//
+
 		return scatterSeriesList;
 	}
 
@@ -213,13 +213,13 @@ public class SeriesConverter {
 				i++;
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}

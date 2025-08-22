@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 Lablicate GmbH.
+ * Copyright (c) 2024, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -30,7 +30,7 @@ public class RangeSupport {
 
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-		//
+
 		if(xAxis != null && yAxis != null) {
 			/*
 			 * Slide to the previous or next block.
@@ -40,7 +40,7 @@ public class RangeSupport {
 			double delta = (xAxis.getRange().upper - xAxis.getRange().lower) * factor;
 			double lower;
 			double upper;
-			//
+
 			if(slidePrevious) {
 				/*
 				 * Previous
@@ -72,7 +72,7 @@ public class RangeSupport {
 
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-		//
+
 		if(xAxis != null && yAxis != null) {
 			/*
 			 * Slide to the previous or next block.
@@ -82,7 +82,7 @@ public class RangeSupport {
 			double delta = (yAxis.getRange().upper - yAxis.getRange().lower) * factor;
 			double lower;
 			double upper;
-			//
+
 			if(slidePrevious) {
 				/*
 				 * Previous
@@ -127,7 +127,7 @@ public class RangeSupport {
 		 */
 		double deltaX = baseChart.getMaxX() - baseChart.getMinX();
 		double deltaY = baseChart.getMaxY() - baseChart.getMinY();
-		//
+
 		if(deltaX > 0 && deltaY > 0) {
 			/*
 			 * Shift calculation
@@ -153,13 +153,13 @@ public class RangeSupport {
 					max = (!isChartHorizontal ? (selection - shiftX) / coeffX : (shiftY - selection) / coeffY);
 					min = (!isChartHorizontal ? max + (range.upper - range.lower) : max - (range.upper - range.lower));
 				}
-				//
+
 				if(!Double.isNaN(min) && !Double.isNaN(max)) {
 					return new Range(min, max);
 				}
 			}
 		}
-		//
+
 		return null;
 	}
 
@@ -185,12 +185,12 @@ public class RangeSupport {
 						adjustSecondaryYAxes(baseChart);
 					}
 				}
-				//
+
 				baseChart.redraw();
 				return true;
 			}
 		}
-		//
+
 		return false;
 	}
 
@@ -210,11 +210,11 @@ public class RangeSupport {
 					adjustSecondaryXAxes(baseChart);
 				}
 			}
-			//
+
 			baseChart.redraw();
 			return true;
 		}
-		//
+
 		return false;
 	}
 

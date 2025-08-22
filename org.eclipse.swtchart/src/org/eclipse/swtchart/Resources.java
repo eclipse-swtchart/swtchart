@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 Lablicate GmbH.
+ * Copyright (c) 2008, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -31,12 +31,12 @@ public class Resources {
 	 * other systems than Microsoft and looks similar.
 	 */
 	public static final String DEFAULT_FONT_NAME = "Verdana";
-	//
+
 	public static final int LARGE_FONT_SIZE = 13;
 	public static final int MEDIUM_FONT_SIZE = 11;
 	public static final int SMALL_FONT_SIZE = 9;
 	public static final String RGB_DELIMITER = ",";
-	//
+
 	private static final Map<RGB, Color> colorMap = new HashMap<>();
 	private static final Map<String, Font> fontMap = new HashMap<>();
 	private static final Map<String, TextLayout> textLayoutMap = new HashMap<>();
@@ -61,11 +61,11 @@ public class Resources {
 				int red = Integer.parseInt(values[0]);
 				int green = Integer.parseInt(values[1]);
 				int blue = Integer.parseInt(values[2]);
-				//
+
 				return getColor(new RGB(red, green, blue));
 			}
 		}
-		//
+
 		return getColorDefault();
 	}
 
@@ -74,15 +74,15 @@ public class Resources {
 		if(color == null) {
 			color = getColorDefault();
 		}
-		//
+
 		StringBuilder builder = new StringBuilder();
-		//
+
 		builder.append(color.getRed());
 		builder.append(RGB_DELIMITER);
 		builder.append(color.getGreen());
 		builder.append(RGB_DELIMITER);
 		builder.append(color.getBlue());
-		//
+
 		return builder.toString();
 	}
 
@@ -129,7 +129,7 @@ public class Resources {
 			font = new Font(getDisplay(), name, height, style);
 			fontMap.put(key, font);
 		}
-		//
+
 		return font;
 	}
 
@@ -140,7 +140,7 @@ public class Resources {
 			textLayout = new TextLayout(getDisplay());
 			textLayoutMap.put(uuid, textLayout);
 		}
-		//
+
 		return textLayout;
 	}
 
@@ -181,7 +181,7 @@ public class Resources {
 		builder.append(height);
 		builder.append("_");
 		builder.append(style);
-		//
+
 		return builder.toString();
 	}
 

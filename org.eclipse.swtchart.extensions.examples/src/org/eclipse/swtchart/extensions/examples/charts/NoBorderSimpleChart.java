@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,7 +34,7 @@ public class NoBorderSimpleChart {
 		shell.setText("NoBorderSimpleChart");
 		shell.setSize(300, 300);
 		shell.setLayout(new FillLayout());
-		//
+
 		ScrollableChart scrollableChart = new PeakSeries_1_Part(shell);
 		shell.open();
 		/*
@@ -58,13 +58,13 @@ public class NoBorderSimpleChart {
 		disableSecondaryAxes(chartSettings.getSecondaryAxisSettingsListX());
 		disableSecondaryAxes(chartSettings.getSecondaryAxisSettingsListY());
 		scrollableChart.applySettings(chartSettings);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();
 			}
 		}
-		//
+
 		font.dispose();
 		display.dispose();
 	}
