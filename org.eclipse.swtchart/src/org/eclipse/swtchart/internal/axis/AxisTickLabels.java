@@ -541,7 +541,6 @@ public class AxisTickLabels implements PaintListener {
 	 *            maximum value
 	 * @return rounded value.
 	 */
-	@SuppressWarnings({"rawtypes"})
 	private BigDecimal getGridStep(int lengthInPixels, double min, double max) {
 
 		if(lengthInPixels <= 0) {
@@ -590,7 +589,7 @@ public class AxisTickLabels implements PaintListener {
 		 * Advanced calculation.
 		 */
 		if(axis.isIntegerDataPointAxis()) {
-			for(ISeries series : (ISeries[])chart.getSeriesSet().getSeries()) {
+			for(ISeries<?> series : chart.getSeriesSet().getSeries()) {
 				if(axis.getDirection() == Direction.X) {
 					if(series.getXAxisId() == axis.getId() && series.getXSeries().length != 0) {
 						int xSeriesLength = series.getXSeries().length;
