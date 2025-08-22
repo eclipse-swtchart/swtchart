@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -57,7 +57,7 @@ public class ChromatogramChart extends LineChart {
 		chartSettings.getRangeRestriction().setZeroY(true);
 		chartSettings.removeMenuEntry(chartSettings.getChartMenuEntryByClass(ResetChartHandler.class));
 		chartSettings.addMenuEntry(new ResetChromatogramHandler());
-		//
+
 		setPrimaryAxisSet(chartSettings);
 		addSecondaryAxisSet(chartSettings);
 		applySettings(chartSettings);
@@ -73,7 +73,7 @@ public class ChromatogramChart extends LineChart {
 		primaryAxisSettingsX.setPosition(Position.Secondary);
 		primaryAxisSettingsX.setVisible(false);
 		primaryAxisSettingsX.setGridLineStyle(LineStyle.NONE);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle(Messages.getString(Messages.INTENSITY));
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH))); //$NON-NLS-1$
@@ -88,7 +88,7 @@ public class ChromatogramChart extends LineChart {
 		secondaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH))); //$NON-NLS-1$
 		secondaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_LIST_FOREGROUND));
 		chartSettings.getSecondaryAxisSettingsListX().add(secondaryAxisSettingsX);
-		//
+
 		ISecondaryAxisSettings secondaryAxisSettingsY = new SecondaryAxisSettings(Messages.getString(Messages.RELATIVE_INTENSITY), new PercentageConverter(SWT.VERTICAL, true));
 		secondaryAxisSettingsY.setPosition(Position.Secondary);
 		secondaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH))); //$NON-NLS-1$

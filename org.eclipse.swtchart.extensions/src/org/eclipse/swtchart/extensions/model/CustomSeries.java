@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,7 +23,7 @@ public class CustomSeries implements ICustomSeries {
 	private String label = "";
 	private String description = "";
 	private boolean draw = true;
-	//
+
 	private Set<ITextElement> textElements = new HashSet<>();
 	private Set<IGraphicElement> graphicElements = new HashSet<>();
 

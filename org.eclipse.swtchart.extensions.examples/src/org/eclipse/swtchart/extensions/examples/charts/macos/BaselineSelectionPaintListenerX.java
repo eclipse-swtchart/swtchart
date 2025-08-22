@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2021 Lablicate GmbH.
+ * Copyright (c) 2011, 2025 Lablicate GmbH.
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -20,12 +20,11 @@ import org.eclipse.swtchart.ICustomPaintListener;
 public class BaselineSelectionPaintListenerX implements ICustomPaintListener {
 
 	private final static int VERTICAL_MARKER_SIZE = 10;
-	//
+
 	private int x1;
 	private int y1;
 	private int x2;
 	private int y2;
-	//
 
 	@Override
 	public void paintControl(PaintEvent e) {

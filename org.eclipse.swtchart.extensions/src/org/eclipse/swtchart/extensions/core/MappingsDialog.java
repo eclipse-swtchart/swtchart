@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -83,14 +83,14 @@ public class MappingsDialog extends Dialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Composite composite = (Composite)super.createDialogArea(parent);
-		//
+
 		createToolbarMain(composite);
 		createMappingsList(composite);
 		createToolbarInfo(composite);
-		//
+
 		updateInput();
 		updateToolbarInfo(""); //$NON-NLS-1$
-		//
+
 		return composite;
 	}
 
@@ -99,7 +99,7 @@ public class MappingsDialog extends Dialog {
 		MappingsListUI mappingsListUI = new MappingsListUI(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
 		Table table = mappingsListUI.getTable();
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		table.addMouseListener(new MouseAdapter() {
 
 			@Override
@@ -138,7 +138,7 @@ public class MappingsDialog extends Dialog {
 				}
 			}
 		});
-		//
+
 		listControl.set(mappingsListUI);
 	}
 
@@ -149,7 +149,7 @@ public class MappingsDialog extends Dialog {
 		gridData.horizontalAlignment = SWT.END;
 		composite.setLayoutData(gridData);
 		composite.setLayout(new GridLayout(6, false));
-		//
+
 		createButtonAdd(composite);
 		createButtonDelete(composite);
 		createButtonDeleteAll(composite);
@@ -190,7 +190,7 @@ public class MappingsDialog extends Dialog {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -218,13 +218,13 @@ public class MappingsDialog extends Dialog {
 							SeriesMapper.remove(mappingsKey);
 						}
 					}
-					//
+
 					updateInput();
 					updateToolbarInfo(Messages.getString(Messages.SELECTED_MAPPING_DELETED));
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -250,7 +250,7 @@ public class MappingsDialog extends Dialog {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -279,13 +279,13 @@ public class MappingsDialog extends Dialog {
 					for(Map.Entry<MappingsKey, ISeriesSettings> mapping : mappings.entrySet()) {
 						SeriesMapper.put(mapping.getKey(), mapping.getValue());
 					}
-					//
+
 					updateInput();
 					updateToolbarInfo(Messages.getString(Messages.MAPPINGS_IMPORTED));
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -317,7 +317,7 @@ public class MappingsDialog extends Dialog {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -336,7 +336,7 @@ public class MappingsDialog extends Dialog {
 				updateToolbarInfo(Messages.getString(Messages.MAPPINGS_SAVED));
 			}
 		});
-		//
+
 		return button;
 	}
 

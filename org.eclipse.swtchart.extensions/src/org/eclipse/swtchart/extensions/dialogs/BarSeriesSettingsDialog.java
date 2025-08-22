@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -72,7 +72,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		String title = "Bar Color";
 		createSectionLabel(parent, title);
-		//
+
 		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
 
 			@Override
@@ -84,14 +84,14 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		barColorControl.set(text);
 	}
 
 	private void createBarOverlaySection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Bar Overlay", "Enable or disable to display the bar overlay.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -103,7 +103,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		barOverlayControl.set(button);
 	}
 
@@ -111,7 +111,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		String title = "Bar Padding";
 		createSectionLabel(parent, title);
-		//
+
 		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
 
 			@Override
@@ -123,7 +123,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		barPaddingControl.set(spinner);
 	}
 
@@ -131,7 +131,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		String title = "Bar Width";
 		createSectionLabel(parent, title);
-		//
+
 		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
 
 			@Override
@@ -143,7 +143,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		barWidthControl.set(spinner);
 	}
 
@@ -151,7 +151,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		String title = "Bar Width Style";
 		createSectionLabel(parent, title);
-		//
+
 		ComboViewer comboViewer = createComboViewer(parent, title, BarWidthStyle.values(), BarWidthStyle.STRETCHED, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
 
 			@Override
@@ -165,14 +165,14 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		barWidthStyleControl.set(comboViewer);
 	}
 
 	private void createEnableStackSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -184,7 +184,7 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 				}
 			}
 		});
-		//
+
 		enableStackControl.set(button);
 	}
 }

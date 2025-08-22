@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -69,14 +69,14 @@ import org.eclipse.swtchart.model.NodeDataModel;
 public class ExtendedLegendUI extends Composite {
 
 	private static final String MENU_TEXT = Messages.getString(Messages.SERIES_POPUP_MENU);
-	//
+
 	private AtomicReference<Button> sortControl = new AtomicReference<>();
 	private AtomicReference<InChartLegendUI> toolbarInChartLegend = new AtomicReference<>();
 	private AtomicReference<SeriesListUI> listControl = new AtomicReference<>();
-	//
+
 	private ScrollableChart scrollableChart;
 	private ISeriesSet seriesSet;
-	//
+
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 
 	public ExtendedLegendUI(Composite parent, int style) {
@@ -101,11 +101,11 @@ public class ExtendedLegendUI extends Composite {
 	private void createControl() {
 
 		setLayout(new GridLayout(1, true));
-		//
+
 		createToolbarMain(this);
 		createToolbarInChartLegend(this);
 		createListSection(this);
-		//
+
 		initialize();
 	}
 
@@ -123,7 +123,7 @@ public class ExtendedLegendUI extends Composite {
 		gridData.horizontalAlignment = SWT.END;
 		composite.setLayoutData(gridData);
 		composite.setLayout(new GridLayout(6, false));
-		//
+
 		createButtonToggleVisibility(composite);
 		createButtonToggleLegend(composite);
 		createButtonToggleSort(composite);
@@ -136,7 +136,7 @@ public class ExtendedLegendUI extends Composite {
 
 		InChartLegendUI inChartLegendUI = new InChartLegendUI(parent, SWT.NONE);
 		inChartLegendUI.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		//
+
 		toolbarInChartLegend.set(inChartLegendUI);
 	}
 
@@ -160,13 +160,13 @@ public class ExtendedLegendUI extends Composite {
 					seriesSettings.setVisibleInLegend(selection);
 					applySettings(baseChart, series, seriesSettings, false);
 				}
-				//
+
 				scrollableChart.redraw();
 				button.setImage(getVisibilityIcon(!visible));
 				listControl.get().refresh();
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -206,7 +206,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -228,7 +228,7 @@ public class ExtendedLegendUI extends Composite {
 				updateSeriesTableSortStatus();
 			}
 		});
-		//
+
 		sortControl.set(button);
 	}
 
@@ -258,7 +258,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -281,7 +281,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -310,7 +310,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -343,7 +343,7 @@ public class ExtendedLegendUI extends Composite {
 		menuManager.addMenuListener(new MapSettingsAction(seriesListUI, false));
 		Menu menu = menuManager.createContextMenu(table);
 		table.setMenu(menu);
-		//
+
 		setClipboardCommand(seriesListUI);
 		table.addMouseListener(new MouseAdapter() {
 
@@ -382,7 +382,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		listControl.set(seriesListUI);
 	}
 
@@ -483,7 +483,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		}
-		//
+
 		return seriesList;
 	}
 
@@ -498,7 +498,7 @@ public class ExtendedLegendUI extends Composite {
 				}
 			}
 		}
-		//
+
 		return circularSeries;
 	}
 

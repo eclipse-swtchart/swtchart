@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2024 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -70,7 +70,7 @@ public class SVGExportHandler extends AbstractSeriesExportHandler implements ISe
 		fileDialog.setText(NAME);
 		fileDialog.setFilterExtensions(new String[]{FILE_EXTENSION});
 		fileDialog.setFileName(scrollableChart.getFileName());
-		//
+
 		String fileName = fileDialog.open();
 		if(fileName != null) {
 			try {
@@ -161,7 +161,7 @@ public class SVGExportHandler extends AbstractSeriesExportHandler implements ISe
 											if(vectorDataExport != null) {
 												exportPlot(printWriter, vectorDataExport, scrollableChart, axisSettings);
 											}
-											//
+
 											MessageDialog.openInformation(shell, TITLE, MESSAGE_OK);
 										} catch(FileNotFoundException e) {
 											MessageDialog.openError(shell, TITLE, MESSAGE_ERROR);
@@ -180,7 +180,7 @@ public class SVGExportHandler extends AbstractSeriesExportHandler implements ISe
 						}
 					}
 				}
-				//
+
 				exportSettingsDialog.reset();
 				scrollableChart.updateLegend();
 			} catch(InvocationTargetException e) {

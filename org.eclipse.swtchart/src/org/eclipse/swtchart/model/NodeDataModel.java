@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -133,7 +133,7 @@ public class NodeDataModel {
 		 */
 		int maxTreeDepth = rootPointer.getMaxSubTreeDepth() - 1;
 		setNodes(new ArrayList[maxTreeDepth + 1]);
-		//
+
 		ArrayList<Node>[] node = (ArrayList<Node>[])getNodes();
 		for(int i = 0; i <= maxTreeDepth; i++) {
 			node[i] = new ArrayList<Node>();
@@ -144,9 +144,9 @@ public class NodeDataModel {
 		 */
 		node[0].add(rootPointer);
 		getRootPointer().updateAngularBounds();
-		//
+
 		getRootPointer().setVisible(true);
-		//
+
 		compressCircularSeries.update();
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,11 +37,11 @@ public class MillisecondsToScanNumberConverter extends AbstractAxisScaleConverte
 		if(scanDelay < 0) {
 			throw new InvalidParameterException(Messages.getString(Messages.SCAN_MUST_BE_GE_0_KEY));
 		}
-		//
+
 		if(scanInterval <= 0) {
 			throw new InvalidParameterException(Messages.getString(Messages.SCAN_MUST_BE_G_0_KEY));
 		}
-		//
+
 		this.scanDelay = scanDelay;
 		this.scanInterval = scanInterval;
 	}

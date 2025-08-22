@@ -63,9 +63,9 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 	private double extendedMaxX;
 	private double extendedMinY;
 	private double extendedMaxY;
-	//
+
 	private boolean isCircularSeries;
-	//
+
 	private Map<Integer, IAxisSettings> xAxisSettingsMap = new HashMap<>();
 	private Map<Integer, IAxisSettings> yAxisSettingsMap = new HashMap<>();
 	/*
@@ -213,7 +213,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 			if(adjustMinMax) {
 				adjustMinMaxRange(axis);
 			}
-			//
+
 			if(axis.getDirection() == Direction.X) {
 				adjustSecondaryXAxes();
 			} else if(axis.getDirection() == Direction.Y) {
@@ -307,7 +307,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				} else {
 					lowerCalculated = range.lower + lowerExtension;
 				}
-				//
+
 				if(lowerCalculated <= min) {
 					range.lower = min;
 				} else {
@@ -328,7 +328,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				} else {
 					upperCalculated = range.upper - upperExtension;
 				}
-				//
+
 				if(upperCalculated >= max) {
 					range.upper = max;
 				} else {
@@ -352,7 +352,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				ICircularSeriesData circularSeriesData = (ICircularSeriesData)seriesData;
 				ICircularSeriesSettings circularSeriesSettings = (ICircularSeriesSettings)seriesSettings;
 				NodeDataModel nodeDataModel = circularSeriesData.getDataModel();
-				//
+
 				isCircularSeries = true;
 				seriesType = circularSeriesSettings.getSeriesType();
 				/*
@@ -386,7 +386,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 						mapSeriesSettings(labels[i], seriesSettingsCopy);
 					}
 				}
-				//
+
 				return circularSeries;
 			} else {
 				/*
@@ -394,7 +394,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				 */
 				double[] xSeries = seriesData.getXSeries();
 				double[] ySeries = seriesData.getYSeries();
-				//
+
 				if(xSeries.length == ySeries.length) {
 					/*
 					 * Put the settings to the map.
@@ -453,11 +453,11 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 		for(ISeries<?> series : seriesSet.getSeries()) {
 			ids.add(series.getId());
 		}
-		//
+
 		for(String id : ids) {
 			seriesSet.deleteSeries(id);
 		}
-		//
+
 		seriesSettingsMap.clear();
 		seriesSettingsMapReset.clear();
 	}
@@ -476,7 +476,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				series.setXSeries(xSeriesNew);
 				double[] ySeriesNew = concatenateSeries(series.getYSeries(), seriesData.getYSeries());
 				series.setYSeries(ySeriesNew);
-				//
+
 				calculateCoordinates(series);
 			}
 		}
@@ -500,7 +500,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 	private SeriesType getSeriesType(ISeriesSettings seriesSettings) {
 
 		SeriesType seriesType;
-		//
+
 		if(seriesSettings instanceof ILineSeriesSettings) {
 			seriesType = SeriesType.LINE;
 		} else if(seriesSettings instanceof IScatterSeriesSettings) {
@@ -512,7 +512,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 		} else {
 			seriesType = null;
 		}
-		//
+
 		return seriesType;
 	}
 
@@ -626,7 +626,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 
 		double[] xSeries = series.getXSeries();
 		double[] ySeries = series.getYSeries();
-		//
+
 		if(xSeries.length != 0) {
 			double seriesMinX = Arrays.stream(xSeries).min().getAsDouble();
 			double seriesMaxX = Arrays.stream(xSeries).max().getAsDouble();
@@ -646,7 +646,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 		minY = (rangeRestriction.isZeroY() && minY < 0.0d) ? 0.0d : minY;
 		minY = (rangeRestriction.isForceZeroMinY()) ? 0.0d : minY;
 		maxY = Math.max(maxY, seriesMaxY);
-		//
+
 		calculateExtendedCoordinates();
 	}
 
@@ -711,7 +711,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 		} else {
 			extendType = rangeRestriction.getExtendTypeY();
 		}
-		//
+
 		double extensionValue = 0.0d;
 		switch(extendType) {
 			case RELATIVE:
@@ -721,7 +721,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				extensionValue = extend;
 				break;
 		}
-		//
+
 		return extensionValue;
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -21,14 +21,14 @@ public class CustomSeriesLabelProvider extends ColumnLabelProvider implements IT
 
 	public static final int INDEX_ID = 0;
 	public static final int INDEX_DRAW = 1;
-	//
+
 	public static final String[] TITLES = { //
 			Messages.getString(Messages.ID), //
 			Messages.getString(Messages.DRAW), //
 			Messages.getString(Messages.LABEL), //
 			Messages.getString(Messages.DESCRIPTION), //
 	};
-	//
+
 	public static final int[] BOUNDS = { //
 			24, //
 			30, //
@@ -74,7 +74,7 @@ public class CustomSeriesLabelProvider extends ColumnLabelProvider implements IT
 					break;
 			}
 		}
-		//
+
 		return text;
 	}
 }

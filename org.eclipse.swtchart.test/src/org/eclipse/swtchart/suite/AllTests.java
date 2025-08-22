@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,5 +32,5 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ChartTest.class, ChartTitleTest.class, LegendTest.class, AxisSetTest.class, AxisTest.class, AxisTickTest.class, AxisTitleTest.class, GridTest.class, SeriesLabelTest.class, SeriesSetTest.class, LineSeriesTest.class, BarSeriesTest.class, ErrorBarTest.class,})
 public class AllTests {
-	//
+
 }

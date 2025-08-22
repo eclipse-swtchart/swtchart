@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -101,12 +101,12 @@ public class SelectionRectangle {
 		if(startPoint == null || endPoint == null) {
 			return;
 		}
-		//
+
 		int minX = Math.min(startPoint.x, endPoint.x);
 		int maxX = Math.max(startPoint.x, endPoint.x);
 		int minY = Math.min(startPoint.y, endPoint.y);
 		int maxY = Math.max(startPoint.y, endPoint.y);
-		//
+
 		gc.drawRectangle(minX, minY, maxX - minX, maxY - minY);
 	}
 }

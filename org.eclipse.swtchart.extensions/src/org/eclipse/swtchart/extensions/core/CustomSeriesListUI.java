@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -36,14 +36,14 @@ public class CustomSeriesListUI extends AbstractSeriesListUI {
 
 	private static final String[] TITLES = CustomSeriesLabelProvider.TITLES;
 	private static final int[] BOUNDS = CustomSeriesLabelProvider.BOUNDS;
-	//
+
 	private static final String COLUMN_DELIMITER = " "; //$NON-NLS-1$
-	//
+
 	private CustomSeriesLabelProvider labelProvider = new CustomSeriesLabelProvider();
 	private IContentProvider contentProvider = ArrayContentProvider.getInstance();
 	private CustomSeriesComparator comparator = new CustomSeriesComparator();
 	private List<TableViewerColumn> columns = new ArrayList<>();
-	//
+
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 
 	public CustomSeriesListUI(Composite parent, int style) {
@@ -183,7 +183,7 @@ public class CustomSeriesListUI extends AbstractSeriesListUI {
 				e.printStackTrace();
 			}
 		}
-		//
+
 		return columns;
 	}
 
@@ -194,7 +194,7 @@ public class CustomSeriesListUI extends AbstractSeriesListUI {
 			builder.append(i);
 			builder.append(COLUMN_DELIMITER);
 		}
-		//
+
 		return builder.toString().trim();
 	}
 }

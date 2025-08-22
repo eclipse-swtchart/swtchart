@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -329,7 +329,7 @@ public class AxisTickLabels implements PaintListener {
 				if(axis.isLogScaleEnabled()) {
 					isMajorTick = isMajorTick(tickLabelValues.get(i));
 				}
-				//
+
 				try {
 					/*
 					 * Check if the value is close to the tick label, then it is a major tick
@@ -346,7 +346,7 @@ public class AxisTickLabels implements PaintListener {
 					// Label is not decimal value but string
 				}
 			}
-			//
+
 			if(hasSpaceToDraw) {
 				if(isMajorTick) {
 					previousPosition = tickLabelPositions.get(i);
@@ -379,12 +379,12 @@ public class AxisTickLabels implements PaintListener {
 		if(format == null) {
 			return new DecimalFormat(DEFAULT_DECIMAL_FORMAT).parse(label).doubleValue();
 		}
-		//
+
 		Object parsed = format.parseObject(label);
 		if(!(parsed instanceof Number)) {
 			throw new ParseException(label, 0);
 		}
-		//
+
 		return ((Number)parsed).doubleValue();
 	}
 
@@ -547,7 +547,7 @@ public class AxisTickLabels implements PaintListener {
 		if(lengthInPixels <= 0) {
 			throw new IllegalArgumentException(Messages.getString(Messages.LENGTH_MUST_BE_POSITIVE));
 		}
-		//
+
 		if(min >= max) {
 			throw new IllegalArgumentException(Messages.getString(Messages.MUST_BE_LESS_MAX));
 		}
@@ -605,7 +605,7 @@ public class AxisTickLabels implements PaintListener {
 				}
 			}
 		}
-		//
+
 		return gridStep;
 	}
 
@@ -729,7 +729,7 @@ public class AxisTickLabels implements PaintListener {
 		if(!axis.getTick().isVisible()) {
 			return;
 		}
-		//
+
 		Color oldBackground = e.gc.getBackground();
 		e.gc.setBackground(chart.getBackground());
 		Color oldForeground = e.gc.getForeground();

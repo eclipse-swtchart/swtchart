@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,7 +41,7 @@ public class Activator extends AbstractUIPlugin {
 	public static final String ICON_DOWN = "ICON_DOWN"; // $NON-NLS-1$
 	public static final String ICON_LEFT = "ICON_LEFT"; // $NON-NLS-1$
 	public static final String ICON_RIGHT = "ICON_RIGHT"; // $NON-NLS-1$
-	//
+
 	private static Activator plugin;
 
 	/**
@@ -94,7 +94,7 @@ public class Activator extends AbstractUIPlugin {
 		imageHashMap.put(ICON_DOWN, "icons/16x16/down.gif"); // $NON-NLS-1$
 		imageHashMap.put(ICON_LEFT, "icons/16x16/left.gif"); // $NON-NLS-1$
 		imageHashMap.put(ICON_RIGHT, "icons/16x16/right.gif"); // $NON-NLS-1$
-		//
+
 		ImageRegistry imageRegistry = getImageRegistry();
 		if(imageRegistry != null) {
 			/*

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,7 @@ public class MappedSeriesSettings {
 	public static final String FILE_NAME = DESCRIPTION.replaceAll("\\s", "") + FILE_EXTENSION; //$NON-NLS-1$ //$NON-NLS-2$
 	public static final String FILTER_EXTENSION = "*" + FILE_EXTENSION; //$NON-NLS-1$
 	public static final String FILTER_NAME = DESCRIPTION + " (*" + FILE_EXTENSION + ")"; //$NON-NLS-1$ //$NON-NLS-2$
-	//
+
 	private MappingsType mappingsType = null;
 	private String identifier = ""; //$NON-NLS-1$
 	private ISeriesSettings seriesSettings = null;

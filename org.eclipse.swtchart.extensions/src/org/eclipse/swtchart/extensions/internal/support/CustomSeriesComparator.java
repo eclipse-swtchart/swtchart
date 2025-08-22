@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,7 @@ import org.eclipse.swtchart.extensions.model.ICustomSeries;
 public class CustomSeriesComparator extends ViewerComparator {
 
 	private static final int DESCENDING = 1;
-	//
+
 	private int propertyIndex = 0;
 	private int direction = DESCENDING;
 
@@ -44,7 +44,7 @@ public class CustomSeriesComparator extends ViewerComparator {
 
 		int sortOrder = 0;
 		if(e1 instanceof ICustomSeries customSeries1 && e2 instanceof ICustomSeries customSeries2) {
-			//
+
 			switch(propertyIndex) {
 				case 0:
 					sortOrder = customSeries1.getId().compareTo(customSeries2.getId());
@@ -63,11 +63,11 @@ public class CustomSeriesComparator extends ViewerComparator {
 					break;
 			}
 		}
-		//
+
 		if(direction == DESCENDING) {
 			sortOrder = -sortOrder;
 		}
-		//
+
 		return sortOrder;
 	}
 }

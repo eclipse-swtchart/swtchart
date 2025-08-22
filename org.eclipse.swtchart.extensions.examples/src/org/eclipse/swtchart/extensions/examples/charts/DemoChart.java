@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,7 +41,7 @@ public class DemoChart {
 		shell.setText("DemoChart");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		ScrollableChart scrollableChart = new LineSeries_1_Part(shell);
 		scrollableChart.setFileName("Demo Chart");
 		shell.open();
@@ -61,7 +61,7 @@ public class DemoChart {
 		addClipboardMenuEntry(chartSettings);
 		addToggleAxisLinesMenuEntry(chartSettings);
 		scrollableChart.applySettings(chartSettings);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();
@@ -100,7 +100,7 @@ public class DemoChart {
 				builder.append(getAxisTicks(axisSet.getXAxes()));
 				builder.append(getAxisTicks(axisSet.getYAxes()));
 				Object[] data = new Object[]{builder.toString()};
-				//
+
 				TextTransfer textTransfer = TextTransfer.getInstance();
 				Transfer[] dataTypes = new Transfer[]{textTransfer};
 				Clipboard clipboard = new Clipboard(Display.getDefault());
@@ -171,11 +171,11 @@ public class DemoChart {
 				for(ISecondaryAxisSettings secondaryAxisSettings : chartSettings.getSecondaryAxisSettingsListX()) {
 					secondaryAxisSettings.setDrawAxisLine(!secondaryAxisSettings.isDrawAxisLine());
 				}
-				//
+
 				for(ISecondaryAxisSettings secondaryAxisSettings : chartSettings.getSecondaryAxisSettingsListY()) {
 					secondaryAxisSettings.setDrawAxisLine(!secondaryAxisSettings.isDrawAxisLine());
 				}
-				//
+
 				scrollableChart.applySettings(chartSettings);
 			}
 		});

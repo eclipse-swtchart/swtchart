@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -88,35 +88,35 @@ public class ScatterSeriesPreferenceInitializer extends AbstractPreferenceInitia
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_LOG_SCALE_BASE, ScatterSeriesPreferenceConstants.DEF_PRIMARY_Y_AXIS_LOG_SCALE_BASE);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_EXTRA_SPACE_TITLE, ScatterSeriesPreferenceConstants.DEF_PRIMARY_Y_AXIS_EXTRA_SPACE_TITLE);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_SIZE_SERIES, ScatterSeriesPreferenceConstants.DEF_SYMBOL_SIZE_SERIES);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_LEFT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_LEFT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_LEFT_TOP);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_RIGHT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_RIGHT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_RIGHT_TOP);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_LEFT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_LEFT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_LEFT_BOTTOM);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_RIGHT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_RIGHT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_RIGHT_BOTTOM);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_HIGHLIGHT_LEFT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_LEFT_TOP, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_HIGHLIGHT_LEFT_TOP);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_TOP);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_RIGHT_TOP, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_HIGHLIGHT_RIGHT_TOP);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_HIGHLIGHT_LEFT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_LEFT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_HIGHLIGHT_LEFT_BOTTOM);
-		//
+
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_BOTTOM);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_RIGHT_BOTTOM, ScatterSeriesPreferenceConstants.DEF_VISIBLE_SERIES_HIGHLIGHT_RIGHT_BOTTOM);

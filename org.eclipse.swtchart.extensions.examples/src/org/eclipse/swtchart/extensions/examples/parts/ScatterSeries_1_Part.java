@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -36,7 +36,7 @@ public class ScatterSeries_1_Part extends PCAChart {
 	private Color COLOR_MAGENTA = getDisplay().getSystemColor(SWT.COLOR_MAGENTA);
 	private Color COLOR_CYAN = getDisplay().getSystemColor(SWT.COLOR_CYAN);
 	private Color COLOR_GRAY = getDisplay().getSystemColor(SWT.COLOR_GRAY);
-	//
+
 	private int SYMBOL_SIZE = 8;
 
 	@Inject
@@ -60,7 +60,7 @@ public class ScatterSeries_1_Part extends PCAChart {
 		 */
 		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(SeriesConverter.SCATTER_SERIES_1);
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
-		//
+
 		for(ISeriesData seriesData : scatterSeriesList) {
 			IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);
 			IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
@@ -81,7 +81,7 @@ public class ScatterSeries_1_Part extends PCAChart {
 	private void applySettings(IScatterSeriesSettings scatterSeriesSettings, double x, double y, int symbolSize) {
 
 		scatterSeriesSettings.setSymbolSize(SYMBOL_SIZE);
-		//
+
 		if(x > 0 && y > 0) {
 			scatterSeriesSettings.setSymbolColor(COLOR_RED);
 			scatterSeriesSettings.setSymbolType(PlotSymbolType.SQUARE);
@@ -95,7 +95,7 @@ public class ScatterSeries_1_Part extends PCAChart {
 			scatterSeriesSettings.setSymbolColor(COLOR_CYAN);
 			scatterSeriesSettings.setSymbolType(PlotSymbolType.INVERTED_TRIANGLE);
 		}
-		//
+
 		IScatterSeriesSettings scatterSeriesSettingsHighlight = (IScatterSeriesSettings)scatterSeriesSettings.getSeriesSettingsHighlight();
 		scatterSeriesSettingsHighlight.setSymbolColor(COLOR_GRAY);
 		scatterSeriesSettingsHighlight.setSymbolType(PlotSymbolType.CIRCLE);

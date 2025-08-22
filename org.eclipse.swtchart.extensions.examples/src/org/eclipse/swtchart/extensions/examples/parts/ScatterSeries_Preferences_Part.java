@@ -94,7 +94,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		gridDataComposite.horizontalAlignment = SWT.END;
 		compositeButtons.setLayoutData(gridDataComposite);
 		compositeButtons.setLayout(new GridLayout(1, false));
-		//
+
 		Button buttonOpenSettings = new Button(compositeButtons, SWT.PUSH);
 		modifySettingsButton(buttonOpenSettings);
 		buttonOpenSettings.addSelectionListener(new SelectionAdapter() {
@@ -108,12 +108,12 @@ public class ScatterSeries_Preferences_Part extends Composite {
 				preferencePrimaryAxesPage.setTitle("Primary Axes");
 				IPreferencePage preferenceDataPage = new ScatterSeriesDataPreferencePage();
 				preferenceDataPage.setTitle("Series Data");
-				//
+
 				PreferenceManager preferenceManager = new PreferenceManager();
 				preferenceManager.addToRoot(new PreferenceNode("1", preferencePage));
 				preferenceManager.addToRoot(new PreferenceNode("2", preferencePrimaryAxesPage));
 				preferenceManager.addToRoot(new PreferenceNode("3", preferenceDataPage));
-				//
+
 				PreferenceDialog preferenceDialog = new PreferenceDialog(e.display.getActiveShell(), preferenceManager);
 				preferenceDialog.create();
 				preferenceDialog.setMessage("Settings");
@@ -127,10 +127,10 @@ public class ScatterSeries_Preferences_Part extends Composite {
 				}
 			}
 		});
-		//
+
 		scatterChart = new ScatterChart(this, SWT.NONE);
 		scatterChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		applyChartSettings();
 		applySeriesSettings();
 	}
@@ -146,7 +146,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		//
+
 		Color colorHintRangeSelector = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
 		Color colorTitle = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_TITLE_COLOR));
 		Color colorBackground = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND));
@@ -161,7 +161,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		Color colorLegendMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
 		Color colorAxisZeroMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
 		Color colorSeriesLabelMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
-		//
+
 		IChartSettings chartSettings = scatterChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
 		chartSettings.setShowRangeSelectorInitially(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY));
@@ -193,7 +193,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		rangeRestriction.setExtendTypeY(RangeRestriction.ExtendType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_EXTEND_TYPE_Y)));
 		rangeRestriction.setExtendMinY(preferenceStore.getDouble(ScatterSeriesPreferenceConstants.P_EXTEND_MIN_Y));
 		rangeRestriction.setExtendMaxY(preferenceStore.getDouble(ScatterSeriesPreferenceConstants.P_EXTEND_MAX_Y));
-		//
+
 		chartSettings.setShowPositionMarker(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_SHOW_POSITION_MARKER));
 		chartSettings.setColorPositionMarker(colorPositionMarker);
 		chartSettings.setShowPlotCenterMarker(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_SHOW_PLOT_CENTER_MARKER));
@@ -204,7 +204,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		chartSettings.setColorAxisZeroMarker(colorAxisZeroMarker);
 		chartSettings.setShowSeriesLabelMarker(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_SHOW_SERIES_LABEL_MARKER));
 		chartSettings.setColorSeriesLabelMarker(colorSeriesLabelMarker);
-		//
+
 		chartSettings.setCreateMenu(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_CREATE_MENU));
 		/*
 		 * Primary X-Axis
@@ -234,7 +234,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		primaryAxisSettingsY.setEnableLogScale(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_ENABLE_LOG_SCALE));
 		primaryAxisSettingsY.setLogScaleBase(preferenceStore.getDouble(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_LOG_SCALE_BASE));
 		primaryAxisSettingsY.setExtraSpaceTitle(preferenceStore.getInt(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_EXTRA_SPACE_TITLE));
-		//
+
 		scatterChart.applySettings(chartSettings);
 	}
 
@@ -242,7 +242,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		int symbolSize = preferenceStore.getInt(ScatterSeriesPreferenceConstants.P_SYMBOL_SIZE_SERIES);
-		//
+
 		Color symbolColorSeriesLeftTop = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_TOP));
 		Color symbolColorSeriesRightTop = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_TOP));
 		Color symbolColorSeriesLeftBottom = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_BOTTOM));
@@ -255,7 +255,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		boolean isVisibleLeftBottom = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_LEFT_BOTTOM);
 		PlotSymbolType plotSymbolTypeRightBottom = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_RIGHT_BOTTOM));
 		boolean isVisibleRightBottom = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_RIGHT_BOTTOM);
-		//
+
 		Color symbolColorSeriesLeftTopHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_TOP));
 		Color symbolColorSeriesRightTopHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_TOP));
 		Color symbolColorSeriesLeftBottomHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_BOTTOM));
@@ -268,14 +268,14 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		boolean isVisibleLeftBottomHighlight = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_LEFT_BOTTOM);
 		PlotSymbolType plotSymbolTypeRightBottomHighlight = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_BOTTOM));
 		boolean isVisibleRightBottomHighlight = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_RIGHT_BOTTOM);
-		//
+
 		scatterChart.deleteSeries();
 		/*
 		 * Data
 		 */
 		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(SeriesConverter.SCATTER_SERIES_1);
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
-		//
+
 		for(ISeriesData seriesData : scatterSeriesList) {
 			IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);
 			IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
@@ -287,7 +287,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 			double y = seriesData.getYSeries()[0];
 			scatterSeriesSettings.setSymbolSize(symbolSize);
 			scatterSeriesSettingsHighlight.setSymbolSize(symbolSize);
-			//
+
 			if(x > 0 && y > 0) {
 				scatterSeriesSettings.setSymbolColor(symbolColorSeriesRightTop);
 				scatterSeriesSettings.setSymbolType(plotSymbolTypeRightTop);
@@ -317,10 +317,10 @@ public class ScatterSeries_Preferences_Part extends Composite {
 				scatterSeriesSettingsHighlight.setSymbolType(plotSymbolTypeLeftBottomHighlight);
 				scatterSeriesSettingsHighlight.setVisible(isVisibleLeftBottomHighlight);
 			}
-			//
+
 			scatterSeriesDataList.add(scatterSeriesData);
 		}
-		//
+
 		scatterChart.addSeriesData(scatterSeriesDataList);
 	}
 

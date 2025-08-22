@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -43,11 +43,11 @@ public class SeriesData implements ISeriesData {
 
 		assert (ySeries != null);
 		assert (id != null);
-		//
+
 		xSeries = new double[ySeries.length];
 		this.ySeries = ySeries;
 		this.id = id;
-		//
+
 		for(int i = 0; i < ySeries.length; i++) {
 			xSeries[i] = xStart++;
 		}
@@ -65,7 +65,7 @@ public class SeriesData implements ISeriesData {
 		assert (xSeries != null);
 		assert (ySeries != null);
 		assert (id != null);
-		//
+
 		this.xSeries = xSeries;
 		this.ySeries = ySeries;
 		this.id = id;

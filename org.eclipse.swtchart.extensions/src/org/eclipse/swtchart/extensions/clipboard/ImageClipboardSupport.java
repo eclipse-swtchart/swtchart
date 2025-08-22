@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,7 +32,7 @@ public class ImageClipboardSupport {
 		 */
 		Object imageData = null;
 		IImageClipboardSupplier specificSupplier = null;
-		//
+
 		if(useSpecificSupplier) {
 			specificSupplier = baseChart.getImageClipboardSupplier();
 			if(specificSupplier != null) {

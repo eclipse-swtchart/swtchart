@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -73,7 +73,7 @@ public class SingleLevelDoughnutChartExample {
 		// change color of India to DARK_RED
 		Color color = Display.getDefault().getSystemColor(SWT.COLOR_DARK_RED);
 		circularSeries.setColor("India", color);
-		//
+
 		return chart;
 	}
 }

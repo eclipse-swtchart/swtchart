@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 Lablicate GmbH.
+ * Copyright (c) 2024, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,7 +37,7 @@ public class ElementSupport {
 	private double factorY = 0;
 	private double partX = 0;
 	private double partY = 0;
-	//
+
 	private boolean coversNegativeRangeY = false;
 	private double fullRangeNegativeY = 0;
 	private double factorUpperRangeY = 0;
@@ -49,7 +49,7 @@ public class ElementSupport {
 		this.rangeY = rangeY;
 		this.widthChart = widthChart;
 		this.heightChart = heightChart;
-		//
+
 		initialize();
 	}
 
@@ -67,7 +67,7 @@ public class ElementSupport {
 
 		double primaryX = rangeX.lower + partX * (factorX * x);
 		double primaryY = 0;
-		//
+
 		if(coversNegativeRangeY) {
 			if(y <= upperPartY) {
 				primaryY = rangeY.upper * (1.0d - (factorY * y));
@@ -82,7 +82,7 @@ public class ElementSupport {
 			 */
 			primaryY = rangeY.lower + partY * (1.0d - (factorY * y));
 		}
-		//
+
 		return new PointPrimary(primaryX, primaryY);
 	}
 
@@ -90,10 +90,10 @@ public class ElementSupport {
 
 		PointPrimary primaryStart = convertPoint(x, y);
 		PointPrimary primaryStop = convertPoint(x + width, y + height);
-		//
+
 		double widthPrimary = primaryStop.getX() - primaryStart.getX();
 		double heightPrimary = 0;
-		//
+
 		if(coversNegativeRangeY) {
 			if(y <= upperPartY) {
 				heightPrimary = (primaryStart.getY() - primaryStop.getY()) * (1 / factorUpperRangeY);
@@ -103,7 +103,7 @@ public class ElementSupport {
 		} else {
 			heightPrimary = primaryStart.getY() - primaryStop.getY();
 		}
-		//
+
 		return new RectanglePrimary(primaryStart.getX(), primaryStart.getY(), widthPrimary, heightPrimary);
 	}
 
@@ -113,10 +113,10 @@ public class ElementSupport {
 			factorX = 1.0d / widthChart;
 			factorY = 1.0d / heightChart;
 		}
-		//
+
 		partX = rangeX.upper - rangeX.lower;
 		partY = rangeY.upper - rangeY.lower;
-		//
+
 		coversNegativeRangeY = rangeY.lower < 0;
 		if(coversNegativeRangeY) {
 			fullRangeNegativeY = Math.abs(rangeY.lower) + rangeY.upper;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -63,7 +63,7 @@ public class LineSeries_Selection_Part extends Composite {
 	private Text textRangeYStop;
 	private Text textX;
 	private Text textY;
-	//
+
 	private static final String DATA_POINT_SERIES = "DATA_POINT_SERIES";
 	private NavigableSet<Double> xValues;
 	private HashMap<Double, Double> yValues;
@@ -91,13 +91,13 @@ public class LineSeries_Selection_Part extends Composite {
 
 		this.setLayout(new GridLayout(1, true));
 		this.setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		//
+
 		Composite compositeInfo = new Composite(this, SWT.NONE);
 		GridData gridDataComposite = new GridData(GridData.FILL_HORIZONTAL);
 		gridDataComposite.horizontalAlignment = SWT.BEGINNING;
 		compositeInfo.setLayoutData(gridDataComposite);
 		compositeInfo.setLayout(new GridLayout(13, false));
-		//
+
 		createLabel(compositeInfo, "X-Start:");
 		textRangeXStart = createText(compositeInfo);
 		createLabel(compositeInfo, "X-Stop:");
@@ -111,7 +111,7 @@ public class LineSeries_Selection_Part extends Composite {
 		createLabel(compositeInfo, "Y:");
 		textY = createText(compositeInfo);
 		createButtonReset(compositeInfo);
-		//
+
 		lineChart = new LineChart(this, SWT.NONE);
 		lineChart.setLayoutData(new GridData(GridData.FILL_BOTH));
 		lineChart.getBaseChart().addCustomRangeSelectionHandler(new ICustomSelectionHandler() {
@@ -138,12 +138,12 @@ public class LineSeries_Selection_Part extends Composite {
 				BaseChart baseChart = lineChart.getBaseChart();
 				double x = baseChart.getSelectedPrimaryAxisValue(event.x, IExtendedChart.X_AXIS);
 				double y = baseChart.getSelectedPrimaryAxisValue(event.y, IExtendedChart.Y_AXIS);
-				//
+
 				DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
 				DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, BaseChart.ID_PRIMARY_Y_AXIS);
 				textX.setText(decimalFormatX.format(x));
 				textY.setText(decimalFormatY.format(y));
-				//
+
 				try {
 					ISeries<?> series = baseChart.getSeriesSet().getSeries(DATA_POINT_SERIES);
 					double xSelected = xValues.floor(x);
@@ -154,7 +154,7 @@ public class LineSeries_Selection_Part extends Composite {
 					series.setYSeries(ySeries);
 					baseChart.redraw();
 				} catch(Exception e) {
-					//
+
 				}
 			}
 		});
@@ -230,7 +230,7 @@ public class LineSeries_Selection_Part extends Composite {
 		secondaryAxisSettingsY1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
 		secondaryAxisSettingsY1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY1);
-		//
+
 		lineChart.applySettings(chartSettings);
 		/*
 		 * Create series.
@@ -251,7 +251,7 @@ public class LineSeries_Selection_Part extends Composite {
 		 */
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;
-		//
+
 		lineSeriesData = new LineSeriesData(seriesDataLine);
 		lineSeriesSettings = lineSeriesData.getSettings();
 		lineSeriesSettings.setEnableArea(true);

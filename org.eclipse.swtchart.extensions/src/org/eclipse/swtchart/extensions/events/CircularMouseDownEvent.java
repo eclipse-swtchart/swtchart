@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -75,7 +75,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 				double primaryValueX = baseChart.getSelectedPrimaryAxisValue(event.x, IExtendedChart.X_AXIS);
 				double primaryValueY = baseChart.getSelectedPrimaryAxisValue(event.y, IExtendedChart.Y_AXIS);
 				Node node = circularSeries.getPieSliceFromPosition(primaryValueX, primaryValueY);
-				//
+
 				if(!redrawOnClick) {
 					circularSeries.setHighlightedNode(node);
 					if(!scrollableChart.getLinkedScrollableCharts().isEmpty()) {
@@ -83,7 +83,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 						if(node != null) {
 							nodeId = node.getId();
 						}
-						//
+
 						for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
 							for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 								if(linkedSeries instanceof CircularSeries) {

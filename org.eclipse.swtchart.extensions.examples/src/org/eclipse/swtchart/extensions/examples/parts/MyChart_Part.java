@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2024 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -57,15 +57,15 @@ public class MyChart_Part extends BarChart {
 		chartSettings.setVerticalSliderVisible(true);
 		RangeRestriction rangeRestriction = chartSettings.getRangeRestriction();
 		rangeRestriction.setRestrictFrame(false);
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setTitle("X Axis (Primary)");
 		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0"), new DecimalFormatSymbols(Locale.ENGLISH)));
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle("Y Axis (Primary)");
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0"), new DecimalFormatSymbols(Locale.ENGLISH)));
-		//
+
 		applySettings(chartSettings);
 		/*
 		 * Bar Series

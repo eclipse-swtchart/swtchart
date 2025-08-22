@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,10 +42,10 @@ public class InChartLegendUI extends Composite {
 	private ScrollableChart scrollableChart;
 	private EmbeddedLegend embeddedLegend;
 	private boolean capturePosition = false;
-	//
+
 	private Text textX;
 	private Text textY;
-	//
+
 	private List<Control> controls = new ArrayList<>();
 	private IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 
@@ -78,14 +78,14 @@ public class InChartLegendUI extends Composite {
 			 */
 			draw = !embeddedLegend.isDraw();
 			embeddedLegend.setDraw(draw);
-			//
+
 			if(scrollableChart != null) {
 				scrollableChart.redraw();
 			}
-			//
+
 			updateControls();
 		}
-		//
+
 		return draw;
 	}
 
@@ -96,7 +96,7 @@ public class InChartLegendUI extends Composite {
 		gridLayout.marginLeft = 0;
 		gridLayout.marginRight = 0;
 		setLayout(gridLayout);
-		//
+
 		createToolbarInChartLegend(this);
 		initialize();
 	}
@@ -112,7 +112,7 @@ public class InChartLegendUI extends Composite {
 		gridData.horizontalAlignment = SWT.END;
 		composite.setLayoutData(gridData);
 		composite.setLayout(new GridLayout(7, false));
-		//
+
 		add(createButtonMove(composite, ResourceSupport.ARROW_LEFT, Messages.getString(Messages.MOVE_LEGEND_LEFT)));
 		add(createButtonMove(composite, ResourceSupport.ARROW_UP, Messages.getString(Messages.MOVE_LEGEND_UP)));
 		add(createButtonMove(composite, ResourceSupport.ARROW_DOWN, Messages.getString(Messages.MOVE_LEGEND_DOWN)));
@@ -170,7 +170,7 @@ public class InChartLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -183,10 +183,10 @@ public class InChartLegendUI extends Composite {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.minimumWidth = 60;
 		text.setLayoutData(gridData);
-		//
+
 		PositionValidator validator = new PositionValidator();
 		ControlDecoration controlDecoration = new ControlDecoration(text, SWT.LEFT | SWT.TOP);
-		//
+
 		text.addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -201,7 +201,7 @@ public class InChartLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -214,10 +214,10 @@ public class InChartLegendUI extends Composite {
 		gridData.grabExcessHorizontalSpace = true;
 		gridData.minimumWidth = 60;
 		text.setLayoutData(gridData);
-		//
+
 		PositionValidator validator = new PositionValidator();
 		ControlDecoration controlDecoration = new ControlDecoration(text, SWT.LEFT | SWT.TOP);
-		//
+
 		text.addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -232,7 +232,7 @@ public class InChartLegendUI extends Composite {
 				}
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -250,7 +250,7 @@ public class InChartLegendUI extends Composite {
 				capturePosition = MessageDialog.openConfirm(e.display.getActiveShell(), Messages.getString(Messages.LEGEND_POSITION), Messages.getString(Messages.POSITION_USING_MOUSE));
 			}
 		});
-		//
+
 		return button;
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,7 +38,7 @@ import org.eclipse.swtchart.extensions.linecharts.LineSeriesData;
 public class CustomLineChart1 extends LineChart {
 
 	private static final int LENGTH_HINT_DATA_POINTS = 15000;
-	//
+
 	private boolean enableRangeSelector;
 	private boolean showAxisTitle;
 	private boolean enableHorizontalSlider;
@@ -70,7 +70,7 @@ public class CustomLineChart1 extends LineChart {
 			chartSettings.setVerticalSliderVisible(enableHorizontalSlider);
 			chartSettings.getRangeRestriction().setZeroX(true);
 			chartSettings.getRangeRestriction().setZeroY(true);
-			//
+
 			IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 			primaryAxisSettingsX.setTitle("Time [ms]");
 			primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0##"), new DecimalFormatSymbols(Locale.ENGLISH)));
@@ -78,7 +78,7 @@ public class CustomLineChart1 extends LineChart {
 			primaryAxisSettingsX.setPosition(Position.Secondary);
 			primaryAxisSettingsX.setVisible(false);
 			primaryAxisSettingsX.setGridLineStyle(LineStyle.NONE);
-			//
+
 			IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 			primaryAxisSettingsY.setTitle("Intensity [counts]");
 			primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH)));
@@ -103,7 +103,7 @@ public class CustomLineChart1 extends LineChart {
 			secondaryAxisSettingsY1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
 			secondaryAxisSettingsY1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
 			chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY1);
-			//
+
 			applySettings(chartSettings);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -114,7 +114,7 @@ public class CustomLineChart1 extends LineChart {
 
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(seriesXY);
-		//
+
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 		ILineSeriesSettings lineSeriesSettings = lineSeriesData.getSettings();
 		lineSeriesSettings.setEnableArea(true);

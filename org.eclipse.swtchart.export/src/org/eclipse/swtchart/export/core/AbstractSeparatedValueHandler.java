@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -56,7 +56,7 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 		fileDialog.setText(title);
 		fileDialog.setFilterExtensions(new String[]{fileExtension});
 		fileDialog.setFileName(scrollableChart.getFileName());
-		//
+
 		String fileName = fileDialog.open();
 		if(fileName != null) {
 			/*
@@ -65,10 +65,10 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 			VectorExportSettingsDialog exportSettingsDialog = new VectorExportSettingsDialog(shell, baseChart);
 			exportSettingsDialog.create();
 			if(exportSettingsDialog.open() == Window.OK) {
-				//
+
 				int indexAxisX = exportSettingsDialog.getIndexAxisSelectionX();
 				int indexAxisY = exportSettingsDialog.getIndexAxisSelectionY();
-				//
+
 				if(indexAxisX >= 0 && indexAxisY >= 0) {
 					/*
 					 * X Axis Settings
@@ -118,7 +118,7 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 								exportSeries(dataSeries, widthPlotArea, axisSettings, printWriter);
 							}
 						}
-						//
+
 						printWriter.flush();
 						MessageDialog.openInformation(shell, title, MESSAGE_OK);
 					} catch(FileNotFoundException e) {
@@ -127,7 +127,7 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 					}
 				}
 			}
-			//
+
 			exportSettingsDialog.reset();
 			scrollableChart.updateLegend();
 		}
@@ -147,11 +147,11 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 		 * Series
 		 */
 		printWriter.println(getIdentifier(dataSeries));
-		//
+
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		int size = dataSeries.getXSeries().length;
-		//
+
 		for(int i = 0; i < size; i++) {
 			/*
 			 * Only export if the data point is visible.
@@ -164,7 +164,7 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 				printWriter.println(""); //$NON-NLS-1$
 			}
 		}
-		//
+
 		printWriter.println(""); //$NON-NLS-1$
 	}
 

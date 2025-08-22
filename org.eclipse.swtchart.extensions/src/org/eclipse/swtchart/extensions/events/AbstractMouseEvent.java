@@ -48,7 +48,7 @@ public abstract class AbstractMouseEvent extends AbstractHandledEventProcessor i
 	protected void postValidateZoom(BaseChart baseChart) {
 
 		RangeRestriction rangeRestriction = baseChart.getRangeRestriction();
-		//
+
 		IAxisSet axisSet = baseChart.getAxisSet();
 		IAxis xAxis = axisSet.getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = axisSet.getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,7 +32,7 @@ import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 public class RangeSelector extends Composite {
 
 	private ScrollableChart scrollableChart;
-	//
+
 	private Text textStartX;
 	private Text textStopX;
 	private Combo comboScaleX;
@@ -82,17 +82,17 @@ public class RangeSelector extends Composite {
 	public void adjustRanges(boolean redraw) {
 
 		BaseChart baseChart = scrollableChart.getBaseChart();
-		//
+
 		int indexX = (comboScaleX.getSelectionIndex() >= 0) ? comboScaleX.getSelectionIndex() : BaseChart.ID_PRIMARY_X_AXIS;
 		int indexY = (comboScaleY.getSelectionIndex() >= 0) ? comboScaleY.getSelectionIndex() : BaseChart.ID_PRIMARY_Y_AXIS;
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(indexX);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(indexY);
 		Range rangeX = xAxis.getRange();
 		Range rangeY = yAxis.getRange();
-		//
+
 		DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, indexX);
 		DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, indexY);
-		//
+
 		if(rangeX != null && rangeY != null) {
 			/*
 			 * Update the text boxes.
@@ -113,15 +113,15 @@ public class RangeSelector extends Composite {
 	private void createControl() {
 
 		setLayout(new GridLayout(9, false));
-		//
+
 		textStartX = new Text(this, SWT.BORDER);
 		textStartX.setText(""); //$NON-NLS-1$
 		textStartX.setLayoutData(getTextGridData());
-		//
+
 		textStopX = new Text(this, SWT.BORDER);
 		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
-		//
+
 		comboScaleX = ExtendedCombo.create(this, SWT.READ_ONLY);
 		comboScaleX.setLayoutData(getComboGridData());
 		comboScaleX.addSelectionListener(new SelectionAdapter() {
@@ -140,15 +140,15 @@ public class RangeSelector extends Composite {
 				}
 			}
 		});
-		//
+
 		textStartY = new Text(this, SWT.BORDER);
 		textStartY.setText(""); //$NON-NLS-1$
 		textStartY.setLayoutData(getTextGridData());
-		//
+
 		textStopY = new Text(this, SWT.BORDER);
 		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
-		//
+
 		comboScaleY = ExtendedCombo.create(this, SWT.READ_ONLY);
 		comboScaleY.setLayoutData(getComboGridData());
 		comboScaleY.addSelectionListener(new SelectionAdapter() {
@@ -167,7 +167,7 @@ public class RangeSelector extends Composite {
 				}
 			}
 		});
-		//
+
 		Button buttonSetRange = new Button(this, SWT.PUSH);
 		buttonSetRange.setText(""); //$NON-NLS-1$
 		buttonSetRange.setImage(ResourceSupport.getImage(ResourceSupport.ICON_SET_RANGE));
@@ -185,7 +185,7 @@ public class RangeSelector extends Composite {
 				}
 			}
 		});
-		//
+
 		Button buttonResetRange = new Button(this, SWT.PUSH);
 		buttonResetRange.setText(""); //$NON-NLS-1$
 		buttonResetRange.setImage(ResourceSupport.getImage(ResourceSupport.ICON_RESET));
@@ -203,7 +203,7 @@ public class RangeSelector extends Composite {
 				}
 			}
 		});
-		//
+
 		Button buttonHide = new Button(this, SWT.PUSH);
 		buttonHide.setText(""); //$NON-NLS-1$
 		buttonHide.setImage(ResourceSupport.getImage(ResourceSupport.ICON_HIDE));
@@ -265,7 +265,7 @@ public class RangeSelector extends Composite {
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		DecimalFormat decimalFormat;
 		int selectedAxis;
-		//
+
 		if(axis.equals(IExtendedChart.X_AXIS)) {
 			selectedAxis = comboScaleX.getSelectionIndex();
 			decimalFormat = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, selectedAxis);
@@ -278,7 +278,7 @@ public class RangeSelector extends Composite {
 		 */
 		double valueStart;
 		double valueStop;
-		//
+
 		if(axis.equals(IExtendedChart.X_AXIS)) {
 			valueStart = decimalFormat.parse(textStartX.getText().trim()).doubleValue();
 			valueStop = decimalFormat.parse(textStopX.getText().trim()).doubleValue();
@@ -300,7 +300,7 @@ public class RangeSelector extends Composite {
 				range = new Range(valueStart, valueStop);
 			}
 		}
-		//
+
 		return range;
 	}
 

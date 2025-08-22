@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -263,7 +263,7 @@ public class InteractiveChart extends Chart implements PaintListener {
 				}
 			}
 		}
-		//
+
 		selection.dispose();
 		redraw();
 	}
@@ -492,7 +492,7 @@ public class InteractiveChart extends Chart implements PaintListener {
 		if(range == null) {
 			return;
 		}
-		//
+
 		double min = axis.getDataCoordinate(range.x);
 		double max = axis.getDataCoordinate(range.y);
 		axis.setRange(new Range(min, max));

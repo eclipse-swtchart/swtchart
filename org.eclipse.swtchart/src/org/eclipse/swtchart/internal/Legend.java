@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -270,7 +270,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 				if(!series.isVisibleInLegend()) {
 					continue;
 				}
-				//
+
 				if(series instanceof ICircularSeries) {
 					ICircularSeries<?> circularSeries = (ICircularSeries<?>)series;
 					String[] labels = circularSeries.getLabels();
@@ -319,7 +319,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 				if(!series.isVisibleInLegend()) {
 					continue;
 				}
-				//
+
 				if(series instanceof ICircularSeries) {
 					ICircularSeries<?> circularSeries = (ICircularSeries<?>)series;
 					String[] labels = circularSeries.getLabels();
@@ -446,7 +446,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 			if(!seriesArray[i].isVisibleInLegend()) {
 				continue;
 			}
-			//
+
 			if(seriesArray[i] instanceof ICircularSeries) {
 				ICircularSeries<?> circularSeries = (ICircularSeries<?>)seriesArray[i];
 				String[] labels = circularSeries.getLabels();
@@ -459,7 +459,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 							Node node = circularSeries.getNodeById(id);
 							String label = node.getDescription().isEmpty() ? id : node.getDescription();
 							Color color = colors[j];
-							//
+
 							if(color != null) {
 								boolean draw = node != null ? node.isVisibleInLegend() : true;
 								if(draw) {

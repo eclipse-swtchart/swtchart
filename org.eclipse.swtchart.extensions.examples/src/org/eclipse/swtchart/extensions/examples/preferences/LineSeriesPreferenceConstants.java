@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,7 +23,7 @@ import org.eclipse.swtchart.extensions.core.RangeRestriction;
 public class LineSeriesPreferenceConstants {
 
 	public static final String POSTFIX = "LineSeries";
-	//
+
 	public static final String P_ENABLE_RANGE_SELECTOR = "enableRangeSelector" + POSTFIX;
 	public static final boolean DEF_ENABLE_RANGE_SELECTOR = true;
 	public static final String P_SHOW_RANGE_SELECTOR_INITIALLY = "showRangeSelectorInitially" + POSTFIX;
@@ -34,24 +34,24 @@ public class LineSeriesPreferenceConstants {
 	public static final int DEF_RANGE_SELECTOR_DEFAULT_AXIS_X = 0; // Index
 	public static final String P_RANGE_SELECTOR_DEFAULT_AXIS_Y = "rangeSelectorDefaultAxisY" + POSTFIX;
 	public static final int DEF_RANGE_SELECTOR_DEFAULT_AXIS_Y = 0; // Index
-	//
+
 	public static final String P_VERTICAL_SLIDER_VISIBLE = "verticalSliderVisible" + POSTFIX;
 	public static final boolean DEF_VERTICAL_SLIDER_VISIBLE = true;
 	public static final String P_HORIZONTAL_SLIDER_VISIBLE = "HorizontalSliderVisible" + POSTFIX;
 	public static final boolean DEF_HORIZONTALSLIDER_VISIBLE = true;
-	//
+
 	public static final String P_TITLE = "title" + POSTFIX;
 	public static final String DEF_TITLE = "Line Series";
 	public static final String P_TITLE_VISIBLE = "titleVisible" + POSTFIX;
 	public static final boolean DEF_TITLE_VISIBLE = false;
 	public static final String P_TITLE_COLOR = "titleColor" + POSTFIX;
 	public static final String DEF_TITLE_COLOR = "0,0,0";
-	//
+
 	public static final String P_LEGEND_POSITION = "legendPosition" + POSTFIX;
 	public static final int DEF_LEGEND_POSITION = SWT.RIGHT;
 	public static final String P_LEGEND_VISIBLE = "legendVisible" + POSTFIX;
 	public static final boolean DEF_LEGEND_VISIBLE = false;
-	//
+
 	public static final String P_ORIENTATION = "orientation" + POSTFIX;
 	public static final int DEF_ORIENTATION = SWT.HORIZONTAL;
 	public static final String P_BACKGROUND = "background" + POSTFIX;
@@ -60,7 +60,7 @@ public class LineSeriesPreferenceConstants {
 	public static final String DEF_BACKGROUND_CHART = "255,255,255";
 	public static final String P_BACKGROUND_PLOT_AREA = "backgroundPlotArea" + POSTFIX;
 	public static final String DEF_BACKGROUND_PLOT_AREA = "255,255,255";
-	//
+
 	public static final String P_ENABLE_COMPRESS = "enableCompress" + POSTFIX;
 	public static final boolean DEF_ENABLE_COMPRESS = true;
 	public static final String P_ZERO_Y = "zeroY" + POSTFIX;
@@ -87,7 +87,7 @@ public class LineSeriesPreferenceConstants {
 	public static final double DEF_EXTEND_MIN_Y = 0.0d;
 	public static final String P_EXTEND_MAX_Y = "extendMaxY" + POSTFIX;
 	public static final double DEF_EXTEND_MAX_Y = 0.0d;
-	//
+
 	public static final String P_SHOW_POSITION_MARKER = "showPositionMarker" + POSTFIX;
 	public static final boolean DEF_SHOW_POSITION_MARKER = true;
 	public static final String P_COLOR_POSITION_MARKER = "colorPositionMarker" + POSTFIX;
@@ -108,10 +108,10 @@ public class LineSeriesPreferenceConstants {
 	public static final boolean DEF_SHOW_SERIES_LABEL_MARKER = false;
 	public static final String P_COLOR_SERIES_LABEL_MARKER = "colorSeriesLabelMarker" + POSTFIX;
 	public static final String DEF_COLOR_SERIES_LABEL_MARKER = "100,100,100";
-	//
+
 	public static final String P_CREATE_MENU = "createMenu" + POSTFIX;
 	public static final boolean DEF_CREATE_MENU = true;
-	//
+
 	public static final String P_PRIMARY_X_AXIS_TITLE = "primaryXAxisTitle" + POSTFIX;
 	public static final String DEF_PRIMARY_X_AXIS_TITLE = "Time [ms]";
 	public static final String P_PRIMARY_X_AXIS_DESCRIPTION = "primaryXAxisDescription" + POSTFIX;
@@ -134,7 +134,7 @@ public class LineSeriesPreferenceConstants {
 	public static final double DEF_PRIMARY_X_AXIS_LOG_SCALE_BASE = 10.0d;
 	public static final String P_PRIMARY_X_AXIS_EXTRA_SPACE_TITLE = "primaryXAxisExtraSpaceTitle" + POSTFIX;
 	public static final int DEF_PRIMARY_X_AXIS_EXTRA_SPACE_TITLE = 25;
-	//
+
 	public static final String P_PRIMARY_Y_AXIS_TITLE = "primaryYAxisTitle" + POSTFIX;
 	public static final String DEF_PRIMARY_Y_AXIS_TITLE = "Intensity [counts]";
 	public static final String P_PRIMARY_Y_AXIS_DESCRIPTION = "primaryYAxisDescription" + POSTFIX;
@@ -157,7 +157,7 @@ public class LineSeriesPreferenceConstants {
 	public static final double DEF_PRIMARY_Y_AXIS_LOG_SCALE_BASE = 10.0d;
 	public static final String P_PRIMARY_Y_AXIS_EXTRA_SPACE_TITLE = "primaryYAxisExtraSpaceTitle" + POSTFIX;
 	public static final int DEF_PRIMARY_Y_AXIS_EXTRA_SPACE_TITLE = 25;
-	//
+
 	public static final String P_SECONDARY_X_AXIS_TITLE = "secondaryXAxisTitle" + POSTFIX;
 	public static final String DEF_SECONDARY_X_AXIS_TITLE = "Time [min]";
 	public static final String P_SECONDARY_X_AXIS_DESCRIPTION = "secondaryXAxisDescription" + POSTFIX;
@@ -180,7 +180,7 @@ public class LineSeriesPreferenceConstants {
 	public static final double DEF_SECONDARY_X_AXIS_LOG_SCALE_BASE = 10.0d;
 	public static final String P_SECONDARY_X_AXIS_EXTRA_SPACE_TITLE = "secondaryXAxisExtraSpaceTitle" + POSTFIX;
 	public static final int DEF_SECONDARY_X_AXIS_EXTRA_SPACE_TITLE = 25;
-	//
+
 	public static final String P_SECONDARY_Y_AXIS_TITLE = "secondaryYAxisTitle" + POSTFIX;
 	public static final String DEF_SECONDARY_Y_AXIS_TITLE = "Intensity [%]";
 	public static final String P_SECONDARY_Y_AXIS_DESCRIPTION = "secondaryYAxisDescription" + POSTFIX;
@@ -203,10 +203,10 @@ public class LineSeriesPreferenceConstants {
 	public static final double DEF_SECONDARY_Y_AXIS_LOG_SCALE_BASE = 10.0d;
 	public static final String P_SECONDARY_Y_AXIS_EXTRA_SPACE_TITLE = "secondaryYAxisExtraSpaceTitle" + POSTFIX;
 	public static final int DEF_SECONDARY_Y_AXIS_EXTRA_SPACE_TITLE = 25;
-	//
+
 	public static final String P_DESCRIPTION_SERIES_1 = "descriptionSeries1" + POSTFIX;
 	public static final String DEF_DESCRIPTION_SERIES_1 = "Measurement 1";
-	//
+
 	public static final String P_ANTIALIAS_SERIES_1 = "antialiasSeries1" + POSTFIX;
 	public static final int DEF_ANTIALIAS_SERIES_1 = SWT.DEFAULT;
 	public static final String P_ENABLE_AREA_SERIES_1 = "enableAreaSeries1" + POSTFIX;
@@ -231,7 +231,7 @@ public class LineSeriesPreferenceConstants {
 	public static final boolean DEF_VISIBLE_SERIES_1 = true;
 	public static final String P_VISIBLE_IN_LEGEND_SERIES_1 = "visibleInLegendSeries1" + POSTFIX;
 	public static final boolean DEF_VISIBLE_IN_LEGEND_SERIES_1 = true;
-	//
+
 	public static final String P_ANTIALIAS_SERIES_1_HIGHLIGHT = "antialiasSeries1Highlight" + POSTFIX;
 	public static final int DEF_ANTIALIAS_SERIES_1_HIGHLIGHT = SWT.DEFAULT;
 	public static final String P_ENABLE_AREA_SERIES_1_HIGHLIGHT = "enableAreaSeries1Highlight" + POSTFIX;
@@ -256,10 +256,10 @@ public class LineSeriesPreferenceConstants {
 	public static final boolean DEF_VISIBLE_SERIES_1_HIGHLIGHT = true;
 	public static final String P_VISIBLE_IN_LEGEND_SERIES_1_HIGHLIGHT = "visibleInLegendSeries1Highlight" + POSTFIX;
 	public static final boolean DEF_VISIBLE_IN_LEGEND_SERIES_1_HIGHLIGHT = true;
-	//
+
 	public static final String P_DESCRIPTION_SERIES_2 = "descriptionSeries2" + POSTFIX;
 	public static final String DEF_DESCRIPTION_SERIES_2 = "Measurement 2";
-	//
+
 	public static final String P_ANTIALIAS_SERIES_2 = "antialiasSeries2" + POSTFIX;
 	public static final int DEF_ANTIALIAS_SERIES_2 = SWT.DEFAULT;
 	public static final String P_ENABLE_AREA_SERIES_2 = "enableAreaSeries2" + POSTFIX;
@@ -284,7 +284,7 @@ public class LineSeriesPreferenceConstants {
 	public static final boolean DEF_VISIBLE_SERIES_2 = true;
 	public static final String P_VISIBLE_IN_LEGEND_SERIES_2 = "visibleInLegendSeries2" + POSTFIX;
 	public static final boolean DEF_VISIBLE_IN_LEGEND_SERIES_2 = true;
-	//
+
 	public static final String P_ANTIALIAS_SERIES_2_HIGHLIGHT = "antialiasSeries2Highlight" + POSTFIX;
 	public static final int DEF_ANTIALIAS_SERIES_2_HIGHLIGHT = SWT.DEFAULT;
 	public static final String P_ENABLE_AREA_SERIES_2_HIGHLIGHT = "enableAreaSeries2Highlight" + POSTFIX;

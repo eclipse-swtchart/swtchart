@@ -72,7 +72,7 @@ public class ResourceSupport extends Resources {
 	public static final String ICON_TRANSFER = "transfer.png"; // $NON-NLS-1$
 	public static final String ICON_SAVE = "save.gif"; // $NON-NLS-1$
 	public static final String ICON_ADD = "add.gif"; // $NON-NLS-1$
-	//
+
 	private static ResourceManager resourceManager = new LocalResourceManager(JFaceResources.getResources());
 	private static IPreferenceStore preferenceStore = null;
 	private static ImageRegistry imageRegistry = null;
@@ -136,7 +136,7 @@ public class ResourceSupport extends Resources {
 		if(imageRegistry == null) {
 			imageRegistry = initializeImageRegistry();
 		}
-		//
+
 		return resourceManager.createImageWithDefault(imageRegistry.getDescriptor(key));
 	}
 
@@ -159,7 +159,7 @@ public class ResourceSupport extends Resources {
 		} else {
 			imageRegistry = new ImageRegistry();
 		}
-		//
+
 		Set<String> imageSet = new HashSet<>();
 		imageSet.add(ICON_SET_RANGE);
 		imageSet.add(ICON_RESTRICT_RANGE);
@@ -199,11 +199,11 @@ public class ResourceSupport extends Resources {
 		imageSet.add(ICON_TRANSFER);
 		imageSet.add(ICON_SAVE);
 		imageSet.add(ICON_ADD);
-		//
+
 		for(String image : imageSet) {
 			imageRegistry.put(image, createImageDescriptor(image));
 		}
-		//
+
 		return imageRegistry;
 	}
 

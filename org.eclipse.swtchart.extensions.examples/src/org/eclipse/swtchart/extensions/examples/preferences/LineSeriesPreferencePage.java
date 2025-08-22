@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,7 +38,7 @@ public class LineSeriesPreferencePage extends FieldEditorPreferencePage implemen
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Chart Settings", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR, "Enable Range Selector", getFieldEditorParent()));
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY, "Show Range Selector Initially", getFieldEditorParent()));
 		addField(new ColorFieldEditor(LineSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR, "Color Hint Range Selector:", getFieldEditorParent()));
@@ -89,7 +89,7 @@ public class LineSeriesPreferencePage extends FieldEditorPreferencePage implemen
 		fieldEditor2.setEnabled(false, getFieldEditorParent());
 		fieldEditor3.setEnabled(false, getFieldEditorParent());
 		fieldEditor4.setEnabled(false, getFieldEditorParent());
-		//
+
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_CREATE_MENU, "Create Menu", getFieldEditorParent()));
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2022 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,14 +19,14 @@ import org.eclipse.core.runtime.IStatus;
 public class PositionValidator implements IValidator<String> {
 
 	private static final String ERROR = "Please enter a position as integer, e.g.: 100.";
-	//
+
 	private int position = 0;
 
 	public IStatus validate(String value) {
 
 		this.position = 0;
 		boolean parseError = true;
-		//
+
 		if(value != null) {
 			try {
 				position = Integer.parseInt(((String)value).trim());
@@ -35,7 +35,7 @@ public class PositionValidator implements IValidator<String> {
 				// Don't catch it here.
 			}
 		}
-		//
+
 		if(parseError) {
 			return ValidationStatus.error(ERROR);
 		} else {

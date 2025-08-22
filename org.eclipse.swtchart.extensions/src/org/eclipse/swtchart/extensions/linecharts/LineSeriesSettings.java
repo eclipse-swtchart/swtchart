@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -173,7 +173,7 @@ public class LineSeriesSettings extends AbstractPointSeriesSettings implements I
 			sink.setHighlight(source.isHighlight());
 			success = true;
 		}
-		//
+
 		return success;
 	}
 

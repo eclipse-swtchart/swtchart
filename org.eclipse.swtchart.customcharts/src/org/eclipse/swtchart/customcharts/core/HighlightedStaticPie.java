@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -45,7 +45,7 @@ public class HighlightedStaticPie extends PieChart {
 		if(seriesSettingsHighlight instanceof ICircularSeriesSettings) {
 			((ICircularSeriesSettings)seriesSettingsHighlight).setBorderWidth(3);
 		}
-		//
+
 		super.addSeriesData(model);
 	}
 }

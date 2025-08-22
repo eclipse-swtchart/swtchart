@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -53,12 +53,12 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 
 	private static final String FILE_EXTENSION = "*.R"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.IMAGE_R_SCRIPT), FILE_EXTENSION);
-	//
+
 	private static final String TITLE = Messages.getString(Messages.SAVE_AS_IMAGE_R_SCRIPT);
-	//
+
 	private static final String AXIS_X = "x"; //$NON-NLS-1$
 	private static final String AXIS_Y = "y"; //$NON-NLS-1$
-	//
+
 	private Map<PlotSymbolType, Integer> plotSymbolsMap;
 	private Map<LineStyle, Integer> lineStylesMap;
 
@@ -86,7 +86,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		fileDialog.setText(TITLE);
 		fileDialog.setFilterExtensions(new String[]{FILE_EXTENSION});
 		fileDialog.setFileName(scrollableChart.getFileName());
-		//
+
 		String fileName = fileDialog.open();
 		if(fileName != null) {
 			/*
@@ -95,10 +95,10 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 			VectorExportSettingsDialog exportSettingsDialog = new VectorExportSettingsDialog(shell, baseChart);
 			exportSettingsDialog.create();
 			if(exportSettingsDialog.open() == Window.OK) {
-				//
+
 				int indexAxisX = exportSettingsDialog.getIndexAxisSelectionX();
 				int indexAxisY = exportSettingsDialog.getIndexAxisSelectionY();
-				//
+
 				if(indexAxisX >= 0 && indexAxisY >= 0) {
 					/*
 					 * X Axis Settings
@@ -141,7 +141,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 						plotSymbolsMap.put(PlotSymbolType.SQUARE, 0);
 						plotSymbolsMap.put(PlotSymbolType.TRIANGLE, 2);
 						plotSymbolsMap.put(PlotSymbolType.NONE, 20);
-						//
+
 						lineStylesMap = new HashMap<LineStyle, Integer>();
 						lineStylesMap.put(LineStyle.NONE, 0);
 						lineStylesMap.put(LineStyle.DASH, 2);
@@ -149,7 +149,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 						lineStylesMap.put(LineStyle.DASHDOTDOT, 6);
 						lineStylesMap.put(LineStyle.DOT, 3);
 						lineStylesMap.put(LineStyle.SOLID, 1);
-						//
+
 						/*
 						 * First check via instance of. If that fails, perform the enhanced
 						 * check via the chart type.
@@ -185,7 +185,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 									break;
 							}
 						}
-						//
+
 						printWriter.flush();
 						MessageDialog.openInformation(shell, TITLE, MESSAGE_OK);
 					} catch(FileNotFoundException e) {
@@ -194,7 +194,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 					}
 				}
 			}
-			//
+
 			exportSettingsDialog.reset();
 			scrollableChart.updateLegend();
 		}
@@ -234,7 +234,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
-		//
+
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
 		/*
@@ -295,7 +295,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		list.append(")");
 		printWriter.println(list); // $NON-NLS-1$
-		//
+
 		StringBuilder plotSymbol_List = new StringBuilder("symbolList<-c(");
 		int length2 = plotSymbols.size();
 		int symbol_count = 0;
@@ -308,7 +308,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		plotSymbol_List.append(")");
 		printWriter.println(plotSymbol_List);
-		//
+
 		StringBuilder lineStyle_List = new StringBuilder("styleList<-c(");
 		int length3 = lineStyles.size();
 		int style_count = 0;
@@ -321,7 +321,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		lineStyle_List.append(")");
 		printWriter.println(lineStyle_List);
-		//
+
 		StringBuilder lineType_List = new StringBuilder("typeList<-c(");
 		int length4 = lineTypes.size();
 		int type_count = 0;
@@ -336,7 +336,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		lineType_List.append(")");
 		printWriter.println(lineType_List);
-		//
+
 		printWriter.println(""); //$NON-NLS-1$
 		printWriter.println("plot("); //$NON-NLS-1$
 		printWriter.println("	xValueList[[1]], yValueList[[1]],"); //$NON-NLS-1$
@@ -350,15 +350,15 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("	xlab='" + axisSettingsX.getLabel() + "'"); //$NON-NLS-1$ //$NON-NLS-2$
 		printWriter.println(")"); //$NON-NLS-1$
 		printWriter.println(""); //$NON-NLS-1$
-		//
+
 		if(seriesSize > 1) {
 			printWriter.println("for(i in 2:" + seriesSize + "){"); //$NON-NLS-1$ style//$NON-NLS-2$
 			printWriter.println("	lines(xValueList[[i]], yValueList[[i]], type=typeList[i],lty=styleList[i], col=colorList[i], pch=symbolList[i])"); //$NON-NLS-1$
 			printWriter.println("}"); //$NON-NLS-1$
 			printWriter.println(""); //$NON-NLS-1$
 		}
-		//
-		//
+
+
 		int size = seriesSize;
 		int k;
 		printWriter.println("legend('topleft',"); //$NON-NLS-1$
@@ -399,11 +399,11 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		int indexAxisY = axisSettings.getIndexAxisY();
 		IAxisScaleConverter axisScaleConverterX = axisSettings.getAxisScaleConverterX();
 		IAxisScaleConverter axisScaleConverterY = axisSettings.getAxisScaleConverterY();
-		//
+
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		int size = dataSeries.getXSeries().length;
-		//
+
 		for(int i = 0; i < size; i++) {
 			/*
 			 * Only export if the data point is visible.
@@ -439,7 +439,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
-		//
+
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
 		/*
@@ -492,7 +492,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		double[] xSeries = dataSeries.getXSeries();
 		double[] ySeries = dataSeries.getYSeries();
 		int size = dataSeries.getXSeries().length;
-		//
+
 		for(int i = 0; i < size; i++) {
 			/*
 			 * Only export if the data point is visible.
@@ -520,7 +520,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
-		//
+
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
 		/*
@@ -572,7 +572,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		list.append(")");
 		printWriter.println(list); // $NON-NLS-1$
-		//
+
 		StringBuilder plotSymbol_List = new StringBuilder("symbolList<-c(");
 		int length2 = plotSymbols.size();
 		int symbol_count = 0;
@@ -585,7 +585,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		plotSymbol_List.append(")");
 		printWriter.println(plotSymbol_List);
-		//
+
 		printWriter.println(""); //$NON-NLS-1$
 		printWriter.println("plot("); //$NON-NLS-1$
 		printWriter.println("	xValueList[[1]], yValueList[[1]],"); //$NON-NLS-1$
@@ -598,15 +598,15 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("	xlab='" + axisSettingsX.getLabel() + "'"); //$NON-NLS-1$ //$NON-NLS-2$
 		printWriter.println(")"); //$NON-NLS-1$
 		printWriter.println(""); //$NON-NLS-1$
-		//
+
 		if(seriesSize > 1) {
 			printWriter.println("for(i in 2:" + seriesSize + "){"); //$NON-NLS-1$ //$NON-NLS-2$
 			printWriter.println("	points(xValueList[[i]], yValueList[[i]], type='p', col=colorList[i], pch=symbolList[i])"); //$NON-NLS-1$
 			printWriter.println("}"); //$NON-NLS-1$
 			printWriter.println(""); //$NON-NLS-1$
 		}
-		//
-		//
+
+
 		printWriter.println("abline(h=0)"); //$NON-NLS-1$
 		printWriter.println("abline(v=0)"); //$NON-NLS-1$
 	}
@@ -615,7 +615,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 
 		IAxisSettings axisSettingsX = axisSettings.getAxisSettingsX();
 		IAxisSettings axisSettingsY = axisSettings.getAxisSettingsY();
-		//
+
 		BaseChart baseChart = scrollableChart.getBaseChart();
 		ISeries<?>[] series = baseChart.getSeriesSet().getSeries();
 		/*
@@ -664,7 +664,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		}
 		list.append(")");
 		printWriter.println(list); // $NON-NLS-1$
-		//
+
 		printWriter.println(""); //$NON-NLS-1$
 		printWriter.println("plot("); //$NON-NLS-1$
 		printWriter.println("	xValueList[[1]], yValueList[[1]],"); //$NON-NLS-1$
@@ -676,15 +676,15 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("	xlab='" + axisSettingsX.getLabel() + "'"); //$NON-NLS-1$ //$NON-NLS-2$
 		printWriter.println(")"); //$NON-NLS-1$
 		printWriter.println(""); //$NON-NLS-1$
-		//
+
 		if(seriesSize > 1) {
 			printWriter.println("for(i in 2:" + seriesSize + "){"); //$NON-NLS-1$ //$NON-NLS-2$
 			printWriter.println("	lines(xValueList[[i]], yValueList[[i]], type='s', col=colorList[i])"); //$NON-NLS-1$
 			printWriter.println("}"); //$NON-NLS-1$
 			printWriter.println(""); //$NON-NLS-1$
 		}
-		//
-		//
+
+
 		int size = seriesSize;
 		int k;
 		printWriter.println("legend('topleft',"); //$NON-NLS-1$

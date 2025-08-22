@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 SWTChart project.
+ * Copyright (c) 2022, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,7 +32,7 @@ public class FixedRangeChart {
 		shell.setText("FixedRangeChart");
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
-		//
+
 		ScrollableChart scrollableChart = new BarSeries_1_1_Part(shell);
 		IChartSettings chartSettings = scrollableChart.getChartSettings();
 		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
@@ -47,7 +47,7 @@ public class FixedRangeChart {
 		axisX.setRange(new Range(10, 250));
 		IAxis axisY = scrollableChart.getBaseChart().getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
 		axisY.setRange(new Range(0, 1500));
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

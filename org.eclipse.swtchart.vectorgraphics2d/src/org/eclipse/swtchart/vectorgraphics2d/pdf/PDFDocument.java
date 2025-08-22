@@ -58,7 +58,7 @@ class PDFDocument extends SizedDocument {
 	private static final float POINTS_PER_INCH = 72; // DPI
 	private static final float POINTS_PER_MM = 1 / (10 * 2.54f) * POINTS_PER_INCH;
 	private static final float BEZIER_CONSTANT = 0.552284749831f;
-	//
+
 	private PDDocument document = null;
 
 	private class Scale {
@@ -107,11 +107,11 @@ class PDFDocument extends SizedDocument {
 		PDPage page = new PDPage(rectangle);
 		document.addPage(page);
 		float height = rectangle.getHeight();
-		//
+
 		Matrix matrixScale = Matrix.getScaleInstance(1, -1);
 		Matrix matrixTranslate = Matrix.getTranslateInstance(0, -(float)height);
 		Matrix matrixFlip = Matrix.concatenate(matrixScale, matrixTranslate);
-		//
+
 		AffineTransform affineTransform = null;
 		boolean useAffineTransform = false;
 		Color colorBackground = Color.WHITE;
@@ -119,7 +119,7 @@ class PDFDocument extends SizedDocument {
 		PDFont font = PDType1Font.HELVETICA;
 		float fontSize = 8.0f;
 		Map<Integer, PDExtendedGraphicsState> opacityMap = new HashMap<>();
-		//
+
 		try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
 			for(Command<?> command : commands) {
 				if(command instanceof AffineTransformCommand c) {
@@ -270,13 +270,13 @@ class PDFDocument extends SizedDocument {
 					 */
 				}
 			}
-			//
+
 			contentStream.close();
 			scaleToTargetSize(pageSize, document, page);
 		} catch(IOException e) {
 			// System.out.println(e);
 		}
-		//
+
 		return document;
 	}
 
@@ -298,7 +298,7 @@ class PDFDocument extends SizedDocument {
 		double scaleX = affineTransform.getScaleX();
 		double shearY = affineTransform.getShearY();
 		double theta = Math.atan2(shearY, scaleX);
-		//
+
 		return Math.toDegrees(theta) - 180;
 	}
 
@@ -324,7 +324,7 @@ class PDFDocument extends SizedDocument {
 
 		float width = (float)(pageSize.getWidth() * scale.getX());
 		float height = (float)(pageSize.getHeight() * scale.getY());
-		//
+
 		return new PDRectangle(width, height);
 	}
 
@@ -332,7 +332,7 @@ class PDFDocument extends SizedDocument {
 
 		double scaleX = 1.0d;
 		double scaleY = 1.0d;
-		//
+
 		for(Command<?> command : commands) {
 			if(command instanceof AffineTransformCommand affineTransformCommand) {
 				AffineTransform affineTransform = affineTransformCommand.getValue();
@@ -340,10 +340,10 @@ class PDFDocument extends SizedDocument {
 				scaleY = affineTransform.getScaleY();
 			}
 		}
-		//
+
 		double x = (scaleX != 0) ? (1 / scaleX) : 1.0d;
 		double y = (scaleY != 0) ? (1 / scaleY) : 1.0d;
-		//
+
 		return new Scale(x, y);
 	}
 }

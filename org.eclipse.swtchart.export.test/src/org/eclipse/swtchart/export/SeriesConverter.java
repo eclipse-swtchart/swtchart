@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,7 +29,7 @@ public class SeriesConverter {
 		int size = getNumberOfLines(file);
 		double[] xSeries = new double[size];
 		double[] ySeries = new double[size];
-		//
+
 		BufferedReader bufferedReader = null;
 		try {
 			String line;
@@ -44,17 +44,17 @@ public class SeriesConverter {
 				}
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}
-		//
+
 		ISeriesData seriesData = new SeriesData(xSeries, ySeries, file);
 		return seriesData;
 	}
@@ -63,7 +63,7 @@ public class SeriesConverter {
 
 		int size = getNumberOfLines(fileName);
 		double[] ySeries = new double[size];
-		//
+
 		BufferedReader bufferedReader = null;
 		try {
 			String line;
@@ -73,17 +73,17 @@ public class SeriesConverter {
 				ySeries[i++] = Double.parseDouble(line.trim());
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}
-		//
+
 		ISeriesData seriesData = new SeriesData(ySeries, fileName);
 		return seriesData;
 	}
@@ -91,7 +91,7 @@ public class SeriesConverter {
 	public static List<ISeriesData> getSeriesScatter(String fileName) {
 
 		List<ISeriesData> scatterSeriesList = new ArrayList<ISeriesData>();
-		//
+
 		BufferedReader bufferedReader = null;
 		try {
 			String line;
@@ -105,13 +105,13 @@ public class SeriesConverter {
 				scatterSeriesList.add(seriesData);
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}
@@ -128,13 +128,13 @@ public class SeriesConverter {
 				i++;
 			}
 		} catch(Exception e) {
-			//
+
 		} finally {
 			if(bufferedReader != null) {
 				try {
 					bufferedReader.close();
 				} catch(IOException e) {
-					//
+
 				}
 			}
 		}

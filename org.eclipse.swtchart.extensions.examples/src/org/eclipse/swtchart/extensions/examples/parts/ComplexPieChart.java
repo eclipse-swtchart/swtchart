@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2024 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -98,7 +98,7 @@ public class ComplexPieChart extends PieChart {
 	private static final String RETAIL_3 = "Retail 3";
 	private static final String RETAIL_4 = "Retail 4";
 	private static final String RETAIL_5 = "Retail 5";
-	//
+
 	private static final String[] labels1 = {WITHOUT_CLASSIFICATION, SECTOR_GICS};
 	private static final double[] values1 = {4446, 32214};
 	private static final String[] labels2 = {"Account"};
@@ -263,12 +263,12 @@ public class ComplexPieChart extends PieChart {
 		 * Create series.
 		 */
 		ICircularSeriesData multiLevelDoughnut = new CircularSeriesData();
-		//
+
 		multiLevelDoughnut.setTitle("DAX");
 		multiLevelDoughnut.setNodeClass("Taxonomie");
 		multiLevelDoughnut.setValueClass("Value (€)");
 		multiLevelDoughnut.setSeries(labels1, values1);
-		//
+
 		multiLevelDoughnut.getNodeById(WITHOUT_CLASSIFICATION).addChildren(labels2, values2);
 		multiLevelDoughnut.getNodeById(SECTOR_GICS).addChildren(labels3, values3);
 		multiLevelDoughnut.getNodeById(PUBLIC_UTILITY_2).addChildren(labels4, values4);
@@ -341,11 +341,11 @@ public class ComplexPieChart extends PieChart {
 		multiLevelDoughnut.getNodeById(BUILDING_MATERIALS_3).addChildren(labels71, values71);
 		multiLevelDoughnut.getNodeById(CHEMICALS_1).addChildren(labels72, values72);
 		multiLevelDoughnut.getNodeById(CHEMICALS_2).addChildren(labels73, values73);
-		//
+
 		ICircularSeriesSettings settings = multiLevelDoughnut.getSettings();
 		settings.setDescription("DAX Taxonomie");
 		settings.setBorderStyle(LineStyle.SOLID);
-		//
+
 		multiLevelDoughnut.getSettings().setSeriesType(SeriesType.DOUGHNUT);
 		/*
 		 * Set series.

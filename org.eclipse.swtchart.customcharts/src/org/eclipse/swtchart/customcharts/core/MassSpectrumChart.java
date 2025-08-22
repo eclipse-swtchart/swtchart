@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -49,7 +49,7 @@ public class MassSpectrumChart extends BarChart {
 	}
 
 	private static final DecimalFormat DEFAULT_DECIMAL_FORMAT = new DecimalFormat();
-	//
+
 	private int numberOfHighestIntensitiesToLabel;
 	private BarSeriesIonComparator barSeriesIonComparator;
 	private LabelOption labelOption;
@@ -94,7 +94,7 @@ public class MassSpectrumChart extends BarChart {
 		barSeriesIonComparator = new BarSeriesIonComparator();
 		labelOption = LabelOption.EXACT;
 		customLabels = new HashMap<>();
-		//
+
 		IChartSettings chartSettings = getChartSettings();
 		chartSettings.setOrientation(SWT.HORIZONTAL);
 		chartSettings.setHorizontalSliderVisible(true);
@@ -108,11 +108,11 @@ public class MassSpectrumChart extends BarChart {
 		rangeRestriction.setExtendMaxX(2.0d);
 		rangeRestriction.setExtendTypeY(RangeRestriction.ExtendType.RELATIVE);
 		rangeRestriction.setExtendMaxY(0.1d);
-		//
+
 		setPrimaryAxisSet(chartSettings);
 		addSecondaryAxisSet(chartSettings);
 		applySettings(chartSettings);
-		//
+
 		addSeriesLabelMarker();
 		setData("org.eclipse.e4.ui.css.CssClassName", "MassSpectrumChart");
 	}
@@ -122,7 +122,7 @@ public class MassSpectrumChart extends BarChart {
 		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
 		primaryAxisSettingsX.setTitle("m/z"); //$NON-NLS-1$
 		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0##"), new DecimalFormatSymbols(Locale.ENGLISH))); //$NON-NLS-1$
-		//
+
 		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
 		primaryAxisSettingsY.setTitle(Messages.getString(Messages.INTENSITY));
 		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH))); //$NON-NLS-1$
@@ -222,16 +222,16 @@ public class MassSpectrumChart extends BarChart {
 	private List<BarSeriesIon> getBarSeriesIonList() {
 
 		List<BarSeriesIon> barSeriesIons = new ArrayList<>();
-		//
+
 		int widthPlotArea = getBaseChart().getPlotArea().getSize().x;
 		ISeries<?>[] series = getBaseChart().getSeriesSet().getSeries();
 		for(ISeries<?> barSeries : series) {
 			if(barSeries != null) {
-				//
+
 				double[] xSeries = barSeries.getXSeries();
 				double[] ySeries = barSeries.getYSeries();
 				int size = barSeries.getXSeries().length;
-				//
+
 				for(int i = 0; i < size; i++) {
 					Point point = barSeries.getPixelCoordinates(i);
 					if(point.x >= 0 && point.x <= widthPlotArea) {

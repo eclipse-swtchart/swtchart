@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,7 +23,7 @@ public class LineChartX extends LineSeries_1_Part {
 
 	private Cursor defaultCursor;
 	private BaselineSelectionPaintListenerX baselineSelectionPaintListenerX;
-	//
+
 	private int xStart;
 	private int yStart;
 	private int xStop;
@@ -96,12 +96,12 @@ public class LineChartX extends LineSeries_1_Part {
 
 		xStop = x;
 		yStop = y;
-		//
+
 		baselineSelectionPaintListenerX.setX1(xStart);
 		baselineSelectionPaintListenerX.setY1(yStart);
 		baselineSelectionPaintListenerX.setX2(xStop);
 		baselineSelectionPaintListenerX.setY2(yStop);
-		//
+
 		redrawChart();
 	}
 
@@ -114,12 +114,12 @@ public class LineChartX extends LineSeries_1_Part {
 	private void resetSelectedRange() {
 
 		baselineSelectionPaintListenerX.reset();
-		//
+
 		xStart = 0;
 		yStart = 0;
 		xStop = 0;
 		yStop = 0;
-		//
+
 		redrawChart();
 	}
 

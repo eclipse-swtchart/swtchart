@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -30,14 +30,14 @@ public class RangeRestriction {
 	public static final int REFERENCE_ZOOM_ZERO_X = 1 << 8; // 0 is the base when doing an x zoomIn/zoomOut action.
 	public static final int RESTRICT_ZOOM_X = 1 << 9; // When doing a zoom action, only do the zoom on the x axis.
 	public static final int RESTRICT_ZOOM_Y = 1 << 10; // When doing a zoom action, only do the zoom on the y axis.
-	//
+
 	private ExtendType extendTypeX;
 	private double extendMinX;
 	private double extendMaxX;
 	private ExtendType extendTypeY;
 	private double extendMinY;
 	private double extendMaxY;
-	//
+
 	private int selection;
 
 	public RangeRestriction() {

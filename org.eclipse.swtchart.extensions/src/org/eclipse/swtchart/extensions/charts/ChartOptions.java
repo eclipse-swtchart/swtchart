@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ public class ChartOptions {
 			{Messages.getString(Messages.BOLD), Integer.toString(SWT.BOLD)}, //
 			{Messages.getString(Messages.ITALIC), Integer.toString(SWT.ITALIC)} //
 	};
-	//
+
 	public static final String[][] COMPRESSION_TYPES = new String[][]{ //
 			{ICompressionSupport.COMPRESSION_EXTREME, ICompressionSupport.COMPRESSION_EXTREME}, //
 			{ICompressionSupport.COMPRESSION_HIGH, ICompressionSupport.COMPRESSION_HIGH}, //
@@ -35,7 +35,7 @@ public class ChartOptions {
 			{ICompressionSupport.COMPRESSION_AUTO, ICompressionSupport.COMPRESSION_AUTO}, //
 			{ICompressionSupport.COMPRESSION_NONE, ICompressionSupport.COMPRESSION_NONE} //
 	};
-	//
+
 	public static final String[][] SYMBOL_TYPES = new String[][]{ //
 			{Messages.getString(Messages.NONE), PlotSymbolType.NONE.toString()}, //
 			{Messages.getString(Messages.CIRCLE), PlotSymbolType.CIRCLE.toString()}, //
@@ -47,12 +47,12 @@ public class ChartOptions {
 			{Messages.getString(Messages.TRIANGLE), PlotSymbolType.TRIANGLE.toString()}, //
 			{Messages.getString(Messages.EMOJI), PlotSymbolType.EMOJI.toString()} //
 	};
-	//
+
 	public static final String[][] POSITIONS = new String[][]{ //
 			{Messages.getString(Messages.PRIMARY), Position.Primary.toString()}, //
 			{Messages.getString(Messages.SECONDARY), Position.Secondary.toString()} //
 	};
-	//
+
 	public static final String[][] LINE_STYLES = new String[][]{ //
 			{Messages.getString(Messages.NONE), LineStyle.NONE.toString()}, //
 			{"-", LineStyle.DASH.toString()}, //

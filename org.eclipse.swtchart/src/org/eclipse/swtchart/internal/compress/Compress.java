@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2022 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -93,7 +93,7 @@ public abstract class Compress implements ICompress {
 		if(compressedXSeries == null) {
 			return new double[0];
 		}
-		//
+
 		double[] copiedSeries = new double[compressedXSeries.length];
 		System.arraycopy(compressedXSeries, 0, copiedSeries, 0, compressedXSeries.length);
 		return copiedSeries;
@@ -105,7 +105,7 @@ public abstract class Compress implements ICompress {
 		if(compressedYSeries == null) {
 			return new double[0];
 		}
-		//
+
 		double[] copiedSeries = new double[compressedYSeries.length];
 		System.arraycopy(compressedYSeries, 0, copiedSeries, 0, compressedYSeries.length);
 		return copiedSeries;
@@ -117,7 +117,7 @@ public abstract class Compress implements ICompress {
 		if(compressedIndexes == null) {
 			return new int[0];
 		}
-		//
+
 		int[] copiedSeries = new int[compressedIndexes.length];
 		System.arraycopy(compressedIndexes, 0, copiedSeries, 0, compressedIndexes.length);
 		return copiedSeries;

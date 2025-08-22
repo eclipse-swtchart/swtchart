@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -51,7 +51,7 @@ public class Mappings_v1000 {
 				e.printStackTrace();
 			}
 		}
-		//
+
 		return mappings;
 	}
 
@@ -59,7 +59,7 @@ public class Mappings_v1000 {
 
 		StringBuilder builder = new StringBuilder();
 		MappingsIO.appendVersion(builder, VERSION_NUMBER);
-		//
+
 		for(MappedSeriesSettings mapping : mappings) {
 			/*
 			 * Always use the latest version to save the settings.
@@ -68,7 +68,7 @@ public class Mappings_v1000 {
 			exportMapping(values, mapping);
 			builder.append(create(values));
 		}
-		//
+
 		return builder.toString();
 	}
 
@@ -108,7 +108,7 @@ public class Mappings_v1000 {
 		values.add(seriesSettings.isVisible());
 		values.add(seriesSettings.isVisibleInLegend());
 		values.add(ResourceSupport.getColor(SeriesLabelProvider.getColor(seriesSettings)));
-		//
+
 		if(seriesSettings instanceof IBarSeriesSettings) {
 			exportBarSeriesSetting(values, (IBarSeriesSettings)seriesSettings);
 		} else if(seriesSettings instanceof ICircularSeriesSettings) {
@@ -128,7 +128,7 @@ public class Mappings_v1000 {
 			seriesSettings.setVisibleInLegend(Boolean.parseBoolean(values[index++]));
 			SeriesLabelProvider.setColor(seriesSettings, ResourceSupport.getColor(values[index++]));
 		}
-		//
+
 		if(seriesSettings instanceof IBarSeriesSettings) {
 			index = importBarSeriesSetting(values, index, (IBarSeriesSettings)seriesSettings);
 		} else if(seriesSettings instanceof ICircularSeriesSettings) {
@@ -138,7 +138,7 @@ public class Mappings_v1000 {
 		} else if(seriesSettings instanceof IScatterSeriesSettings) {
 			index = importScatterSeriesSetting(values, index, (IScatterSeriesSettings)seriesSettings);
 		}
-		//
+
 		return index;
 	}
 
@@ -162,7 +162,7 @@ public class Mappings_v1000 {
 			barSeriesSettings.setBarWidthStyle(BarWidthStyle.valueOf(values[index++]));
 			barSeriesSettings.setEnableStack(Boolean.parseBoolean(values[index++]));
 		}
-		//
+
 		return index;
 	}
 
@@ -182,7 +182,7 @@ public class Mappings_v1000 {
 			circularSeriesSettings.setBorderWidth(Integer.parseInt(values[index++]));
 			circularSeriesSettings.setBorderStyle(LineStyle.valueOf(values[index++]));
 		}
-		//
+
 		return index;
 	}
 
@@ -210,7 +210,7 @@ public class Mappings_v1000 {
 			lineSeriesSettings.setEnableStack(Boolean.valueOf(values[index++]));
 			lineSeriesSettings.setEnableStep(Boolean.valueOf(values[index++]));
 		}
-		//
+
 		return index;
 	}
 
@@ -222,7 +222,7 @@ public class Mappings_v1000 {
 	private int importScatterSeriesSetting(String[] values, int index, IScatterSeriesSettings scatterSeriesSettings) {
 
 		index = importPointSeriesSetting(values, index, scatterSeriesSettings);
-		//
+
 		return index;
 	}
 
@@ -240,7 +240,7 @@ public class Mappings_v1000 {
 			pointSeriesSettings.setSymbolSize(Integer.valueOf(values[index++]));
 			pointSeriesSettings.setSymbolColor(ResourceSupport.getColor(values[index++]));
 		}
-		//
+
 		return index;
 	}
 
@@ -255,7 +255,7 @@ public class Mappings_v1000 {
 			}
 		}
 		builder.append(MappingsIO.LINE_DELIMITER);
-		//
+
 		return builder.toString();
 	}
 

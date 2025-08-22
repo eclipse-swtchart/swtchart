@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -53,7 +53,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 	private AtomicReference<Text> descriptionControl = new AtomicReference<>();
 	private AtomicReference<Button> visibleControl = new AtomicReference<>();
 	private AtomicReference<Button> visibleInLegendControl = new AtomicReference<>();
-	//
+
 	private String title = "";
 	private T settingsNormal = null;
 	private T settingsHighlight = null;
@@ -63,11 +63,11 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 	public AbstractSeriesSettingsDialog(Shell parentShell, T settings) {
 
 		super(parentShell);
-		//
+
 		this.settingsNormal = settings;
 		this.settingsHighlight = (T)settings.getSeriesSettingsHighlight();
 		this.settingsSelected = this.settingsNormal;
-		//
+
 		String type;
 		if(settings instanceof IBarSeriesSettings) {
 			type = "Bar";
@@ -80,7 +80,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		} else {
 			type = "";
 		}
-		//
+
 		this.title = (type + " Series Settings").trim();
 	}
 
@@ -102,14 +102,14 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 	protected Control createDialogArea(Composite parent) {
 
 		Composite container = (Composite)super.createDialogArea(parent);
-		//
+
 		Composite composite = new Composite(container, SWT.NONE);
 		composite.setLayoutData(getGridData(GridData.FILL_BOTH, 1));
 		GridLayout layout = new GridLayout(3, false);
 		composite.setLayout(layout);
-		//
+
 		createInputSection(composite);
-		//
+
 		initialize();
 		return container;
 	}
@@ -134,7 +134,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		Label label = new Label(parent, SWT.NONE);
 		label.setText(title);
 		label.setLayoutData(getGridData(GridData.FILL_HORIZONTAL, 1));
-		//
+
 		return label;
 	}
 
@@ -151,11 +151,11 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				if(element instanceof IEnumLabel) {
 					return ((IEnumLabel)element).label();
 				}
-				//
+
 				return null;
 			}
 		});
-		//
+
 		Combo combo = comboViewer.getCombo();
 		combo.setToolTipText(tooltip);
 		combo.setLayoutData(gridData);
@@ -167,11 +167,11 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				consumer.accept(comboViewer.getStructuredSelection().getFirstElement());
 			}
 		});
-		//
+
 		if(selection != null) {
 			comboViewer.setSelection(new StructuredSelection(selection));
 		}
-		//
+
 		return comboViewer;
 	}
 
@@ -189,7 +189,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				consumer.accept(text.getText().trim());
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -199,7 +199,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		text.setText("");
 		text.setToolTipText("");
 		text.setLayoutData(getGridData(GridData.FILL_HORIZONTAL, 1));
-		//
+
 		Button button = new Button(parent, SWT.PUSH);
 		button.setText("...");
 		button.setToolTipText("Select the " + title);
@@ -218,7 +218,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				}
 			}
 		});
-		//
+
 		return text;
 	}
 
@@ -228,7 +228,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		button.setText(title);
 		button.setToolTipText(tooltip);
 		button.setLayoutData(gridData);
-		//
+
 		button.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -237,7 +237,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				consumer.accept(button.getSelection());
 			}
 		});
-		//
+
 		return button;
 	}
 
@@ -257,7 +257,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				consumer.accept(spinner.getSelection());
 			}
 		});
-		//
+
 		return spinner;
 	}
 
@@ -265,7 +265,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 
 		GridData gridData = new GridData(style);
 		gridData.horizontalSpan = horizontalSpan;
-		//
+
 		return gridData;
 	}
 
@@ -273,7 +273,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 
 		String title = "Setting Status";
 		createSectionLabel(parent, title);
-		//
+
 		ComboViewer comboViewer = createComboViewer(parent, title, SettingsStatus.values(), SettingsStatus.NORMAL, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
 
 			@Override
@@ -292,7 +292,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				}
 			}
 		});
-		//
+
 		settingStatusControl.set(comboViewer);
 	}
 
@@ -300,7 +300,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 
 		String title = "Description";
 		createSectionLabel(parent, title);
-		//
+
 		Text text = createText(parent, "", "The series description can be modified here.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<String>() {
 
 			@Override
@@ -311,14 +311,14 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				}
 			}
 		});
-		//
+
 		descriptionControl.set(text);
 	}
 
 	private void createVisibleSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Visible", "Show or hide the series in the chart.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -329,14 +329,14 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				}
 			}
 		});
-		//
+
 		visibleControl.set(button);
 	}
 
 	private void createVisibleInLegendSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Visible in Legend", "Show or hide the series in the chart legend.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -347,7 +347,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				}
 			}
 		});
-		//
+
 		visibleInLegendControl.set(button);
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -30,9 +30,9 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 	public static final int INDEX_VISIBLE_IN_LEGEND = 3;
 	public static final int INDEX_COLOR = 4;
 	public static final int INDEX_DESCRIPTION = 5;
-	//
+
 	private BaseChart baseChart = null;
-	//
+
 	public static final String[] TITLES = { //
 			Messages.getString(Messages.ID), //
 			Messages.getString(Messages.MAPPING_STATUS), //
@@ -41,7 +41,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 			Messages.getString(Messages.COLOR), //
 			Messages.getString(Messages.DESCRIPTION), //
 	};
-	//
+
 	public static final int[] BOUNDS = { //
 			24, //
 			30, //
@@ -60,7 +60,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 	public static Color getColor(ISeriesSettings seriesSettings) {
 
 		Color color = null;
-		//
+
 		if(seriesSettings instanceof IBarSeriesSettings barSeriesSettings) {
 			color = barSeriesSettings.getBarColor();
 		} else if(seriesSettings instanceof ILineSeriesSettings lineSeriesSettings) {
@@ -70,7 +70,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 		} else if(seriesSettings instanceof ICircularSeriesSettings circularSeriesSettings) {
 			color = circularSeriesSettings.getSliceColor();
 		}
-		//
+
 		return color;
 	}
 
@@ -112,7 +112,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 			Image checked = ResourceSupport.getImage(ResourceSupport.ICON_CHECKED);
 			Image unchecked = ResourceSupport.getImage(ResourceSupport.ICON_UNCHECKED);
 			Image mappings = ResourceSupport.getImage(ResourceSupport.ICON_MAPPINGS);
-			//
+
 			if(columnIndex == INDEX_ID) {
 				return seriesMarker;
 			} else if(columnIndex == INDEX_VISIBLE) {

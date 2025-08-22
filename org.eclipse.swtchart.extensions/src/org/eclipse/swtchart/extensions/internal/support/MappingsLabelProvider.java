@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,13 +23,13 @@ public class MappingsLabelProvider extends ColumnLabelProvider implements ITable
 	public static final String MAPPINGS_TYPE = "Mappings Type";
 	public static final String ID = "Identifier";
 	public static final String DESCRIPTION = "Description";
-	//
+
 	public static final String[] TITLES = { //
 			MAPPINGS_TYPE, //
 			ID, //
 			DESCRIPTION //
 	};
-	//
+
 	public static final int[] BOUNDS = { //
 			150, //
 			150, //
@@ -51,7 +51,7 @@ public class MappingsLabelProvider extends ColumnLabelProvider implements ITable
 		String text = "";
 		if(element instanceof MappedSeriesSettings) {
 			MappedSeriesSettings mappedSeriesSettings = (MappedSeriesSettings)element;
-			//
+
 			switch(columnIndex) {
 				case 0:
 					text = mappedSeriesSettings.getMappingsType().label();

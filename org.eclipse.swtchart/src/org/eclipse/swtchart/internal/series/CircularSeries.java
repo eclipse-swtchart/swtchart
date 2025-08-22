@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -35,12 +35,12 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 	private Color borderColor = Display.getDefault().getSystemColor(SWT.COLOR_GRAY);
 	private int borderWidth = 1;
 	private int borderStyle = SWT.LINE_SOLID;
-	//
+
 	private Color sliceColorHighlight = Display.getDefault().getSystemColor(SWT.COLOR_RED);
 	private Color borderColorHighlight = Display.getDefault().getSystemColor(SWT.COLOR_DARK_RED);
 	private int borderWidthHighlight = 3;
 	private int borderStyleHighlight = SWT.LINE_SOLID;
-	//
+
 	private Chart chart;
 	private NodeDataModel nodeDataModel;
 	private Node rootNode;
@@ -54,7 +54,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		super(chart, id);
 		this.chart = chart;
 		initialize();
-		//
+
 		nodeDataModel = new NodeDataModel(id);
 		rootNode = nodeDataModel.getRootNode();
 		rootPointer = nodeDataModel.getRootPointer();
@@ -206,7 +206,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		for(int i = 1; i <= maxTreeDepth; i++) {
 			tot += nodes[i].size();
 		}
-		//
+
 		String[] labels = new String[tot];
 		for(int i = 1; i <= maxTreeDepth; i++) {
 			int len = nodes[i].size();
@@ -215,7 +215,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 				index++;
 			}
 		}
-		//
+
 		return labels;
 	}
 
@@ -227,7 +227,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		for(int i = 1; i <= maxTreeDepth; i++) {
 			tot += nodes[i].size();
 		}
-		//
+
 		Color[] colors = new Color[tot];
 		for(int i = 1; i <= maxTreeDepth; i++) {
 			int len = nodes[i].size();
@@ -236,7 +236,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 				ind++;
 			}
 		}
-		//
+
 		return colors;
 	}
 
@@ -247,7 +247,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		if(colors.length != length) {
 			// Throw Error
 		}
-		//
+
 		for(int i = 0; i != length; i++) {
 			if(colors[i] != null)
 				nodeDataModel.getNodeById(getLabels()[i]).setSliceColor(colors[i]);
@@ -270,11 +270,11 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		if(values.length != length) {
 			// throw error
 		}
-		//
+
 		for(int i = 0; i != length; i++) {
 			new Node(labels[i], values[i], rootNode);
 		}
-		//
+
 		nodeDataModel.update();
 	}
 
@@ -292,18 +292,18 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 			this.highlightedNode = null;
 			return;
 		}
-		//
+
 		Node node = highlightedNode;
 		while(node != getRootPointer() && node != getRootNode()) {
 			node = node.getParent();
 		}
-		//
+
 		if(node != getRootPointer()) {
 			return;
 		}
-		//
+
 		borderColorHighlight = (borderColorHighlight == null) ? Display.getDefault().getSystemColor(SWT.COLOR_BLACK) : borderColorHighlight;
-		//
+
 		this.highlightedNode = highlightedNode;
 	}
 
@@ -320,7 +320,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		gc.setForeground(sliceColor != null ? sliceColor : Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
 		gc.setLineStyle(borderStyle);
 		gc.setLineWidth(borderWidth);
-		//
+
 		/*
 		 * A DFS function which draws the node after drawing it's children.
 		 */
@@ -329,7 +329,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 		 * highlight just the required node.
 		 */
 		if(highlightedNode != null && borderColorHighlight != null) {
-			//
+
 			gc.setForeground(borderColorHighlight);
 			gc.setLineStyle(borderStyleHighlight);
 			gc.setLineWidth(borderWidthHighlight);
@@ -340,7 +340,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 			int yStart = yAxis.getPixelCoordinate(level);
 			int xWidth = xAxis.getPixelCoordinate(level) - xStart;
 			int yWidth = yAxis.getPixelCoordinate(-level) - yStart;
-			//
+
 			int angleStart = highlightedNode.getAngleBounds().x;
 			int angleWidth = highlightedNode.getAngleBounds().y;
 			// drawing the inner and outer arcs of the highlighted node.
@@ -432,7 +432,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 				highlightedNode = null;
 			}
 		}
-		//
+
 		this.rootPointer = rootPointer;
 		nodeDataModel.setRootPointer(rootPointer);
 	}

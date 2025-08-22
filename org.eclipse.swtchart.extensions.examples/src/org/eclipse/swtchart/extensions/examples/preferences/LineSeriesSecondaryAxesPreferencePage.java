@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -39,7 +39,7 @@ public class LineSeriesSecondaryAxesPreferencePage extends FieldEditorPreference
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("X-Axis", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_TITLE, "Secondary X-Axis Title:", getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_DESCRIPTION, "Secondary X-Axis Description:", getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_DECIMAL_FORMAT_PATTERN, "Secondary X-Axis Format Pattern:", getFieldEditorParent()));
@@ -51,11 +51,11 @@ public class LineSeriesSecondaryAxesPreferencePage extends FieldEditorPreference
 		addField(new BooleanFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_ENABLE_LOG_SCALE, "Secondary X-Axis Enable Log Scale", getFieldEditorParent()));
 		addField(new DoubleFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_LOG_SCALE_BASE, "Secondary X-Axis Log Scale Base", getFieldEditorParent()));
 		addField(new IntegerFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_EXTRA_SPACE_TITLE, "Secondary X-Axis Extra Space Title:", getFieldEditorParent()));
-		//
+
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
 		addField(new LabelFieldEditor("Y-Axis", getFieldEditorParent()));
 		addField(new SpacerFieldEditor(getFieldEditorParent()));
-		//
+
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_TITLE, "Secondary Y-Axis Title:", getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_DESCRIPTION, "Secondary Y-Axis Description:", getFieldEditorParent()));
 		addField(new StringFieldEditor(LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_DECIMAL_FORMAT_PATTERN, "Secondary Y-Axis Format Pattern:", getFieldEditorParent()));

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -33,7 +33,7 @@ public class MultiplePieChart {
 		shell.setText("PieChart");
 		shell.setSize(700, 600);
 		shell.setLayout(new FillLayout());
-		//
+
 		// just change SeriesType to SeriesType.DOUGHNUT
 		ParallelPieCharts charts = new ParallelPieCharts(shell, SeriesType.PIE, true);
 		charts.addPieChartSeries(labels, val);
@@ -41,7 +41,7 @@ public class MultiplePieChart {
 		charts.setChartTitles(titles);
 		charts.setRedrawOnClick(true);
 		shell.open();
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();

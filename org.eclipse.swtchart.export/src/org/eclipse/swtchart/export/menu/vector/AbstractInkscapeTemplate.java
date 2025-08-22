@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,7 @@ public abstract class AbstractInkscapeTemplate implements IVectorDataExport {
 
 	protected static final String LINE_DELIMITER = "\n";
 	protected static final String SPLIT_LINE_DELIMITER = "\\n";
-	//
+
 	protected static final String AXIS_X = "x"; //$NON-NLS-1$
 	protected static final String AXIS_Y = "y"; //$NON-NLS-1$
 
@@ -33,12 +33,12 @@ public abstract class AbstractInkscapeTemplate implements IVectorDataExport {
 	protected String getColor(Color color) {
 
 		StringBuilder builder = new StringBuilder("#");
-		//
+
 		double r = color.getRed();
 		double g = color.getGreen();
 		double b = color.getBlue();
 		double[] rgb = new double[]{r, g, b};
-		//
+
 		for(double x : rgb) {
 			double hex = 16.0d;
 			double div = x / hex;
@@ -46,23 +46,23 @@ public abstract class AbstractInkscapeTemplate implements IVectorDataExport {
 			double remainder = div - count;
 			remainder = (int)(remainder * hex);
 			char first, second;
-			//
+
 			if(count >= 10) {
 				first = (char)('a' + (count - 10));
 			} else {
 				first = (char)('0' + count);
 			}
-			//
+
 			if(remainder >= 10) {
 				second = (char)('a' + (remainder - 10));
 			} else {
 				second = (char)('0' + remainder);
 			}
-			//
+
 			builder.append(first);
 			builder.append(second);
 		}
-		//
+
 		return builder.toString();
 	}
 

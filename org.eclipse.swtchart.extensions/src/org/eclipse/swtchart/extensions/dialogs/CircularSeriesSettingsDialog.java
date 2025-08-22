@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -65,7 +65,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 
 		String title = "Slice Color";
 		createSectionLabel(parent, title);
-		//
+
 		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
 
 			@Override
@@ -77,7 +77,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 				}
 			}
 		});
-		//
+
 		sliceColorControl.set(text);
 	}
 
@@ -85,7 +85,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 
 		String title = "Border Color";
 		createSectionLabel(parent, title);
-		//
+
 		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
 
 			@Override
@@ -97,7 +97,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 				}
 			}
 		});
-		//
+
 		borderColorControl.set(text);
 	}
 
@@ -105,7 +105,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 
 		String title = "Border Width";
 		createSectionLabel(parent, title);
-		//
+
 		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
 
 			@Override
@@ -117,7 +117,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 				}
 			}
 		});
-		//
+
 		borderWidthControl.set(spinner);
 	}
 
@@ -125,7 +125,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 
 		String title = "Border Style";
 		createSectionLabel(parent, title);
-		//
+
 		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
 
 			@Override
@@ -139,7 +139,7 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 				}
 			}
 		});
-		//
+
 		borderStyleControl.set(comboViewer);
 	}
 }

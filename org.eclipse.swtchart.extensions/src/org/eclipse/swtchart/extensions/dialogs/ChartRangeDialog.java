@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -37,14 +37,14 @@ import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 public class ChartRangeDialog extends TitleAreaDialog {
 
 	private ScrollableChart scrollableChart;
-	//
+
 	private Text textStartX;
 	private Text textStopX;
 	private Combo comboScaleX;
 	private Text textStartY;
 	private Text textStopY;
 	private Combo comboScaleY;
-	//
+
 	private ChartRangeValues chartRangeValues = new ChartRangeValues();
 
 	public ChartRangeDialog(Shell parent, ScrollableChart scrollableChart) {
@@ -70,17 +70,17 @@ public class ChartRangeDialog extends TitleAreaDialog {
 	protected Control createDialogArea(Composite parent) {
 
 		Composite container = (Composite)super.createDialogArea(parent);
-		//
+
 		Composite composite = new Composite(container, SWT.NONE);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		GridLayout layout = new GridLayout(3, false);
 		composite.setLayout(layout);
-		//
+
 		createSectionAxisX(composite);
 		createSectionAxisY(composite);
-		//
+
 		initialize();
-		//
+
 		return container;
 	}
 
@@ -101,11 +101,11 @@ public class ChartRangeDialog extends TitleAreaDialog {
 		textStartX = new Text(parent, SWT.BORDER);
 		textStartX.setText(""); //$NON-NLS-1$
 		textStartX.setLayoutData(getTextGridData());
-		//
+
 		textStopX = new Text(parent, SWT.BORDER);
 		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
-		//
+
 		comboScaleX = ExtendedCombo.create(parent, SWT.READ_ONLY);
 		comboScaleX.setLayoutData(getComboGridData());
 		comboScaleX.addSelectionListener(new SelectionAdapter() {
@@ -131,11 +131,11 @@ public class ChartRangeDialog extends TitleAreaDialog {
 		textStartY = new Text(parent, SWT.BORDER);
 		textStartY.setText(""); //$NON-NLS-1$
 		textStartY.setLayoutData(getTextGridData());
-		//
+
 		textStopY = new Text(parent, SWT.BORDER);
 		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
-		//
+
 		comboScaleY = ExtendedCombo.create(parent, SWT.READ_ONLY);
 		comboScaleY.setLayoutData(getComboGridData());
 		comboScaleY.addSelectionListener(new SelectionAdapter() {
@@ -209,14 +209,14 @@ public class ChartRangeDialog extends TitleAreaDialog {
 	private void setCurrentValues() {
 
 		BaseChart baseChart = scrollableChart.getBaseChart();
-		//
+
 		int indexX = (comboScaleX.getSelectionIndex() >= 0) ? comboScaleX.getSelectionIndex() : BaseChart.ID_PRIMARY_X_AXIS;
 		int indexY = (comboScaleY.getSelectionIndex() >= 0) ? comboScaleY.getSelectionIndex() : BaseChart.ID_PRIMARY_Y_AXIS;
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(indexX);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(indexY);
 		Range rangeX = xAxis.getRange();
 		Range rangeY = yAxis.getRange();
-		//
+
 		DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, indexX);
 		DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, indexY);
 		/*

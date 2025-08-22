@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -63,7 +63,7 @@ public class LineSeries_Edit_Part extends Composite {
 	private Combo comboScaleX;
 	private Text textShiftY;
 	private Combo comboScaleY;
-	//
+
 	// private int shiftConstraintRangeSelection;
 	private int shiftConstraintDeleteX;
 	private int shiftConstraintDeleteY;
@@ -71,9 +71,9 @@ public class LineSeries_Edit_Part extends Composite {
 	// private int shiftConstraintStretchX;
 	// private int shiftConstraintBroadenX;
 	// private int shiftConstraintNarrowX;
-	//
+
 	private ChromatogramChart chromatogramChart;
-	//
+
 	private Map<Integer, Table> shiftTableMap;
 
 	@Inject
@@ -91,7 +91,7 @@ public class LineSeries_Edit_Part extends Composite {
 	private void initialize() throws Exception {
 
 		shiftTableMap = new HashMap<Integer, Table>();
-		//
+
 		this.setLayout(new GridLayout(1, true));
 		tabFolder = new TabFolder(this, SWT.BOTTOM);
 		tabFolder.setLayoutData(new GridData(GridData.FILL_BOTH));
@@ -142,10 +142,10 @@ public class LineSeries_Edit_Part extends Composite {
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		String labelAxisX = chromatogramChart.getBaseChart().getXAxisSettings(BaseChart.ID_PRIMARY_X_AXIS).getLabel();
 		String labelAxisY = chromatogramChart.getBaseChart().getYAxisSettings(BaseChart.ID_PRIMARY_Y_AXIS).getLabel();
-		//
+
 		addTableColumn(table, "Start [" + labelAxisX + "]", 150);
 		addTableColumn(table, "Stop [" + labelAxisX + "]", 150);
 		addTableColumn(table, "Shift [" + labelAxisX + "]", 150);
@@ -153,7 +153,7 @@ public class LineSeries_Edit_Part extends Composite {
 		addTableColumn(table, "Stop [" + labelAxisY + "]", 150);
 		addTableColumn(table, "Shift [" + labelAxisY + "]", 150);
 		addTableColumn(table, "Shift Constraints", 150);
-		//
+
 		return table;
 	}
 
@@ -185,7 +185,7 @@ public class LineSeries_Edit_Part extends Composite {
 		gridDataComposite.horizontalAlignment = SWT.BEGINNING;
 		compositeButtons.setLayoutData(gridDataComposite);
 		compositeButtons.setLayout(new GridLayout(18, false));
-		//
+
 		createLabel(compositeButtons);
 		createCombo(compositeButtons);
 		createTextShiftX(compositeButtons);
@@ -204,7 +204,7 @@ public class LineSeries_Edit_Part extends Composite {
 		// createButtonConstraintBroadenX(compositeButtons);
 		// createButtonConstraintNarrowX(compositeButtons);
 		createButtonReset(compositeButtons);
-		//
+
 		createChart(parent);
 	}
 
@@ -334,15 +334,15 @@ public class LineSeries_Edit_Part extends Composite {
 	}
 
 	// private void createButtonConstraintRangeSelection(Composite parent) {
-	//
+
 	// Button button = new Button(parent, SWT.CHECK);
 	// button.setText("Range Selection");
 	// button.setSelection(false);
 	// button.addSelectionListener(new SelectionAdapter() {
-	//
+
 	// @Override
 	// public void widgetSelected(SelectionEvent e) {
-	//
+
 	// if(button.getSelection()) {
 	// shiftConstraintRangeSelection = BaseChart.SHIFT_CONSTRAINT_RANGE_SELECTION;
 	// } else {
@@ -393,15 +393,15 @@ public class LineSeries_Edit_Part extends Composite {
 	}
 
 	// private void createButtonConstraintClinchX(Composite parent) {
-	//
+
 	// Button button = new Button(parent, SWT.CHECK);
 	// button.setText("Clinch X");
 	// button.setSelection(false);
 	// button.addSelectionListener(new SelectionAdapter() {
-	//
+
 	// @Override
 	// public void widgetSelected(SelectionEvent e) {
-	//
+
 	// if(button.getSelection()) {
 	// shiftConstraintClinchX = BaseChart.SHIFT_CONSTRAINT_CLINCH_X;
 	// } else {
@@ -412,15 +412,15 @@ public class LineSeries_Edit_Part extends Composite {
 	// });
 	// }
 	// private void createButtonConstraintStrechX(Composite parent) {
-	//
+
 	// Button button = new Button(parent, SWT.CHECK);
 	// button.setText("Stretch X");
 	// button.setSelection(false);
 	// button.addSelectionListener(new SelectionAdapter() {
-	//
+
 	// @Override
 	// public void widgetSelected(SelectionEvent e) {
-	//
+
 	// if(button.getSelection()) {
 	// shiftConstraintStretchX = BaseChart.SHIFT_CONSTRAINT_STRETCH_X;
 	// } else {
@@ -430,17 +430,17 @@ public class LineSeries_Edit_Part extends Composite {
 	// }
 	// });
 	// }
-	//
+
 	// private void createButtonConstraintBroadenX(Composite parent) {
-	//
+
 	// Button button = new Button(parent, SWT.CHECK);
 	// button.setText("Broaden X");
 	// button.setSelection(false);
 	// button.addSelectionListener(new SelectionAdapter() {
-	//
+
 	// @Override
 	// public void widgetSelected(SelectionEvent e) {
-	//
+
 	// if(button.getSelection()) {
 	// shiftConstraintBroadenX = BaseChart.SHIFT_CONSTRAINT_BROADEN_X;
 	// } else {
@@ -450,17 +450,17 @@ public class LineSeries_Edit_Part extends Composite {
 	// }
 	// });
 	// }
-	//
+
 	// private void createButtonConstraintNarrowX(Composite parent) {
-	//
+
 	// Button button = new Button(parent, SWT.CHECK);
 	// button.setText("Narrow X");
 	// button.setSelection(false);
 	// button.addSelectionListener(new SelectionAdapter() {
-	//
+
 	// @Override
 	// public void widgetSelected(SelectionEvent e) {
-	//
+
 	// if(button.getSelection()) {
 	// shiftConstraintNarrowX = BaseChart.SHIFT_CONSTRAINT_NARROW_X;
 	// } else {
@@ -490,29 +490,29 @@ public class LineSeries_Edit_Part extends Composite {
 
 		chromatogramChart = new ChromatogramChart(parent, SWT.BORDER);
 		chromatogramChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		IChartSettings chartSettings = chromatogramChart.getChartSettings();
 		chartSettings.setCreateMenu(true);
 		chartSettings.setSupportDataShift(true);
 		chromatogramChart.applySettings(chartSettings);
-		//
+
 		loadChromatogramData();
 	}
 
 	private void loadChromatogramData() {
 
 		chromatogramChart.deleteSeries();
-		//
+
 		Map<Integer, Color> colors = new HashMap<Integer, Color>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 		colors.put(4, getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
 		colors.put(5, getDisplay().getSystemColor(SWT.COLOR_GRAY));
-		//
+
 		String[] items = new String[6];
 		items[0] = "No Selection";
-		//
+
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
 		for(int i = 1; i <= NUM_SERIES; i++) {
 			ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES + "4_" + i);
@@ -525,12 +525,12 @@ public class LineSeries_Edit_Part extends Composite {
 			lineSeriesSettingsHighlight.setLineWidth(2);
 			lineSeriesDataList.add(lineSeriesData);
 		}
-		//
+
 		chromatogramChart.addSeriesData(lineSeriesDataList, LineChart.MEDIUM_COMPRESSION);
 		comboSelectSeries.setItems(items);
 		comboSelectSeries.select(1); // LineSeries4_1
 		selectSeries();
-		//
+
 		setComboAxisItems();
 	}
 
@@ -587,7 +587,7 @@ public class LineSeries_Edit_Part extends Composite {
 			BaseChart baseChart = chromatogramChart.getBaseChart();
 			DecimalFormat decimalFormat;
 			int selectedAxis;
-			//
+
 			if(axis.equals(IExtendedChart.X_AXIS)) {
 				selectedAxis = comboScaleX.getSelectionIndex();
 				decimalFormat = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, selectedAxis);
@@ -595,7 +595,7 @@ public class LineSeries_Edit_Part extends Composite {
 				selectedAxis = comboScaleY.getSelectionIndex();
 				decimalFormat = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, selectedAxis);
 			}
-			//
+
 			double secondaryValue;
 			if(axis.equals(IExtendedChart.X_AXIS)) {
 				secondaryValue = decimalFormat.parse(textShiftX.getText().trim()).doubleValue();
@@ -614,7 +614,7 @@ public class LineSeries_Edit_Part extends Composite {
 		} catch(ParseException e) {
 			e.printStackTrace();
 		}
-		//
+
 		return shiftValue;
 	}
 

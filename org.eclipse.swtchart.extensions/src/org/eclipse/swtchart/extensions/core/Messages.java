@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWT Chart Project
+ * Copyright (c) 2020, 2025 SWT Chart Project
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,7 @@ public class Messages {
 
 	private static final String BUNDLE_NAME = "org.eclipse.swtchart.extensions.core.messages"; //$NON-NLS-1$
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
-	//
+
 	public static final String ADD_MAPPING = "ADD_MAPPING";
 	public static final String ALL_MAPPINGS_DELETED = "ALL_MAPPINGS_DELETED";
 	public static final String BAR = "BAR";

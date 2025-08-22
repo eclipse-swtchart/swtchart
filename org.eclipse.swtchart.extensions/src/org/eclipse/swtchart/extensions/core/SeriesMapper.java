@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -65,7 +65,7 @@ public class SeriesMapper {
 	public static ISeriesSettings get(ISeries<?> series, BaseChart baseChart) {
 
 		ISeriesSettings seriesSettingsMapped = null;
-		//
+
 		if(baseChart != null) {
 			String id = series.getId();
 			ISeriesSettings seriesSettings = baseChart.getSeriesSettings(id);
@@ -84,7 +84,7 @@ public class SeriesMapper {
 				}
 			}
 		}
-		//
+
 		return seriesSettingsMapped;
 	}
 
@@ -100,7 +100,7 @@ public class SeriesMapper {
 		String id = series.getId();
 		ISeriesSettings seriesSettings = baseChart.getSeriesSettings(id);
 		ISeriesSettings seriesSettingsCopy = MappingsSupport.copySettings(seriesSettings);
-		//
+
 		if(seriesSettingsCopy != null) {
 			MappingsType mappingsType = MappingsSupport.getMappingsType(seriesSettings);
 			if(isValidMappingsType(mappingsType)) {
@@ -141,7 +141,7 @@ public class SeriesMapper {
 				mappings.add(new MappedSeriesSettings(mappingsType, id, seriesSettings));
 			}
 		}
-		//
+
 		return mappings;
 	}
 
@@ -200,7 +200,7 @@ public class SeriesMapper {
 				// Not a valid regular expression.
 			}
 		}
-		//
+
 		return null;
 	}
 }

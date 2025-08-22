@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -76,7 +76,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		String title = "Line Style";
 		createSectionLabel(parent, title);
-		//
+
 		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
 
 			@Override
@@ -90,7 +90,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		lineStyleControl.set(comboViewer);
 	}
 
@@ -98,7 +98,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		String title = "Line Width";
 		createSectionLabel(parent, title);
-		//
+
 		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
 
 			@Override
@@ -110,7 +110,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		lineWidthControl.set(spinner);
 	}
 
@@ -118,7 +118,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		String title = "Line Color";
 		createSectionLabel(parent, title);
-		//
+
 		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
 
 			@Override
@@ -130,7 +130,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		lineColorControl.set(text);
 	}
 
@@ -138,7 +138,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		String title = "Antialias";
 		createSectionLabel(parent, title);
-		//
+
 		ComboViewer comboViewer = createComboViewer(parent, title, Antialias.values(), Antialias.ON, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
 
 			@Override
@@ -152,14 +152,14 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		antialiasControl.set(comboViewer);
 	}
 
 	private void createEnableAreaSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Enable Area", "Enable or disable to display the area.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -171,14 +171,14 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		enableAreaControl.set(button);
 	}
 
 	private void createEnableStackSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -190,14 +190,14 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		enableStackControl.set(button);
 	}
 
 	private void createEnableStepSection(Composite parent) {
 
 		createSectionLabel(parent, "");
-		//
+
 		Button button = createCheckBox(parent, "Enable Step", "Enable or disable the step modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
 
 			@Override
@@ -209,7 +209,7 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 				}
 			}
 		});
-		//
+
 		enableStepControl.set(button);
 	}
 }

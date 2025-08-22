@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,7 +15,7 @@ package org.eclipse.swtchart.extensions.core;
 public class UserSelection {
 
 	private static final int NO_SELECTION = 0;
-	//
+
 	private int startX = NO_SELECTION;
 	private int startY = NO_SELECTION;
 	private int stopX = NO_SELECTION;
@@ -96,7 +96,7 @@ public class UserSelection {
 	public void setStartCoordinate(int startX, int startY) {
 
 		active = false;
-		//
+
 		this.startX = startX;
 		this.startY = startY;
 	}
@@ -110,7 +110,7 @@ public class UserSelection {
 	public void setStopCoordinate(int stopX, int stopY) {
 
 		active = true;
-		//
+
 		this.stopX = stopX;
 		this.stopY = stopY;
 	}
@@ -118,7 +118,7 @@ public class UserSelection {
 	public void reset() {
 
 		active = false;
-		//
+
 		startX = NO_SELECTION;
 		stopX = NO_SELECTION;
 		startY = NO_SELECTION;

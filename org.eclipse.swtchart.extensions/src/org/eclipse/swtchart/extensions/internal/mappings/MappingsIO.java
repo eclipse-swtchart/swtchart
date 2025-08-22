@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 Lablicate GmbH.
+ * Copyright (c) 2021, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -52,7 +52,7 @@ public class MappingsIO {
 					break;
 			}
 		}
-		//
+
 		return mappings;
 	}
 
@@ -79,7 +79,7 @@ public class MappingsIO {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		//
+
 		return mappings;
 	}
 
@@ -92,7 +92,7 @@ public class MappingsIO {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		//
+
 		return success;
 	}
 
@@ -137,7 +137,7 @@ public class MappingsIO {
 		} else {
 			version = Mappings_v1000.VERSION_NUMBER;
 		}
-		//
+
 		return version;
 	}
 }

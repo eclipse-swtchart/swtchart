@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -57,7 +57,7 @@ public class BarSeries_1_3_Part extends MassSpectrumChart {
 		 */
 		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
-		//
+
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		/*
@@ -69,7 +69,7 @@ public class BarSeries_1_3_Part extends MassSpectrumChart {
 	private Map<Double, String> createCustomLabels() {
 
 		Map<Double, String> customLabels = new HashMap<Double, String>();
-		//
+
 		customLabels.put(16.0, "245 > 16.0 @12");
 		customLabels.put(17.0, "245 > 17.0 @12");
 		customLabels.put(18.0, "245 > 18.0 @12");
@@ -148,7 +148,7 @@ public class BarSeries_1_3_Part extends MassSpectrumChart {
 		customLabels.put(149.0, "245 > 149.0 @12");
 		customLabels.put(150.0, "245 > 150.0 @12");
 		customLabels.put(191.0, "245 > 191.0 @12");
-		//
+
 		return customLabels;
 	}
 }

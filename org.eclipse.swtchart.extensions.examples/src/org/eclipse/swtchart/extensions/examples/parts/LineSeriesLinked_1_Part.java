@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2024 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -35,11 +35,11 @@ public class LineSeriesLinked_1_Part {
 	private void initialize(Composite parent) throws Exception {
 
 		parent.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		//
+
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		//
+
 		CustomLinkedLineSeries1 customLinkedLineSeries1 = new CustomLinkedLineSeries1(composite, SWT.NONE);
 		customLinkedLineSeries1.setLayoutData(new GridData(GridData.FILL_BOTH));
 		customLinkedLineSeries1.setChartInfo("Signal Z", "Sample", "Reference");

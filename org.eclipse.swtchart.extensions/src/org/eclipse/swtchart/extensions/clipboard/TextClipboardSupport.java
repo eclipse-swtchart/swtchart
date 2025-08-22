@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2023 Lablicate GmbH.
+ * Copyright (c) 2022, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,7 +34,7 @@ public class TextClipboardSupport {
 		List<String> seriesIds = new ArrayList<>(baseChart.getSeriesIds());
 		Collections.sort(seriesIds);
 		ISeriesSet seriesSet = baseChart.getSeriesSet();
-		//
+
 		StringBuilder builder = new StringBuilder();
 		for(String seriesId : seriesIds) {
 			/*
@@ -56,7 +56,7 @@ public class TextClipboardSupport {
 				}
 			}
 		}
-		//
+
 		TextTransfer textTransfer = TextTransfer.getInstance();
 		Object[] data = new Object[]{builder.toString()};
 		Transfer[] dataTypes = new Transfer[]{textTransfer};

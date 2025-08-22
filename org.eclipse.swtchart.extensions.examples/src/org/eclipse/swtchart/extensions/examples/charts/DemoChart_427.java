@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 SWTChart project.
+ * Copyright (c) 2024, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,7 +41,7 @@ public class DemoChart_427 {
 		shell.setSize(500, 400);
 		shell.setLayout(new FillLayout());
 		shell.setBackgroundMode(SWT.INHERIT_FORCE);
-		//
+
 		LineChart lineChart = new LineChart(shell, SWT.NONE);
 		lineChart.setFileName("DemoChart_427");
 		lineChart.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
@@ -80,7 +80,7 @@ public class DemoChart_427 {
 		lineSeriesSettings.setEnableArea(true);
 		lineSeriesDataList.add(lineSeriesData);
 		lineChart.addSeriesData(lineSeriesDataList, ICompressionSupport.HIGH_COMPRESSION);
-		//
+
 		while(!shell.isDisposed()) {
 			if(!display.readAndDispatch()) {
 				display.sleep();
