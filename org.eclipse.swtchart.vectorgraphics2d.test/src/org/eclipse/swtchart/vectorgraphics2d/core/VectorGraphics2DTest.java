@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,9 +16,9 @@ package org.eclipse.swtchart.vectorgraphics2d.core;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.awt.Color;
@@ -37,7 +37,6 @@ import org.junit.runner.RunWith;
 @RunWith(Theories.class)
 public class VectorGraphics2DTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testVectorGraphics2DEmitsCreateCommand() {
 
@@ -98,7 +97,6 @@ public class VectorGraphics2DTest {
 		assertTrue(GraphicsUtils.equals(vg2d.getClip(), intersection));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testClipClearsClippingShapeWhenNullIsPassed() {
 
@@ -109,7 +107,6 @@ public class VectorGraphics2DTest {
 		assertThat(vg2d.getClip(), is(nullValue()));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testSetBackgroundSetsBackgroundColor() {
 

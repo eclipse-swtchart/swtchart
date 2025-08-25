@@ -39,8 +39,7 @@ public abstract class AbstractMenuListener implements IMenuListener {
 
 		List<ISeries<?>> selectedSeries = new ArrayList<>();
 		if(seriesListUI != null) {
-			@SuppressWarnings("unchecked")
-			Iterator<Object> iterator = seriesListUI.getStructuredSelection().iterator();
+			Iterator<?> iterator = seriesListUI.getStructuredSelection().iterator();
 			while(iterator.hasNext()) {
 				Object object = iterator.next();
 				if(object instanceof ISeries<?>) {

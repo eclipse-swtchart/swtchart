@@ -50,8 +50,7 @@ public class TestBrowser extends JFrame {
 
 	private final List<AbstractTest> testCases;
 	private final ImageComparisonPanel imageComparisonPanel;
-	@SuppressWarnings("rawtypes")
-	private final JComboBox imageFormatSelector;
+	private final JComboBox<?> imageFormatSelector;
 	private final JFileChooser fileChooser;
 	private AbstractTest testCase;
 
@@ -190,7 +189,6 @@ public class TestBrowser extends JFrame {
 		}
 	}
 
-	@SuppressWarnings({"unchecked", "rawtypes"})
 	public TestBrowser() {
 
 		super("Test browser");
@@ -214,12 +212,12 @@ public class TestBrowser extends JFrame {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		final JList testList = new JList(testCases.toArray());
+		final JList<?> testList = new JList<>(testCases.toArray());
 		testList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		testList.setCellRenderer(new DefaultListCellRenderer() {
 
 			@Override
-			public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 
 				String testName = value.getClass().getSimpleName();
 				return super.getListCellRendererComponent(list, testName, index, isSelected, cellHasFocus);
@@ -244,7 +242,7 @@ public class TestBrowser extends JFrame {
 		JPanel configurableImageComparisonPanel = new JPanel(new BorderLayout());
 		getContentPane().add(configurableImageComparisonPanel, BorderLayout.CENTER);
 		ImageFormat startingImageFormat = ImageFormat.EPS;
-		imageFormatSelector = new JComboBox(ImageFormat.values());
+		imageFormatSelector = new JComboBox<>(ImageFormat.values());
 		configurableImageComparisonPanel.add(imageFormatSelector, BorderLayout.NORTH);
 		imageFormatSelector.setSelectedItem(startingImageFormat);
 		imageFormatSelector.addItemListener(new ItemListener() {
