@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -53,6 +53,7 @@ import java.awt.image.Raster;
 import java.awt.image.RenderedImage;
 import java.awt.image.SampleModel;
 import java.awt.image.WritableRaster;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
 
 import org.junit.BeforeClass;
@@ -156,10 +157,11 @@ public class GraphicsUtilsTest {
 			@Override
 			public Object getProperty(String name) {
 
-				if("foo".equals(name))
+				if("foo".equals(name)) {
 					return 42;
-				else
+				} else {
 					return bimage.getProperty(name);
+				}
 			}
 
 			@Override
@@ -349,89 +351,80 @@ public class GraphicsUtilsTest {
 		}
 	}
 
-	@SuppressWarnings({"deprecation", "rawtypes"})
-	private void assertShapeClassIsCloneable(Class shapeClass) throws IllegalAccessException, InstantiationException {
+	private void assertShapeClassIsCloneable(Class<?> shapeClass) throws IllegalAccessException, InstantiationException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
-		Shape shape = (Shape)shapeClass.newInstance();
+		Shape shape = (Shape)shapeClass.getDeclaredConstructor().newInstance();
 		Shape clone = GraphicsUtils.clone(shape);
 		assertNotNull(clone);
 		assertShapeEquals(shape, clone);
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Test
-	public void linesCanBeCloned() throws InstantiationException, IllegalAccessException {
+	public void linesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
-		for(Class shapeClass : new Class[]{Line2D.Float.class, Line2D.Double.class}) {
-			assertShapeClassIsCloneable(shapeClass);
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Test
-	public void rectanglesCanBeCloned() throws InstantiationException, IllegalAccessException {
-
-		for(Class shapeClass : new Class[]{Rectangle.class, Rectangle2D.Float.class, Rectangle2D.Double.class,}) {
-			assertShapeClassIsCloneable(shapeClass);
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Test
-	public void roundedRectanglesCanBeCloned() throws InstantiationException, IllegalAccessException {
-
-		for(Class shapeClass : new Class[]{RoundRectangle2D.Float.class, RoundRectangle2D.Double.class}) {
-			assertShapeClassIsCloneable(shapeClass);
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Test
-	public void ellipsesCanBeCloned() throws InstantiationException, IllegalAccessException {
-
-		for(Class shapeClass : new Class[]{Ellipse2D.Float.class, Ellipse2D.Double.class}) {
-			assertShapeClassIsCloneable(shapeClass);
-		}
-	}
-
-	@SuppressWarnings("rawtypes")
-	@Test
-	public void arcsCanBeCloned() throws InstantiationException, IllegalAccessException {
-
-		for(Class shapeClass : new Class[]{Arc2D.Float.class, Arc2D.Double.class}) {
+		for(Class<?> shapeClass : new Class[]{Line2D.Float.class, Line2D.Double.class}) {
 			assertShapeClassIsCloneable(shapeClass);
 		}
 	}
 
 	@Test
-	public void polygonsCanBeCloned() throws InstantiationException, IllegalAccessException {
+	public void rectanglesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+		for(Class<?> shapeClass : new Class[]{Rectangle.class, Rectangle2D.Float.class, Rectangle2D.Double.class,}) {
+			assertShapeClassIsCloneable(shapeClass);
+		}
+	}
+
+	@Test
+	public void roundedRectanglesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+		for(Class<?> shapeClass : new Class[]{RoundRectangle2D.Float.class, RoundRectangle2D.Double.class}) {
+			assertShapeClassIsCloneable(shapeClass);
+		}
+	}
+
+	@Test
+	public void ellipsesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+		for(Class<?> shapeClass : new Class[]{Ellipse2D.Float.class, Ellipse2D.Double.class}) {
+			assertShapeClassIsCloneable(shapeClass);
+		}
+	}
+
+	@Test
+	public void arcsCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
+
+		for(Class<?> shapeClass : new Class[]{Arc2D.Float.class, Arc2D.Double.class}) {
+			assertShapeClassIsCloneable(shapeClass);
+		}
+	}
+
+	@Test
+	public void polygonsCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		assertShapeClassIsCloneable(Polygon.class);
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Test
-	public void cubicCurvesCanBeCloned() throws InstantiationException, IllegalAccessException {
+	public void cubicCurvesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
-		for(Class shapeClass : new Class[]{CubicCurve2D.Float.class, CubicCurve2D.Double.class}) {
+		for(Class<?> shapeClass : new Class[]{CubicCurve2D.Float.class, CubicCurve2D.Double.class}) {
 			assertShapeClassIsCloneable(shapeClass);
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Test
-	public void quadCurvesCanBeCloned() throws InstantiationException, IllegalAccessException {
+	public void quadCurvesCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
-		for(Class shapeClass : new Class[]{QuadCurve2D.Float.class, QuadCurve2D.Double.class}) {
+		for(Class<?> shapeClass : new Class[]{QuadCurve2D.Float.class, QuadCurve2D.Double.class}) {
 			assertShapeClassIsCloneable(shapeClass);
 		}
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Test
-	public void pathsCanBeCloned() throws InstantiationException, IllegalAccessException {
+	public void pathsCanBeCloned() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 
-		for(Class shapeClass : new Class[]{Path2D.Float.class, Path2D.Double.class}) {
+		for(Class<?> shapeClass : new Class[]{Path2D.Float.class, Path2D.Double.class}) {
 			assertShapeClassIsCloneable(shapeClass);
 		}
 	}

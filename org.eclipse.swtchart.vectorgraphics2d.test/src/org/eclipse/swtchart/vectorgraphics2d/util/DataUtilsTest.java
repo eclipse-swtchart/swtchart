@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -85,13 +85,12 @@ public class DataUtilsTest {
 		assertEquals(expected, result);
 	}
 
-	@SuppressWarnings("removal")
 	@Test
 	public void mapCreatesCorrectMappingWithValidParameters() {
 
 		Map<String, Integer> result = DataUtils.map(new String[]{"foo"}, new Integer[]{42});
 		assertTrue(result.containsKey("foo"));
-		assertEquals(new Integer(42), result.get("foo"));
+		assertEquals(Integer.valueOf(42), result.get("foo"));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
