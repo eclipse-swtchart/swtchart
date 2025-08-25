@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,7 +17,7 @@ import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.awt.geom.AffineTransform;
 
@@ -33,7 +33,6 @@ import org.junit.Test;
 
 public class AbsoluteToRelativeTransformsFilterTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testSetTransformCommandReplaced() {
 
@@ -45,7 +44,6 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		assertThat(filter, not(hasItem(any(SetTransformCommand.class))));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testAbsoluteAndRelativeTransformsIdentical() {
 
@@ -59,7 +57,6 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		assertThat(relativeTransform, is(absoluteTransform));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testTranslateCorrect() {
 
@@ -80,7 +77,6 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		assertThat(relativeTransform.getTranslateY(), is(6.4));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testRelativeTransformAfterDispose() {
 

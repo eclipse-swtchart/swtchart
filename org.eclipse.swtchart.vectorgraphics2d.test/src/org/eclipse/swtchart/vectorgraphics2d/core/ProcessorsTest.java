@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,8 +14,8 @@
 package org.eclipse.swtchart.vectorgraphics2d.core;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +44,6 @@ public class ProcessorsTest {
 	@DataPoints
 	public static List<String> KNOWN_FORMATS = Arrays.asList("eps", "pdf", "svg");
 
-	@SuppressWarnings("deprecation")
 	@Theory
 	public void testGetReturnsNonNullWhenFormatIsKnown(String format) {
 

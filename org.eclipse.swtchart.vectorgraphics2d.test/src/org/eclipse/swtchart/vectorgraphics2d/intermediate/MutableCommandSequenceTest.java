@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,14 +14,13 @@
 package org.eclipse.swtchart.vectorgraphics2d.intermediate;
 
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
 import org.junit.Test;
 
 public class MutableCommandSequenceTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testIteratorContainsAddedCommands() {
 

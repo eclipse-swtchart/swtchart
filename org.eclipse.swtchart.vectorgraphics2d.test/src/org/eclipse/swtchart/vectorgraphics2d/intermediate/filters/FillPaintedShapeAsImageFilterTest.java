@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,9 +16,9 @@ package org.eclipse.swtchart.vectorgraphics2d.intermediate.filters;
 import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -35,7 +35,6 @@ import org.junit.Test;
 
 public class FillPaintedShapeAsImageFilterTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testFillShapeReplacedWithDrawImage() {
 
