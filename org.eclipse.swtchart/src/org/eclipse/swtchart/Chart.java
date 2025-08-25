@@ -427,7 +427,8 @@ public class Chart extends Composite implements Listener {
 		/*
 		 * Dispose when finished
 		 */
-		Image image = new Image(Display.getDefault(), getBounds());
+		Rectangle bounds = getBounds();
+		Image image = new Image(Display.getDefault(), bounds.width, bounds.height);
 		GC gc = new GC(image);
 		print(gc);
 		gc.dispose();
