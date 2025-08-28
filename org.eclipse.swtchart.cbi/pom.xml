@@ -83,7 +83,6 @@
   <properties>
     <!-- VERSIONS -->
     <tycho.version>4.0.13</tycho.version>
-    <pmd.version>3.27.0</pmd.version>
     <checkstyle.version>3.6.0</checkstyle.version>
     <!-- IDS -->
     <tycho.groupid>org.eclipse.tycho</tycho.groupid>
@@ -177,11 +176,6 @@
           <useUIHarness>true</useUIHarness>
           <appArgLine>-nl en</appArgLine>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>${maven.groupid}</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>${pmd.version}</version>
       </plugin>
       <plugin>
         <groupId>${maven.groupid}</groupId>
