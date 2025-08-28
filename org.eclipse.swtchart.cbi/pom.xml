@@ -251,19 +251,6 @@
                      </execution>
                   </executions>
                </plugin>
-               <!-- <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>3.7.0</version>
-                  <executions>
-                     <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                           <goal>jar</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin> -->
                <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-shade-plugin</artifactId>
@@ -292,6 +279,32 @@
                </plugin>
             </plugins>
          </build>
+      </profile>
+      <profile>
+        <id>javadoc</id>
+          <build>
+            <plugins>
+              <plugin>
+                  <groupId>org.apache.maven.plugins</groupId>
+                  <artifactId>maven-javadoc-plugin</artifactId>
+                  <version>3.11.2</version>
+                  <executions>
+                      <execution>
+                          <id>attach-javadocs</id>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>jar</goal>
+                          </goals>
+                          <configuration>
+                            <source>21</source>
+                            <failOnError>false</failOnError>
+                            <legacyMode>true</legacyMode>
+                          </configuration>
+                      </execution>
+                  </executions>
+              </plugin>
+          </plugins>
+        </build>
       </profile>
     </profiles>
     <pluginRepositories>
