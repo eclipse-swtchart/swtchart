@@ -83,7 +83,6 @@
   <properties>
     <!-- VERSIONS -->
     <tycho.version>4.0.13</tycho.version>
-    <checkstyle.version>3.6.0</checkstyle.version>
     <!-- IDS -->
     <tycho.groupid>org.eclipse.tycho</tycho.groupid>
     <maven.groupid>org.apache.maven.plugins</maven.groupid>
@@ -175,14 +174,6 @@
         <configuration>
           <useUIHarness>true</useUIHarness>
           <appArgLine>-nl en</appArgLine>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>${maven.groupid}</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>${checkstyle.version}</version>
-        <configuration>
-          <enableRulesSummary>false</enableRulesSummary>
         </configuration>
       </plugin>
     </plugins>
