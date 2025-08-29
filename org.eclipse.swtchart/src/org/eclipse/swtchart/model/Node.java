@@ -102,9 +102,7 @@ public class Node {
 	}
 
 	/**
-	 * the value of the node
-	 * 
-	 * @return
+	 * @return the value of the node
 	 */
 	public double getValue() {
 
@@ -112,9 +110,7 @@ public class Node {
 	}
 
 	/**
-	 * the id of the node.
-	 * 
-	 * @return
+	 * @return the id of the node.
 	 */
 	public String getId() {
 
@@ -189,9 +185,7 @@ public class Node {
 	}
 
 	/**
-	 * the distance from the rootNode is level of the node.
-	 * 
-	 * @return
+	 * @return the distance from the rootNode is level of the node.
 	 */
 	public int getLevel() {
 
@@ -238,8 +232,6 @@ public class Node {
 	 * 
 	 * @param labels
 	 * @param vals
-	 * @return the String-node map with each node having containing data
-	 *         corresponding to the variables passed
 	 */
 	public void addChildren(String[] labels, double[] vals) {
 
@@ -259,7 +251,6 @@ public class Node {
 	 * The nodes added are not the same as nodes provided in input.
 	 * 
 	 * @param nodes
-	 * @return
 	 */
 	public void addChildren(Node[] nodes) {
 
@@ -276,7 +267,7 @@ public class Node {
 	 * 
 	 * @param label
 	 * @param value
-	 * @return
+	 * @return the added {@link Node}
 	 */
 	public Node addChild(String label, double value) {
 
@@ -294,8 +285,9 @@ public class Node {
 
 		Node node = null;
 		for(Node nodes : children) {
-			if(nodes.getId() == child)
+			if(nodes.getId() == child) {
 				node = nodes;
+			}
 		}
 		if(node == null) {
 			// throw error
@@ -346,9 +338,9 @@ public class Node {
 	public void updateAngularBounds() {
 
 		Iterable<Node> nodes = children;
-		if(nodes == null)
+		if(nodes == null) {
 			return;
-
+		}
 		int start = angleBounds.x;
 		double diff = 0, required = 0;
 		for(Node node : nodes) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -111,14 +111,14 @@ public interface ICircularSeries<T> extends ISeries<T> {
 	 * fetches a node with it's Id.
 	 * 
 	 * @param id
-	 * @return
+	 * @return the {@link Node} with the specified ID, or {@code null} if not found
 	 */
 	Node getNodeById(String id);
 
 	/**
 	 * gets the MultiLevelPie Series as Series.
 	 * 
-	 * @return
+	 * @return a list of {@link Node} objects representing the series
 	 */
 	List<Node> getSeries();
 
@@ -162,7 +162,8 @@ public interface ICircularSeries<T> extends ISeries<T> {
 	 * 
 	 * @param primaryValueX
 	 * @param primaryValueY
-	 * @return
+	 * @return the {@link Node} representing the pie slice at the given position,
+	 *         or {@code null} if no slice exists at that position
 	 */
 	Node getPieSliceFromPosition(double primaryValueX, double primaryValueY);
 
@@ -178,7 +179,8 @@ public interface ICircularSeries<T> extends ISeries<T> {
 	 * 
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return the {@link Node} representing the pie slice at the given position,
+	 *         or {@code null} if no slice exists at that position
 	 */
 	Node getPieSliceFromPosition(int x, int y);
 }
