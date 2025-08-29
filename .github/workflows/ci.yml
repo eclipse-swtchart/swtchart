@@ -41,4 +41,4 @@ jobs:
     - name: Build with Maven
       uses: coactions/setup-xvfb@v1
       with:
-        run: mvn -f org.eclipse.swtchart.cbi/pom.xml -Pjavadoc -T 1C verify --B -ntp -Dstyle.color=always
+        run: mvn -f org.eclipse.swtchart.cbi/pom.xml -T 1C verify --B -ntp -Dstyle.color=always
