@@ -285,6 +285,7 @@
                             <source>21</source>
                             <failOnError>false</failOnError>
                             <legacyMode>true</legacyMode>
+                            <doclint>accessibility,html,reference,syntax</doclint>
                           </configuration>
                       </execution>
                   </executions>
