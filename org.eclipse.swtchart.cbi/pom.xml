@@ -83,6 +83,7 @@
   <properties>
     <!-- VERSIONS -->
     <tycho.version>4.0.13</tycho.version>
+    <tycho.sbom.url>https://projects.eclipse.org/projects/science.swtchart</tycho.sbom.url>
     <!-- IDS -->
     <tycho.groupid>org.eclipse.tycho</tycho.groupid>
     <maven.groupid>org.apache.maven.plugins</maven.groupid>
