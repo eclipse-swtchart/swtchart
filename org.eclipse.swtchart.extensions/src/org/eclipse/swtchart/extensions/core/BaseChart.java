@@ -214,7 +214,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 * 
 	 * @param label
 	 * @param description
-	 * @return
+	 * @return the created {@link ICustomSeries} instance
 	 */
 	public ICustomSeries createCustomSeries(String label, String description) {
 

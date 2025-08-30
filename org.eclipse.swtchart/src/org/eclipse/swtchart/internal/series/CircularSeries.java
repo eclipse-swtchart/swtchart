@@ -184,7 +184,7 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 	 * This returns the original series that we provided as input.
 	 * This is added here so as to provide the functionalities of the simple pie chart
 	 * 
-	 * @return
+	 * @return a list of {@link Node} objects
 	 */
 	@Override
 	public List<Node> getSeries() {

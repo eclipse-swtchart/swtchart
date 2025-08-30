@@ -273,7 +273,7 @@
               <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>3.11.3</version>
+                  <version>3.11.2</version>
                   <executions>
                       <execution>
                           <id>attach-javadocs</id>
@@ -285,6 +285,19 @@
                             <source>21</source>
                             <failOnError>false</failOnError>
                             <legacyMode>true</legacyMode>
+                            <doclint>accessibility,html,reference,syntax</doclint>
+                            <additionalDependencies>
+                              <additionalDependency>
+                                <groupId>org.osgi</groupId>
+                                <artifactId>org.osgi.service.component.annotations</artifactId>
+                                <version>1.5.0</version>
+                              </additionalDependency>
+                              <dependency>
+                                <groupId>org.eclipse.pde</groupId>
+                                <artifactId>org.eclipse.pde.api.tools.annotations</artifactId>
+                                <version>1.2.0</version>
+                              </dependency>
+                            </additionalDependencies>
                           </configuration>
                       </execution>
                   </executions>

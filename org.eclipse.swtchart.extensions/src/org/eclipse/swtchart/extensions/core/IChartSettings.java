@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,7 @@ public interface IChartSettings {
 	 * This method returns null if the class instance is not available.
 	 * 
 	 * @param clazz
-	 * @return {@link IChartMenuEntry>
+	 * @return {@link IChartMenuEntry}
 	 */
 	IChartMenuEntry getChartMenuEntryByClass(Class<?> clazz);
 

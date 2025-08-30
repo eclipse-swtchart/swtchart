@@ -29,7 +29,6 @@ public class ImageFactory<T extends ScrollableChart> {
 	 * 
 	 * @param width
 	 * @param height
-	 * @return Shell
 	 * @throws IllegalAccessException
 	 * @throws InstantiationException
 	 */
@@ -39,7 +38,7 @@ public class ImageFactory<T extends ScrollableChart> {
 			t = clazz.getDeclaredConstructor().newInstance();
 			imageSupplier = new ImageSupplier();
 
-			display = ((ScrollableChart)t).getBaseChart().getDisplay();
+			display = t.getBaseChart().getDisplay();
 			if(display != null) {
 				width = (width > display.getBounds().width) ? display.getBounds().width : width;
 				height = (height > display.getBounds().height) ? display.getBounds().height : height;
