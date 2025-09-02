@@ -15,4 +15,4 @@
 1. Download Eclipse for RCP and RAP Developers
 2. org.eclipse.swtchart.extensions.demos.updatesite/site.xml -> Build All
 3. Copy features and plugins folder -> dropins folder of "Eclipse for RCP and RAP Developers"
-4. Run RCPTT(Rich Client Platform Testing Tool) tests
+4. Run [RCPTT](https://eclipse.dev/rcptt/) tests
