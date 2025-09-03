@@ -58,6 +58,11 @@
       </roles>
     </developer>
   </developers>
+  <scm>
+	<connection>scm:git:https://github.com/eclipse-swtchart/swtchart.git</connection>
+	<developerConnection>scm:git:https://github.com/eclipse-swtchart/swtchart.git</developerConnection>
+	<url>https://github.com/eclipse-swtchart/swtchart/</url>
+  </scm>
   <!--
   MODULES
   -->
