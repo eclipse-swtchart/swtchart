@@ -7,7 +7,7 @@
 
 # Build
 
-``` mvn -f org.eclipse.swtchart.cbi/pom.xml clean install ```
+``` mvn clean install ```
 
 
 # Test

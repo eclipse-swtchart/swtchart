@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Copyright (c) 2017, 2024 Lablicate GmbH.
+  Copyright (c) 2017, 2025 Lablicate GmbH.
 
   This program and the accompanying materials are made
   available under the terms of the Eclipse Public License 2.0
@@ -17,7 +17,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.eclipse.swtchart</groupId>
   <artifactId>org.eclipse.swtchart.build</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <!--
   DESCRIPTION
@@ -62,20 +62,20 @@
   MODULES
   -->
   <modules>
-    <module>../org.eclipse.swtchart</module>
-    <module>../org.eclipse.swtchart.test</module>
-    <module>../org.eclipse.swtchart.extensions</module>
-    <module>../org.eclipse.swtchart.extensions.eclipse</module>
-    <module>../org.eclipse.swtchart.customcharts</module>
-    <module>../org.eclipse.swtchart.extensions.test</module>
-    <module>../org.eclipse.swtchart.export</module>
-    <module>../org.eclipse.swtchart.export.test</module>
-    <module>../org.eclipse.swtchart.export.extended</module>
-    <module>../org.eclipse.swtchart.vectorgraphics2d</module>
-    <module>../org.eclipse.swtchart.vectorgraphics2d.test</module>
-    <module>../org.eclipse.swtchart.feature</module>
-    <module>../org.eclipse.swtchart.updatesite</module>
-    <module>../org.eclipse.swtchart.bom</module>
+    <module>org.eclipse.swtchart</module>
+    <module>org.eclipse.swtchart.test</module>
+    <module>org.eclipse.swtchart.extensions</module>
+    <module>org.eclipse.swtchart.extensions.eclipse</module>
+    <module>org.eclipse.swtchart.customcharts</module>
+    <module>org.eclipse.swtchart.extensions.test</module>
+    <module>org.eclipse.swtchart.export</module>
+    <module>org.eclipse.swtchart.export.test</module>
+    <module>org.eclipse.swtchart.export.extended</module>
+    <module>org.eclipse.swtchart.vectorgraphics2d</module>
+    <module>org.eclipse.swtchart.vectorgraphics2d.test</module>
+    <module>org.eclipse.swtchart.feature</module>
+    <module>org.eclipse.swtchart.updatesite</module>
+    <module>org.eclipse.swtchart.bom</module>
   </modules>
   <!--
   PROPERTIES
@@ -120,7 +120,7 @@
         <version>${tycho.version}</version>
         <configuration>
          <target>
-           <file>${maven.multiModuleProjectDirectory}/../org.eclipse.swtchart.targetplatform/org.eclipse.swtchart.targetplatform.target
+           <file>${maven.multiModuleProjectDirectory}/org.eclipse.swtchart.targetplatform/org.eclipse.swtchart.targetplatform.target
             </file>
           </target>
           <environments>
