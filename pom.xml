@@ -89,6 +89,7 @@
     <!-- VERSIONS -->
     <tycho.version>4.0.13</tycho.version>
     <tycho.sbom.url>https://projects.eclipse.org/projects/science.swtchart</tycho.sbom.url>
+    <tycho.scmUrl>scm:git:https://github.com/eclipse-swtchart/swtchart</tycho.scmUrl>
     <!-- IDS -->
     <tycho.groupid>org.eclipse.tycho</tycho.groupid>
     <maven.groupid>org.apache.maven.plugins</maven.groupid>
@@ -104,14 +105,24 @@
     -->
     <plugins>
       <plugin>
-        <groupId>${tycho.groupid}</groupId>
-        <artifactId>tycho-packaging-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <configuration>
-          <archive>
-            <addMavenDescriptor>false</addMavenDescriptor>
-          </archive>
-        </configuration>
+		<groupId>${tycho.groupid}</groupId>
+		<artifactId>tycho-packaging-plugin</artifactId>
+		<version>${tycho.version}</version>
+		<configuration>
+			<archive>
+				<addMavenDescriptor>false</addMavenDescriptor>
+			</archive>
+			<sourceReferences>
+				<generate>true</generate>
+			</sourceReferences>
+		</configuration>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-sourceref-jgit</artifactId>
+				<version>${tycho.version}</version>
+			</dependency>
+		</dependencies>
       </plugin>
       <plugin>
         <groupId>${tycho.groupid}</groupId>
