@@ -348,7 +348,8 @@ public class AxisTickLabels implements PaintListener {
 			}
 
 			if(hasSpaceToDraw) {
-				if(isMajorTick) {
+                var axisTick = axis.getTick();
+				if(isMajorTick || axisTick.getShowMinorTicks()) {
 					previousPosition = tickLabelPositions.get(i);
 				} else {
 					tickLabels.set(i, "...");

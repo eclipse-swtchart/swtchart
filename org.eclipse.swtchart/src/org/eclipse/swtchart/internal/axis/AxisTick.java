@@ -42,6 +42,8 @@ public class AxisTick implements IAxisTick {
 	private AxisPositionMarker axisPositionMarker;
 	/** true if tick is visible */
 	private boolean isVisible;
+    /** true if minor ticks are visible */
+    private boolean showMinorTicks;
 	/** the tick mark step hint */
 	private int tickMarkStepHint;
 	/** the tick label angle in degree */
@@ -138,6 +140,19 @@ public class AxisTick implements IAxisTick {
 		this.isVisible = isVisible;
 		chart.updateLayout();
 	}
+
+    @Override
+    public boolean getShowMinorTicks() {
+
+        return showMinorTicks;
+    }
+
+    @Override
+    public void setShowMinorTicks(boolean showMinorTicks) {
+
+        this.showMinorTicks = showMinorTicks;
+        chart.updateLayout();
+    }
 
 	@Override
 	public int getTickMarkStepHint() {
