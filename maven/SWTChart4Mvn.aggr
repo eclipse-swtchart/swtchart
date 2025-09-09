@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="SWTChart4Mvn" buildRoot="./target" packedStrategy="UNPACK_AS_SIBLING" type="R" mavenResult="true" versionFormat="MavenRelease" includeSources="true" excludeFeatures="true" includedIUPattern="org\.eclipse\.swtchart\.*|org\.eclipse\.swtchart\..*" validateNexusPublishingRequirements="true" validatePOMDependencies="true" filterPublishedArtifacts="true">
+  <validationSets label="main">
+    <contributions label="sdk_http">
+      <repositories location="https://download.eclipse.org/swtchart/integration/develop/repository/">
+        <features name="org.eclipse.swtchart.feature.feature.group"/>
+      </repositories>
+      <repositories location="https://download.eclipse.org/eclipse/updates/4.36/">
+        <bundles name="org.eclipse.swt"/>
+      </repositories>
+    </contributions>
+  </validationSets>
+  <configurations architecture="x86_64"/>
+  <mavenMappings namePattern="(org\.eclipse\.swtchart)" groupId="$1" artifactId="$1" snapshot="false"/>
+  <mavenMappings namePattern="(org\.eclipse\.swtchart)(.*)" groupId="$1" artifactId="$1$2" snapshot="false"/>
+  <mavenMappings namePattern="(org\.eclipse)(.*)" groupId="org.eclipse.platform" artifactId="$1$2"/>
+  <mavenMappings namePattern="(org\.apache)\.(pdfbox)" groupId="$1.$2" artifactId="$2" snapshot="false"/>
+  <mavenMappings namePattern="(org\.apache\.pdfbox)\.(.*)" groupId="$1" artifactId="$2" snapshot="false"/>
+  <mavenDependencyMapping namespacePattern="osgi\.bundle|java\.package" namePattern="org\.eclipse\..*" groupId="*" artifactId="*" versionRangePattern=".*" versionRangeTemplate="major.minor.micro"/>
+  <mavenDependencyMapping namespacePattern="osgi\.bundle|java\.package" namePattern="org\.apache\..*" groupId="*" artifactId="*" versionRangePattern=".*" versionRangeTemplate="major.minor.micro"/>
+</aggregator:Aggregation>

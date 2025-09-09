@@ -1,0 +1,118 @@
+pipeline {
+    options {
+        timestamps()
+        timeout(time: 30, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr:'10'))
+        checkoutToSubdirectory('git-repo')
+    }
+
+    agent any
+
+    tools {
+        jdk 'temurin-jdk21-latest'
+    }
+
+    environment {
+        REPO = "${WORKSPACE}/repo"
+        CBI_AGGR = "${installLatestCbiAggr()}"
+
+        PROJECT = "SWTChart"
+        PROJECT_AGGR = "maven/SWTChart4Mvn.aggr"
+    }
+
+    parameters {
+        choice(
+            name: 'REPOSITORY',
+            choices: [
+                'https://download.eclipse.org/swtchart/integration/develop/repository/'
+            ],
+            description: '''
+                Choose the repository to publish.
+            '''
+        )
+
+        booleanParam(
+            name: 'SNAPSHOT',
+            defaultValue: false,
+            description: 'Whether to produce a release or a snapshot Maven repository.'
+        )
+    }
+
+    // parameters declared in the definition of the invoking job
+    stages {
+        stage('Aggregate Maven Repository') {
+            environment {
+              KEYRING = credentials("secret-subkeys.asc")
+              MAVEN_GPG_PASSPHRASE = credentials("gpg-passphrase")
+            }
+            steps {
+                script {
+                    def description = """
+BUILD_TYPE=${params.REPOSITORY}
+SNAPSHOT=${params.SNAPSHOT}
+""".trim()
+                    echo description
+                    currentBuild.description = description.replace("\n", "<br/>")
+                    env.REPOSITORY = params.REPOSITORY
+                    env.SNAPSHOT = params.SNAPSHOT
+                }
+
+                sh '''#!/bin/bash -e
+                    # set -x
+                    
+                    # git clone https://github.com/eclipse-swtchart/swtchart.git git-repo
+
+                    FILE_AGGR="${WORKSPACE}/git-repo/${PROJECT_AGGR}"
+
+                    # Set whether this is a snapshot build or not.
+                    if [ ${SNAPSHOT} == 'true' ]; then
+                        sed -e 's/snapshot=".*"/snapshot="true"/g' -i ${FILE_AGGR}
+                    else
+                        sed -e 's/snapshot=".*"/snapshot="false"/g' -i ${FILE_AGGR}
+                    fi
+
+                    repoRaw="${WORKSPACE}/repo-raw"
+                    mkdir ${repoRaw}
+
+                    echo "Running the aggregator with build model ${FILE_AGGR} ..."
+                    "${CBI_AGGR}" aggregate \\
+                        -consoleLog \\
+                        --buildModel ${FILE_AGGR} \\
+                        --action CLEAN_BUILD \\
+                        --buildRoot ${repoRaw} \\
+                        -vmargs \\
+                        -Dorg.eclipse.ecf.provider.filetransfer.excludeContributors=org.eclipse.ecf.provider.filetransfer.httpclientjava \\
+                        -Dp2.${PROJECT}=${REPOSITORY}
+
+                    # Move either the full repository or the unpublished subset that is ready to be updated to https://central.sonatype.com/publishing
+                    if [ ${SNAPSHOT} == 'true' ]; then
+                      mv ${repoRaw}/final ${REPO}
+                    else
+                      mv ${repoRaw}/final-unpublished ${REPO}
+                    fi
+
+                    rm -rf ${repoRaw}
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts allowEmptyArchive: true, artifacts: '\
+                repo/**, \
+                '
+        }
+    }
+}
+
+def installLatestCbiAggr(){
+    return install('cbiAggr', "https://download.eclipse.org/cbi/updates/p2-aggregator/products/nightly/latest/org.eclipse.cbi.p2repo.cli.product-linux.gtk.x86_64.tar.gz") + '/cbiAggr'
+}
+
+def install(String toolType, String url) {
+    dir("${WORKSPACE}/tools/${toolType}") {
+        sh "curl -L ${url} | tar -xzf -"
+        return "${pwd()}/" + sh(script: 'ls', returnStdout: true).trim()
+    }
+}
