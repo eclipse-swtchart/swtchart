@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -76,7 +76,6 @@ public interface IExtendedChart {
 	 * @param axis
 	 * @param start
 	 * @param stop
-	 * @param adjustMinMax
 	 */
 	void setRange(String axis, double start, double stop);
 
