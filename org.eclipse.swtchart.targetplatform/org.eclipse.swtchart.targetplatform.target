@@ -8,7 +8,6 @@
 		<unit id="org.eclipse.ui"/>
 		<unit id="org.eclipse.core.runtime"/>
 		<unit id="org.junit"/>
-		<unit id="org.eclipse.jdt.junit.runtime"/>
 		<unit id="org.eclipse.jdt.junit4.runtime"/>
 		<unit id="org.eclipse.equinox.launcher"/>
 		<unit id="org.eclipse.ui.ide.application"/>
@@ -49,6 +48,6 @@
 				<type>jar</type>
 			</dependency>
 		</dependencies>
-	</location>	
+	</location>
 </locations>
 </target>
