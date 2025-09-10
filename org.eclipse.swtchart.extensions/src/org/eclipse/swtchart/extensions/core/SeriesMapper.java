@@ -40,8 +40,7 @@ public class SeriesMapper {
 	/**
 	 * Removes the mapping identified by the id.
 	 * 
-	 * @param mappingsType
-	 * @param id
+	 * @param mappingsKey
 	 */
 	public static void remove(MappingsKey mappingsKey) {
 

@@ -66,8 +66,6 @@ public class SeriesLabelPage extends AbstractSelectorPage {
 	 * 
 	 * @param chart
 	 *            the chart
-	 * @param resources
-	 *            the properties resources
 	 * @param title
 	 *            the title
 	 */

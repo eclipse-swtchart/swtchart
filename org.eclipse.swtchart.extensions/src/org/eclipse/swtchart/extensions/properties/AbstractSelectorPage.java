@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -43,14 +43,12 @@ abstract public class AbstractSelectorPage extends AbstractPage {
 	 * 
 	 * @param chart
 	 *            the chart
-	 * @param resources
-	 *            the properties resources
 	 * @param title
 	 *            the title
 	 * @param selector
 	 *            the selector name
 	 */
-	public AbstractSelectorPage(InteractiveChart chart, String title, String selector) {
+	protected AbstractSelectorPage(InteractiveChart chart, String title, String selector) {
 
 		super(chart, title);
 		this.selector = selector;

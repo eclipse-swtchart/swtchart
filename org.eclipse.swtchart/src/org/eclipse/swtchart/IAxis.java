@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -293,7 +293,7 @@ public interface IAxis {
 	 * Sets the minimum and maximum limits for the axis range. These limits
 	 * are enforced during dynamic operations such as {@code adjustRange},
 	 * {@code scroll}, and {@code zoom}. However, they do not restrict
-	 * manual range settings through the {@link #setRange(Range, boolean)} method.
+	 * manual range settings through the {@link #setRange(Range)} method.
 	 *
 	 * @param minRange
 	 *            the minimum value allowed for the axis range.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -79,7 +79,7 @@ public class ImageSupplier {
 	/**
 	 * Return image data representation of provided chart
 	 * 
-	 * @param baseChart
+	 * @param chart
 	 *            the chart from which is create image data representation
 	 * @return image data representation
 	 */
@@ -117,10 +117,12 @@ public class ImageSupplier {
 			ImageData imageData = image.getImageData();
 			return imageData;
 		} finally {
-			if(gc != null && !gc.isDisposed())
+			if(gc != null && !gc.isDisposed()) {
 				gc.dispose();
-			if(image != null && !image.isDisposed())
+			}
+			if(image != null && !image.isDisposed()) {
 				image.dispose();
+			}
 		}
 	}
 }

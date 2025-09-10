@@ -75,8 +75,8 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 	/**
 	 * Constructor.
 	 *
-	 * @param chart
-	 *            the chart
+	 * @param composite
+	 *            the container of the chart
 	 * @param style
 	 *            the style
 	 */
@@ -86,7 +86,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 		this.composite = composite;
 		visible = true;
 		position = DEFAULT_POSITION;
-		cellBounds = new HashMap<String, Rectangle>();
+		cellBounds = new HashMap<>();
 		defaultFont = Resources.getFont(Resources.DEFAULT_FONT_NAME, DEFAULT_FONT_SIZE, SWT.NORMAL); // $NON-NLS-1$
 		setFont(defaultFont);
 		setForeground(DEFAULT_FOREGROUND);

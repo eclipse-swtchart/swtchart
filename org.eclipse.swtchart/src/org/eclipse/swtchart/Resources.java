@@ -107,7 +107,9 @@ public class Resources {
 	 * The color is mapped and disposed by this color support.
 	 * Hence, it doesn't need to be disposed manually.
 	 * 
-	 * @param rgb
+	 * @param red
+	 * @param green
+	 * @param blue
 	 * @return color
 	 */
 	public static Color getColor(int red, int green, int blue) {
