@@ -4,5 +4,5 @@
       <category name="org.eclipse.swtchart"/>
    </feature>
    <category-def name="org.eclipse.swtchart" label="Eclipse SWTChart" />
-   <repository-reference location="https://download.eclipse.org/releases/2025-06/" enabled="true" />
+   <repository-reference location="https://download.eclipse.org/releases/2025-09/" enabled="true" />
 </site>
