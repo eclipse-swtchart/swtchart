@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,12 +41,10 @@ public abstract class AbstractPage extends PreferencePage {
 	 * 
 	 * @param chart
 	 *            the chart
-	 * @param resources
-	 *            the properties resources
 	 * @param title
 	 *            the title
 	 */
-	public AbstractPage(InteractiveChart chart, String title) {
+	protected AbstractPage(InteractiveChart chart, String title) {
 
 		this.chart = chart;
 		setTitle(title);

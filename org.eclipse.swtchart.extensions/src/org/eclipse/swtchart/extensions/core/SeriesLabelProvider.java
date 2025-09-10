@@ -54,7 +54,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 	/**
 	 * Get the color of the selected series element.
 	 * 
-	 * @param element
+	 * @param seriesSettings
 	 * @return Color
 	 */
 	public static Color getColor(ISeriesSettings seriesSettings) {

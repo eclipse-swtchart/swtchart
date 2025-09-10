@@ -113,8 +113,9 @@ public class RangeSupport {
 	/**
 	 * This method returns null if the range can't be calculated correctly.
 	 * 
+	 * @param baseChart
 	 * @param range
-	 * @param slider
+	 * @param selection
 	 * @param sliderOrientation
 	 * @return Range
 	 */
