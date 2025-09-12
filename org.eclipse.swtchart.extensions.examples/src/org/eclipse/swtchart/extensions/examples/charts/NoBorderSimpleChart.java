@@ -49,12 +49,8 @@ public class NoBorderSimpleChart {
 		chartSettings.getPrimaryAxisSettingsX().setVisible(false);
 		chartSettings.getPrimaryAxisSettingsY().setVisible(false);
 		chartSettings.setTitle("Toluene");
-		chartSettings.setTitleColor(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
 		chartSettings.setTitleFont(font);
 		chartSettings.setTitleVisible(true);
-		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		disableSecondaryAxes(chartSettings.getSecondaryAxisSettingsListX());
 		disableSecondaryAxes(chartSettings.getSecondaryAxisSettingsListY());
 		scrollableChart.applySettings(chartSettings);

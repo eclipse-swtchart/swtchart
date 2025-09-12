@@ -44,7 +44,6 @@ public class DemoChart_427 {
 
 		LineChart lineChart = new LineChart(shell, SWT.NONE);
 		lineChart.setFileName("DemoChart_427");
-		lineChart.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
 		shell.open();
 		/*
 		 * Settings

@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.examples.charts;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -31,9 +30,6 @@ public class ComplexPieChartExample {
 
 		ComplexPieChart complexPieChart = new ComplexPieChart(shell);
 		IChartSettings chartSettings = complexPieChart.getChartSettings();
-		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		complexPieChart.applySettings(chartSettings);
 		shell.open();
 

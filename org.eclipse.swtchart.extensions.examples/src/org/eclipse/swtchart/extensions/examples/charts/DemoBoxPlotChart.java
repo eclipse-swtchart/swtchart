@@ -53,9 +53,6 @@ public class DemoBoxPlotChart {
 		chartSettings.setBufferSelection(true);
 		chartSettings.setHorizontalSliderVisible(false);
 		chartSettings.setVerticalSliderVisible(false);
-		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		RangeRestriction rangeRestriction = chartSettings.getRangeRestriction();
 		rangeRestriction.setExtendTypeX(ExtendType.ABSOLUTE);
 		rangeRestriction.setExtendMinX(0.5d);
