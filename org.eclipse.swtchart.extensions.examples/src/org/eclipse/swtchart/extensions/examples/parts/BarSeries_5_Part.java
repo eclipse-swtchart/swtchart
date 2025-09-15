@@ -31,7 +31,6 @@ public class BarSeries_5_Part extends BarChart {
 	public BarSeries_5_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		initialize();
 	}
 

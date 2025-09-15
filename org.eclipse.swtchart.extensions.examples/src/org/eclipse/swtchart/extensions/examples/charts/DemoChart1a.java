@@ -50,12 +50,8 @@ public class DemoChart1a {
 		IChartSettings chartSettings = scrollableChart.getChartSettings();
 		chartSettings.setTitle("");
 		chartSettings.setTitleVisible(false);
-		chartSettings.setTitleColor(display.getSystemColor(SWT.COLOR_BLACK));
 		chartSettings.setLegendExtendedVisible(false);
 		chartSettings.setBufferSelection(true);
-		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		addOrientationOption(chartSettings);
 		addAreaStrictOption(chartSettings);
 		scrollableChart.applySettings(chartSettings);

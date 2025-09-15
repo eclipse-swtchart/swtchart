@@ -34,8 +34,6 @@ public class PeakSeries_1_Part extends ChromatogramChart {
 	public PeakSeries_1_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-
 		try {
 			initialize();
 		} catch(Exception e) {

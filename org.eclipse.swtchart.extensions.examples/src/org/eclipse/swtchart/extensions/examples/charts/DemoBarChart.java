@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.examples.charts;
 
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -47,9 +46,6 @@ public class DemoBarChart {
 		rangeRestriction.setZeroY(false);
 		rangeRestriction.setForceZeroMinY(false);
 		chartSettings.setCreateMenu(true);
-		chartSettings.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundChart(display.getSystemColor(SWT.COLOR_WHITE));
-		chartSettings.setBackgroundPlotArea(display.getSystemColor(SWT.COLOR_WHITE));
 		scrollableChart.applySettings(chartSettings);
 
 		while(!shell.isDisposed()) {
