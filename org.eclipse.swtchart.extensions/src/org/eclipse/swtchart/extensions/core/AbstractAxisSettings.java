@@ -66,7 +66,7 @@ public abstract class AbstractAxisSettings implements IAxisSettings {
 		titleFont = defaultFont;
 		visible = true;
 		position = Position.Primary;
-		gridColor = Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_BORDER);
+		gridColor = Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_DISABLED_FOREGROUND);
 		gridLineStyle = LineStyle.DOT;
 		enableLogScale = false;
 		logScaleBase = 10.0d;

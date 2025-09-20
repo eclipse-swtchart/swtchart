@@ -68,7 +68,7 @@ public class PrimaryAxisSettings_1_UITest {
 	@Test
 	public void test7() {
 
-		assertEquals(Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_BORDER), settings.getGridColor());
+		assertEquals(Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_DISABLED_FOREGROUND), settings.getGridColor());
 	}
 
 	@Test
