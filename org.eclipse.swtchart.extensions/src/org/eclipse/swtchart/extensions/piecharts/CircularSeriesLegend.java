@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -9,6 +9,7 @@
  * 
  * Contributors:
  * Philip Wenig - initial API and implementation
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.piecharts;
 
@@ -84,5 +85,11 @@ public class CircularSeriesLegend<T> extends AbstractCircularSeriesLegend<T> {
 	public void setNodeDataModel(NodeDataModel nodeDataModel) {
 
 		this.nodeDataModel = nodeDataModel;
+	}
+
+	@Override
+	public void setLabels(String[] labels) {
+		// Not implemented yet
+
 	}
 }

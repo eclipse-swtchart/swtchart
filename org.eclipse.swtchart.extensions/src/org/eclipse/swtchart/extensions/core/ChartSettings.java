@@ -10,6 +10,7 @@
  * Contributors:
  * Philip Wenig - initial API and implementation
  * Frank Buloup - Internationalization
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -105,6 +106,7 @@ public class ChartSettings implements IChartSettings {
 	private boolean showAxisZeroMarker = false;
 	private Color colorAxisZeroMarker;
 	private boolean showSeriesLabelMarker = false;
+	private boolean showSeriesDataPointLabelMarker = false;
 	private Color colorSeriesLabelMarker;
 
 	private boolean createMenu = true;
@@ -607,6 +609,18 @@ public class ChartSettings implements IChartSettings {
 	public void setShowSeriesLabelMarker(boolean showSeriesLabelMarker) {
 
 		this.showSeriesLabelMarker = showSeriesLabelMarker;
+	}
+
+	@Override
+	public boolean isShowSeriesDataPointLabelMarker() {
+
+		return showSeriesDataPointLabelMarker;
+	}
+
+	@Override
+	public void setShowSeriesDataPointLabelMarker(boolean showSeriesDataPointLabelMarker) {
+
+		this.showSeriesDataPointLabelMarker = showSeriesDataPointLabelMarker;
 	}
 
 	@Override

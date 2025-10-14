@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  * Christoph Läubrich - initial API and implementation
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.model;
 
@@ -47,6 +48,14 @@ public interface CartesianSeriesModel<T> extends SeriesModel<T> {
 	 * @return the y-coordinate or <code>null</code> if this item does not denote a valid y-datapoint (e.g. disabled item)
 	 */
 	Number getY(T data);
+
+	/**
+	 * Extracts the Data Point Label from the given data item
+	 * 
+	 * @param data
+	 * @return the data point label or <code>null</code> if this item does not denote a data point label (e.g. disabled item)
+	 */
+	String getLabel(T data);
 
 	/**
 	 * 
