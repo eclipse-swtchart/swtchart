@@ -2,14 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="org.eclipse.swtchart.extensions.eclipse.preferences.PreferencePageEclipse"
-            id="org.eclipse.swtchart.extensions.eclipse.preferences.preferencePage"
-            name="SWTChart">
-      </page>
-   </extension>
-   <extension
          point="org.eclipse.e4.ui.css.core.propertyHandler">
       <handler
             adapter="org.eclipse.swtchart.extensions.eclipse.core.ScrollableChartElement"
