@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -73,7 +73,7 @@ public interface ITitle {
 	 * are used.
 	 * 
 	 * @param styleRanges
-	 *            the style ranges, or <tt>null</tt> to clear the currently set
+	 *            the style ranges, or <code>null</code> to clear the currently set
 	 *            style ranges.
 	 */
 	public void setStyleRanges(StyleRange[] styleRanges);

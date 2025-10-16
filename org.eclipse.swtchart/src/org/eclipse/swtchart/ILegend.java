@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -89,14 +89,14 @@ public interface ILegend {
 	int getPosition();
 
 	/**
-	 * Sets the position of legend. If the position is <tt>SWT.LEFT</tt> or
-	 * <tt>SWT.RIGHT</tt>, the orientation of series on legend will be vertical.
-	 * If the position is <tt>SWT.TOP</tt> or <tt>SWT.BOTTOM</tt>, the
+	 * Sets the position of legend. If the position is <code>SWT.LEFT</code> or
+	 * <code>SWT.RIGHT</code>, the orientation of series on legend will be vertical.
+	 * If the position is <code>SWT.TOP</code> or <code>SWT.BOTTOM</code>, the
 	 * orientation will be horizontal.
 	 * 
 	 * @param position
-	 *            the position of legend that can be <tt>SWT.LEFT</tt>,
-	 *            <tt>SWT.RIGHT</tt>, <tt>SWT.TOP</tt> or <tt>SWT.BOTTOM</tt>.
+	 *            the position of legend that can be <code>SWT.LEFT</code>,
+	 *            <code>SWT.RIGHT</code>, <code>SWT.TOP</code> or <code>SWT.BOTTOM</code>.
 	 */
 	void setPosition(int position);
 
@@ -105,8 +105,8 @@ public interface ILegend {
 	 * method is typically used for mouse listener to check whether mouse cursor
 	 * is on legend for a certain series.
 	 * <p>
-	 * Mouse listener can be added by casting <tt>ILegend</tt> to
-	 * <tt>Control</tt>.
+	 * Mouse listener can be added by casting <code>ILegend</code> to
+	 * <code>Control</code>.
 	 * 
 	 * <pre>
 	 * Control legend = (Control) chart.getLegend();

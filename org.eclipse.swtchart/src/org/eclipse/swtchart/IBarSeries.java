@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -56,7 +56,7 @@ public interface IBarSeries<T> extends ISeries<T> {
 	BarWidthStyle getBarWidthStyle(BarWidthStyle style);
 
 	/**
-	 * Sets the bar width style. The default is <tt>BarWidthStyle.STRETCHED</tt>
+	 * Sets the bar width style. The default is <code>BarWidthStyle.STRETCHED</code>
 	 * .
 	 * 
 	 * @param style
@@ -73,7 +73,7 @@ public interface IBarSeries<T> extends ISeries<T> {
 
 	/**
 	 * Sets the bar width in pixels. The specified bar width is active only when
-	 * the bar width style is set to <tt>BarWidthStyle.FIXED</tt>.
+	 * the bar width style is set to <code>BarWidthStyle.FIXED</code>.
 	 * 
 	 * @param width
 	 *            the bar width in pixels
@@ -89,7 +89,7 @@ public interface IBarSeries<T> extends ISeries<T> {
 
 	/**
 	 * Sets the bar padding in percentage. The specified padding is active only
-	 * when the bar width style is set to <tt>BarWidthStyle.STRETCHED</tt>.
+	 * when the bar width style is set to <code>BarWidthStyle.STRETCHED</code>.
 	 * 
 	 * @param padding
 	 *            the bar padding in percentage
@@ -131,7 +131,7 @@ public interface IBarSeries<T> extends ISeries<T> {
 	 * <p>
 	 * The returned array has the same size as data points. Depending on X axis
 	 * range, some bars can be out of screen. In this case, the rectangles for
-	 * invisible bars will be <tt>null<tt> in the returned array.
+	 * invisible bars will be <code>null</code> in the returned array.
 	 * 
 	 * @return the array of bar rectangles in pixels.
 	 */

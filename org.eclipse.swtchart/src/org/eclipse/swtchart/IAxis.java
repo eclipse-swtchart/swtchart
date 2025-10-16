@@ -203,7 +203,7 @@ public interface IAxis {
 
 	/**
 	 * Sets the category series. In order to enable category series,
-	 * <tt>enableCategoryAxis(true)</tt> has to be invoked.
+	 * <code>enableCategoryAxis(true)</code> has to be invoked.
 	 * 
 	 * @param series
 	 *            the category series
@@ -212,7 +212,7 @@ public interface IAxis {
 
 	/**
 	 * Gets the category series. If the category series haven't been set yet,
-	 * <tt>null</tt> will be returned.
+	 * <code>null</code> will be returned.
 	 * 
 	 * @return the category series
 	 */

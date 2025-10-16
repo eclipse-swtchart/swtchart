@@ -295,7 +295,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	 * The list is set to unmodifiable. Use addLinkedScrollableChart and
 	 * removeLinkedScrollableChart to modify the list.
 	 * 
-	 * @return {List<ScrollableChart>}
 	 */
 	public List<ScrollableChart> getLinkedScrollableCharts() {
 
