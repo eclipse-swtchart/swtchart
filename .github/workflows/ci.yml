@@ -41,4 +41,4 @@ jobs:
     - name: Build with Maven
       uses: coactions/setup-xvfb@v1
       with:
-        run: mvn --T 1C verify --B -ntp -Dstyle.color=always
+        run: mvn -Pjavadoc --T 1C verify --B -ntp -Dstyle.color=always
