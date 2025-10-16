@@ -12,9 +12,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -24,7 +25,7 @@ import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.extensions.barcharts.BarSeriesSettings;
 import org.eclipse.swtchart.extensions.linecharts.LineSeriesData;
 import org.eclipse.swtchart.extensions.linecharts.LineSeriesSettings;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SeriesMapper_1_UITest {
 

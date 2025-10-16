@@ -12,10 +12,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.support;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.eclipse.swtchart.Range;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ElementSupport_2_Test {
 	/*

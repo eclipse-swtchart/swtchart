@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.GraphicsEnvironment;
 import java.io.File;
@@ -30,14 +31,14 @@ import org.eclipse.swtchart.extensions.core.ISeriesData;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesData;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
 import org.eclipse.swtchart.extensions.linecharts.LineSeriesData;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ImageFactory_1_UITest {
 
 	@Test
 	public void test1() {
 
-		assertFalse("UI tests can't be executed on a headless build server.", GraphicsEnvironment.isHeadless());
+		assertFalse(GraphicsEnvironment.isHeadless(), "UI tests can't be executed on a headless build server.");
 	}
 
 	@Test
