@@ -13,15 +13,15 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.util;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeFalse;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -56,9 +56,9 @@ import java.awt.image.WritableRaster;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
 
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class GraphicsUtilsTest {
 
@@ -90,11 +90,11 @@ public class GraphicsUtilsTest {
 		int actualDataSize = actualData.getSize();
 		assertEquals(expectedDataSize, actualDataSize);
 		for(int i = 0; i < actualDataSize; i++) {
-			assertEquals(String.format("Mismatch at pixel %d", i), actualData.getElem(i), expectedData.getElem(i));
+			assertEquals(actualData.getElem(i), expectedData.getElem(i), String.format("Mismatch at pixel %d", i));
 		}
 	}
 
-	@BeforeClass
+	@BeforeAll
 	public static void setUpClass() {
 
 		{
@@ -305,7 +305,7 @@ public class GraphicsUtilsTest {
 		assertNotSame(font, GraphicsUtils.getPhysicalFont(font));
 	}
 
-	@Ignore
+	@Disabled
 	public void getPhysicalFontReturnsSameObjectForPhysicalFont() {
 
 		// FIXME: Use valid fonts for headless Continuous Integration environment

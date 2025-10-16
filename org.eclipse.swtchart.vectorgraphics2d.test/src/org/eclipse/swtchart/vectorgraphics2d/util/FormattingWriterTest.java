@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,41 +13,40 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.util;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class FormattingWriterTest {
 
 	private static final String DEFAULT_EOL = "\n";
 	private ByteArrayOutputStream stream;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 
 		stream = new ByteArrayOutputStream();
 	}
 
-	@SuppressWarnings("resource")
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void constructorFailsWithoutStream() {
 
-		new FormattingWriter(null, StandardCharsets.ISO_8859_1, DEFAULT_EOL);
+		assertThrows(IllegalArgumentException.class, () -> new FormattingWriter(null, StandardCharsets.ISO_8859_1, DEFAULT_EOL));
 	}
 
-	@SuppressWarnings("resource")
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void constructorFailsWithEmptyEOL() {
 
-		new FormattingWriter(stream, StandardCharsets.ISO_8859_1, "");
+		assertThrows(IllegalArgumentException.class, () -> new FormattingWriter(stream, StandardCharsets.ISO_8859_1, ""));
 	}
 
 	@SuppressWarnings("resource")

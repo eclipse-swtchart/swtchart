@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,8 +13,8 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.core;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 import java.util.IdentityHashMap;
@@ -218,16 +218,16 @@ public abstract class TestUtils {
 			if(lineExpected == null) {
 				continue;
 			}
-			assertTrue(String.format("Line is of type %s, expected String.", lineActual.getClass()), lineActual instanceof String);
+			assertTrue(lineActual instanceof String, String.format("Line is of type %s, expected String.", lineActual.getClass()));
 			if(lineExpected instanceof String) {
 				assertEquals(lineExpected, lineActual);
 			} else if(lineExpected instanceof Pattern) {
 				Pattern expectedPattern = (Pattern)lineExpected;
 				Matcher matcher = expectedPattern.matcher((String)lineActual);
-				assertTrue(String.format("Line didn't match pattern.\nExpected: \"%s\"\nActual: \"%s\"", matcher.pattern(), lineActual), matcher.matches());
+				assertTrue(matcher.matches(), String.format("Line didn't match pattern.\nExpected: \"%s\"\nActual: \"%s\"", matcher.pattern(), lineActual));
 			}
 		}
-		assertEquals("Wrong number of lines in template.", expected.size(), actual.size());
+		assertEquals(expected.size(), actual.size(), "Wrong number of lines in template.");
 	}
 
 	private static List<XMLFragment> parseXML(String xmlString) {

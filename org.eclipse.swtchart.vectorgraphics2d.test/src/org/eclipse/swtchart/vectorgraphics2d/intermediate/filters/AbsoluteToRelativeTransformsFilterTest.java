@@ -29,7 +29,7 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DisposeComman
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetTransformCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.TransformCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.TranslateCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class AbsoluteToRelativeTransformsFilterTest {
 

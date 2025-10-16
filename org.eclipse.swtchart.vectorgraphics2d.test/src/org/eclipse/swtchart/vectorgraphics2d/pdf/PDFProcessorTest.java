@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,7 +14,7 @@
 package org.eclipse.swtchart.vectorgraphics2d.pdf;
 
 import static org.eclipse.swtchart.vectorgraphics2d.core.TestUtils.assertTemplateEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -26,8 +26,8 @@ import org.eclipse.swtchart.vectorgraphics2d.core.TestUtils.Template;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.MutableCommandSequence;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
 import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class PDFProcessorTest {
 
@@ -56,7 +56,7 @@ public class PDFProcessorTest {
 		assertTrue(pdfProcessor.isCompressed());
 	}
 
-	@Ignore
+	@Disabled
 	public void envelopeForEmptyDocument() throws IOException {
 
 		/*
