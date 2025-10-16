@@ -70,7 +70,6 @@
     <module>org.eclipse.swtchart</module>
     <module>org.eclipse.swtchart.test</module>
     <module>org.eclipse.swtchart.extensions</module>
-    <module>org.eclipse.swtchart.extensions.eclipse</module>
     <module>org.eclipse.swtchart.customcharts</module>
     <module>org.eclipse.swtchart.extensions.test</module>
     <module>org.eclipse.swtchart.export</module>

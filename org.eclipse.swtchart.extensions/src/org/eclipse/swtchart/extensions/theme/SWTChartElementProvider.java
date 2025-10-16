@@ -10,7 +10,7 @@
  * Contributors:
  * Matthias Mailänder - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart.extensions.eclipse.core;
+package org.eclipse.swtchart.extensions.theme;
 
 import org.eclipse.e4.ui.css.core.dom.IElementProvider;
 import org.eclipse.e4.ui.css.core.engine.CSSEngine;

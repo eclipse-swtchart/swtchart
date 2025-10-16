@@ -15,5 +15,25 @@
             id="org.eclipse.swtchart.extensions.preferences.preferencePage"
             name="SWTChart">
       </page>
-   </extension>           
+   </extension>     
+   <extension
+         point="org.eclipse.e4.ui.css.core.propertyHandler">
+      <handler
+            adapter="org.eclipse.swtchart.extensions.theme.ScrollableChartElement"
+            composite="false"
+            handler="org.eclipse.swtchart.extensions.theme.ScrollableChartCSSPropertyHandler">
+         <property-name
+               name="grid-color">
+         </property-name>
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.elementProvider">
+      <provider
+            class="org.eclipse.swtchart.extensions.theme.SWTChartElementProvider">
+         <widget
+               class="org.eclipse.swtchart.extensions.core.ScrollableChart">
+         </widget>
+      </provider>
+   </extension>         
 </plugin>
