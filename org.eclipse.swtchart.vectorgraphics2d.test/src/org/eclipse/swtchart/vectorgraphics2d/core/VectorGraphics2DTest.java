@@ -17,9 +17,9 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
@@ -30,11 +30,8 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.CreateCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DisposeCommand;
 import org.eclipse.swtchart.vectorgraphics2d.util.GraphicsUtils;
-import org.junit.Test;
-import org.junit.experimental.theories.Theories;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 
-@RunWith(Theories.class)
 public class VectorGraphics2DTest {
 
 	@Test

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,7 +24,7 @@ import org.eclipse.swtchart.vectorgraphics2d.core.TestUtils.Template;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.MutableCommandSequence;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
 import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class EPSProcessorTest {
 

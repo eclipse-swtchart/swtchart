@@ -16,35 +16,28 @@ package org.eclipse.swtchart.vectorgraphics2d.core;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
-import java.util.List;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
-
-@RunWith(Theories.class)
 public class ProcessorsTest {
 
-	@Test(expected = NullPointerException.class)
+	@Test
 	public void testGetThrowsNullPointerExceptionWhenNullIsPassed() {
 
-		Processors.get(null);
+		assertThrows(NullPointerException.class, () -> Processors.get(null));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testGetThrowsIllegalArgumentExceptionWhenFormatIsUnknown() {
 
-		Processors.get("UnknownFormat");
+		assertThrows(IllegalArgumentException.class, () -> Processors.get("UnknownFormat"));
 	}
 
-	@DataPoints
-	public static List<String> KNOWN_FORMATS = Arrays.asList("eps", "pdf", "svg");
-
-	@Theory
+	@ParameterizedTest
+	@ValueSource(strings = {"eps", "pdf", "svg"})
 	public void testGetReturnsNonNullWhenFormatIsKnown(String format) {
 
 		Processor processor = Processors.get(format);

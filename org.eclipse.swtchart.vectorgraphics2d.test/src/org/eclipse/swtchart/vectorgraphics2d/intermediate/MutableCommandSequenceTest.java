@@ -17,7 +17,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MutableCommandSequenceTest {
 

@@ -17,8 +17,8 @@ import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -31,7 +31,7 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DrawImageComm
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.FillShapeCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.RotateCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetPaintCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class FillPaintedShapeAsImageFilterTest {
 

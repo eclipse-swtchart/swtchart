@@ -13,9 +13,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.util;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -25,7 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class DataUtilsTest {
 
@@ -93,10 +94,10 @@ public class DataUtilsTest {
 		assertEquals(Integer.valueOf(42), result.get("foo"));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void mapFailsWithInvalidParameterCount() {
 
-		DataUtils.map(new String[]{"foo", "bar"}, new Integer[]{42});
+		assertThrows(IllegalArgumentException.class, () -> DataUtils.map(new String[]{"foo", "bar"}, new Integer[]{42}));
 	}
 
 	@Test
@@ -183,10 +184,10 @@ public class DataUtilsTest {
 		assertEquals(42, result);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void maxFailsWithoutParameters() {
 
-		DataUtils.max();
+		assertThrows(IllegalArgumentException.class, () -> DataUtils.max());
 	}
 
 	@Test

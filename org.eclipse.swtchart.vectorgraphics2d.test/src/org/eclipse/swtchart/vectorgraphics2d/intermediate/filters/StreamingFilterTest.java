@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2025 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,9 +13,9 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.intermediate.filters;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -32,7 +32,7 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DrawShapeComm
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetColorCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetStrokeCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetTransformCommand;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StreamingFilterTest {
 
