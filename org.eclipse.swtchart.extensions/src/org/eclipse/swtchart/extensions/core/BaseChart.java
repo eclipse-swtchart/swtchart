@@ -188,7 +188,6 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 * (Experimental)
 	 * Returns an unmodifiable list of the custom paint series.
 	 * 
-	 * @return List<ICustomPaintSeries>
 	 */
 	public List<ICustomSeries> getCustomSeries() {
 
@@ -531,7 +530,6 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	 * Returns the set of selected series ids.
 	 * The list is unmodifiable.
 	 * 
-	 * @return Set<String>
 	 */
 	public Set<String> getSelectedSeriesIds() {
 
@@ -541,7 +539,6 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 	/**
 	 * Returns a set of all series ids.
 	 * 
-	 * @return Set<String>
 	 */
 	public Set<String> getSeriesIds() {
 

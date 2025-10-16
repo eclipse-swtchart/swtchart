@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,7 +22,7 @@ public interface IGrid {
 	/**
 	 * returns the visibility of Grid
 	 * 
-	 * @returns if Grid is Visible
+	 * @return if Grid is Visible
 	 */
 	public boolean isVisible();
 
