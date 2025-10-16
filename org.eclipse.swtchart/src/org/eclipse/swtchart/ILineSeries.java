@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -94,7 +94,7 @@ public interface ILineSeries<T> extends ISeries<T> {
 
 	/**
 	 * Sets the symbol type. If null is given, default type
-	 * <tt>PlotSymbolType.CIRCLE</tt> will be set.
+	 * <code>PlotSymbolType.CIRCLE</code> will be set.
 	 *
 	 * @param type
 	 *            the symbol type
@@ -142,11 +142,11 @@ public interface ILineSeries<T> extends ISeries<T> {
 	 * Sets the symbol colors. Typically, the number of symbol colors is the same as the
 	 * number of plots. If the number of symbol colors is less than the number of plots,
 	 * the rest of plots will have the common color which is set with
-	 * <tt>setSymbolColor(Color)</tt>.
+	 * <code>setSymbolColor(Color)</code>.
 	 *
 	 * @param colors
-	 *            the symbol colors. If <tt>null</tt> or empty array is given, the color
-	 *            which is set with <tt>setSymbolColor(Color)</tt> will be commonly used
+	 *            the symbol colors. If <code>null</code> or empty array is given, the color
+	 *            which is set with <code>setSymbolColor(Color)</code> will be commonly used
 	 *            for all plots.
 	 */
 	void setSymbolColors(Color[] colors);
@@ -190,8 +190,8 @@ public interface ILineSeries<T> extends ISeries<T> {
 
 	/**
 	 * Sets the width of line connecting data points and also line drawing
-	 * symbol if applicable (i.e. <tt>PlotSymbolType.CROSS</tt> or
-	 * <tt>PlotSymbolType.PLUS</tt>). The default width is 1.
+	 * symbol if applicable (i.e. <code>PlotSymbolType.CROSS</code> or
+	 * <code>PlotSymbolType.PLUS</code>). The default width is 1.
 	 *
 	 * @param width
 	 *            the line width
@@ -244,10 +244,10 @@ public interface ILineSeries<T> extends ISeries<T> {
 
 	/**
 	 * Gets the anti-aliasing value for drawing line. The default value is
-	 * <tt>SWT.DEFAULT<tt>.
+	 * <code>SWT.DEFAULT</code>.
 	 *
-	 * @return the anti-aliasing value which can be <tt>SWT.DEFAULT</tt>,
-	 * <tt>SWT.ON</tt> or <tt>SWT.OFF</tt>.
+	 * @return the anti-aliasing value which can be <code>SWT.DEFAULT</code>,
+	 * <code>SWT.ON</code> or <code>SWT.OFF</code>.
 	 */
 	int getAntialias();
 
@@ -262,8 +262,8 @@ public interface ILineSeries<T> extends ISeries<T> {
 	 * may let end-user configure it.
 	 *
 	 * @param antialias
-	 *            the anti-aliasing value which can be <tt>SWT.DEFAULT</tt>,
-	 *            <tt>SWT.ON</tt> or <tt>SWT.OFF</tt>.
+	 *            the anti-aliasing value which can be <code>SWT.DEFAULT</code>,
+	 *            <code>SWT.ON</code> or <code>SWT.OFF</code>.
 	 */
 	void setAntialias(int antialias);
 }

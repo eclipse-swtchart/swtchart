@@ -208,7 +208,7 @@ public class Chart extends Composite implements Listener {
 
 	/**
 	 * Gets the background color in plot area. This method is identical with
-	 * <tt>getPlotArea().getBackground()</tt>.
+	 * <code>getPlotArea().getBackground()</code>.
 	 * 
 	 * @deprecated use {@link #getPlotArea()} instead to access the plot area directly
 	 * @return the background color in plot area
@@ -223,7 +223,7 @@ public class Chart extends Composite implements Listener {
 	 * Sets the background color in plot area.
 	 * 
 	 * @param color
-	 *            the background color in plot area. If <tt>null</tt> is given,
+	 *            the background color in plot area. If <code>null</code> is given,
 	 *            default background color will be set.
 	 * @deprecated use {@link #getPlotArea()} instead to access the plot area directly
 	 * @exception IllegalArgumentException

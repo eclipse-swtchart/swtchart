@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -68,7 +68,7 @@ public interface IErrorBar {
 	Color getColor();
 
 	/**
-	 * Sets the error bar color. If <tt>null</tt> is given, default color will
+	 * Sets the error bar color. If <code>null</code> is given, default color will
 	 * be set.
 	 *
 	 * @param color

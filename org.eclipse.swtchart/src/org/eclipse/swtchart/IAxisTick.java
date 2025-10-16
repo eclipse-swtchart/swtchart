@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -105,9 +105,9 @@ public interface IAxisTick {
 	void setTickLabelAngle(int angle);
 
 	/**
-	 * Sets the format for axis tick label. <tt>DecimalFormat</tt> and
-	 * <tt>DateFormat</tt> should be used for <tt>double[]</tt> series and
-	 * <tt>Date[]</tt> series respectively.
+	 * Sets the format for axis tick label. <code>DecimalFormat</code> and
+	 * <code>DateFormat</code> should be used for <code>double[]</code> series and
+	 * <code>Date[]</code> series respectively.
 	 *
 	 * @param format
 	 *            the format
@@ -125,7 +125,7 @@ public interface IAxisTick {
 	 * Gets the bounds of axis tick.
 	 * <p>
 	 * This method is typically used for mouse listener to check whether mouse
-	 * cursor is on axis tick. Mouse listener can be added to <tt>Chart</tt>.
+	 * cursor is on axis tick. Mouse listener can be added to <code>Chart</code>.
 	 *
 	 * @return the bounds of axis tick.
 	 */

@@ -517,7 +517,7 @@ public class AxisTickLabels implements PaintListener {
 	 *            the base
 	 * @param exponent
 	 *            the exponent
-	 * @return the value <tt>a<sup>b</sup></tt> in <tt>BigDecimal</tt>
+	 * @return the value <code>a<sup>b</sup></code> in <code>BigDecimal</code>
 	 */
 	private static BigDecimal pow(double base, int exponent) {
 
@@ -833,11 +833,11 @@ public class AxisTickLabels implements PaintListener {
 	}
 
 	/**
-	 * Sets the format for axis tick label. <tt>DecimalFormat</tt> and
-	 * <tt>DateFormat</tt> should be used for <tt>double[]</tt> series and
-	 * <tt>Data[]</tt> series respectively.
+	 * Sets the format for axis tick label. <code>DecimalFormat</code> and
+	 * <code>DateFormat</code> should be used for <code>double[]</code> series and
+	 * <code>Data[]</code> series respectively.
 	 * <p>
-	 * If <tt>null</tt> is set, default format will be used.
+	 * If <code>null</code> is set, default format will be used.
 	 * 
 	 * @param format
 	 *            the format

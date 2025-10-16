@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -253,14 +253,14 @@ public interface ISeries<DataType> {
 	 * By default, legend displays the description, when it is set.
 	 * 
 	 * @param description
-	 *            the series description, or <tt>null</tt> to clear it
+	 *            the series description, or <code>null</code> to clear it
 	 */
 	void setDescription(String description);
 
 	/**
 	 * Gets the series description
 	 * 
-	 * @return the series description, or <tt>null<tt> if not set
+	 * @return the series description, or <code>null</code> if not set
 	 */
 	String getDescription();
 
