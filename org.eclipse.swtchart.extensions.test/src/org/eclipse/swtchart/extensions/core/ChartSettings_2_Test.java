@@ -12,20 +12,20 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.eclipse.swtchart.extensions.menu.toggle.TogglePlotCenterMarkerHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.TogglePositionMarkerHandler;
 import org.eclipse.swtchart.extensions.menu.toggle.ToggleSeriesLegendHandler;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class ChartSettings_2_Test {
 
 	private ChartSettings chartSettings = new ChartSettings();
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 
 		chartSettings.clearMenuEntries();

@@ -12,12 +12,13 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.axisconverter;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swtchart.extensions.core.IChartDataCoordinates;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class RelativeIntensityConverter_1_Test {
 
@@ -56,7 +57,7 @@ public class RelativeIntensityConverter_1_Test {
 		}
 	}
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 
 		relativeIntensityConverter = new PercentageConverter(SWT.VERTICAL, true);

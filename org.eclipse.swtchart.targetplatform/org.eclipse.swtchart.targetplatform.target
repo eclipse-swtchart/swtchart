@@ -8,7 +8,7 @@
 		<unit id="org.eclipse.ui"/>
 		<unit id="org.eclipse.core.runtime"/>
 		<unit id="org.junit"/>
-		<unit id="org.eclipse.jdt.junit4.runtime"/>
+		<unit id="org.eclipse.jdt.junit5.runtime"/>
 		<unit id="org.eclipse.equinox.launcher"/>
 		<unit id="org.eclipse.ui.ide.application"/>
 		<unit id="org.apache.batik.anim"/>

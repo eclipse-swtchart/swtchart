@@ -12,16 +12,16 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class RangeRestriction_2_Test {
 
 	private RangeRestriction rangeRestriction;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 
 		rangeRestriction = new RangeRestriction(RangeRestriction.NONE);
