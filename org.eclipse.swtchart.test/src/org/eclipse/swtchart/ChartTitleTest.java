@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,10 +13,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -26,7 +27,8 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.internal.Title;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for chart title.
@@ -35,10 +37,9 @@ public class ChartTitleTest extends ChartTestCase {
 
 	private ITitle title;
 
-	@Override
+	@BeforeEach
 	public void setUp() {
 
-		super.setUp();
 		title = chart.getTitle();
 	}
 
@@ -94,12 +95,9 @@ public class ChartTitleTest extends ChartTestCase {
 		// set the disposed color
 		color = new Color(Display.getDefault(), 0, 0, 0);
 		color.dispose();
-		try {
-			title.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = color;
+		assertThrows(IllegalArgumentException.class, () ->
+			title.setForeground(disposed));
 		color = title.getForeground();
 		assertEquals(new RGB(0, 0, 0), color.getRGB());
 	}
@@ -130,12 +128,9 @@ public class ChartTitleTest extends ChartTestCase {
 		showChart();
 		// set the disposed font
 		font.dispose();
-		try {
-			title.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Font font2 = font;
+		assertThrows(IllegalArgumentException.class, () ->
+			title.setFont(font2));
 		// set large font size
 		title.setFont(new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 64, SWT.ITALIC));
 		font = title.getFont();

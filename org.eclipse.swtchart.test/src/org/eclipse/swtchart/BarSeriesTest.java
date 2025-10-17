@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -24,8 +24,9 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for bar series.
@@ -39,10 +40,9 @@ public class BarSeriesTest extends ChartTestCase {
 	private static final double[] ySeries3 = {0.2, 0.2, 0.2, 0.2, 0.2};
 	private static final String[] categorySeries = {"a", "b", "c", "d", "e"};
 
-	@Override
+	@BeforeEach
 	public void setUp()  {
 
-		super.setUp();
 		seriesSet = chart.getSeriesSet();
 	}
 
@@ -122,18 +122,8 @@ public class BarSeriesTest extends ChartTestCase {
 
 		// set null
 		ISeries<?> series = seriesSet.createSeries(SeriesType.LINE, "series");
-		try {
-			series.setXSeries(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			series.setYSeries(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> series.setXSeries(null));
+		assertThrows(IllegalArgumentException.class, () -> series.setYSeries(null));
 		// get series before setting series
 		double[] xSeries = series.getXSeries();
 		assertEquals(0, xSeries.length);
@@ -247,18 +237,8 @@ public class BarSeriesTest extends ChartTestCase {
 
 		// set illegal padding
 		IBarSeries<?> series = (IBarSeries<?>)chart.getSeriesSet().createSeries(SeriesType.BAR, "bar series 1");
-		try {
-			series.setBarPadding(-10);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			series.setBarPadding(200);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> series.setBarPadding(-10));
+		assertThrows(IllegalArgumentException.class, () -> series.setBarPadding(200));
 		// set padding
 		series.setYSeries(ySeries1);
 		series.enableStack(true);
@@ -302,19 +282,14 @@ public class BarSeriesTest extends ChartTestCase {
 		// set the disposed color
 		Color color = new Color(Display.getDefault(), 0, 0, 0);
 		color.dispose();
-		try {
-			series.setBarColor(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> series.setBarColor(color));
 	}
 
 	/**
 	 * Test for bar bounds.
 	 */
 	@Test
-	@Ignore("environment dependent")
+	@Disabled("environment dependent")
 	public void testBounds()  {
 
 		IBarSeries<?> series1 = (IBarSeries<?>)seriesSet.createSeries(SeriesType.BAR, "series1");

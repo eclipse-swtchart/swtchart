@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,13 +13,12 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
@@ -29,8 +28,9 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for legend.
@@ -43,10 +43,9 @@ public class LegendTest extends ChartTestCase {
 	private static final double[] ySeries3 = {0.1, 0.2, 0.3, 0.4, 0.5};
 	private static final double[] ySeries4 = {0.4, 0.4, 0.4, 0.4, 0.4};
 
-	@Override
+	@BeforeEach
 	public void setUp() {
-
-		super.setUp();
+		
 		legend = chart.getLegend();
 	}
 
@@ -108,12 +107,7 @@ public class LegendTest extends ChartTestCase {
 		// set the disposed color
 		Color color = new Color(Display.getDefault(), 0, 0, 0);
 		color.dispose();
-		try {
-			legend.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> legend.setForeground(color));
 	}
 
 	/**
@@ -136,14 +130,9 @@ public class LegendTest extends ChartTestCase {
 		assertEquals(red.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			legend.setBackground(color);
-			fail();
-		} catch(SWTException | IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () -> legend.setBackground(disposed));
 	}
 
 	/**
@@ -174,12 +163,9 @@ public class LegendTest extends ChartTestCase {
 		showChart();
 		// set the disposed font
 		font.dispose();
-		try {
-			legend.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Font disposed = font;
+		assertThrows(IllegalArgumentException.class, () ->
+			legend.setFont(disposed));
 		// set large font size
 		font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 36, SWT.ITALIC);
 		legend.setFont(font);
@@ -236,7 +222,7 @@ public class LegendTest extends ChartTestCase {
 	 * Test for legend bounds.
 	 */
 	@Test
-	@Ignore("environment dependent")
+	@Disabled("environment dependent")
 	public void testBounds() {
 
 		ISeries<?> series1 = chart.getSeriesSet().createSeries(SeriesType.LINE, "series1");

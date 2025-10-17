@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,15 +12,16 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for series set.
@@ -33,10 +34,9 @@ public class SeriesSetTest extends ChartTestCase {
 	private static final double[] ySeries3 = {0.1, 0.2, 0.3, 0.4, 0.5};
 	private static final String[] categorySeries = {"a", "b", "c", "d", "e"};
 
-	@Override
+	@BeforeEach
 	public void setUp()  {
 
-		super.setUp();
 		seriesSet = chart.getSeriesSet();
 	}
 
@@ -47,31 +47,11 @@ public class SeriesSetTest extends ChartTestCase {
 	public void testCreateSeries()  {
 
 		// create series with illegal key
-		try {
-			seriesSet.createSeries(SeriesType.LINE, null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			seriesSet.createSeries(SeriesType.LINE, "");
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			seriesSet.createSeries(SeriesType.LINE, " ");
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.createSeries(SeriesType.LINE, null));
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.createSeries(SeriesType.LINE, ""));
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.createSeries(SeriesType.LINE, " "));
 		// create series with illegal line type
-		try {
-			seriesSet.createSeries(null, "foo");
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.createSeries(null, "foo"));
 		// create series
 		showChart();
 		ISeries<?> series1 = seriesSet.createSeries(SeriesType.LINE, "series1");
@@ -95,12 +75,7 @@ public class SeriesSetTest extends ChartTestCase {
 	public void testGetSeries()  {
 
 		// get series with illegal key
-		try {
-			seriesSet.getSeries(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.getSeries(null));
 		// get series with unavailable key
 		ISeries<?> series = seriesSet.getSeries("foo");
 		assertNull(series);
@@ -128,19 +103,9 @@ public class SeriesSetTest extends ChartTestCase {
 	public void testDeleteSeries()  {
 
 		// delete series with illegal key
-		try {
-			seriesSet.deleteSeries(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.deleteSeries(null));
 		// delete series with unavailable key
-		try {
-			seriesSet.deleteSeries("foo");
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> seriesSet.deleteSeries("foo"));
 		// delete series
 		ISeries<?> series1 = seriesSet.createSeries(SeriesType.LINE, "series1");
 		series1.setYSeries(ySeries1);
