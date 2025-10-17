@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,10 +14,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -36,8 +36,9 @@ import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.internal.axis.AxisTick;
 import org.eclipse.swtchart.internal.axis.AxisTickLabels;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for axis tick.
@@ -48,10 +49,9 @@ public class AxisTickTest extends ChartTestCase {
 	private IAxisTick yAxisTick;
 	private static final double[] ySeries = {0.0, 0.38, 0.71, 0.92, 1.0};
 
-	@Override
+	@BeforeEach
 	public void setUp() {
 
-		super.setUp();
 		xAxisTick = chart.getAxisSet().getXAxis(0).getTick();
 		yAxisTick = chart.getAxisSet().getYAxis(0).getTick();
 	}
@@ -81,24 +81,14 @@ public class AxisTickTest extends ChartTestCase {
 		assertEquals(black.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			xAxisTick.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () -> xAxisTick.setForeground(disposed));
 		color = xAxisTick.getForeground();
 		assertEquals(new RGB(0, 0, 0), color.getRGB());
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			yAxisTick.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed2 = new Color(Display.getDefault(), 0, 0, 0);
+		disposed2.dispose();
+		assertThrows(IllegalArgumentException.class, () -> yAxisTick.setForeground(disposed2));
 		color = yAxisTick.getForeground();
 		assertEquals(new RGB(0, 0, 0), color.getRGB());
 	}
@@ -122,24 +112,16 @@ public class AxisTickTest extends ChartTestCase {
 		assertEquals(smallFontData.getHeight(), fontData.getHeight());
 		assertEquals(smallFontData.getStyle(), fontData.getStyle());
 		// set the disposed font
-		Font font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 11, SWT.BOLD);
-		font.dispose();
-		try {
-			xAxisTick.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 12, SWT.BOLD);
-		font.dispose();
-		try {
-			yAxisTick.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Font disposed = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 11, SWT.BOLD);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () ->
+			xAxisTick.setFont(disposed));
+		Font disposed2 = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 12, SWT.BOLD);
+		disposed2.dispose();
+		assertThrows(IllegalArgumentException.class, () ->
+			yAxisTick.setFont(disposed2));
 		// set normal font
-		font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 18, SWT.ITALIC);
+		Font font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 18, SWT.ITALIC);
 		xAxisTick.setFont(font);
 		fontData = xAxisTick.getFont().getFontData()[0];
 		assertEquals(Resources.DEFAULT_FONT_NAME, fontData.getName());
@@ -314,7 +296,7 @@ public class AxisTickTest extends ChartTestCase {
 	 * Test for bounds.
 	 */
 	@Test
-	@Ignore("environment dependent")
+	@Disabled("environment dependent")
 	public void testBounds() {
 
 		ILineSeries<?> lineSeries = (ILineSeries<?>)chart.getSeriesSet().createSeries(SeriesType.LINE, "line series");

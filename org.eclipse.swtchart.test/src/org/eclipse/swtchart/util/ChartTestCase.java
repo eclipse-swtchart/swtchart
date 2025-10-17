@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,10 +24,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.Chart;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.TestName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInfo;
 
 /**
  * Test case for chart title.
@@ -44,14 +43,12 @@ public class ChartTestCase {
 	private int fileNameIndex;
 	private boolean refreshChart = true;
 	private boolean saveChart = false;
-	@Rule
-	public TestName name = new TestName();
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	public void setUp(TestInfo info) {
 
 		Locale.setDefault(Locale.ENGLISH);
-		shell = createShell(name.getMethodName());
+		shell = createShell(info.getDisplayName());
 		chart = createChart(shell);
 		if(!shell.isVisible()) {
 			shell.open();
@@ -59,7 +56,7 @@ public class ChartTestCase {
 		fileNameIndex = 0;
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 
 		chart.dispose();

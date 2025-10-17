@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,10 +13,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -26,7 +26,8 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.internal.Title;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for axis title.
@@ -36,10 +37,9 @@ public class AxisTitleTest extends ChartTestCase {
 	private ITitle xAxisTitle;
 	private ITitle yAxisTitle;
 
-	@Override
+	@BeforeEach
 	public void setUp() {
 
-		super.setUp();
 		xAxisTitle = chart.getAxisSet().getXAxis(0).getTitle();
 		yAxisTitle = chart.getAxisSet().getYAxis(0).getTitle();
 	}
@@ -119,24 +119,14 @@ public class AxisTitleTest extends ChartTestCase {
 		assertEquals(syan.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			xAxisTitle.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () -> xAxisTitle.setForeground(disposed));
 		color = xAxisTitle.getForeground();
 		assertEquals(syan.getRGB(), color.getRGB());
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			yAxisTitle.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed2 = new Color(Display.getDefault(), 0, 0, 0);
+		disposed2.dispose();
+		assertThrows(IllegalArgumentException.class, () -> yAxisTitle.setForeground(disposed2));
 		color = yAxisTitle.getForeground();
 		assertEquals(syan.getRGB(), color.getRGB());
 	}
@@ -177,18 +167,9 @@ public class AxisTitleTest extends ChartTestCase {
 		showChart();
 		// set the disposed font
 		font.dispose();
-		try {
-			xAxisTitle.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			yAxisTitle.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Font font2 = font;
+		assertThrows(IllegalArgumentException.class, () -> xAxisTitle.setFont(font2));
+		assertThrows(IllegalArgumentException.class, () -> yAxisTitle.setFont(font2));
 		// set large font size
 		font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 64, SWT.ITALIC);
 		xAxisTitle.setFont(font);

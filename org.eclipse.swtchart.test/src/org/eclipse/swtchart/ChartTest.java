@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,21 +12,20 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.util.UUID;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.SWTException;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for Chart.
@@ -55,22 +54,13 @@ public class ChartTest extends ChartTestCase {
 		assertEquals(syan.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			chart.setBackground(color);
-			fail();
-		} catch(SWTException | IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () -> chart.setBackground(disposed));
 		color = chart.getBackground();
 		assertEquals(syan.getRGB(), color.getRGB());
 		// set null
-		try {
-			chart.setBackground(null);
-		} catch(IllegalArgumentException e) {
-			fail();
-		}
+		chart.setBackground(null);
 		color = chart.getBackground();
 		assertEquals(Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND).getRGB(), color.getRGB());
 		showChart();
@@ -93,22 +83,13 @@ public class ChartTest extends ChartTestCase {
 		assertEquals(cyan.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
-		color.dispose();
-		try {
-			chart.getPlotArea().setBackground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		disposed.dispose();
+		assertThrows(IllegalArgumentException.class, () -> chart.getPlotArea().setBackground(disposed));
 		color = chart.getPlotArea().getBackground();
 		assertEquals(cyan.getRGB(), color.getRGB());
 		// set null
-		try {
-			chart.getPlotArea().setBackground(null);
-		} catch(IllegalArgumentException e) {
-			fail();
-		}
+		chart.getPlotArea().setBackground(null);
 		color = chart.getPlotArea().getBackground();
 		assertEquals(Display.getDefault().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND).getRGB(), color.getRGB());
 		showChart();
@@ -376,7 +357,7 @@ public class ChartTest extends ChartTestCase {
 	 * Test for saving to file
 	 */
 	@Test
-	@Ignore("environment dependent")
+	@Disabled("environment dependent")
 	public void testSaveToFile() {
 
 		ISeries<?> series = chart.getSeriesSet().createSeries(SeriesType.LINE, "series1");

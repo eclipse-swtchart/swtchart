@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2024 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,11 +13,12 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -27,8 +28,9 @@ import org.eclipse.swtchart.IAxis.Position;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.internal.axis.AxisTick;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for axis.
@@ -48,10 +50,9 @@ public class AxisTest extends ChartTestCase {
 	private static final double[] ySeries4 = {0, 0, 0, 0, 0};
 	private static final double[] ySeries5 = {-1, -2, -3, -4, -5};
 
-	@Override
+	@BeforeEach
 	public void setUp()  {
 
-		super.setUp();
 		xAxis = chart.getAxisSet().getXAxis(0);
 		yAxis = chart.getAxisSet().getYAxis(0);
 	}
@@ -116,19 +117,9 @@ public class AxisTest extends ChartTestCase {
 		assertEquals(Position.Primary, position);
 		showChart();
 		// set X Axis to illegal position
-		try {
-			xAxis.setPosition(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xAxis.setPosition(null));
 		// set Y Axis to illegal position
-		try {
-			yAxis.setPosition(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> yAxis.setPosition(null));
 	}
 
 	/**
@@ -142,28 +133,13 @@ public class AxisTest extends ChartTestCase {
 		barSeries.setYSeries(ySeries1);
 		chart.getAxisSet().adjustRange();
 		// specify null
-		try {
-			xAxis.setRange(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xAxis.setRange(null));
 		// specify illegal range (lower > upper)
 		Range range = new Range(1, 2);
 		range.lower = 3;
-		try {
-			xAxis.setRange(range);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xAxis.setRange(range));
 		// specify illegal range (lower = upper) for non-category axis
-		try {
-			xAxis.setRange(new Range(3.3, 3.3));
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xAxis.setRange(new Range(3.3, 3.3)));
 		// set range for non-category axis
 		showChart();
 		xAxis.setRange(new Range(-1, 7));
@@ -217,18 +193,8 @@ public class AxisTest extends ChartTestCase {
 		lineSeries.setYSeries(ySeries2);
 		xAxis.enableLogScale(false);
 		yAxis.enableLogScale(false);
-		try {
-			xAxis.enableLogScale(true);
-			fail();
-		} catch(IllegalStateException e) {
-			// expected to reach here
-		}
-		try {
-			yAxis.enableLogScale(true);
-			fail();
-		} catch(IllegalStateException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalStateException.class, () -> xAxis.enableLogScale(true));
+		assertThrows(IllegalStateException.class, () -> yAxis.enableLogScale(true));
 		chart.getSeriesSet().deleteSeries(lineSeries.getId());
 		// enable log scale without series
 		showChart();
@@ -338,26 +304,10 @@ public class AxisTest extends ChartTestCase {
 		assertEquals(2d, yAxis.getLogScaleBase(), 0.1d);
 		showChart();
 		// Test invalid logarithm base
-		try {
-			yAxis.setLogScaleBase(-1d);
-			fail();
-		} catch(IllegalStateException e) {
-		}
-		try {
-			yAxis.setLogScaleBase(0d);
-			fail();
-		} catch(IllegalStateException e) {
-		}
-		try {
-			yAxis.setLogScaleBase(Double.POSITIVE_INFINITY);
-			fail();
-		} catch(IllegalStateException e) {
-		}
-		try {
-			yAxis.setLogScaleBase(1d);
-			fail();
-		} catch(IllegalStateException e) {
-		}
+		assertThrows(IllegalStateException.class, () -> yAxis.setLogScaleBase(-1d));
+		assertThrows(IllegalStateException.class, () -> yAxis.setLogScaleBase(0d));
+		assertThrows(IllegalStateException.class, () -> yAxis.setLogScaleBase(Double.POSITIVE_INFINITY));
+		assertThrows(IllegalStateException.class, () -> yAxis.setLogScaleBase(1d));
 		yAxis.setLogScaleBase(10d);
 	}
 
@@ -962,28 +912,13 @@ public class AxisTest extends ChartTestCase {
 	public void testCategory()  {
 
 		// enable category for Y axis
-		try {
-			yAxis.enableCategory(true);
-			fail();
-		} catch(IllegalStateException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalStateException.class, () -> yAxis.enableCategory(true));
 		assertFalse(yAxis.isCategoryEnabled());
 		// set category series for Y axis
-		try {
-			yAxis.setCategorySeries(categorySeries);
-			fail();
-		} catch(IllegalStateException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalStateException.class, () -> yAxis.setCategorySeries(categorySeries));
 		assertNull(yAxis.getCategorySeries());
 		// set null for category series
-		try {
-			xAxis.setCategorySeries(null);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xAxis.setCategorySeries(null));
 		assertNull(xAxis.getCategorySeries());
 		// enable category
 		xAxis.setRange(new Range(-1, 10));
@@ -1008,7 +943,7 @@ public class AxisTest extends ChartTestCase {
 	 * Test for coordinate conversion.
 	 */
 	@Test
-	@Ignore("environment dependent")
+	@Disabled("environment dependent")
 	public void testCoordinate()  {
 
 		xAxis.setRange(new Range(0, 100));

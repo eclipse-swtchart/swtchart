@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,10 +12,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -23,7 +24,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.IErrorBar.ErrorBarType;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for error bar.
@@ -37,10 +39,9 @@ public class ErrorBarTest extends ChartTestCase {
 	private static final double[] errors1 = {0.1, 0.3, 0.5, 0.7, 0.9};
 	private static final double[] errors2 = {0.2, 0.6, 1.0, 1.4, 1.8};
 
-	@Override
+	@BeforeEach
 	public void setUp()  {
 
-		super.setUp();
 		ISeries<?> series = chart.getSeriesSet().createSeries(SeriesType.LINE, "series");
 		series.setYSeries(ySeries1);
 		xErrorBar = series.getXErrorBar();
@@ -106,18 +107,8 @@ public class ErrorBarTest extends ChartTestCase {
 		// set the disposed color
 		Color color = new Color(Display.getDefault(), 0, 0, 0);
 		color.dispose();
-		try {
-			xErrorBar.setColor(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			yErrorBar.setColor(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xErrorBar.setColor(color));
+		assertThrows(IllegalArgumentException.class, () -> yErrorBar.setColor(color));
 		// set color
 		showChart();
 		xErrorBar.setColor(Display.getDefault().getSystemColor(SWT.COLOR_RED));
@@ -165,18 +156,8 @@ public class ErrorBarTest extends ChartTestCase {
 		assertEquals(1d, yErrorBar.getError(), 0.01);
 		showChart();
 		// set illegal negative value
-		try {
-			xErrorBar.setError(-1);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			yErrorBar.setError(-1);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> xErrorBar.setError(-1));
+		assertThrows(IllegalArgumentException.class, () -> yErrorBar.setError(-1));
 		// set x error
 		xErrorBar.setError(0.5);
 		assertEquals(0.5, xErrorBar.getError(), 0.01);

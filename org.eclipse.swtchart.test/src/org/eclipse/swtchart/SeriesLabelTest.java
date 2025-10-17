@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,10 +13,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -26,7 +26,8 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for series label.
@@ -43,10 +44,9 @@ public class SeriesLabelTest extends ChartTestCase {
 	private static final String[] formats2 = {"a1", "a2", "a3", "a4", "a5"};
 	private static final String[] formats3 = {"b1", "b2", "b3", "b4", "b5"};
 
-	@Override
+	@BeforeEach
 	public void setUp() {
 
-		super.setUp();
 		ISeries<?> series = chart.getSeriesSet().createSeries(SeriesType.LINE, "series");
 		series.setYSeries(ySeries1);
 		label = series.getLabel();
@@ -170,12 +170,8 @@ public class SeriesLabelTest extends ChartTestCase {
 		// set the disposed color
 		Color color = new Color(Display.getDefault(), 0, 0, 0);
 		color.dispose();
-		try {
-			label.setForeground(color);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> label.setForeground(color));
+			
 		// set color
 		showChart();
 		label.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLUE));
@@ -206,12 +202,8 @@ public class SeriesLabelTest extends ChartTestCase {
 		showChart();
 		// set the disposed font
 		font.dispose();
-		try {
-			label.setFont(font);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		Font disposed = font;
+		assertThrows(IllegalArgumentException.class, () -> label.setFont(disposed));
 		// set large font size
 		font = new Font(Display.getCurrent(), Resources.DEFAULT_FONT_NAME, 16, SWT.ITALIC);
 		label.setFont(font);

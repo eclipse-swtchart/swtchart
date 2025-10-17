@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,14 +12,15 @@
  *******************************************************************************/
 package org.eclipse.swtchart;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.util.ChartTestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test case for axis set.
@@ -30,10 +31,9 @@ public class AxisSetTest extends ChartTestCase {
 	private static final double[] ySeries1 = {-2, -1, 0, 1, 2};
 	private static final double[] ySeries2 = {4, 2, 0, -2, -4};
 
-	@Override
+	@BeforeEach
 	public void setUp()  {
 
-		super.setUp();
 		axisSet = chart.getAxisSet();
 	}
 
@@ -116,30 +116,10 @@ public class AxisSetTest extends ChartTestCase {
 		assertEquals(2, ids.length);
 		showChart();
 		// delete axis whose id is 0 or doesn't exist
-		try {
-			axisSet.deleteXAxis(0);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			axisSet.deleteXAxis(2);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			axisSet.deleteYAxis(0);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
-		try {
-			axisSet.deleteYAxis(1);
-			fail();
-		} catch(IllegalArgumentException e) {
-			// expected to reach here
-		}
+		assertThrows(IllegalArgumentException.class, () -> axisSet.deleteXAxis(0));
+		assertThrows(IllegalArgumentException.class, () -> axisSet.deleteXAxis(2));
+		assertThrows(IllegalArgumentException.class, () -> axisSet.deleteYAxis(0));
+		assertThrows(IllegalArgumentException.class, () -> axisSet.deleteYAxis(1));
 		ISeries<?> series2 = chart.getSeriesSet().createSeries(SeriesType.LINE, "series 2");
 		series2.setYSeries(ySeries2);
 		series2.setXAxisId(1);
