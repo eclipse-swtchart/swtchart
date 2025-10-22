@@ -8,7 +8,8 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
+ * Lorenz Gerber - add datapoint labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -16,6 +17,7 @@ public class SeriesData implements ISeriesData {
 
 	private double[] xSeries;
 	private double[] ySeries;
+	private String[] labels;
 	private String id;
 
 	/**
@@ -51,6 +53,10 @@ public class SeriesData implements ISeriesData {
 		for(int i = 0; i < ySeries.length; i++) {
 			xSeries[i] = xStart++;
 		}
+
+		for(int i = 0; i < ySeries.length; i++) {
+			labels[i] = Integer.toString(xStart++);
+		}
 	}
 
 	/**
@@ -71,6 +77,28 @@ public class SeriesData implements ISeriesData {
 		this.id = id;
 	}
 
+	/**
+	 * sets the series
+	 * 
+	 * @param xSeries
+	 * @param ySeries
+	 * @param labels
+	 * @param id
+	 */
+	public SeriesData(double[] xSeries, double[] ySeries, String[] labels, String id) {
+
+		assert (xSeries != null);
+		assert (ySeries != null);
+		assert (labels != null);
+		assert (id != null);
+
+		this.xSeries = xSeries;
+		this.ySeries = ySeries;
+		this.labels = labels;
+		this.id = id;
+
+	}
+
 	@Override
 	public double[] getXSeries() {
 
@@ -81,6 +109,12 @@ public class SeriesData implements ISeriesData {
 	public double[] getYSeries() {
 
 		return ySeries;
+	}
+
+	@Override
+	public String[] getLabels() {
+
+		return labels;
 	}
 
 	@Override

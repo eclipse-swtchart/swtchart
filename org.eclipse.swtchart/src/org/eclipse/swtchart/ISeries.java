@@ -12,6 +12,7 @@
  * Christoph Läubrich - add support for datamodel
  * Frank Buloup - Internationalization
  * Philip Wenig - refactoring type model
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart;
 
@@ -136,6 +137,16 @@ public interface ISeries<DataType> {
 	 */
 	void setYSeries(double[] series);
 
+	/**
+	 * This is a legacy/convenient method to create series.
+	 * Sets the Data Point Label series.
+	 * A DoubleArraySeriesModel will be created.
+	 * 
+	 * @param labels
+	 *            the Data Point series
+	 */
+	void setLabels(String[] labels);
+
 	@Deprecated
 	void setXDateSeries(Date[] series);
 
@@ -164,6 +175,16 @@ public interface ISeries<DataType> {
 	 * @return the Y series
 	 */
 	double[] getYSeries();
+
+	/**
+	 * This is a legacy/convenient method.
+	 * Gets the Data Point Label series. If the Data Point Label series haven't been set yet, empty array will be
+	 * returned.
+	 * Better use getDataModel() to retrieve the data point labels array.
+	 * 
+	 * @return the data point label series
+	 */
+	String[] getLabels();
 
 	/**
 	 * Set the model for this series

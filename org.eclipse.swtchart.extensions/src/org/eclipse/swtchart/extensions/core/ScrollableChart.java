@@ -12,6 +12,7 @@
  * Christoph Läubrich - rework redraw of the plot area, enhance menu item handling
  * Frank Buloup - Internationalization
  * Himanshu Balasamanta - Circular charts
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -78,6 +79,7 @@ import org.eclipse.swtchart.extensions.internal.marker.AxisZeroMarker;
 import org.eclipse.swtchart.extensions.internal.marker.LegendMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PlotCenterMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PositionMarker;
+import org.eclipse.swtchart.extensions.internal.marker.SeriesDataPointLabelMarker;
 import org.eclipse.swtchart.extensions.internal.marker.SeriesLabelMarker;
 import org.eclipse.swtchart.extensions.internal.marker.UserRestrictionMarker;
 import org.eclipse.swtchart.extensions.linecharts.LineChart;
@@ -124,6 +126,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private LegendMarker legendMarker;
 	private AxisZeroMarker axisZeroMarker;
 	private SeriesLabelMarker seriesLabelMarker;
+	private SeriesDataPointLabelMarker seriesDataPointLabelMarker;
 	private UserRestrictionMarker userRestrictionMarker;
 	/*
 	 * Integer.MAX_VALUE doesn't work under Windows.
@@ -813,6 +816,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		setLegendMarker();
 		setAxisZeroMarker();
 		setSeriesLabelMarker();
+		setSeriesDataPointLabelMarker();
 		setUserRestrictionMarker();
 	}
 
@@ -914,6 +918,26 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			seriesLabelMarker.setDraw(true);
 		} else {
 			seriesLabelMarker.setDraw(false);
+		}
+	}
+
+	private void setSeriesDataPointLabelMarker() {
+
+		IPlotArea plotArea = baseChart.getPlotArea();
+		IChartSettings chartSettings = baseChart.getChartSettings();
+
+		if(seriesDataPointLabelMarker != null) {
+			plotArea.removeCustomPaintListener(seriesDataPointLabelMarker);
+		}
+
+		seriesDataPointLabelMarker = new SeriesDataPointLabelMarker(baseChart);
+		seriesDataPointLabelMarker.setForegroundColor(chartSettings.getColorSeriesLabelMarker());
+		plotArea.addCustomPaintListener(seriesDataPointLabelMarker);
+
+		if(chartSettings.isShowSeriesDataPointLabelMarker()) {
+			seriesDataPointLabelMarker.setDraw(true);
+		} else {
+			seriesDataPointLabelMarker.setDraw(false);
 		}
 	}
 

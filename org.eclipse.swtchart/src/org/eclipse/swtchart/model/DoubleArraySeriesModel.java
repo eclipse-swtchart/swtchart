@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Lablicate GmbH.
+ * Copyright (c) 2020, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -8,6 +8,7 @@
  * Contributors:
  * Christoph Läubrich - initial API and implementation
  * Frank Buloup - Internationalization
+ * Lorenz Gerber - DataPoint labels
  *******************************************************************************/
 package org.eclipse.swtchart.model;
 
@@ -24,6 +25,7 @@ public class DoubleArraySeriesModel implements IndexedSeriesModel<Integer>, Cart
 
 	private final double[] xdata;
 	private final double[] ydata;
+	private final String[] labelData;
 	private final double minX;
 	private final double maxX;
 	private boolean isXMonotoneIncreasing = true;
@@ -31,11 +33,61 @@ public class DoubleArraySeriesModel implements IndexedSeriesModel<Integer>, Cart
 	private final double maxY;
 
 	public DoubleArraySeriesModel(double[] xSeries, double[] ySeries) {
+
 		if(xSeries.length != ySeries.length) {
 			throw new IllegalArgumentException(Messages.getString(Messages.X_Y_LENGTH_DOESNT_MATCH));
 		}
 		this.xdata = xSeries;
 		this.ydata = ySeries;
+		this.labelData = null;
+		if(xSeries.length > 0) {
+			double minX = xSeries[0];
+			double maxX = xSeries[0];
+			for(int i = 1; i < xSeries.length; i++) {
+				if(minX > xSeries[i]) {
+					minX = xSeries[i];
+				}
+				if(maxX < xSeries[i]) {
+					maxX = xSeries[i];
+				}
+				if(xSeries[i - 1] > xSeries[i]) {
+					isXMonotoneIncreasing = false;
+				}
+			}
+			this.minX = minX;
+			this.maxX = maxX;
+		} else {
+			this.minX = 0;
+			this.maxX = 0;
+		}
+		if(ySeries.length > 0) {
+			// find the min and max value of y series
+			double minY = ySeries[0];
+			double maxY = ySeries[0];
+			for(int i = 1; i < ySeries.length; i++) {
+				if(minY > ySeries[i]) {
+					minY = ySeries[i];
+				}
+				if(maxY < ySeries[i]) {
+					maxY = ySeries[i];
+				}
+			}
+			this.minY = minY;
+			this.maxY = maxY;
+		} else {
+			this.minY = 0;
+			this.maxY = 0;
+		}
+	}
+
+	public DoubleArraySeriesModel(double[] xSeries, double[] ySeries, String[] labelSeries) {
+
+		if(xSeries.length != ySeries.length) {
+			throw new IllegalArgumentException(Messages.getString(Messages.X_Y_LENGTH_DOESNT_MATCH));
+		}
+		this.xdata = xSeries;
+		this.ydata = ySeries;
+		this.labelData = labelSeries;
 		if(xSeries.length > 0) {
 			double minX = xSeries[0];
 			double maxX = xSeries[0];
@@ -116,6 +168,20 @@ public class DoubleArraySeriesModel implements IndexedSeriesModel<Integer>, Cart
 		int value = data.intValue();
 		if(value >= 0 && value < ydata.length) {
 			return ydata[data.intValue()];
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public String getLabel(Integer data) {
+
+		int value = data.intValue();
+		if(labelData == null) {
+			return null;
+		}
+		if(value >= 0 && value < labelData.length) {
+			return labelData[data.intValue()];
 		} else {
 			return null;
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -7,7 +7,8 @@
  * Contributors:
  * yoshitaka - initial API and implementation
  * Christoph Läubrich - add support for datamodel
- * Frank Buloup = Internationalization
+ * Frank Buloup - Internationalization
+ * Lorenz Gerber - DataPoint labels
  *******************************************************************************/
 package org.eclipse.swtchart.internal.series;
 
@@ -300,6 +301,39 @@ abstract public class Series<T> implements ISeries<T> {
 		}
 		return StreamSupport.stream(dataModel.spliterator(), false).filter(t -> dataModel.getY(t) != null) //
 				.mapToDouble(value -> dataModel.getY(value).doubleValue()).toArray();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void setLabels(String[] labels) {
+
+		if(labels == null) {
+			SWT.error(SWT.ERROR_NULL_ARGUMENT);
+			return; // to suppress warning...
+		}
+		double[] xSeries = getXSeries();
+		double[] ySeries = getYSeries();
+		String[] labelSeries = new String[labels.length];
+		System.arraycopy(labels, 0, labelSeries, 0, labels.length);
+
+		DoubleArraySeriesModel arraySeriesModel = new DoubleArraySeriesModel(xSeries, ySeries, labelSeries);
+		setDataModel((CartesianSeriesModel<T>)arraySeriesModel);
+
+	}
+
+	@Override
+	public String[] getLabels() {
+
+		CartesianSeriesModel<T> dataModel = getDataModel();
+		if(dataModel == null) {
+			return new String[0];
+		}
+		String[] result = StreamSupport.stream(dataModel.spliterator(), false).filter(t -> dataModel.getLabel(t) != null).map(t -> dataModel.getLabel(t).toString()).toArray(String[]::new);
+		if(result.length != 0) {
+			return result;
+		}
+		return result;
+
 	}
 
 	/**

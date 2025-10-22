@@ -8,7 +8,8 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -178,6 +179,10 @@ public interface IChartSettings {
 	boolean isShowSeriesLabelMarker();
 
 	void setShowSeriesLabelMarker(boolean showSeriesLabelMarker);
+
+	boolean isShowSeriesDataPointLabelMarker();
+
+	void setShowSeriesDataPointLabelMarker(boolean showSeriesDataPointLabelMarker);
 
 	boolean isUseSeriesLabelDescription();
 

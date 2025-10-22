@@ -10,6 +10,7 @@
  * Contributors:
  * Philip Wenig - initial API and implementation
  * Frank Buloup - Internationalization
+ * Lorenz Gerber - DataPoint Labels
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -394,6 +395,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 				 */
 				double[] xSeries = seriesData.getXSeries();
 				double[] ySeries = seriesData.getYSeries();
+				String[] labels = seriesData.getLabels();
 
 				if(xSeries.length == ySeries.length) {
 					/*
@@ -405,6 +407,9 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 					ISeries<?> series = seriesSet.createSeries(seriesType, id);
 					series.setXSeries(xSeries);
 					series.setYSeries(ySeries);
+					if(labels != null) {
+						series.setLabels(labels);
+					}
 					calculateCoordinates(series);
 					return series;
 				} else {
