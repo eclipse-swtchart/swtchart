@@ -34,44 +34,43 @@ import org.eclipse.swtchart.Resources;
 
 public class ResourceSupport extends Resources {
 
-	public static final String ICON_SET_RANGE = "set_range.gif"; // $NON-NLS-1$
+	public static final String ICON_SET_RANGE = "set_range.svg"; // $NON-NLS-1$
 	public static final String ICON_RESTRICT_RANGE = "restrict_range.gif"; // $NON-NLS-1$
-	public static final String ICON_HIDE = "hide.gif"; // $NON-NLS-1$
-	public static final String ICON_RESET = "reset.gif"; // $NON-NLS-1$
-	public static final String ICON_CHECKED = "checked.gif"; // $NON-NLS-1$
-	public static final String ICON_UNCHECKED = "unchecked.gif"; // $NON-NLS-1$
-	public static final String ICON_CHECK_ALL = "checkAll.gif"; // $NON-NLS-1$
-	public static final String ICON_UNCHECK_ALL = "uncheckAll.gif"; // $NON-NLS-1$
+	public static final String ICON_HIDE = "hide.svg"; // $NON-NLS-1$
+	public static final String ICON_RESET = "reset.svg"; // $NON-NLS-1$
+	public static final String ICON_CHECKED = "checked.svg"; // $NON-NLS-1$
+	public static final String ICON_UNCHECKED = "unchecked.svg"; // $NON-NLS-1$
+	public static final String ICON_CHECK_ALL = "checkAll.svg"; // $NON-NLS-1$
+	public static final String ICON_UNCHECK_ALL = "uncheckAll.svg"; // $NON-NLS-1$
 	public static final String ICON_LEGEND = "legend.gif"; // $NON-NLS-1$
-	public static final String ICON_SORT_ENABLED = "sort.gif"; // $NON-NLS-1$
-	public static final String ICON_SORT_DISABLED = "sort_disabled.gif"; // $NON-NLS-1$
+	public static final String ICON_SORT = "sort.svg"; // $NON-NLS-1$
 	public static final String ICON_POSITION = "position.gif"; // $NON-NLS-1$
 	public static final String ICON_SETTINGS = "preferences.gif"; // $NON-NLS-1$
-	public static final String ICON_MAPPINGS = "mappings.gif"; // $NON-NLS-1$
-	public static final String ICON_DELETE = "delete.png"; // $NON-NLS-1$
+	public static final String ICON_MAPPINGS = "mappings.svg"; // $NON-NLS-1$
+	public static final String ICON_DELETE = "delete.svg"; // $NON-NLS-1$
 	public static final String ICON_DELETE_ALL = "deleteAll.png"; // $NON-NLS-1$
-	public static final String ARROW_LEFT = "arrowLeft.gif"; // $NON-NLS-1$
-	public static final String ARROW_RIGHT = "arrowRight.gif"; // $NON-NLS-1$
-	public static final String ARROW_UP = "arrowUp.gif"; // $NON-NLS-1$
-	public static final String ARROW_DOWN = "arrowDown.gif"; // $NON-NLS-1$
+	public static final String ARROW_LEFT = "arrowLeft.svg"; // $NON-NLS-1$
+	public static final String ARROW_RIGHT = "arrowRight.svg"; // $NON-NLS-1$
+	public static final String ARROW_UP = "arrowUp.svg"; // $NON-NLS-1$
+	public static final String ARROW_DOWN = "arrowDown.svg"; // $NON-NLS-1$
 	public static final String ICON_SERIES_MARKER = "seriesMarker.gif"; // $NON-NLS-1$
-	public static final String ICON_IMPORT = "import.gif"; // $NON-NLS-1$
-	public static final String ICON_EXPORT = "export.gif"; // $NON-NLS-1$
+	public static final String ICON_IMPORT = "import.svg"; // $NON-NLS-1$
+	public static final String ICON_EXPORT = "export.svg"; // $NON-NLS-1$
 	public static final String ICON_RESET_SELECTED = "resetSelected.gif"; // $NON-NLS-1$
 	public static final String ICON_RESET_ALL = "resetAll.gif"; // $NON-NLS-1$
 	public static final String ICON_RESET_SELECTION = "reset-selection.gif"; // $NON-NLS-1$
-	public static final String ICON_REDO = "redo.gif"; // $NON-NLS-1$
-	public static final String ICON_UNDO = "undo.gif"; // $NON-NLS-1$
-	public static final String ICON_COPY_CLIPBOARD = "copy-clipboard.png"; // $NON-NLS-1$
+	public static final String ICON_REDO = "redo.svg"; // $NON-NLS-1$
+	public static final String ICON_UNDO = "undo.svg"; // $NON-NLS-1$
+	public static final String ICON_COPY_CLIPBOARD = "copy-clipboard.svg"; // $NON-NLS-1$
 	public static final String ICON_CSV = "csv.gif"; // $NON-NLS-1$
 	public static final String ICON_FIGURE = "figure.gif"; // $NON-NLS-1$
 	public static final String ICON_BITMAP = "bitmap.gif"; // $NON-NLS-1$
-	public static final String ICON_PRINT = "print.gif"; // $NON-NLS-1$
+	public static final String ICON_PRINT = "print.svg"; // $NON-NLS-1$
 	public static final String ICON_TEX = "tex.gif"; // $NON-NLS-1$
 	public static final String ICON_R = "r.gif"; // $NON-NLS-1$
 	public static final String ICON_TRANSFER = "transfer.png"; // $NON-NLS-1$
-	public static final String ICON_SAVE = "save.gif"; // $NON-NLS-1$
-	public static final String ICON_ADD = "add.gif"; // $NON-NLS-1$
+	public static final String ICON_SAVE = "save.svg"; // $NON-NLS-1$
+	public static final String ICON_ADD = "add.svg"; // $NON-NLS-1$
 
 	private static ResourceManager resourceManager = new LocalResourceManager(JFaceResources.getResources());
 	private static IPreferenceStore preferenceStore = null;
@@ -139,6 +138,23 @@ public class ResourceSupport extends Resources {
 
 		return resourceManager.createImageWithDefault(imageRegistry.getDescriptor(key));
 	}
+	
+	/**
+	 * Returns the given image disabled. There is no need to
+	 * dispose this image. It's handled by the
+	 * resource support.
+	 * 
+	 * @param key
+	 * @return {@link Image}
+	 */
+	public static Image getImageDisabled(String key) {
+
+		if(imageRegistry == null) {
+			imageRegistry = initializeImageRegistry();
+		}
+
+		return resourceManager.createImageWithDefault(ImageDescriptor.createWithFlags(imageRegistry.getDescriptor(key), SWT.IMAGE_DISABLE));
+	}
 
 	@Override
 	protected void finalize() throws Throwable {
@@ -170,8 +186,7 @@ public class ResourceSupport extends Resources {
 		imageSet.add(ICON_CHECK_ALL);
 		imageSet.add(ICON_UNCHECK_ALL);
 		imageSet.add(ICON_LEGEND);
-		imageSet.add(ICON_SORT_ENABLED);
-		imageSet.add(ICON_SORT_DISABLED);
+		imageSet.add(ICON_SORT);
 		imageSet.add(ICON_POSITION);
 		imageSet.add(ICON_SETTINGS);
 		imageSet.add(ICON_MAPPINGS);
@@ -214,8 +229,12 @@ public class ResourceSupport extends Resources {
 	 * @return ImageDescriptor
 	 */
 	private static ImageDescriptor createImageDescriptor(String fileName) {
-
-		URL url = ResourceSupport.class.getResource("/resources/icons/16x16/" + fileName);
+		URL url;
+		if (fileName.endsWith("svg")) {
+			url = ResourceSupport.class.getResource("/resources/icons/svg/" + fileName);
+		} else {
+			url = ResourceSupport.class.getResource("/resources/icons/16x16/" + fileName);
+		}
 		return ImageDescriptor.createFromURL(url);
 	}
 }
