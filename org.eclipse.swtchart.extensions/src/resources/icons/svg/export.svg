@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+  <defs>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#85a2cd"/>
+      <stop offset="1" stop-color="#d3dce9"/>
+    </linearGradient>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#4e6b9b"/>
+      <stop offset="1" stop-color="#6783b1"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="e" x1="1.86" x2="1.86" y1="1051.589" y2="1046.849" gradientTransform="matrix(1.02348 0 0 1.02348 -17.403 -25.186)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="d" x1="1.86" x2="1.86" y1="1051.589" y2="1046.849" gradientTransform="matrix(1.02348 0 0 1.02348 -17.403 -25.186)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient id="c">
+      <stop offset="0" stop-color="#4e8fbd"/>
+      <stop offset="1" stop-color="#8dacc3"/>
+    </linearGradient>
+    <linearGradient xlink:href="#c" id="f" x1="-2.287" x2="-2.287" y1="1044.692" y2="1049.598" gradientTransform="scale(1.02348 -1.02348) rotate(-45 -2486.847 -.423)" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <g transform="translate(17.688 -1036.362)">
+    <path fill="url(#d)" stroke="url(#e)" stroke-width=".716" d="M-17.307 1043.894v7.1h14.265v-7.1h-3.006v2.015h.927v3.07h-10.107v-3.07h.928v-2.015z"/>
+  </g>
+  <path fill="url(#f)" d="m4.441 1046.19.656.655 6.285-6.285 1.311 1.311.336-3.502-3.502.304 1.231 1.231z" transform="translate(0 -1036.362)"/>
+</svg>

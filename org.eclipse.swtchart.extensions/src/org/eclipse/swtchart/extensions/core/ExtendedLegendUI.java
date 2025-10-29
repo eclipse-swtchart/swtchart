@@ -234,7 +234,7 @@ public class ExtendedLegendUI extends Composite {
 
 	private Image getSortedIcon(boolean sorted) {
 
-		return sorted ? ResourceSupport.getImage(ResourceSupport.ICON_SORT_ENABLED) : ResourceSupport.getImage(ResourceSupport.ICON_SORT_DISABLED);
+		return sorted ? ResourceSupport.getImage(ResourceSupport.ICON_SORT) : ResourceSupport.getImageDisabled(ResourceSupport.ICON_SORT);
 	}
 
 	private Button createButtonTransferMappings(Composite parent) {

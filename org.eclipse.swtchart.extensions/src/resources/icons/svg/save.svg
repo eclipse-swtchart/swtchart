@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+  <defs>
+    <linearGradient id="c">
+      <stop offset="0" stop-color="#e4cf9d"/>
+      <stop offset=".383" stop-color="#b5cef2"/>
+      <stop offset=".625" stop-color="#97b2d9"/>
+      <stop offset="1" stop-color="#f8f8fc"/>
+    </linearGradient>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#b7c9e3"/>
+      <stop offset="1" stop-color="#f3f5f6"/>
+    </linearGradient>
+    <linearGradient id="d">
+      <stop offset="0" stop-color="#e4cf9d"/>
+      <stop offset=".167" stop-color="#dce9f2"/>
+      <stop offset="1" stop-color="#fefdfa"/>
+    </linearGradient>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#8a9b9e"/>
+      <stop offset="1" stop-color="#5b7aaa"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="g" x1="29.587" x2="29.587" y1="1037.924" y2="1052.018" gradientTransform="translate(-20)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#b" id="f" x1="32.664" x2="32.664" y1="1051.801" y2="1038.272" gradientTransform="translate(-20)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#c" id="h" x1="24.101" x2="24.101" y1="1042.035" y2="1038.334" gradientTransform="translate(-15.997 9.009)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#d" id="i" x1="24.101" x2="24.101" y1="1036.621" y2="1043.13" gradientTransform="matrix(1 0 0 -1 -16.992 2080.665)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#e" id="j" x1="20.523" x2="24.424" y1="1044.169" y2="1040.458" gradientTransform="translate(-13.414 -.125)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient id="e">
+      <stop offset="0" stop-color="#8a9b9e"/>
+      <stop offset="1" stop-color="#b1bdbf"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0 -1036.362)">
+    <rect width="14.007" height="14" x="1.496" y="1037.862" fill="url(#f)" stroke="url(#g)" rx=".813" ry=".813"/>
+    <path fill="url(#h)" stroke="#5b7aaa" d="M6.312 1046.871h4.38a.81.81 0 0 1 .813.813v4.127H5.5v-4.127a.81.81 0 0 1 .813-.813z"/>
+    <path fill="#5b7aaa" d="M9 1047.925h1v2.906H9z"/>
+    <path fill="url(#i)" stroke="url(#j)" d="M5.317 1044.847h6.375a.81.81 0 0 0 .812-.813v-6.171h-8v6.171c0 .45.362.813.813.813z"/>
+    <path fill="#a6b4b6" d="M11 1039.362v1H6v-1zm0 2v1H6v-1z" opacity=".35"/>
+  </g>
+</svg>

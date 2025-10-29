@@ -86,14 +86,14 @@ public class Activator extends AbstractUIPlugin {
 
 		Map<String, String> imageHashMap = new HashMap<String, String>();
 		imageHashMap.put(ICON_OPEN_SETTINGS, "icons/16x16/open_settings.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_APPLY_SETTINGS, "icons/16x16/apply_settings.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_START, "icons/16x16/start.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_STOP, "icons/16x16/stop.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_RESET, "icons/16x16/reset.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_UP, "icons/16x16/up.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_DOWN, "icons/16x16/down.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_LEFT, "icons/16x16/left.gif"); // $NON-NLS-1$
-		imageHashMap.put(ICON_RIGHT, "icons/16x16/right.gif"); // $NON-NLS-1$
+		imageHashMap.put(ICON_APPLY_SETTINGS, "icons/svg/apply_settings.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_START, "icons/svg/start.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_STOP, "icons/svg/stop.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_RESET, "icons/svg/reset.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_UP, "icons/svg/up.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_DOWN, "icons/svg/down.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_LEFT, "icons/svg/left.svg"); // $NON-NLS-1$
+		imageHashMap.put(ICON_RIGHT, "icons/svg/right.svg"); // $NON-NLS-1$
 
 		ImageRegistry imageRegistry = getImageRegistry();
 		if(imageRegistry != null) {

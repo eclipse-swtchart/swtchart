@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16">
+  <defs>
+    <linearGradient id="c">
+      <stop offset="0" stop-color="#ebf9ff"/>
+      <stop offset="1" stop-color="#fcffff"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="e" x1="-12" x2="-15" y1="1047.362" y2="1047.362" gradientTransform="translate(18 -3)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient id="a">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#c3e9ff"/>
+    </linearGradient>
+    <linearGradient xlink:href="#b" id="f" x1="-11" x2="-11" y1="1042.362" y2="1045.362" gradientTransform="translate(18 -3)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient id="b">
+      <stop offset="0" stop-color="#c3e9ff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient xlink:href="#c" id="d" x1="28" x2="28" y1="1039.362" y2="1049.362" gradientTransform="translate(-20)" gradientUnits="userSpaceOnUse"/>
+  </defs>
+  <path fill="#8b96ab" d="m 2,1038.3622 0.03125,12 11.96875,0 -0.03125,-12 z m 1,1 9.96875,0 0.03125,10 -9.96875,0 z" color="#000" font-family="Sans" font-weight="400" overflow="visible" style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Sans" transform="translate(0 -1036.362)"/>
+  <path fill="url(#d)" d="m 3,1039.3622 9.96875,0 0.03125,10 -9.96875,0 z" color="#000" font-family="Sans" font-weight="400" overflow="visible" style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Sans" transform="translate(0 -1036.362)"/>
+  <path fill="url(#e)" d="m 5,1041.3622 0,8 -2,0 0,-10 z" transform="translate(0 -1036.362)"/>
+  <path fill="url(#f)" d="m 5,1041.3622 8,0 0,-2 -10,0 z" transform="translate(0 -1036.362)"/>
+  <path fill="none" stroke="#334e6f" stroke-width="1.5" d="m 3.9687503,1044.3309 2.5000001,2.5313 5.5000006,-5.4375" transform="translate(0 -1036.362)"/>
+</svg>
