@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.core;
 
@@ -216,4 +216,8 @@ public interface IChartSettings {
 	boolean isBufferSelection();
 
 	void setBufferSelection(boolean bufferSelection);
+
+	boolean isPreventAccidentalZoom();
+
+	void setPreventAccidentalZoom(boolean preventAccidentalZoom);
 }

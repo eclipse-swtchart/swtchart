@@ -60,6 +60,7 @@ import org.eclipse.swtchart.extensions.preferences.PreferenceConstants;
 public class ChartSettings implements IChartSettings {
 
 	private boolean bufferSelection = false;
+	private boolean preventAccidentalZoom = false;
 
 	private boolean enableRangeSelector = false;
 	private boolean showRangeSelectorInitially = true;
@@ -125,6 +126,7 @@ public class ChartSettings implements IChartSettings {
 		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 		if(preferenceStore != null) {
 			setBufferSelection(preferenceStore.getBoolean(PreferenceConstants.P_BUFFER_SELECTION));
+			setPreventAccidentalZoom(preferenceStore.getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM));
 		}
 
 		colorHintRangeSelector = display.getSystemColor(SWT.COLOR_RED);
@@ -231,6 +233,18 @@ public class ChartSettings implements IChartSettings {
 	public void setBufferSelection(boolean bufferSelection) {
 
 		this.bufferSelection = bufferSelection;
+	}
+
+	@Override
+	public boolean isPreventAccidentalZoom() {
+
+		return preventAccidentalZoom;
+	}
+
+	@Override
+	public void setPreventAccidentalZoom(boolean preventAccidentalZoom) {
+
+		this.preventAccidentalZoom = preventAccidentalZoom;
 	}
 
 	@Override

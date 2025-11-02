@@ -26,6 +26,7 @@ public class Messages {
 	public static final String BITMAP_EXPORT_HEIGHT = "BITMAP_EXPORT_HEIGHT";
 	public static final String BOTTOM = "BOTTOM";
 	public static final String BUFFERED_SELECTION = "BUFFERED_SELECTION";
+	public static final String PREVENT_ACCIDENTAL_ZOOM = "PREVENT_ACCIDENTAL_ZOOM";
 	public static final String CIRCLE = "CIRCLE";
 	public static final String CROSS = "CROSS";
 	public static final String DASH = "DASH";

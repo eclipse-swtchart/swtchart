@@ -39,6 +39,7 @@ import org.eclipse.swtchart.IBarSeries;
 import org.eclipse.swtchart.ICircularSeries;
 import org.eclipse.swtchart.ILineSeries;
 import org.eclipse.swtchart.ISeries;
+import org.eclipse.swtchart.ISeriesSet;
 import org.eclipse.swtchart.ITitle;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.Range;
@@ -1553,15 +1554,62 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		RangeRestriction rangeRestriction = getRangeRestriction();
 		if(rangeRestriction.isRestrictSelectY()) {
 			if(deltaHeight >= minSelectedHeight) {
-				handleUserSelectionXY(event);
+				if(isSeriesInFocus(userSelection)) {
+					handleUserSelectionXY(event);
+				}
 			}
 		} else {
 			if(deltaWidth >= minSelectedWidth) {
-				handleUserSelectionXY(event);
+				if(isSeriesInFocus(userSelection)) {
+					handleUserSelectionXY(event);
+				}
 			}
 		}
 		userSelection.reset();
 		redraw();
+	}
+
+	private boolean isSeriesInFocus(UserSelection userSelection) {
+
+		if(getChartSettings().isPreventAccidentalZoom()) {
+			/*
+			 * Coordinates
+			 */
+			IAxis xAxis = getAxisSet().getXAxis(ID_PRIMARY_X_AXIS);
+			IAxis yAxis = getAxisSet().getYAxis(ID_PRIMARY_Y_AXIS);
+			double x1 = xAxis.getDataCoordinate(userSelection.getStartX());
+			double x2 = xAxis.getDataCoordinate(userSelection.getStopX());
+			double y1 = yAxis.getDataCoordinate(userSelection.getStartY());
+			double y2 = yAxis.getDataCoordinate(userSelection.getStopY());
+			/*
+			 * Range Check
+			 */
+			double startX = Math.min(x1, x2);
+			double stopX = Math.max(x1, x2);
+			double startY = Math.min(y1, y2);
+			double stopY = Math.max(y1, y2);
+			/*
+			 * Check each series, return early.
+			 */
+			ISeriesSet seriesSet = getSeriesSet();
+			for(ISeries<?> series : seriesSet.getSeries()) {
+				double[] seriesX = series.getXSeries();
+				double[] seriesY = series.getYSeries();
+				int size = seriesX.length;
+				for(int i = 0; i < size; i++) {
+					double x = seriesX[i];
+					if(x >= startX && x <= stopX) {
+						double y = seriesY[i];
+						if(y >= startY && y <= stopY) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	@Override

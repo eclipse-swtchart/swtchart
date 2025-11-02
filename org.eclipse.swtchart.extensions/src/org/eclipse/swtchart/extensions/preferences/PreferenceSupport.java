@@ -112,4 +112,22 @@ public class PreferenceSupport {
 			preferenceStore.setValue(PreferenceConstants.P_BUFFER_SELECTION, active);
 		}
 	}
+
+	public static boolean isPreventAccidentalZoom() {
+
+		boolean bufferedSelection = false;
+		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
+		if(preferenceStore != null) {
+			bufferedSelection = preferenceStore.getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM);
+		}
+		return bufferedSelection;
+	}
+
+	public static void setPreventAccidentalZoom(boolean selection) {
+
+		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
+		if(preferenceStore != null) {
+			preferenceStore.setValue(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, selection);
+		}
+	}
 }

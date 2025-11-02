@@ -19,6 +19,9 @@ public class PreferenceConstants {
 
 	public static final String P_BUFFER_SELECTION = "bufferSelection";
 	public static final boolean DEF_BUFFER_SELECTION = true;
+	public static final String P_PREVENT_ACCIDENTAL_ZOOM = "preventAccidentalZoom";
+	public static final boolean DEF_PREVENT_ACCIDENTAL_ZOOM = true;
+
 	public static final String P_KEEP_SERIES_DESCRIPTION = "keepSeriesDescription";
 	public static final boolean DEF_KEEP_SERIES_DESCRIPTION = false;
 
