@@ -24,14 +24,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Find changed Java files
         id: changed
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }}
-          CHANGED_FILES=$(git diff --name-status origin/${{ github.event.pull_request.base.ref }} | grep -E '^[AM]' | awk '{print $2}')
-          echo "java=$(echo "$CHANGED_FILES" | grep '\.java$' | tr '\n' ' ' || echo '')" >> $GITHUB_OUTPUT
+          CHANGED_FILES=$(gh pr view ${{ github.event.pull_request.number }} --json files --jq '.files[] | select(.additions > 0) | .path')
+          JAVA_FILES=$(echo "$CHANGED_FILES" | grep '\.java$' || true)
+          echo "java=$(echo "$JAVA_FILES" | tr '\n' ' ')" >> $GITHUB_OUTPUT
 
       - name: Check year in license header
         shell: bash
