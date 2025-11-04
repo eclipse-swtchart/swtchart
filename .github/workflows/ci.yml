@@ -36,9 +36,7 @@ jobs:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-        maven-version: 3.9.9
+        maven-version: 3.9.11
 
-    - name: Build with Maven
-      uses: coactions/setup-xvfb@v1
-      with:
-        run: mvn -Pjavadoc --T 1C verify --B -ntp -Dstyle.color=always
+    - name: Build with Maven on X Window Virtual Framebuffer
+      run: xvfb-run --auto-servernum mvn -Pjavadoc --T 1C verify --B -ntp -Dstyle.color=always
