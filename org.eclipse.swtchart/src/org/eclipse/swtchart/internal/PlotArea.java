@@ -19,7 +19,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
@@ -83,14 +82,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		this.chart = chart;
 		paintListeners = new ArrayList<>();
 		addPaintListener(this);
-		disposeListener = new DisposeListener() {
-
-			@Override
-			public void widgetDisposed(DisposeEvent e) {
-
-				dispose();
-			}
-		};
+		disposeListener = e -> dispose();
 		setData("org.eclipse.e4.ui.css.CssClassName", "PlotArea");
 		chart.addDisposeListener(disposeListener);
 		chart.setPlotArea(this);

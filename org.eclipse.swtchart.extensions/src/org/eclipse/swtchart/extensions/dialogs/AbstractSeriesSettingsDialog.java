@@ -21,8 +21,6 @@ import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -181,14 +179,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		text.setText(title);
 		text.setToolTipText(tooltip);
 		text.setLayoutData(gridData);
-		text.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				consumer.accept(text.getText().trim());
-			}
-		});
+		text.addModifyListener(e -> consumer.accept(text.getText().trim()));
 
 		return text;
 	}
@@ -274,21 +265,17 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		String title = "Setting Status";
 		createSectionLabel(parent, title);
 
-		ComboViewer comboViewer = createComboViewer(parent, title, SettingsStatus.values(), SettingsStatus.NORMAL, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
+		ComboViewer comboViewer = createComboViewer(parent, title, SettingsStatus.values(), SettingsStatus.NORMAL, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
-			@Override
-			public void accept(Object object) {
-
-				if(settingsSelected != null) {
-					if(object instanceof SettingsStatus) {
-						SettingsStatus settingsStatus = (SettingsStatus)object;
-						if(SettingsStatus.HIGHLIGHT.equals(settingsStatus)) {
-							settingsSelected = settingsHighlight;
-						} else {
-							settingsSelected = settingsNormal;
-						}
-						initialize();
+			if(settingsSelected != null) {
+				if(object instanceof SettingsStatus) {
+					SettingsStatus settingsStatus = (SettingsStatus)object;
+					if(SettingsStatus.HIGHLIGHT.equals(settingsStatus)) {
+						settingsSelected = settingsHighlight;
+					} else {
+						settingsSelected = settingsNormal;
 					}
+					initialize();
 				}
 			}
 		});
@@ -301,14 +288,10 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		String title = "Description";
 		createSectionLabel(parent, title);
 
-		Text text = createText(parent, "", "The series description can be modified here.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<String>() {
+		Text text = createText(parent, "", "The series description can be modified here.", getGridData(GridData.FILL_HORIZONTAL, 2), text1 -> {
 
-			@Override
-			public void accept(String text) {
-
-				if(settingsSelected != null) {
-					settingsSelected.setDescription(text);
-				}
+			if(settingsSelected != null) {
+				settingsSelected.setDescription(text1);
 			}
 		});
 
@@ -319,14 +302,10 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Visible", "Show or hide the series in the chart.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Visible", "Show or hide the series in the chart.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				if(settingsSelected != null) {
-					settingsSelected.setVisible(selection);
-				}
+			if(settingsSelected != null) {
+				settingsSelected.setVisible(selection);
 			}
 		});
 
@@ -337,14 +316,10 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Visible in Legend", "Show or hide the series in the chart legend.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Visible in Legend", "Show or hide the series in the chart legend.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				if(settingsSelected != null) {
-					settingsSelected.setVisibleInLegend(selection);
-				}
+			if(settingsSelected != null) {
+				settingsSelected.setVisibleInLegend(selection);
 			}
 		});
 

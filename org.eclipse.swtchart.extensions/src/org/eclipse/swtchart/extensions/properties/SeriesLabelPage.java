@@ -15,11 +15,7 @@
 package org.eclipse.swtchart.extensions.properties;
 
 import org.eclipse.jface.preference.ColorSelector;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -137,25 +133,11 @@ public class SeriesLabelPage extends AbstractSelectorPage {
 
 		colorLabel = createLabelControl(group, Messages.getString(Messages.COLOR));
 		colorButton = createColorButtonControl(group);
-		colorButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				colors[selectedIndex] = colorButton.getColorValue();
-			}
-		});
+		colorButton.addListener(event -> colors[selectedIndex] = colorButton.getColorValue());
 
 		fontSizeLabel = createLabelControl(group, Messages.getString(Messages.FONT_SIZE));
 		fontSizeSpinner = createSpinnerControl(group, 8, 30);
-		fontSizeSpinner.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				fontSizes[selectedIndex] = fontSizeSpinner.getSelection();
-			}
-		});
+		fontSizeSpinner.addModifyListener(e -> fontSizes[selectedIndex] = fontSizeSpinner.getSelection());
 	}
 
 	/**

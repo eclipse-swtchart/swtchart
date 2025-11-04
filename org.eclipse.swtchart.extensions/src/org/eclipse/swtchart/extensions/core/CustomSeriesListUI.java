@@ -24,8 +24,6 @@ import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swtchart.extensions.internal.support.CustomSeriesComparator;
@@ -126,16 +124,12 @@ public class CustomSeriesListUI extends AbstractSeriesListUI {
 		tableColumn.setWidth(width);
 		tableColumn.setResizable(true);
 		tableColumn.setMoveable(true);
-		tableColumn.addListener(SWT.Move, new Listener() {
+		tableColumn.addListener(SWT.Move, event -> {
 
-			@Override
-			public void handleEvent(Event event) {
-
-				String columnOrder = getColumnOrder(getTable());
-				if(preferenceStore != null) {
-					preferenceStore.setValue(PreferenceConstants.P_CUSTOM_SERIES_COLUMN_ORDER, columnOrder);
-					ResourceSupport.savePreferenceStore();
-				}
+			String columnOrder = getColumnOrder(getTable());
+			if(preferenceStore != null) {
+				preferenceStore.setValue(PreferenceConstants.P_CUSTOM_SERIES_COLUMN_ORDER, columnOrder);
+				ResourceSupport.savePreferenceStore();
 			}
 		});
 		return tableViewerColumn;

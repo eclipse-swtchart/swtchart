@@ -13,11 +13,9 @@
 package org.eclipse.swtchart.extensions.dialogs;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
@@ -66,15 +64,11 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 		String title = "Slice Color";
 		createSectionLabel(parent, title);
 
-		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
+		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), color -> {
 
-			@Override
-			public void accept(Color color) {
-
-				ICircularSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setSliceColor(color);
-				}
+			ICircularSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setSliceColor(color);
 			}
 		});
 
@@ -86,15 +80,11 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 		String title = "Border Color";
 		createSectionLabel(parent, title);
 
-		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
+		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), color -> {
 
-			@Override
-			public void accept(Color color) {
-
-				ICircularSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBorderColor(color);
-				}
+			ICircularSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBorderColor(color);
 			}
 		});
 
@@ -106,15 +96,11 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 		String title = "Border Width";
 		createSectionLabel(parent, title);
 
-		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
+		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Integer selection) {
-
-				ICircularSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBorderWidth(selection);
-				}
+			ICircularSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBorderWidth(selection);
 			}
 		});
 
@@ -126,16 +112,12 @@ public class CircularSeriesSettingsDialog extends AbstractSeriesSettingsDialog<I
 		String title = "Border Style";
 		createSectionLabel(parent, title);
 
-		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
+		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
-			@Override
-			public void accept(Object object) {
-
-				ICircularSeriesSettings settings = getSettings();
-				if(settings != null) {
-					if(object instanceof LineStyle) {
-						settings.setBorderStyle((LineStyle)object);
-					}
+			ICircularSeriesSettings settings = getSettings();
+			if(settings != null) {
+				if(object instanceof LineStyle) {
+					settings.setBorderStyle((LineStyle)object);
 				}
 			}
 		});

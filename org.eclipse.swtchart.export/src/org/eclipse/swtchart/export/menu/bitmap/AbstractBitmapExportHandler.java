@@ -20,9 +20,7 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.export.core.AbstractSeriesExportHandler;
 import org.eclipse.swtchart.export.core.BitmapExportSettingsDialog;
@@ -112,15 +110,11 @@ public abstract class AbstractBitmapExportHandler extends AbstractSeriesExportHa
 		imageShell.setSize(imageBounds.width, imageBounds.height);
 		imageShell.setLocation(0, 0);
 		imageShell.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-		imageShell.addListener(SWT.Paint, new Listener() {
+		imageShell.addListener(SWT.Paint, event -> {
 
-			@Override
-			public void handleEvent(Event event) {
-
-				baseChart.setParent(imageShell);
-				baseChart.setBounds(0, 0, width, height);
-				baseChart.updateLayout();
-			}
+			baseChart.setParent(imageShell);
+			baseChart.setBounds(0, 0, width, height);
+			baseChart.updateLayout();
 		});
 
 		imageShell.open();

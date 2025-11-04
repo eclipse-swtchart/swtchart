@@ -13,8 +13,6 @@
 package org.eclipse.swtchart.extensions.examples.charts;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
@@ -62,15 +60,11 @@ public class DemoChartDialog {
 						barSeries.setYSeries(ySeries);
 						chart.getAxisSet().adjustRange();
 
-						parent.addDisposeListener(new DisposeListener() {
+						parent.addDisposeListener(e1 -> {
 
-							@Override
-							public void widgetDisposed(DisposeEvent e) {
-
-								if(chart != null && !chart.isDisposed()) {
-									System.out.println("Dispose Listener");
-									chart.dispose();
-								}
+							if(chart != null && !chart.isDisposed()) {
+								System.out.println("Dispose Listener");
+								chart.dispose();
 							}
 						});
 					}

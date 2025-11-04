@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.MouseEvent;
-import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.graphics.Color;
@@ -95,16 +93,12 @@ public class Chart extends Composite implements Listener {
 		 * DOUBLE_BUFFERED = 1 << 29;
 		 */
 		if(!((style & NO_AXIS_POSITION_UPDATE) == NO_AXIS_POSITION_UPDATE)) {
-			plotArea.addMouseMoveListener(new MouseMoveListener() {
+			plotArea.addMouseMoveListener(e -> {
 
-				@Override
-				public void mouseMove(MouseEvent e) {
-
-					for(IAxis axis : axisSet.getAxes()) {
-						axis.updatePositionMarker(e);
-					}
-					redraw();
+				for(IAxis axis : axisSet.getAxes()) {
+					axis.updatePositionMarker(e);
 				}
+				redraw();
 			});
 		}
 		setData("org.eclipse.e4.ui.css.CssClassName", "Chart");

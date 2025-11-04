@@ -23,7 +23,6 @@ import java.text.MessageFormat;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -83,95 +82,91 @@ public class SVGExportHandler extends AbstractSeriesExportHandler implements ISe
 					if(indexAxisX >= 0 && indexAxisY >= 0) {
 						try {
 							ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(fileDialog.getParent());
-							monitorDialog.run(false, false, new IRunnableWithProgress() {
+							monitorDialog.run(false, false, monitor -> {
 
-								@Override
-								public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
-									try {
-										monitor.beginTask(Messages.getString(Messages.EXPORT_TO_SVG), IProgressMonitor.UNKNOWN);
-										/*
-										 * X Axis Settings
-										 */
-										IAxisSettings axisSettingsX = baseChart.getXAxisSettings(indexAxisX);
-										IAxisScaleConverter axisScaleConverterX = null;
-										if(axisSettingsX instanceof ISecondaryAxisSettings) {
-											ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsX;
-											axisScaleConverterX = secondaryAxisSettings.getAxisScaleConverter();
-										}
-										/*
-										 * Y Axis Settings
-										 */
-										IAxisSettings axisSettingsY = baseChart.getYAxisSettings(indexAxisY);
-										IAxisScaleConverter axisScaleConverterY = null;
-										if(axisSettingsY instanceof ISecondaryAxisSettings) {
-											ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsY;
-											axisScaleConverterY = secondaryAxisSettings.getAxisScaleConverter();
-										}
-										/*
-										 * Print the XY data.
-										 */
-										try (PrintWriter printWriter = new PrintWriter(new File(fileName))) {
-											/*
-											 * Axis settings.
-											 */
-											AxisSettings axisSettings = new AxisSettings();
-											axisSettings.setIndexAxisX(indexAxisX);
-											axisSettings.setIndexAxisY(indexAxisY);
-											axisSettings.setAxisSettingsX(axisSettingsX);
-											axisSettings.setAxisScaleConverterX(axisScaleConverterX);
-											axisSettings.setAxisSettingsY(axisSettingsY);
-											axisSettings.setAxisScaleConverterY(axisScaleConverterY);
-											/*
-											 * First check via instance of. If that fails, perform the enhanced
-											 * check via the chart type.
-											 */
-											IVectorDataExport vectorDataExport = null;
-											if(scrollableChart instanceof LineChart) {
-												vectorDataExport = new InkscapeLineChart();
-											} else if(scrollableChart instanceof BarChart) {
-												vectorDataExport = new InkscapeBarChart();
-											} else if(scrollableChart instanceof ScatterChart) {
-												vectorDataExport = new InkscapeScatterChart();
-											} else {
-												/*
-												 * The chart extends ScrollableChart directly.
-												 */
-												ChartType chartType = scrollableChart.getChartType();
-												switch(chartType) {
-													case STEP:
-													case LINE:
-														vectorDataExport = new InkscapeLineChart();
-														break;
-													case BAR:
-														vectorDataExport = new InkscapeBarChart();
-														break;
-													case SCATTER:
-														vectorDataExport = new InkscapeScatterChart();
-														break;
-													case PIE: // TODO
-													default:
-														System.out.println("The chart type export is not supported yet: " + chartType);
-														break;
-												}
-											}
-											/*
-											 * Generate and export the data.
-											 */
-											if(vectorDataExport != null) {
-												exportPlot(printWriter, vectorDataExport, scrollableChart, axisSettings);
-											}
-
-											MessageDialog.openInformation(shell, TITLE, MESSAGE_OK);
-										} catch(FileNotFoundException e) {
-											MessageDialog.openError(shell, TITLE, MESSAGE_ERROR);
-											e.printStackTrace();
-										}
-									} catch(Exception e) {
-										e.printStackTrace();
-									} finally {
-										monitor.done();
+								try {
+									monitor.beginTask(Messages.getString(Messages.EXPORT_TO_SVG), IProgressMonitor.UNKNOWN);
+									/*
+									 * X Axis Settings
+									 */
+									IAxisSettings axisSettingsX = baseChart.getXAxisSettings(indexAxisX);
+									IAxisScaleConverter axisScaleConverterX = null;
+									if(axisSettingsX instanceof ISecondaryAxisSettings) {
+										ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsX;
+										axisScaleConverterX = secondaryAxisSettings.getAxisScaleConverter();
 									}
+									/*
+									 * Y Axis Settings
+									 */
+									IAxisSettings axisSettingsY = baseChart.getYAxisSettings(indexAxisY);
+									IAxisScaleConverter axisScaleConverterY = null;
+									if(axisSettingsY instanceof ISecondaryAxisSettings) {
+										ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsY;
+										axisScaleConverterY = secondaryAxisSettings.getAxisScaleConverter();
+									}
+									/*
+									 * Print the XY data.
+									 */
+									try (PrintWriter printWriter = new PrintWriter(new File(fileName))) {
+										/*
+										 * Axis settings.
+										 */
+										AxisSettings axisSettings = new AxisSettings();
+										axisSettings.setIndexAxisX(indexAxisX);
+										axisSettings.setIndexAxisY(indexAxisY);
+										axisSettings.setAxisSettingsX(axisSettingsX);
+										axisSettings.setAxisScaleConverterX(axisScaleConverterX);
+										axisSettings.setAxisSettingsY(axisSettingsY);
+										axisSettings.setAxisScaleConverterY(axisScaleConverterY);
+										/*
+										 * First check via instance of. If that fails, perform the enhanced
+										 * check via the chart type.
+										 */
+										IVectorDataExport vectorDataExport = null;
+										if(scrollableChart instanceof LineChart) {
+											vectorDataExport = new InkscapeLineChart();
+										} else if(scrollableChart instanceof BarChart) {
+											vectorDataExport = new InkscapeBarChart();
+										} else if(scrollableChart instanceof ScatterChart) {
+											vectorDataExport = new InkscapeScatterChart();
+										} else {
+											/*
+											 * The chart extends ScrollableChart directly.
+											 */
+											ChartType chartType = scrollableChart.getChartType();
+											switch(chartType) {
+												case STEP:
+												case LINE:
+													vectorDataExport = new InkscapeLineChart();
+													break;
+												case BAR:
+													vectorDataExport = new InkscapeBarChart();
+													break;
+												case SCATTER:
+													vectorDataExport = new InkscapeScatterChart();
+													break;
+												case PIE: // TODO
+												default:
+													System.out.println("The chart type export is not supported yet: " + chartType);
+													break;
+											}
+										}
+										/*
+										 * Generate and export the data.
+										 */
+										if(vectorDataExport != null) {
+											exportPlot(printWriter, vectorDataExport, scrollableChart, axisSettings);
+										}
+
+										MessageDialog.openInformation(shell, TITLE, MESSAGE_OK);
+									} catch(FileNotFoundException e) {
+										MessageDialog.openError(shell, TITLE, MESSAGE_ERROR);
+										e.printStackTrace();
+									}
+								} catch(Exception e) {
+									e.printStackTrace();
+								} finally {
+									monitor.done();
 								}
 							});
 						} catch(InterruptedException e) {
