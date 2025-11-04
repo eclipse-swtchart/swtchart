@@ -31,7 +31,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtchart.extensions.internal.marker.EmbeddedLegend;
 import org.eclipse.swtchart.extensions.internal.support.PositionValidator;
@@ -299,17 +298,13 @@ public class InChartLegendUI extends Composite {
 			/*
 			 * Left mouse double-click to get the position to place the legend.
 			 */
-			baseChart.addCustomPointSelectionHandler(new ICustomSelectionHandler() {
+			baseChart.addCustomPointSelectionHandler(event -> {
 
-				@Override
-				public void handleUserSelection(Event event) {
-
-					if(embeddedLegend.isDraw()) {
-						if(capturePosition) {
-							updateLegendPosition(event.x, event.y, true);
-							updateControls();
-							capturePosition = false;
-						}
+				if(embeddedLegend.isDraw()) {
+					if(capturePosition) {
+						updateLegendPosition(event.x, event.y, true);
+						updateControls();
+						capturePosition = false;
 					}
 				}
 			});

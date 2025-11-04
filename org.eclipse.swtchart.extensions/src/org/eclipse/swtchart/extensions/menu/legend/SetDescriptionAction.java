@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.dialogs.IInputValidator;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swtchart.ISeries;
@@ -59,22 +58,18 @@ public class SetDescriptionAction extends AbstractMenuListener {
 
 				if(!selectedSeries.isEmpty()) {
 					String firstDescription = selectedSeries.get(0).getDescription();
-					InputDialog dialog = new InputDialog(table.getShell(), Messages.getString(Messages.DESCRIPTION), Messages.getString(Messages.SET_DESCRIPTION), firstDescription, new IInputValidator() {
+					InputDialog dialog = new InputDialog(table.getShell(), Messages.getString(Messages.DESCRIPTION), Messages.getString(Messages.SET_DESCRIPTION), firstDescription, input -> {
 
-						@Override
-						public String isValid(String input) {
-
-							if(input == null) {
-								return Messages.FORGOT_TO_SET_DESCRIPTION;
-							} else {
-								input = input.trim();
-								if(input.isEmpty()) {
-									return Messages.DESCRIPTION_MUST_NOT_BE_EMPTY;
-								}
+						if(input == null) {
+							return Messages.FORGOT_TO_SET_DESCRIPTION;
+						} else {
+							input = input.trim();
+							if(input.isEmpty()) {
+								return Messages.DESCRIPTION_MUST_NOT_BE_EMPTY;
 							}
-
-							return null;
 						}
+
+						return null;
 					});
 
 					if(IDialogConstants.OK_ID == dialog.open()) {

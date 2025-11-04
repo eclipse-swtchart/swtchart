@@ -13,11 +13,9 @@
 package org.eclipse.swtchart.extensions.dialogs;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -77,16 +75,12 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 		String title = "Line Style";
 		createSectionLabel(parent, title);
 
-		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
+		ComboViewer comboViewer = createComboViewer(parent, title, LineStyle.values(), LineStyle.NONE, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
-			@Override
-			public void accept(Object object) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					if(object instanceof LineStyle) {
-						settings.setLineStyle((LineStyle)object);
-					}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				if(object instanceof LineStyle) {
+					settings.setLineStyle((LineStyle)object);
 				}
 			}
 		});
@@ -99,15 +93,11 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 		String title = "Line Width";
 		createSectionLabel(parent, title);
 
-		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
+		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Integer selection) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setLineWidth(selection);
-				}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setLineWidth(selection);
 			}
 		});
 
@@ -119,15 +109,11 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 		String title = "Line Color";
 		createSectionLabel(parent, title);
 
-		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
+		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), color -> {
 
-			@Override
-			public void accept(Color color) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setLineColor(color);
-				}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setLineColor(color);
 			}
 		});
 
@@ -139,16 +125,12 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 		String title = "Antialias";
 		createSectionLabel(parent, title);
 
-		ComboViewer comboViewer = createComboViewer(parent, title, Antialias.values(), Antialias.ON, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
+		ComboViewer comboViewer = createComboViewer(parent, title, Antialias.values(), Antialias.ON, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
-			@Override
-			public void accept(Object object) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					if(object instanceof Antialias) {
-						settings.setAntialias(((Antialias)object).value());
-					}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				if(object instanceof Antialias) {
+					settings.setAntialias(((Antialias)object).value());
 				}
 			}
 		});
@@ -160,15 +142,11 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Enable Area", "Enable or disable to display the area.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Enable Area", "Enable or disable to display the area.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setEnableArea(selection);
-				}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setEnableArea(selection);
 			}
 		});
 
@@ -179,15 +157,11 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setEnableStack(selection);
-				}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setEnableStack(selection);
 			}
 		});
 
@@ -198,15 +172,11 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Enable Step", "Enable or disable the step modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Enable Step", "Enable or disable the step modus.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				ILineSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setEnableStep(selection);
-				}
+			ILineSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setEnableStep(selection);
 			}
 		});
 

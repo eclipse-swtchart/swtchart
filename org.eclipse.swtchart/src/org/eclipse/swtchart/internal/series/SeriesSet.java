@@ -21,8 +21,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.IAxis;
@@ -55,14 +53,7 @@ public class SeriesSet implements ISeriesSet {
 
 		this.chart = chart;
 		seriesMap = new LinkedHashMap<String, Series<?>>();
-		chart.addDisposeListener(new DisposeListener() {
-
-			@Override
-			public void widgetDisposed(DisposeEvent e) {
-
-				dispose();
-			}
-		});
+		chart.addDisposeListener(e -> dispose());
 	}
 
 	@SuppressWarnings("rawtypes")

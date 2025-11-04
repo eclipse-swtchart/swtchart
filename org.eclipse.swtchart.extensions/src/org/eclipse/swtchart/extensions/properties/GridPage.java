@@ -15,8 +15,6 @@
 package org.eclipse.swtchart.extensions.properties;
 
 import org.eclipse.jface.preference.ColorSelector;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -140,14 +138,7 @@ public class GridPage extends AbstractSelectorPage {
 		});
 		createLabelControl(group, Messages.getString(Messages.COLOR));
 		foregroundButton = createColorButtonControl(group);
-		foregroundButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				foregroundColors[selectedIndex] = foregroundButton.getColorValue();
-			}
-		});
+		foregroundButton.addListener(event -> foregroundColors[selectedIndex] = foregroundButton.getColorValue());
 	}
 
 	@Override

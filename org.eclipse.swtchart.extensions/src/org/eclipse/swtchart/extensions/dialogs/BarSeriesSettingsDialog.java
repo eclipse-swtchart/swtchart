@@ -13,11 +13,9 @@
 package org.eclipse.swtchart.extensions.dialogs;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Consumer;
 
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -73,15 +71,11 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 		String title = "Bar Color";
 		createSectionLabel(parent, title);
 
-		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), new Consumer<Color>() {
+		Text text = createColorChoser(parent, title, getGridData(GridData.FILL_HORIZONTAL, 1), color -> {
 
-			@Override
-			public void accept(Color color) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBarColor(color);
-				}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBarColor(color);
 			}
 		});
 
@@ -92,15 +86,11 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Bar Overlay", "Enable or disable to display the bar overlay.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Bar Overlay", "Enable or disable to display the bar overlay.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBarOverlay(selection);
-				}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBarOverlay(selection);
 			}
 		});
 
@@ -112,15 +102,11 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 		String title = "Bar Padding";
 		createSectionLabel(parent, title);
 
-		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
+		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Integer selection) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBarPadding(selection);
-				}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBarPadding(selection);
 			}
 		});
 
@@ -132,15 +118,11 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 		String title = "Bar Width";
 		createSectionLabel(parent, title);
 
-		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Integer>() {
+		Spinner spinner = createSpinner(parent, title, 1, 50, 1, getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Integer selection) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setBarWidth(selection);
-				}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setBarWidth(selection);
 			}
 		});
 
@@ -152,16 +134,12 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 		String title = "Bar Width Style";
 		createSectionLabel(parent, title);
 
-		ComboViewer comboViewer = createComboViewer(parent, title, BarWidthStyle.values(), BarWidthStyle.STRETCHED, getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Object>() {
+		ComboViewer comboViewer = createComboViewer(parent, title, BarWidthStyle.values(), BarWidthStyle.STRETCHED, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
-			@Override
-			public void accept(Object object) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					if(object instanceof BarWidthStyle) {
-						settings.setBarWidthStyle((BarWidthStyle)object);
-					}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				if(object instanceof BarWidthStyle) {
+					settings.setBarWidthStyle((BarWidthStyle)object);
 				}
 			}
 		});
@@ -173,15 +151,11 @@ public class BarSeriesSettingsDialog extends AbstractSeriesSettingsDialog<IBarSe
 
 		createSectionLabel(parent, "");
 
-		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), new Consumer<Boolean>() {
+		Button button = createCheckBox(parent, "Enable Stack", "Enable or disable the stack modus.", getGridData(GridData.FILL_HORIZONTAL, 2), selection -> {
 
-			@Override
-			public void accept(Boolean selection) {
-
-				IBarSeriesSettings settings = getSettings();
-				if(settings != null) {
-					settings.setEnableStack(selection);
-				}
+			IBarSeriesSettings settings = getSettings();
+			if(settings != null) {
+				settings.setEnableStack(selection);
 			}
 		});
 

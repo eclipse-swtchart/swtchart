@@ -15,13 +15,9 @@
 package org.eclipse.swtchart.extensions.properties;
 
 import org.eclipse.jface.preference.ColorSelector;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -265,14 +261,7 @@ public class AxisPage extends AbstractSelectorPage {
 		});
 		titleLabel = createLabelControl(group, Messages.getString(Messages.TEXT));
 		titleText = createTextControl(group);
-		titleText.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				titleTexts[selectedIndex] = titleText.getText();
-			}
-		});
+		titleText.addModifyListener(e -> titleTexts[selectedIndex] = titleText.getText());
 		fontSizeLabel = createLabelControl(group, Messages.getString(Messages.FONT_SIZE));
 		fontSizeSpinner = createSpinnerControl(group, 8, 30);
 		fontSizeSpinner.addSelectionListener(new SelectionAdapter() {
@@ -285,14 +274,7 @@ public class AxisPage extends AbstractSelectorPage {
 		});
 		titleColorLabel = createLabelControl(group, Messages.getString(Messages.COLOR));
 		titleColorButton = createColorButtonControl(group);
-		titleColorButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				titleColors[selectedIndex] = titleColorButton.getColorValue();
-			}
-		});
+		titleColorButton.addListener(event -> titleColors[selectedIndex] = titleColorButton.getColorValue());
 	}
 
 	/**

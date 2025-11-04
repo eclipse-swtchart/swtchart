@@ -28,7 +28,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtchart.IAxis.Position;
@@ -39,7 +38,6 @@ import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.extensions.axisconverter.PercentageConverter;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IChartSettings;
-import org.eclipse.swtchart.extensions.core.ICustomSelectionHandler;
 import org.eclipse.swtchart.extensions.core.IExtendedChart;
 import org.eclipse.swtchart.extensions.core.IPrimaryAxisSettings;
 import org.eclipse.swtchart.extensions.core.ISecondaryAxisSettings;
@@ -114,48 +112,40 @@ public class LineSeries_Selection_Part extends Composite {
 
 		lineChart = new LineChart(this, SWT.NONE);
 		lineChart.setLayoutData(new GridData(GridData.FILL_BOTH));
-		lineChart.getBaseChart().addCustomRangeSelectionHandler(new ICustomSelectionHandler() {
+		lineChart.getBaseChart().addCustomRangeSelectionHandler(event -> {
 
-			@Override
-			public void handleUserSelection(Event event) {
-
-				BaseChart baseChart = lineChart.getBaseChart();
-				Range rangeX = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS).getRange();
-				Range rangeY = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS).getRange();
-				DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
-				DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, BaseChart.ID_PRIMARY_Y_AXIS);
-				textRangeXStart.setText(decimalFormatX.format(rangeX.lower));
-				textRangeXStop.setText(decimalFormatX.format(rangeX.upper));
-				textRangeYStart.setText(decimalFormatY.format(rangeY.lower));
-				textRangeYStop.setText(decimalFormatY.format(rangeY.upper));
-			}
+			BaseChart baseChart = lineChart.getBaseChart();
+			Range rangeX = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS).getRange();
+			Range rangeY = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS).getRange();
+			DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
+			DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, BaseChart.ID_PRIMARY_Y_AXIS);
+			textRangeXStart.setText(decimalFormatX.format(rangeX.lower));
+			textRangeXStop.setText(decimalFormatX.format(rangeX.upper));
+			textRangeYStart.setText(decimalFormatY.format(rangeY.lower));
+			textRangeYStop.setText(decimalFormatY.format(rangeY.upper));
 		});
-		lineChart.getBaseChart().addCustomPointSelectionHandler(new ICustomSelectionHandler() {
+		lineChart.getBaseChart().addCustomPointSelectionHandler(event -> {
 
-			@Override
-			public void handleUserSelection(Event event) {
+			BaseChart baseChart = lineChart.getBaseChart();
+			double x = baseChart.getSelectedPrimaryAxisValue(event.x, IExtendedChart.X_AXIS);
+			double y = baseChart.getSelectedPrimaryAxisValue(event.y, IExtendedChart.Y_AXIS);
 
-				BaseChart baseChart = lineChart.getBaseChart();
-				double x = baseChart.getSelectedPrimaryAxisValue(event.x, IExtendedChart.X_AXIS);
-				double y = baseChart.getSelectedPrimaryAxisValue(event.y, IExtendedChart.Y_AXIS);
+			DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
+			DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, BaseChart.ID_PRIMARY_Y_AXIS);
+			textX.setText(decimalFormatX.format(x));
+			textY.setText(decimalFormatY.format(y));
 
-				DecimalFormat decimalFormatX = baseChart.getDecimalFormat(IExtendedChart.X_AXIS, BaseChart.ID_PRIMARY_X_AXIS);
-				DecimalFormat decimalFormatY = baseChart.getDecimalFormat(IExtendedChart.Y_AXIS, BaseChart.ID_PRIMARY_Y_AXIS);
-				textX.setText(decimalFormatX.format(x));
-				textY.setText(decimalFormatY.format(y));
+			try {
+				ISeries<?> series = baseChart.getSeriesSet().getSeries(DATA_POINT_SERIES);
+				double xSelected = xValues.floor(x);
+				double ySelected = yValues.get(xSelected);
+				double[] xSeries = new double[]{xSelected};
+				double[] ySeries = new double[]{ySelected};
+				series.setXSeries(xSeries);
+				series.setYSeries(ySeries);
+				baseChart.redraw();
+			} catch(Exception e) {
 
-				try {
-					ISeries<?> series = baseChart.getSeriesSet().getSeries(DATA_POINT_SERIES);
-					double xSelected = xValues.floor(x);
-					double ySelected = yValues.get(xSelected);
-					double[] xSeries = new double[]{xSelected};
-					double[] ySeries = new double[]{ySelected};
-					series.setXSeries(xSeries);
-					series.setYSeries(ySeries);
-					baseChart.redraw();
-				} catch(Exception e) {
-
-				}
 			}
 		});
 		applyChartSettings();

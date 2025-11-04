@@ -53,7 +53,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Shell;
@@ -254,20 +253,16 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 					/*
 					 * Hide the rectangle after x milliseconds.
 					 */
-					getBaseChart().getDisplay().asyncExec(new Runnable() {
+					getBaseChart().getDisplay().asyncExec(() -> {
 
-						@Override
-						public void run() {
-
-							try {
-								Thread.sleep(MILLISECONDS_SHOW_RANGE_INFO_HINT);
-							} catch(InterruptedException e) {
-								e.printStackTrace();
-								Thread.currentThread().interrupt();
-							}
-							showRangeSelectorHint = false;
-							baseChart.redraw();
+						try {
+							Thread.sleep(MILLISECONDS_SHOW_RANGE_INFO_HINT);
+						} catch(InterruptedException e1) {
+							e1.printStackTrace();
+							Thread.currentThread().interrupt();
 						}
+						showRangeSelectorHint = false;
+						baseChart.redraw();
 					});
 				}
 			}
@@ -1372,20 +1367,16 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		slider.setOrientation(SWT.RIGHT_TO_LEFT); // See Bug #511257
 		slider.setVisible(true);
 
-		slider.addListener(SWT.Selection, new Listener() {
+		slider.addListener(SWT.Selection, event -> {
 
-			@Override
-			public void handleEvent(Event event) {
+			IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
+			IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
 
-				IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
-				IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-
-				if(xAxis != null && yAxis != null) {
-					Range range = RangeSupport.calculateShiftedRange(baseChart, yAxis.getRange(), slider.getSelection(), SWT.VERTICAL);
-					if(RangeSupport.applyVerticalSlide(baseChart, xAxis, yAxis, range, event)) {
-						displayRangeInfo();
-						fireUpdateCustomRangeSelectionHandlers(event);
-					}
+			if(xAxis != null && yAxis != null) {
+				Range range = RangeSupport.calculateShiftedRange(baseChart, yAxis.getRange(), slider.getSelection(), SWT.VERTICAL);
+				if(RangeSupport.applyVerticalSlide(baseChart, xAxis, yAxis, range, event)) {
+					displayRangeInfo();
+					fireUpdateCustomRangeSelectionHandlers(event);
 				}
 			}
 		});
@@ -1421,17 +1412,13 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		/*
 		 * Set the slider range.
 		 */
-		baseChart.addCustomRangeSelectionHandler(new ICustomSelectionHandler() {
+		baseChart.addCustomRangeSelectionHandler(event -> {
 
-			@Override
-			public void handleUserSelection(Event event) {
-
-				setSliderSelection(false);
-				if(getChartSettings().isEnableRangeSelector()) {
-					rangeSelector.adjustRanges(false);
-				}
-				updateLinkedCharts();
+			setSliderSelection(false);
+			if(getChartSettings().isEnableRangeSelector()) {
+				rangeSelector.adjustRanges(false);
 			}
+			updateLinkedCharts();
 		});
 		/*
 		 * Activate the range info UI on double click.
@@ -1493,20 +1480,16 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		slider.setOrientation(SWT.LEFT_TO_RIGHT);
 		slider.setVisible(true);
 
-		slider.addListener(SWT.Selection, new Listener() {
+		slider.addListener(SWT.Selection, event -> {
 
-			@Override
-			public void handleEvent(Event event) {
+			IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
+			IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
 
-				IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
-				IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-
-				if(xAxis != null && yAxis != null) {
-					Range range = RangeSupport.calculateShiftedRange(baseChart, xAxis.getRange(), slider.getSelection(), SWT.HORIZONTAL);
-					if(RangeSupport.applyHorizontalSlide(baseChart, xAxis, yAxis, range, event)) {
-						displayRangeInfo();
-						fireUpdateCustomRangeSelectionHandlers(event);
-					}
+			if(xAxis != null && yAxis != null) {
+				Range range = RangeSupport.calculateShiftedRange(baseChart, xAxis.getRange(), slider.getSelection(), SWT.HORIZONTAL);
+				if(RangeSupport.applyHorizontalSlide(baseChart, xAxis, yAxis, range, event)) {
+					displayRangeInfo();
+					fireUpdateCustomRangeSelectionHandlers(event);
 				}
 			}
 		});

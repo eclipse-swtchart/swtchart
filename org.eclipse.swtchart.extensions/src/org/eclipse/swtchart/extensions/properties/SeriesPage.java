@@ -15,12 +15,8 @@
 package org.eclipse.swtchart.extensions.properties;
 
 import org.eclipse.jface.preference.ColorSelector;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StackLayout;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
@@ -293,14 +289,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		stackLayout.topControl = lineSeriesGroup;
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.LINE_COLOR));
 		lineColorButton = createColorButtonControl(lineSeriesGroup);
-		lineColorButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				lineColors[selectedIndex] = lineColorButton.getColorValue();
-			}
-		});
+		lineColorButton.addListener(event -> lineColors[selectedIndex] = lineColorButton.getColorValue());
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.LINE_STYLE));
 		LineStyle[] styles = LineStyle.values();
 		String[] labels = new String[styles.length];
@@ -325,14 +314,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		});
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_COLOR));
 		symbolColorButton = createColorButtonControl(lineSeriesGroup);
-		symbolColorButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				symbolColors[selectedIndex] = symbolColorButton.getColorValue();
-			}
-		});
+		symbolColorButton.addListener(event -> symbolColors[selectedIndex] = symbolColorButton.getColorValue());
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_TYPE));
 		PlotSymbolType[] types = PlotSymbolType.values();
 		labels = new String[types.length];
@@ -357,14 +339,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		});
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_SIZE));
 		symbolSizeSpinner = createSpinnerControl(lineSeriesGroup, 1, 10);
-		symbolSizeSpinner.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				symbolSizes[selectedIndex] = symbolSizeSpinner.getSelection();
-			}
-		});
+		symbolSizeSpinner.addModifyListener(e -> symbolSizes[selectedIndex] = symbolSizeSpinner.getSelection());
 	}
 
 	/**
@@ -381,24 +356,10 @@ public class SeriesPage extends AbstractSelectorPage {
 		Group group = createGroupControl(barSeriesGroup, Messages.getString(Messages.BAR_SERIES), true);
 		createLabelControl(group, Messages.getString(Messages.COLOR));
 		barColorButton = createColorButtonControl(group);
-		barColorButton.addListener(new IPropertyChangeListener() {
-
-			@Override
-			public void propertyChange(PropertyChangeEvent event) {
-
-				barColors[selectedIndex] = barColorButton.getColorValue();
-			}
-		});
+		barColorButton.addListener(event -> barColors[selectedIndex] = barColorButton.getColorValue());
 		createLabelControl(group, Messages.getString(Messages.PADDING_SIZE));
 		paddingSizeSpinner = createSpinnerControl(group, 0, 100);
-		paddingSizeSpinner.addModifyListener(new ModifyListener() {
-
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				paddings[selectedIndex] = paddingSizeSpinner.getSelection();
-			}
-		});
+		paddingSizeSpinner.addModifyListener(e -> paddings[selectedIndex] = paddingSizeSpinner.getSelection());
 	}
 
 	/**

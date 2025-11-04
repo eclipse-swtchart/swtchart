@@ -25,7 +25,6 @@ import java.text.MessageFormat;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
@@ -70,26 +69,22 @@ public class SVGExportHandler extends AbstractSeriesExportHandler implements ISe
 					if(indexAxisX >= 0 && indexAxisY >= 0) {
 						try {
 							ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(fileDialog.getParent());
-							monitorDialog.run(false, false, new IRunnableWithProgress() {
+							monitorDialog.run(false, false, monitor -> {
 
-								@Override
-								public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
-									monitor.beginTask(Messages.EXPORT_TO_SVG, IProgressMonitor.UNKNOWN);
-									try (Writer output = new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8)) {
-										boolean useCSS = true;
-										SVGFactory svgFactory = new SVGFactory();
-										svgFactory.createSvg(baseChart, indexAxisX, indexAxisY);
-										if(svgFactory.stream(output, useCSS)) {
-											MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_OK);
-										} else {
-											MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_ERROR);
-										}
-									} catch(IOException e) {
-										e.printStackTrace();
-									} finally {
-										monitor.done();
+								monitor.beginTask(Messages.EXPORT_TO_SVG, IProgressMonitor.UNKNOWN);
+								try (Writer output = new OutputStreamWriter(new FileOutputStream(fileName), StandardCharsets.UTF_8)) {
+									boolean useCSS = true;
+									SVGFactory svgFactory = new SVGFactory();
+									svgFactory.createSvg(baseChart, indexAxisX, indexAxisY);
+									if(svgFactory.stream(output, useCSS)) {
+										MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_OK);
+									} else {
+										MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_ERROR);
 									}
+								} catch(IOException e) {
+									e.printStackTrace();
+								} finally {
+									monitor.done();
 								}
 							});
 						} catch(InterruptedException e) {

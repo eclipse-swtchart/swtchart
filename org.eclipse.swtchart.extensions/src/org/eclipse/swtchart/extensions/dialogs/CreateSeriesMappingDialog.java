@@ -20,8 +20,6 @@ import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
@@ -116,14 +114,10 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 		Text text = new Text(parent, SWT.BORDER);
 		text.setText("");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(new ModifyListener() {
+		text.addModifyListener(e -> {
 
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				description = text.getText().trim();
-				validate();
-			}
+			description = text.getText().trim();
+			validate();
 		});
 
 		return text;
@@ -173,14 +167,10 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 		Text text = new Text(parent, SWT.BORDER);
 		text.setText("");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(new ModifyListener() {
+		text.addModifyListener(e -> {
 
-			@Override
-			public void modifyText(ModifyEvent e) {
-
-				regularExpression = text.getText().trim();
-				validate();
-			}
+			regularExpression = text.getText().trim();
+			validate();
 		});
 
 		return text;

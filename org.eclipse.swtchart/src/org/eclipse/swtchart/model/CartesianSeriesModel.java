@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,14 +23,7 @@ import java.util.stream.StreamSupport;
 public interface CartesianSeriesModel<T> extends SeriesModel<T> {
 
 	public static final Integer ZERO = 0;
-	public static final Comparator<Number> DEFAULT_NUMBER_COMPARATOR = new Comparator<Number>() {
-
-		@Override
-		public int compare(Number o1, Number o2) {
-
-			return Double.compare(o1.doubleValue(), o2.doubleValue());
-		}
-	};
+	public static final Comparator<Number> DEFAULT_NUMBER_COMPARATOR = (o1, o2) -> Double.compare(o1.doubleValue(), o2.doubleValue());
 
 	/**
 	 * Extracts the X-Coordinate from the given data item
