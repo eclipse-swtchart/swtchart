@@ -14,7 +14,6 @@ package org.eclipse.swtchart.extensions.core;
 
 import java.util.Random;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.ImageData;
@@ -88,7 +87,7 @@ public class OS {
 			RGB rgb = background.getRGB();
 			return (rgb.red < 128 && rgb.green < 128 && rgb.blue < 128);
 		} else {
-			return Platform.getPreferencesService().getString("org.eclipse.e4.ui.css.swt.theme", "themeid", "", null).endsWith("dark");
+			return Display.isSystemDarkTheme();
 		}
 	}
 
