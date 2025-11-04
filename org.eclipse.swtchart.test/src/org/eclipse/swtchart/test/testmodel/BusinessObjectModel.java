@@ -8,7 +8,7 @@
  * Contributors:
  * Christoph Läubrich - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart.testmodel;
+package org.eclipse.swtchart.test.testmodel;
 
 import java.util.Iterator;
 import java.util.function.Supplier;

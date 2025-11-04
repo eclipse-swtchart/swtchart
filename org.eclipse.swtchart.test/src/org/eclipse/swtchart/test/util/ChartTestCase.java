@@ -10,7 +10,7 @@
  * Contributors:
  * yoshitaka - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart.util;
+package org.eclipse.swtchart.test.util;
 
 import java.io.File;
 import java.lang.reflect.Field;

@@ -10,7 +10,7 @@
  * Contributors:
  * yoshitaka - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart;
+package org.eclipse.swtchart.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -21,9 +21,15 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swtchart.IAxis;
+import org.eclipse.swtchart.ILineSeries;
+import org.eclipse.swtchart.ISeries;
+import org.eclipse.swtchart.ISeriesSet;
+import org.eclipse.swtchart.LineStyle;
+import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
 import org.eclipse.swtchart.ISeries.SeriesType;
-import org.eclipse.swtchart.util.ChartTestCase;
+import org.eclipse.swtchart.test.util.ChartTestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -11,7 +11,7 @@
  * yoshitaka - initial API and implementation
  * Sebastien Darche - Arbitrary base log scale test cases
  *******************************************************************************/
-package org.eclipse.swtchart;
+package org.eclipse.swtchart.test;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,10 +24,13 @@ import java.util.List;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swtchart.IAxis;
+import org.eclipse.swtchart.ISeries;
+import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.IAxis.Position;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.internal.axis.AxisTick;
-import org.eclipse.swtchart.util.ChartTestCase;
+import org.eclipse.swtchart.test.util.ChartTestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
