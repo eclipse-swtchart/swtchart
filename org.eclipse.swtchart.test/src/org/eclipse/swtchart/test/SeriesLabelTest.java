@@ -11,7 +11,7 @@
  * yoshitaka - initial API and implementation
  * Philip Wenig - default font name
  *******************************************************************************/
-package org.eclipse.swtchart;
+package org.eclipse.swtchart.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -24,8 +24,12 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swtchart.ISeries;
+import org.eclipse.swtchart.ISeriesLabel;
+import org.eclipse.swtchart.Range;
+import org.eclipse.swtchart.Resources;
 import org.eclipse.swtchart.ISeries.SeriesType;
-import org.eclipse.swtchart.util.ChartTestCase;
+import org.eclipse.swtchart.test.util.ChartTestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
