@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.events;
 
@@ -55,8 +55,7 @@ public class MouseUpEvent extends AbstractHandledEventProcessor implements IHand
 			baseChart.suspendUpdate(true);
 			plotArea.setBackgroundImage(null);
 			Object object = plotArea.getControl().getData(IPlotArea.KEY_BUFFERED_BACKGROUND_IMAGE);
-			if(object instanceof Image) {
-				Image image = (Image)object;
+			if(object instanceof Image image) {
 				plotArea.getControl().setData(IPlotArea.KEY_BUFFERED_BACKGROUND_IMAGE, null);
 				image.dispose();
 			}

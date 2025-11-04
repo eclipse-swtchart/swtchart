@@ -14,7 +14,7 @@ package org.eclipse.swtchart.extensions.widgets;
 
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swtchart.extensions.internal.support.OS;
+import org.eclipse.swtchart.extensions.core.OS;
 
 public class ExtendedCombo {
 

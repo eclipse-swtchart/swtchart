@@ -16,7 +16,7 @@ import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.extensions.core.BaseChart;
-import org.eclipse.swtchart.extensions.internal.support.OS;
+import org.eclipse.swtchart.extensions.core.OS;
 
 public class ImageClipboardSupport {
 

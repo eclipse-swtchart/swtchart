@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,7 +15,7 @@ package org.eclipse.swtchart.extensions.widgets;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swtchart.extensions.internal.support.OS;
+import org.eclipse.swtchart.extensions.core.OS;
 
 public class ExtendedComboViewer extends ComboViewer {
 

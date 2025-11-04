@@ -1,0 +1,11 @@
+bin/
+target/
+workspace/
+
+# Tycho
+.polyglot.*
+*.tycho
+.tycho-consumer-pom.xml
+
+# Tests
+*.pdf
