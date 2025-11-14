@@ -417,8 +417,8 @@ public class LineSeriesTest extends ChartTestCase {
 		// default
 		assertEquals(0, series.getSymbolColors().length);
 		// set colors
-		final Color red = new Color(new RGB(255, 0, 0));
-		final Color green = new Color(new RGB(0, 255, 0));
+		final Color red = new Color(255, 0, 0);
+		final Color green = new Color(0, 255, 0);
 		Color[] colors = {red, red, red, green, green};
 		series.setSymbolColors(colors);
 		Color[] results = series.getSymbolColors();
