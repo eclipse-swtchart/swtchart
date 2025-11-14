@@ -278,7 +278,7 @@ public class LineSeries_Preferences_Part extends Composite {
 		Color symbolColorSeries2Highlight = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_2_HIGHLIGHT));
 
 		lineChart.deleteSeries();
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;

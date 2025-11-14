@@ -151,7 +151,7 @@ public class LineSeries_Random_Part extends Composite {
 				chromatogramChart.deleteSeries();
 				x = 0;
 
-				List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+				List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 				ISeriesData seriesData = getRandomSeriesData();
 				ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 				ILineSeriesSettings lineSeriesSettings = lineSeriesData.getSettings();
@@ -169,7 +169,7 @@ public class LineSeries_Random_Part extends Composite {
 		chromatogramChart = new ChromatogramChart(this, SWT.BORDER);
 		chromatogramChart.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = getRandomSeriesData();
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 		ILineSeriesSettings lineSeriesSettings = lineSeriesData.getSettings();

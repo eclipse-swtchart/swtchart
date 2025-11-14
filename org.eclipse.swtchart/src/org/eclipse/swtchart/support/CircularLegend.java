@@ -180,18 +180,18 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 	private ISeries<?>[] sort(ISeries<?>[] seriesArray) {
 
 		// create a map between axis id and series list
-		Map<Integer, List<ISeries<?>>> map = new HashMap<Integer, List<ISeries<?>>>();
+		Map<Integer, List<ISeries<?>>> map = new HashMap<>();
 		for(ISeries<?> series : seriesArray) {
 			int axisId = series.getXAxisId();
 			List<ISeries<?>> list = map.get(axisId);
 			if(list == null) {
-				list = new ArrayList<ISeries<?>>();
+				list = new ArrayList<>();
 			}
 			list.add(series);
 			map.put(axisId, list);
 		}
 		// sort an each series list
-		List<ISeries<?>> sortedArray = new ArrayList<ISeries<?>>();
+		List<ISeries<?>> sortedArray = new ArrayList<>();
 		for(Entry<Integer, List<ISeries<?>>> entry : map.entrySet()) {
 			sortedArray.addAll(sort(entry.getValue(), false, true));
 		}
@@ -217,7 +217,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 	 */
 	private static List<ISeries<?>> sort(List<ISeries<?>> seriesList, boolean isCategoryEnabled, boolean isVertical) {
 
-		List<ISeries<?>> sortedArray = new ArrayList<ISeries<?>>();
+		List<ISeries<?>> sortedArray = new ArrayList<>();
 		// gather the stacked series reversing the order of stack series
 		int insertIndex = -1;
 		for(int i = 0; i < seriesList.size(); i++) {

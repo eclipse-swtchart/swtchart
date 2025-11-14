@@ -36,7 +36,7 @@ public class BarSeries_5_Part extends BarChart {
 
 	private void initialize() {
 
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		addSeries(barSeriesDataList, SeriesConverter.BAR_SERIES_4_POSITIVE);
 		addSeries(barSeriesDataList, SeriesConverter.BAR_SERIES_5_NEGATIVE);
 		addSeriesData(barSeriesDataList);

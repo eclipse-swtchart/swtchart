@@ -74,7 +74,7 @@ public class DemoBoxPlotChart {
 		Color colorRed = Display.getDefault().getSystemColor(SWT.COLOR_RED);
 
 		List<ISeriesData> boxPlotSeriesList = SeriesConverter.getSeriesBoxPlot(SeriesConverter.BOXPLOT_SERIES_1);
-		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
+		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 		for(int i = 0; i < boxPlotSeriesList.size(); i++) {
 			ISeriesData seriesData = boxPlotSeriesList.get(i);
 			Color color = (i % 2 == 0) ? colorBlue : colorRed;

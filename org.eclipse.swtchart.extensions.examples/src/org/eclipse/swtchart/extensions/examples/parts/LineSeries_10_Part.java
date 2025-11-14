@@ -59,7 +59,7 @@ public class LineSeries_10_Part extends ChromatogramChart {
 		/*
 		 * Create series.
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
@@ -97,7 +97,7 @@ public class LineSeries_10_Part extends ChromatogramChart {
 		 */
 		IPlotArea plotArea = getBaseChart().getPlotArea();
 		LabelMarker labelMarker = new LabelMarker(getBaseChart());
-		List<String> labels = new ArrayList<String>();
+		List<String> labels = new ArrayList<>();
 		labels.add("[1]");
 		labels.add("[2]");
 		labels.add("[3]");

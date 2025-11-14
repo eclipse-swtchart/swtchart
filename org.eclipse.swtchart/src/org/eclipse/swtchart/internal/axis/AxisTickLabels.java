@@ -92,10 +92,10 @@ public class AxisTickLabels implements PaintListener {
 
 		this.chart = chart;
 		this.axis = axis;
-		tickLabelValues = new ArrayList<Double>();
-		tickLabels = new ArrayList<String>();
-		tickLabelPositions = new ArrayList<Integer>();
-		tickVisibilities = new ArrayList<Boolean>();
+		tickLabelValues = new ArrayList<>();
+		tickLabels = new ArrayList<>();
+		tickLabelPositions = new ArrayList<>();
+		tickVisibilities = new ArrayList<>();
 		initializePossibleTickSteps();
 		font = DEFAULT_FONT;
 		foreground = Display.getDefault().getSystemColor(DEFAULT_FOREGROUND);

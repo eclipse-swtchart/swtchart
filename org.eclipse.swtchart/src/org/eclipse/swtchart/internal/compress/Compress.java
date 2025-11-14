@@ -143,9 +143,9 @@ public abstract class Compress implements ICompress {
 		heightInPixel = config.getHeightInPixel();
 		previousXGridIndex = -1;
 		previousYGridIndex = -1;
-		ArrayList<Double> xList = new ArrayList<Double>();
-		ArrayList<Double> yList = new ArrayList<Double>();
-		ArrayList<Integer> indexList = new ArrayList<Integer>();
+		ArrayList<Double> xList = new ArrayList<>();
+		ArrayList<Double> yList = new ArrayList<>();
+		ArrayList<Integer> indexList = new ArrayList<>();
 		// add necessary plots to the array
 		addNecessaryPlots(xList, yList, indexList);
 		compressedXSeries = new double[xList.size()];

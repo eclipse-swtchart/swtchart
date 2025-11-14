@@ -52,7 +52,7 @@ public class PeakSeries_1_Part extends ChromatogramChart {
 		/*
 		 * Create series.
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		/*
 		 * Peak
 		 */

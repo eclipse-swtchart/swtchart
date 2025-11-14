@@ -53,7 +53,7 @@ public class BarSeries_1_2_Part extends MassSpectrumChart {
 		/*
 		 * Create series.
 		 */
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
 
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);

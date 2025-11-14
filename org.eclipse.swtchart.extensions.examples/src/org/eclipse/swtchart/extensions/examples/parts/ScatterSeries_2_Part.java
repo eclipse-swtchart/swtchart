@@ -73,7 +73,7 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		/*
 		 * Create series.
 		 */
-		Map<Integer, Color> colors = new HashMap<Integer, Color>();
+		Map<Integer, Color> colors = new HashMap<>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
@@ -84,7 +84,7 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		colors.put(8, getDisplay().getSystemColor(SWT.COLOR_DARK_YELLOW));
 		colors.put(9, getDisplay().getSystemColor(SWT.COLOR_DARK_BLUE));
 
-		Map<Integer, String> descriptions = new HashMap<Integer, String>();
+		Map<Integer, String> descriptions = new HashMap<>();
 		descriptions.put(1, "Benzothiophene");
 		descriptions.put(2, "Cyclische Alkane");
 		descriptions.put(3, "n-/iso-Alkane");
@@ -95,7 +95,7 @@ public class ScatterSeries_2_Part extends ScatterChart {
 		descriptions.put(8, "Triaromaten");
 		descriptions.put(9, "Unknown");
 
-		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
+		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 		for(int i = 1; i <= 9; i++) {
 			String id = descriptions.get(i);
 			String fileName = SeriesConverter.SCATTER_SERIES + "2_" + i;

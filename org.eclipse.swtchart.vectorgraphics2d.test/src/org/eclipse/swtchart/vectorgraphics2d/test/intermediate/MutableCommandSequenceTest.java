@@ -26,7 +26,7 @@ public class MutableCommandSequenceTest {
 	public void testIteratorContainsAddedCommands() {
 
 		MutableCommandSequence commands = new MutableCommandSequence();
-		Command<?> command = new Command<Object>(null) {
+		Command<?> command = new Command<>(null) {
 		};
 		commands.add(command);
 		assertThat(commands, hasItem(command));

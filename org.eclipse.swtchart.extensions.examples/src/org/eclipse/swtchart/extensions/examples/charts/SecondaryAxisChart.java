@@ -61,7 +61,7 @@ public class SecondaryAxisChart {
 		/*
 		 * Data and Settings
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = getSeriesRandom();
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 		ILineSeriesSettings lineSeriesSettings = lineSeriesData.getSettings();

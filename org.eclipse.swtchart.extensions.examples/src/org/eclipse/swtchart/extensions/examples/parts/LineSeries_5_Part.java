@@ -48,7 +48,7 @@ public class LineSeries_5_Part extends ChromatogramChart {
 		chartSettings.getRangeRestriction().setZeroY(false);
 		applySettings(chartSettings);
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;

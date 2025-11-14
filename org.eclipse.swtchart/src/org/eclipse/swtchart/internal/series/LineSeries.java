@@ -564,7 +564,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		double xUpper = xAxis.getRange().upper;
 		double yLower = yAxis.getRange().lower;
 		double yUpper = yAxis.getRange().upper;
-		List<Integer> pointList = new ArrayList<Integer>();
+		List<Integer> pointList = new ArrayList<>();
 		int prevX = xAxis.getPixelCoordinate(xseries[0], xLower, xUpper);
 		int prevY = yAxis.getPixelCoordinate(yseries[0], yLower, yUpper);
 		// add initial point

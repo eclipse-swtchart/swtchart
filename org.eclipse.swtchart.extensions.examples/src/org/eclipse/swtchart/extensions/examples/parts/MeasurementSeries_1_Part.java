@@ -80,7 +80,7 @@ public class MeasurementSeries_1_Part extends LineChart {
 		/*
 		 * Create series.
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;
