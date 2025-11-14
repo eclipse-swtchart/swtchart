@@ -85,12 +85,12 @@ public class AxisTickTest extends ChartTestCase {
 		assertEquals(black.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		Color disposed = new Color(0, 0, 0);
 		disposed.dispose();
 		assertThrows(IllegalArgumentException.class, () -> xAxisTick.setForeground(disposed));
 		color = xAxisTick.getForeground();
 		assertEquals(new RGB(0, 0, 0), color.getRGB());
-		Color disposed2 = new Color(Display.getDefault(), 0, 0, 0);
+		Color disposed2 = new Color(0, 0, 0);
 		disposed2.dispose();
 		assertThrows(IllegalArgumentException.class, () -> yAxisTick.setForeground(disposed2));
 		color = yAxisTick.getForeground();

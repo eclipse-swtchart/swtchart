@@ -97,7 +97,7 @@ public class Resources {
 
 		Color color = colorMap.get(rgb);
 		if(color == null) {
-			color = new Color(getDisplay(), rgb);
+			color = new Color(rgb);
 			colorMap.put(rgb, color);
 			System.out.println(colorMap.size());
 		}

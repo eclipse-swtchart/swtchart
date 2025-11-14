@@ -172,7 +172,7 @@ public class SeriesLabelTest extends ChartTestCase {
 		label.setForeground(null);
 		assertEquals(new RGB(0, 0, 0), label.getForeground().getRGB());
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> label.setForeground(color));
 			

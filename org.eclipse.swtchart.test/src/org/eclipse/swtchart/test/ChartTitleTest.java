@@ -95,7 +95,7 @@ public class ChartTitleTest extends ChartTestCase {
 		assertEquals(black.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		color = new Color(Display.getDefault(), 0, 0, 0);
+		color = new Color(0, 0, 0);
 		color.dispose();
 		Color disposed = color;
 		assertThrows(IllegalArgumentException.class, () ->

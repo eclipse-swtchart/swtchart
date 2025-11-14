@@ -285,7 +285,7 @@ public class BarSeriesTest extends ChartTestCase {
 		assertEquals(black.getRGB(), series.getBarColor().getRGB());
 		showChart();
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> series.setBarColor(color));
 	}

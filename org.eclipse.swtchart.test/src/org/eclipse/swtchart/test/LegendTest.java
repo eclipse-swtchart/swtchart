@@ -108,7 +108,7 @@ public class LegendTest extends ChartTestCase {
 		legend.setForeground(null);
 		assertEquals(Display.getDefault().getSystemColor(SWT.COLOR_BLACK).toString(), legend.getForeground().toString());
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> legend.setForeground(color));
 	}
@@ -133,7 +133,7 @@ public class LegendTest extends ChartTestCase {
 		assertEquals(red.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		Color disposed = new Color(0, 0, 0);
 		disposed.dispose();
 		assertThrows(IllegalArgumentException.class, () -> legend.setBackground(disposed));
 	}

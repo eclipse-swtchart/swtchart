@@ -272,7 +272,7 @@ public class LineSeriesTest extends ChartTestCase {
 		series.setLineColor(null);
 		assertEquals(new RGB(0, 0, 255), series.getLineColor().getRGB());
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> series.setLineColor(color));
 	}
@@ -398,7 +398,7 @@ public class LineSeriesTest extends ChartTestCase {
 		Color darkGray = Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY);
 		assertEquals(darkGray.getRGB(), series.getSymbolColor().getRGB());
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> series.setSymbolColor(color));
 	}
@@ -417,8 +417,8 @@ public class LineSeriesTest extends ChartTestCase {
 		// default
 		assertEquals(0, series.getSymbolColors().length);
 		// set colors
-		final Color red = new Color(Display.getDefault(), new RGB(255, 0, 0));
-		final Color green = new Color(Display.getDefault(), new RGB(0, 255, 0));
+		final Color red = new Color(new RGB(255, 0, 0));
+		final Color green = new Color(new RGB(0, 255, 0));
 		Color[] colors = {red, red, red, green, green};
 		series.setSymbolColors(colors);
 		Color[] results = series.getSymbolColors();
@@ -427,7 +427,7 @@ public class LineSeriesTest extends ChartTestCase {
 		}
 		showChart();
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		Color[] colorsWithDisabled = {red, red, red, color, green};
 		assertThrows(IllegalArgumentException.class, () -> series.setSymbolColors(colorsWithDisabled));
