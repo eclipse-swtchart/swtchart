@@ -112,7 +112,7 @@ public class CustomLineChart1 extends LineChart {
 
 	private void addDemoSeries() {
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(seriesXY);
 
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);

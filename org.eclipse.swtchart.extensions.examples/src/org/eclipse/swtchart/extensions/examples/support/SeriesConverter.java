@@ -143,7 +143,7 @@ public class SeriesConverter {
 
 	public static List<ISeriesData> getSeriesScatter(String fileName) {
 
-		List<ISeriesData> scatterSeriesList = new ArrayList<ISeriesData>();
+		List<ISeriesData> scatterSeriesList = new ArrayList<>();
 
 		BufferedReader bufferedReader = null;
 		try {
@@ -173,7 +173,7 @@ public class SeriesConverter {
 
 	public static List<ISeriesData> getSeriesBoxPlot(String fileName) {
 
-		List<ISeriesData> scatterSeriesList = new ArrayList<ISeriesData>();
+		List<ISeriesData> scatterSeriesList = new ArrayList<>();
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))) {
 			String line;
 			while((line = bufferedReader.readLine()) != null) {

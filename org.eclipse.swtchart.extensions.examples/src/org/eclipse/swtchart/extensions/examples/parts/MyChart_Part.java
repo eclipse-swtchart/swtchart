@@ -73,7 +73,7 @@ public class MyChart_Part extends BarChart {
 		double[] xSeries = new double[]{44.1, 50.4, 75.4, 102.3, 154.4};
 		double[] ySeries = new double[]{102.0, 289.0, 389.0, 272.0, 160.0};
 		ISeriesData seriesData = new SeriesData(xSeries, ySeries, "Distribution");
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
 		barSeriesDataList.add(barSeriesData);
 		addSeriesData(barSeriesDataList);
@@ -83,7 +83,7 @@ public class MyChart_Part extends BarChart {
 		BaseChart baseChart = getBaseChart();
 		IPlotArea plotArea = baseChart.getPlotArea();
 		LabelMarker labelMarker = new LabelMarker(baseChart);
-		Map<Integer, String> labels = new HashMap<Integer, String>();
+		Map<Integer, String> labels = new HashMap<>();
 		labels.put(0, "44.1 (A)");
 		labels.put(1, "50.4 (B)");
 		labels.put(2, "75.4 (C)");

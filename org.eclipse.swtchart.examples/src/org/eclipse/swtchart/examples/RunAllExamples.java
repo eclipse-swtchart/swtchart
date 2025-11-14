@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -100,7 +100,7 @@ public class RunAllExamples {
 
 	private static Vector<Chart> createBasicCharts(Composite parent) {
 
-		basicCharts = new Vector<Chart>();
+		basicCharts = new Vector<>();
 		basicCharts.add(LineChartExample.createChart(parent));
 		basicCharts.add(BarChartExample.createChart(parent));
 		basicCharts.add(ScatterChartExample.createChart(parent));
@@ -124,7 +124,7 @@ public class RunAllExamples {
 
 	private static Vector<Chart> createAdvancedCharts(Composite parent) {
 
-		basicCharts = new Vector<Chart>();
+		basicCharts = new Vector<>();
 		basicCharts.add(PixelToDataConversionExample.createChart(parent));
 		basicCharts.add(DataToPixelConversionExample.createChart(parent));
 		basicCharts.add(SymbolBoundsExample.createChart(parent));

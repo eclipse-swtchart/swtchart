@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2021 SWTChart project.
+ * Copyright (c) 2008, 2025 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -91,7 +91,7 @@ public class ChartLayout extends Layout {
 	public ChartLayout() {
 
 		initWidgetSizeVariables();
-		axisLayoutDataMap = new HashMap<Axis, AxisLayoutData>();
+		axisLayoutDataMap = new HashMap<>();
 	}
 
 	/**

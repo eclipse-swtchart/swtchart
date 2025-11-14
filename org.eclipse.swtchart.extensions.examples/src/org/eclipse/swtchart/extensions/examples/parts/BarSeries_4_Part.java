@@ -54,7 +54,7 @@ public class BarSeries_4_Part extends BarChart {
 		 * Bar Series [0]
 		 */
 		indexSeries = 0;
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
 
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
@@ -68,7 +68,7 @@ public class BarSeries_4_Part extends BarChart {
 		 */
 		IPlotArea plotArea = getBaseChart().getPlotArea();
 		LabelMarker labelMarker = new LabelMarker(getBaseChart());
-		Map<Integer, String> labels = new HashMap<Integer, String>();
+		Map<Integer, String> labels = new HashMap<>();
 		labels.put(21, "2-Methoxy-4-vinylphenol");
 		labels.put(40, "Ethanone, 1-(2-hydroxy-5-methylphenyl)-");
 		labels.put(64, "4-Hydroxy-3-methylacetophenone");

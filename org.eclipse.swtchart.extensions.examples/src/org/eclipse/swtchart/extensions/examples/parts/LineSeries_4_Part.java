@@ -57,14 +57,14 @@ public class LineSeries_4_Part extends ChromatogramChart {
 		/*
 		 * Create series.
 		 */
-		Map<Integer, Color> colors = new HashMap<Integer, Color>();
+		Map<Integer, Color> colors = new HashMap<>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 		colors.put(4, getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
 		colors.put(5, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		for(int i = 1; i <= 5; i++) {
 			ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES + "4_" + i);
 			ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);

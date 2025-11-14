@@ -63,7 +63,7 @@ public class BarSeries_2_1_Part extends BarChart {
 		/*
 		 * Create series.
 		 */
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_2);
 
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);

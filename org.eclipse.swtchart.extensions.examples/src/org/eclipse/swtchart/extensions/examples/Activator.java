@@ -84,7 +84,7 @@ public class Activator extends AbstractUIPlugin {
 
 	private void initializeImageRegistry() {
 
-		Map<String, String> imageHashMap = new HashMap<String, String>();
+		Map<String, String> imageHashMap = new HashMap<>();
 		imageHashMap.put(ICON_OPEN_SETTINGS, "icons/16x16/open_settings.gif"); // $NON-NLS-1$
 		imageHashMap.put(ICON_APPLY_SETTINGS, "icons/svg/apply_settings.svg"); // $NON-NLS-1$
 		imageHashMap.put(ICON_START, "icons/svg/start.svg"); // $NON-NLS-1$

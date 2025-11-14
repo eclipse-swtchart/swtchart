@@ -225,12 +225,12 @@ public class LineSeries_Selection_Part extends Composite {
 		/*
 		 * Create series.
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesDataLine = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES_3);
 		double[] xSeries = seriesDataLine.getXSeries();
 		double[] ySeries = seriesDataLine.getYSeries();
-		xValues = new TreeSet<Double>();
-		yValues = new HashMap<Double, Double>();
+		xValues = new TreeSet<>();
+		yValues = new HashMap<>();
 		for(int i = 0; i < xSeries.length; i++) {
 			double x = xSeries[i];
 			xValues.add(x);

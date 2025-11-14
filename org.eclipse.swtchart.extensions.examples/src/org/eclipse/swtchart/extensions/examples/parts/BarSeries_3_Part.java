@@ -53,7 +53,7 @@ public class BarSeries_3_Part extends MassSpectrumChart {
 		/*
 		 * Create series.
 		 */
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData;
 		IBarSeriesData barSeriesData;
 		IBarSeriesSettings barSeriesSettings;

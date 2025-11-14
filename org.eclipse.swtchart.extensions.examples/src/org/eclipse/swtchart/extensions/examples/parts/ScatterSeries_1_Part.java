@@ -59,7 +59,7 @@ public class ScatterSeries_1_Part extends PCAChart {
 		 * Data
 		 */
 		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(SeriesConverter.SCATTER_SERIES_1);
-		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
+		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 
 		for(ISeriesData seriesData : scatterSeriesList) {
 			IScatterSeriesData scatterSeriesData = new ScatterSeriesData(seriesData);

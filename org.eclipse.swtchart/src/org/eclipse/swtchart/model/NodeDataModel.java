@@ -51,7 +51,7 @@ public class NodeDataModel {
 
 		this.Id = id;
 		this.rootNode = new Node(id, -1, this);
-		tree = new HashMap<String, Node>();
+		tree = new HashMap<>();
 		initialiseRootNode();
 		rootPointer = rootNode;
 		compressCircularSeries = new CompressCircularSeries(this);
@@ -136,7 +136,7 @@ public class NodeDataModel {
 
 		ArrayList<Node>[] node = (ArrayList<Node>[])getNodes();
 		for(int i = 0; i <= maxTreeDepth; i++) {
-			node[i] = new ArrayList<Node>();
+			node[i] = new ArrayList<>();
 		}
 		setNodes(node);
 		/*

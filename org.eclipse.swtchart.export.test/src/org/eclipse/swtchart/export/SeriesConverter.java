@@ -90,7 +90,7 @@ public class SeriesConverter {
 
 	public static List<ISeriesData> getSeriesScatter(String fileName) {
 
-		List<ISeriesData> scatterSeriesList = new ArrayList<ISeriesData>();
+		List<ISeriesData> scatterSeriesList = new ArrayList<>();
 
 		BufferedReader bufferedReader = null;
 		try {

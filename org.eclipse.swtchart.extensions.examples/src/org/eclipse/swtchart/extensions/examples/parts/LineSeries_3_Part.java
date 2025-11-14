@@ -122,7 +122,7 @@ public class LineSeries_3_Part extends LineChart {
 		/*
 		 * Create series.
 		 */
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES_3);
 
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);

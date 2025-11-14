@@ -256,7 +256,7 @@ public class BarSeries_Preferences_Part extends Composite {
 		Color barColorSeries1Highlight = new Color(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BAR_COLOR_SERIES_1_HIGHLIGHT));
 
 		barChart.deleteSeries();
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData;
 		IBarSeriesData barSeriesData;
 		IBarSeriesSettings barSeriesSettings;

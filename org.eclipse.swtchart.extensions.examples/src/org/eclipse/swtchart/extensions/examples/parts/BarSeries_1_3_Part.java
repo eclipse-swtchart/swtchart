@@ -55,7 +55,7 @@ public class BarSeries_1_3_Part extends MassSpectrumChart {
 		/*
 		 * Create series.
 		 */
-		List<IBarSeriesData> barSeriesDataList = new ArrayList<IBarSeriesData>();
+		List<IBarSeriesData> barSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.BAR_SERIES_1);
 
 		IBarSeriesData barSeriesData = new BarSeriesData(seriesData);
@@ -68,7 +68,7 @@ public class BarSeries_1_3_Part extends MassSpectrumChart {
 
 	private Map<Double, String> createCustomLabels() {
 
-		Map<Double, String> customLabels = new HashMap<Double, String>();
+		Map<Double, String> customLabels = new HashMap<>();
 
 		customLabels.put(16.0, "245 > 16.0 @12");
 		customLabels.put(17.0, "245 > 17.0 @12");

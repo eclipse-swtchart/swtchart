@@ -80,7 +80,7 @@ public class ScatterSeries_3_Part extends ScatterChart {
 		/*
 		 * Create series.
 		 */
-		Map<Integer, Color> colors = new HashMap<Integer, Color>();
+		Map<Integer, Color> colors = new HashMap<>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GREEN));
@@ -93,7 +93,7 @@ public class ScatterSeries_3_Part extends ScatterChart {
 		colors.put(10, getDisplay().getSystemColor(SWT.COLOR_DARK_GREEN));
 		colors.put(11, getDisplay().getSystemColor(SWT.COLOR_DARK_RED));
 
-		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<IScatterSeriesData>();
+		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 		for(int i = 1; i <= 5; i++) {
 			for(int j = 1; j <= 20; j++) {
 				String id = "Series_" + i + "-" + j;

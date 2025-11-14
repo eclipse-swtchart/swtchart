@@ -83,12 +83,12 @@ public class MeasurementSeries_2_Part extends LineChart {
 		/*
 		 * Create series.
 		 */
-		Map<Integer, Color> colors = new HashMap<Integer, Color>();
+		Map<Integer, Color> colors = new HashMap<>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		ISeriesData seriesData;
 		ILineSeriesData lineSeriesData;
 		ILineSeriesSettings lineSeriesSettings;

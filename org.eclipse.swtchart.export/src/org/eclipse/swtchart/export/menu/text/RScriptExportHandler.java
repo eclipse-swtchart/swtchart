@@ -132,7 +132,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 						axisSettings.setAxisScaleConverterX(axisScaleConverterX);
 						axisSettings.setAxisSettingsY(axisSettingsY);
 						axisSettings.setAxisScaleConverterY(axisScaleConverterY);
-						plotSymbolsMap = new HashMap<PlotSymbolType, Integer>();
+						plotSymbolsMap = new HashMap<>();
 						plotSymbolsMap.put(PlotSymbolType.CIRCLE, 1);
 						plotSymbolsMap.put(PlotSymbolType.CROSS, 4);
 						plotSymbolsMap.put(PlotSymbolType.DIAMOND, 5);
@@ -142,7 +142,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 						plotSymbolsMap.put(PlotSymbolType.TRIANGLE, 2);
 						plotSymbolsMap.put(PlotSymbolType.NONE, 20);
 
-						lineStylesMap = new HashMap<LineStyle, Integer>();
+						lineStylesMap = new HashMap<>();
 						lineStylesMap.put(LineStyle.NONE, 0);
 						lineStylesMap.put(LineStyle.DASH, 2);
 						lineStylesMap.put(LineStyle.DASHDOT, 4);
@@ -255,10 +255,10 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("# Data"); //$NON-NLS-1$
 		int widthPlotArea = baseChart.getPlotArea().getSize().x;
 		int index = 1;
-		ArrayList<String> color = new ArrayList<String>();
-		ArrayList<Integer> plotSymbols = new ArrayList<Integer>();
-		ArrayList<Integer> lineStyles = new ArrayList<Integer>();
-		ArrayList<Character> lineTypes = new ArrayList<Character>();
+		ArrayList<String> color = new ArrayList<>();
+		ArrayList<Integer> plotSymbols = new ArrayList<>();
+		ArrayList<Integer> lineStyles = new ArrayList<>();
+		ArrayList<Character> lineTypes = new ArrayList<>();
 		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null && dataSeries.isVisible()) {
 				ILineSeries<?> lineSeries = (ILineSeries<?>)dataSeries;
@@ -541,8 +541,8 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("# Data"); //$NON-NLS-1$
 		int widthPlotArea = baseChart.getPlotArea().getSize().x;
 		int index = 1;
-		ArrayList<String> color = new ArrayList<String>();
-		ArrayList<Integer> plotSymbols = new ArrayList<Integer>();
+		ArrayList<String> color = new ArrayList<>();
+		ArrayList<Integer> plotSymbols = new ArrayList<>();
 		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null && dataSeries.isVisible()) {
 				ILineSeries<?> lineSeries = (ILineSeries<?>)dataSeries;
@@ -636,7 +636,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 		printWriter.println("# Data"); //$NON-NLS-1$
 		int widthPlotArea = baseChart.getPlotArea().getSize().x;
 		int index = 1;
-		ArrayList<String> color = new ArrayList<String>();
+		ArrayList<String> color = new ArrayList<>();
 		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null && dataSeries.isVisible()) {
 				ILineSeries<?> lineSeries = (ILineSeries<?>)dataSeries;

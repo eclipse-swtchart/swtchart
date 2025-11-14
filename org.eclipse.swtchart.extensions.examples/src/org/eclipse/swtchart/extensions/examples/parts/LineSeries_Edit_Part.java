@@ -90,7 +90,7 @@ public class LineSeries_Edit_Part extends Composite {
 
 	private void initialize() throws Exception {
 
-		shiftTableMap = new HashMap<Integer, Table>();
+		shiftTableMap = new HashMap<>();
 
 		this.setLayout(new GridLayout(1, true));
 		tabFolder = new TabFolder(this, SWT.BOTTOM);
@@ -503,7 +503,7 @@ public class LineSeries_Edit_Part extends Composite {
 
 		chromatogramChart.deleteSeries();
 
-		Map<Integer, Color> colors = new HashMap<Integer, Color>();
+		Map<Integer, Color> colors = new HashMap<>();
 		colors.put(1, getDisplay().getSystemColor(SWT.COLOR_RED));
 		colors.put(2, getDisplay().getSystemColor(SWT.COLOR_BLACK));
 		colors.put(3, getDisplay().getSystemColor(SWT.COLOR_GRAY));
@@ -513,7 +513,7 @@ public class LineSeries_Edit_Part extends Composite {
 		String[] items = new String[6];
 		items[0] = "No Selection";
 
-		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
+		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 		for(int i = 1; i <= NUM_SERIES; i++) {
 			ISeriesData seriesData = SeriesConverter.getSeriesXY(SeriesConverter.LINE_SERIES + "4_" + i);
 			items[i] = seriesData.getId();
