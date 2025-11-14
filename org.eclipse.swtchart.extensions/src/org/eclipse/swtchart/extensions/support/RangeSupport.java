@@ -187,7 +187,7 @@ public class RangeSupport {
 					}
 				}
 
-				baseChart.redraw();
+				baseChart.update();
 				return true;
 			}
 		}
