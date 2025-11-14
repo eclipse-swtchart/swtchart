@@ -57,7 +57,7 @@ public class ChartTest extends ChartTestCase {
 		assertEquals(syan.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		Color disposed = new Color(0, 0, 0);
 		disposed.dispose();
 		assertThrows(IllegalArgumentException.class, () -> chart.setBackground(disposed));
 		color = chart.getBackground();
@@ -86,7 +86,7 @@ public class ChartTest extends ChartTestCase {
 		assertEquals(cyan.getRGB(), color.getRGB());
 		showChart();
 		// set the disposed color
-		Color disposed = new Color(Display.getDefault(), 0, 0, 0);
+		Color disposed = new Color(0, 0, 0);
 		disposed.dispose();
 		assertThrows(IllegalArgumentException.class, () -> chart.getPlotArea().setBackground(disposed));
 		color = chart.getPlotArea().getBackground();

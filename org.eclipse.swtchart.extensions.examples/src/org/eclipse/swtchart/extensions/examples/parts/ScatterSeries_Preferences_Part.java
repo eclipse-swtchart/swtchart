@@ -15,10 +15,8 @@ package org.eclipse.swtchart.extensions.examples.parts;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferencePage;
@@ -32,7 +30,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -60,27 +57,16 @@ import jakarta.inject.Inject;
 public class ScatterSeries_Preferences_Part extends Composite {
 
 	private ScatterChart scatterChart;
-	private Map<RGB, Color> colors;
 
 	@Inject
 	public ScatterSeries_Preferences_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		colors = new HashMap<>();
 		try {
 			initialize();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void dispose() {
-
-		for(Color color : colors.values()) {
-			color.dispose();
-		}
-		super.dispose();
 	}
 
 	private void initialize() throws Exception {
@@ -147,20 +133,20 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 
-		Color colorHintRangeSelector = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
-		Color colorTitle = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_TITLE_COLOR));
-		Color colorBackground = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND));
-		Color colorBackgroundChart = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND_CHART));
-		Color colorBackgroundPlotArea = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND_PLOT_AREA));
-		Color colorPrimaryXAxis = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_PRIMARY_X_AXIS_COLOR));
-		Color colorPrimaryYAxis = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_COLOR));
+		Color colorHintRangeSelector = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
+		Color colorTitle = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_TITLE_COLOR));
+		Color colorBackground = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND));
+		Color colorBackgroundChart = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND_CHART));
+		Color colorBackgroundPlotArea = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND_PLOT_AREA));
+		Color colorPrimaryXAxis = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_PRIMARY_X_AXIS_COLOR));
+		Color colorPrimaryYAxis = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_COLOR));
 		Locale localePrimaryXAxis = new Locale.Builder().setLanguage(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_PRIMARY_X_AXIS_DECIMAL_FORMAT_LOCALE)).build();
 		Locale localePrimaryYAxis = new Locale.Builder().setLanguage(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_DECIMAL_FORMAT_LOCALE)).build();
-		Color colorPositionMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_POSITION_MARKER));
-		Color colorPlotCenterMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_PLOT_CENTER_MARKER));
-		Color colorLegendMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
-		Color colorAxisZeroMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
-		Color colorSeriesLabelMarker = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
+		Color colorPositionMarker = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_POSITION_MARKER));
+		Color colorPlotCenterMarker = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_PLOT_CENTER_MARKER));
+		Color colorLegendMarker = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
+		Color colorAxisZeroMarker = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
+		Color colorSeriesLabelMarker = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
 
 		IChartSettings chartSettings = scatterChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
@@ -243,10 +229,10 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		int symbolSize = preferenceStore.getInt(ScatterSeriesPreferenceConstants.P_SYMBOL_SIZE_SERIES);
 
-		Color symbolColorSeriesLeftTop = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_TOP));
-		Color symbolColorSeriesRightTop = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_TOP));
-		Color symbolColorSeriesLeftBottom = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_BOTTOM));
-		Color symbolColorSeriesRightBottom = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_BOTTOM));
+		Color symbolColorSeriesLeftTop = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_TOP));
+		Color symbolColorSeriesRightTop = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_TOP));
+		Color symbolColorSeriesLeftBottom = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_LEFT_BOTTOM));
+		Color symbolColorSeriesRightBottom = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_RIGHT_BOTTOM));
 		PlotSymbolType plotSymbolTypeLeftTop = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_LEFT_TOP));
 		boolean isVisibleLeftTop = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_LEFT_TOP);
 		PlotSymbolType plotSymbolTypeRightTop = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_RIGHT_TOP));
@@ -256,10 +242,10 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		PlotSymbolType plotSymbolTypeRightBottom = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_RIGHT_BOTTOM));
 		boolean isVisibleRightBottom = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_RIGHT_BOTTOM);
 
-		Color symbolColorSeriesLeftTopHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_TOP));
-		Color symbolColorSeriesRightTopHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_TOP));
-		Color symbolColorSeriesLeftBottomHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_BOTTOM));
-		Color symbolColorSeriesRightBottomHighlight = getColor(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_BOTTOM));
+		Color symbolColorSeriesLeftTopHighlight = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_TOP));
+		Color symbolColorSeriesRightTopHighlight = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_TOP));
+		Color symbolColorSeriesLeftBottomHighlight = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_LEFT_BOTTOM));
+		Color symbolColorSeriesRightBottomHighlight = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_HIGHLIGHT_RIGHT_BOTTOM));
 		PlotSymbolType plotSymbolTypeLeftTopHighlight = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_LEFT_TOP));
 		boolean isVisibleLeftTopHighlight = preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VISIBLE_SERIES_HIGHLIGHT_LEFT_TOP);
 		PlotSymbolType plotSymbolTypeRightTopHighlight = PlotSymbolType.valueOf(preferenceStore.getString(ScatterSeriesPreferenceConstants.P_SYMBOL_TYPE_SERIES_HIGHLIGHT_RIGHT_TOP));
@@ -324,13 +310,4 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		scatterChart.addSeriesData(scatterSeriesDataList);
 	}
 
-	private Color getColor(RGB rgb) {
-
-		Color color = colors.get(rgb);
-		if(color == null) {
-			color = new Color(getDisplay(), rgb);
-			colors.put(rgb, color);
-		}
-		return color;
-	}
 }

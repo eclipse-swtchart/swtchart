@@ -108,7 +108,7 @@ public class ErrorBarTest extends ChartTestCase {
 		yErrorBar.setColor(null);
 		assertEquals(darkGray.getRGB(), yErrorBar.getColor().getRGB());
 		// set the disposed color
-		Color color = new Color(Display.getDefault(), 0, 0, 0);
+		Color color = new Color(0, 0, 0);
 		color.dispose();
 		assertThrows(IllegalArgumentException.class, () -> xErrorBar.setColor(color));
 		assertThrows(IllegalArgumentException.class, () -> yErrorBar.setColor(color));

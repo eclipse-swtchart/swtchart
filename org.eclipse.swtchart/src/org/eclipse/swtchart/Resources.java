@@ -97,8 +97,9 @@ public class Resources {
 
 		Color color = colorMap.get(rgb);
 		if(color == null) {
-			color = new Color(getDisplay(), rgb);
+			color = new Color(rgb);
 			colorMap.put(rgb, color);
+			System.out.println(colorMap.size());
 		}
 		return color;
 	}
@@ -149,14 +150,6 @@ public class Resources {
 	@Override
 	protected void finalize() throws Throwable {
 
-		/*
-		 * Colors
-		 */
-		for(Color color : colorMap.values()) {
-			if(color != null && !color.isDisposed()) {
-				color.dispose();
-			}
-		}
 		/*
 		 * Fonts
 		 */
