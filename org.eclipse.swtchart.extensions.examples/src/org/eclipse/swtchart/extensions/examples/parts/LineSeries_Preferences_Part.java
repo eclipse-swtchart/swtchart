@@ -15,10 +15,8 @@ package org.eclipse.swtchart.extensions.examples.parts;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.eclipse.jface.preference.IPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -31,7 +29,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -64,27 +61,16 @@ import jakarta.inject.Inject;
 public class LineSeries_Preferences_Part extends Composite {
 
 	private LineChart lineChart;
-	private Map<RGB, Color> colors;
 
 	@Inject
 	public LineSeries_Preferences_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		colors = new HashMap<>();
 		try {
 			initialize();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void dispose() {
-
-		for(Color color : colors.values()) {
-			color.dispose();
-		}
-		super.dispose();
 	}
 
 	private void initialize() throws Exception {
@@ -154,24 +140,24 @@ public class LineSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 
-		Color colorHintRangeSelector = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
-		Color colorTitle = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_TITLE_COLOR));
-		Color colorBackground = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND));
-		Color colorBackgroundChart = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND_CHART));
-		Color colorBackgroundPlotArea = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND_PLOT_AREA));
-		Color colorPrimaryXAxis = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_PRIMARY_X_AXIS_COLOR));
-		Color colorPrimaryYAxis = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_COLOR));
+		Color colorHintRangeSelector = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
+		Color colorTitle = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_TITLE_COLOR));
+		Color colorBackground = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND));
+		Color colorBackgroundChart = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND_CHART));
+		Color colorBackgroundPlotArea = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_BACKGROUND_PLOT_AREA));
+		Color colorPrimaryXAxis = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_PRIMARY_X_AXIS_COLOR));
+		Color colorPrimaryYAxis = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_COLOR));
 		Locale localePrimaryXAxis = new Locale.Builder().setLanguage(preferenceStore.getString(LineSeriesPreferenceConstants.P_PRIMARY_X_AXIS_DECIMAL_FORMAT_LOCALE)).build();
 		Locale localePrimaryYAxis = new Locale.Builder().setLanguage(preferenceStore.getString(LineSeriesPreferenceConstants.P_PRIMARY_Y_AXIS_DECIMAL_FORMAT_LOCALE)).build();
-		Color colorSecondaryXAxis = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_COLOR));
-		Color colorSecondaryYAxis = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_COLOR));
+		Color colorSecondaryXAxis = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_COLOR));
+		Color colorSecondaryYAxis = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_COLOR));
 		Locale localeSecondaryXAxis = new Locale.Builder().setLanguage(preferenceStore.getString(LineSeriesPreferenceConstants.P_SECONDARY_X_AXIS_DECIMAL_FORMAT_LOCALE)).build();
 		Locale localeSecondaryYAxis = new Locale.Builder().setLanguage(preferenceStore.getString(LineSeriesPreferenceConstants.P_SECONDARY_Y_AXIS_DECIMAL_FORMAT_LOCALE)).build();
-		Color colorPositionMarker = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_POSITION_MARKER));
-		Color colorPlotCenterMarker = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_PLOT_CENTER_MARKER));
-		Color colorLegendMarker = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
-		Color colorAxisZeroMarker = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
-		Color colorSeriesLabelMarker = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
+		Color colorPositionMarker = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_POSITION_MARKER));
+		Color colorPlotCenterMarker = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_PLOT_CENTER_MARKER));
+		Color colorLegendMarker = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_LEGEND_MARKER));
+		Color colorAxisZeroMarker = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_AXIS_ZERO_MARKER));
+		Color colorSeriesLabelMarker = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_COLOR_SERIES_LABEL_MARKER));
 
 		IChartSettings chartSettings = lineChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(LineSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
@@ -282,14 +268,14 @@ public class LineSeries_Preferences_Part extends Composite {
 	private void applySeriesSettings() {
 
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
-		Color lineColorSeries1 = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_1));
-		Color symbolColorSeries1 = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_1));
-		Color lineColorSeries2 = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_2));
-		Color symbolColorSeries2 = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_2));
-		Color lineColorSeries1Highlight = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_1_HIGHLIGHT));
-		Color symbolColorSeries1Highlight = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_1_HIGHLIGHT));
-		Color lineColorSeries2Highlight = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_2_HIGHLIGHT));
-		Color symbolColorSeries2Highlight = getColor(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_2_HIGHLIGHT));
+		Color lineColorSeries1 = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_1));
+		Color symbolColorSeries1 = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_1));
+		Color lineColorSeries2 = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_2));
+		Color symbolColorSeries2 = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_2));
+		Color lineColorSeries1Highlight = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_1_HIGHLIGHT));
+		Color symbolColorSeries1Highlight = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_1_HIGHLIGHT));
+		Color lineColorSeries2Highlight = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_LINE_COLOR_SERIES_2_HIGHLIGHT));
+		Color symbolColorSeries2Highlight = new Color(PreferenceConverter.getColor(preferenceStore, LineSeriesPreferenceConstants.P_SYMBOL_COLOR_SERIES_2_HIGHLIGHT));
 
 		lineChart.deleteSeries();
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<ILineSeriesData>();
@@ -367,13 +353,4 @@ public class LineSeries_Preferences_Part extends Composite {
 		lineChart.addSeriesData(lineSeriesDataList, LineChart.HIGH_COMPRESSION);
 	}
 
-	private Color getColor(RGB rgb) {
-
-		Color color = colors.get(rgb);
-		if(color == null) {
-			color = new Color(getDisplay(), rgb);
-			colors.put(rgb, color);
-		}
-		return color;
-	}
 }
