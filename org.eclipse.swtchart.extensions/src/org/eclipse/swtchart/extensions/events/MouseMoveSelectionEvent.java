@@ -98,7 +98,7 @@ public class MouseMoveSelectionEvent extends AbstractHandledEventProcessor imple
 			 * Rectangle is drawn here:
 			 * void paintControl(PaintEvent e)
 			 */
-			baseChart.redraw();
+			baseChart.update();
 			baseChart.resetRedrawCounter();
 		}
 	}
