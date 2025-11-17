@@ -18,7 +18,7 @@ public class PreferenceConstants {
 	public static final int MAX_MOVE_LEGEND = 100;
 
 	public static final String P_BUFFER_SELECTION = "bufferSelection";
-	public static final boolean DEF_BUFFER_SELECTION = true;
+	public static final boolean DEF_BUFFER_SELECTION = false;
 	public static final String P_PREVENT_ACCIDENTAL_ZOOM = "preventAccidentalZoom";
 	public static final boolean DEF_PREVENT_ACCIDENTAL_ZOOM = true;
 
