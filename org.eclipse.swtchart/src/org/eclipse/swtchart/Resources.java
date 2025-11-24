@@ -99,7 +99,6 @@ public class Resources {
 		if(color == null) {
 			color = new Color(rgb);
 			colorMap.put(rgb, color);
-			System.out.println(colorMap.size());
 		}
 		return color;
 	}
