@@ -3,8 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart Vectorgraphics2d Tests
 Bundle-SymbolicName: org.eclipse.swtchart.vectorgraphics2d.test
 Bundle-Vendor: Eclipse SWTChart
-Bundle-Version: 1.1.0.qualifier
-Fragment-Host: org.eclipse.swtchart.vectorgraphics2d;bundle-version="1.1.0"
+Bundle-Version: 1.2.0.qualifier
+Fragment-Host: org.eclipse.swtchart.vectorgraphics2d;bundle-version="1.2.0"
 Require-Bundle: junit-jupiter-api;bundle-version="5.13.4",
  junit-jupiter-params;bundle-version="5.13.4", 
  org.hamcrest;bundle-version="3.0.0",

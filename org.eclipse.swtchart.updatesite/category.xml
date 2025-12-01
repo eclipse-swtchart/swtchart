@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature id="org.eclipse.swtchart.feature" version="1.1.0.qualifier">
+   <feature id="org.eclipse.swtchart.feature" version="1.2.0.qualifier">
       <category name="org.eclipse.swtchart"/>
    </feature>
-   <category-def name="org.eclipse.swtchart" label="Eclipse SWTChart" />
-   <repository-reference location="https://download.eclipse.org/releases/2025-09/" enabled="true" />
+   <category-def name="org.eclipse.swtchart" label="Eclipse SWTChart"/>
+   <repository-reference location="https://download.eclipse.org/releases/2025-09/" name="" enabled="true" />
 </site>

@@ -3,10 +3,10 @@ Automatic-Module-Name: org.eclipse.swtchart.examples
 Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart Examples
 Bundle-SymbolicName: org.eclipse.swtchart.examples
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Vendor: Eclipse SWTChart
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.swtchart;bundle-version="1.1.0"
+ org.eclipse.swtchart;bundle-version="1.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
