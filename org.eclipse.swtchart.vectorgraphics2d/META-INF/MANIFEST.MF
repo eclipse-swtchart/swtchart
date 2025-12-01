@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SWTChart VectorGraphics2d
 Bundle-SymbolicName: org.eclipse.swtchart.vectorgraphics2d
 Bundle-Vendor: Eclipse SWTChart
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Export-Package: org.eclipse.swtchart.vectorgraphics2d.core,
  org.eclipse.swtchart.vectorgraphics2d.eps,
  org.eclipse.swtchart.vectorgraphics2d.intermediate,

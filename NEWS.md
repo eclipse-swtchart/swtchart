@@ -1,6 +1,10 @@
 # News & Noteworthy
 
-## Release 0.12.0 (in review)
+## Release 1.1.0
+
+  * Available on Sonatype Central now.
+
+## Release 0.12.0
 
   * Moved to version 0.12.0 to avoid confusions with existing pre-Eclipse SWTChart bundles
   * Internationalization support has been added
