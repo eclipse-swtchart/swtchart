@@ -1465,16 +1465,18 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 	public void zoomX(IAxis xAxis, Event event) {
 
+		boolean isZoomReferenceZeroX = getChartSettings().getRangeRestriction().isReferenceZoomZeroX();
+		double coordinateX = isZoomReferenceZeroX ? 0.0d : xAxis.getDataCoordinate(event.x);
+		IAxis yAxis = getAxisSet().getYAxis(ID_PRIMARY_Y_AXIS);
+
 		trackUndoSelection();
-		boolean isZoomReferenceX0 = getChartSettings().getRangeRestriction().isReferenceZoomZeroX();
-		double coordinateX = isZoomReferenceX0 ? 0.0d : xAxis.getDataCoordinate(event.x);
 		if(event.count > 0) {
-			xAxis.zoomIn(coordinateX);
+			xZoomIn(xAxis, yAxis, coordinateX);
 		} else {
-			if(isZoomReferenceX0) {
-				xAxis.zoomOut();
+			if(isZoomReferenceZeroX) {
+				xZoomOut(xAxis, yAxis);
 			} else {
-				xAxis.zoomOut(coordinateX);
+				xZoomOut(xAxis, yAxis, coordinateX);
 			}
 		}
 		trackRedoSelection();
@@ -1482,19 +1484,69 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 	public void zoomY(IAxis yAxis, Event event) {
 
+		boolean isZoomReferenceZeroY = getChartSettings().getRangeRestriction().isReferenceZoomZeroY();
+		double coordinateY = isZoomReferenceZeroY ? 0.0d : yAxis.getDataCoordinate(event.y);
+		IAxis xAxis = getAxisSet().getXAxis(ID_PRIMARY_X_AXIS);
+
 		trackUndoSelection();
-		boolean isZoomReferenceY0 = getChartSettings().getRangeRestriction().isReferenceZoomZeroY();
-		double coordinateY = isZoomReferenceY0 ? 0.0d : yAxis.getDataCoordinate(event.y);
 		if(event.count > 0) {
-			yAxis.zoomIn(coordinateY);
+			yZoomIn(xAxis, yAxis, coordinateY);
 		} else {
-			if(isZoomReferenceY0) {
-				yAxis.zoomOut();
+			if(isZoomReferenceZeroY) {
+				yZoomOut(xAxis, yAxis);
 			} else {
-				yAxis.zoomOut(coordinateY);
+				yZoomOut(xAxis, yAxis, coordinateY);
 			}
 		}
 		trackRedoSelection();
+	}
+
+	private void xZoomIn(IAxis xAxis, IAxis yAxis, double coordinate) {
+
+		Range rangeX = xAxis.calculateZoomInRange(coordinate);
+		Range rangeY = yAxis.getRange();
+		if(isSeriesInFocus(rangeX, rangeY)) {
+			xAxis.zoomIn(coordinate);
+		}
+	}
+
+	private void xZoomOut(IAxis xAxis, IAxis yAxis) {
+
+		double coordinate = xAxis.getCoordinateCenter();
+		xZoomOut(xAxis, yAxis, coordinate);
+	}
+
+	private void xZoomOut(IAxis xAxis, IAxis yAxis, double coordinate) {
+
+		Range rangeX = xAxis.calculateZoomOutRange(coordinate);
+		Range rangeY = yAxis.getRange();
+		if(isSeriesInFocus(rangeX, rangeY)) {
+			xAxis.zoomOut(coordinate);
+		}
+	}
+
+	private void yZoomIn(IAxis xAxis, IAxis yAxis, double coordinate) {
+
+		Range rangeX = xAxis.getRange();
+		Range rangeY = yAxis.calculateZoomInRange(coordinate);
+		if(isSeriesInFocus(rangeX, rangeY)) {
+			yAxis.zoomIn(coordinate);
+		}
+	}
+
+	private void yZoomOut(IAxis xAxis, IAxis yAxis) {
+
+		double coordinate = yAxis.getCoordinateCenter();
+		yZoomOut(xAxis, yAxis, coordinate);
+	}
+
+	private void yZoomOut(IAxis xAxis, IAxis yAxis, double coordinate) {
+
+		Range rangeX = xAxis.getRange();
+		Range rangeY = yAxis.calculateZoomOutRange(coordinate);
+		if(isSeriesInFocus(rangeX, rangeY)) {
+			yAxis.zoomOut(coordinate);
+		}
 	}
 
 	public String getSelectedseriesId(Event event) {
@@ -1581,6 +1633,20 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			double x2 = xAxis.getDataCoordinate(userSelection.getStopX());
 			double y1 = yAxis.getDataCoordinate(userSelection.getStartY());
 			double y2 = yAxis.getDataCoordinate(userSelection.getStopY());
+			return isSeriesInFocus(x1, x2, y1, y2);
+		} else {
+			return true;
+		}
+	}
+
+	private boolean isSeriesInFocus(Range rangeX, Range rangeY) {
+
+		return isSeriesInFocus(rangeX.lower, rangeX.upper, rangeY.lower, rangeY.upper);
+	}
+
+	private boolean isSeriesInFocus(double x1, double x2, double y1, double y2) {
+
+		if(getChartSettings().isPreventAccidentalZoom()) {
 			/*
 			 * Range Check
 			 */
@@ -1600,8 +1666,12 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 					double x = seriesX[i];
 					if(x >= startX && x <= stopX) {
 						double y = seriesY[i];
-						if(y >= startY && y <= stopY) {
-							return true;
+						if(y == 0) {
+							return false;
+						} else {
+							if(y >= startY && y <= stopY) {
+								return true;
+							}
 						}
 					}
 				}

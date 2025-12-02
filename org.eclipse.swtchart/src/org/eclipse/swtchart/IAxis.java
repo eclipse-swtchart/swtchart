@@ -149,6 +149,13 @@ public interface IAxis {
 	void adjustRange();
 
 	/**
+	 * Returns the current center coordinate of the axis.
+	 * 
+	 * @return double
+	 */
+	double getCoordinateCenter();
+
+	/**
 	 * Zooms in the axis.
 	 */
 	void zoomIn();
@@ -162,6 +169,15 @@ public interface IAxis {
 	void zoomIn(double coordinate);
 
 	/**
+	 * Calculates the zoom in range
+	 * without modifying the chart.
+	 * 
+	 * @param coordinate
+	 * @return {@link Range}
+	 */
+	Range calculateZoomInRange(double coordinate);
+
+	/**
 	 * Zooms out the axis.
 	 */
 	void zoomOut();
@@ -173,6 +189,15 @@ public interface IAxis {
 	 *            the coordinate
 	 */
 	void zoomOut(double coordinate);
+
+	/**
+	 * Calculates the zoom out range
+	 * without modifying the chart.
+	 * 
+	 * @param coordinate
+	 * @return {@link Range}
+	 */
+	Range calculateZoomOutRange(double coordinate);
 
 	/**
 	 * Scrolls up the axis.

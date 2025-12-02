@@ -400,17 +400,33 @@ public class Axis implements IAxis {
 	}
 
 	@Override
+	public double getCoordinateCenter() {
+
+		return (max + min) / 2d;
+	}
+
+	@Override
 	public void zoomIn() {
 
-		zoomIn((max + min) / 2d);
+		zoomIn(getCoordinateCenter());
 	}
 
 	@Override
 	public void zoomIn(double coordinate) {
 
-		if(coordinate < minRange || coordinate > maxRange) {
-			return;
+		Range range = calculateZoomInRange(coordinate);
+		if(range != null) {
+			setRange(range);
 		}
+	}
+
+	@Override
+	public Range calculateZoomInRange(double coordinate) {
+
+		if(coordinate < minRange || coordinate > maxRange) {
+			return null;
+		}
+
 		double lower = min;
 		double upper = max;
 		if(isValidCategoryAxis()) {
@@ -440,21 +456,32 @@ public class Axis implements IAxis {
 		if(upper > maxRange) {
 			upper = maxRange + PADDING_RATIO * (upper - lower);
 		}
-		setRange(new Range(lower, upper));
+
+		return new Range(lower, upper);
 	}
 
 	@Override
 	public void zoomOut() {
 
-		zoomOut((min + max) / 2d);
+		zoomOut(getCoordinateCenter());
 	}
 
 	@Override
 	public void zoomOut(double coordinate) {
 
-		if(coordinate < minRange || coordinate > maxRange) {
-			return;
+		Range range = calculateZoomOutRange(coordinate);
+		if(range != null) {
+			setRange(range);
 		}
+	}
+
+	@Override
+	public Range calculateZoomOutRange(double coordinate) {
+
+		if(coordinate < minRange || coordinate > maxRange) {
+			return null;
+		}
+
 		double lower = min;
 		double upper = max;
 		if(isValidCategoryAxis()) {
@@ -482,7 +509,8 @@ public class Axis implements IAxis {
 		if(upper > maxRange) {
 			upper = maxRange + PADDING_RATIO * (upper - lower);
 		}
-		setRange(new Range(lower, upper));
+
+		return new Range(lower, upper);
 	}
 
 	@Override
