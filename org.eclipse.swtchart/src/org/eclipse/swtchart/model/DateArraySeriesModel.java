@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2023 Lablicate GmbH.
+ * Copyright (c) 2019, 2025 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -8,6 +8,7 @@
  * Contributors:
  * Christoph Läubrich - initial API and implementation
  * Matthias Mailänder - time zone support
+ * Glen Zoerner - fix local date conversion
  *******************************************************************************/
 package org.eclipse.swtchart.model;
 
@@ -50,7 +51,7 @@ public class DateArraySeriesModel extends DoubleArraySeriesModel {
 
 		double[] xSeries = new double[dates.length];
 		for(int i = 0; i < xSeries.length; i++) {
-			xSeries[i] = dates[i].atStartOfDay().toEpochSecond(zoneOffset);
+			xSeries[i] = Date.from(dates[i].atStartOfDay(zoneOffset).toInstant()).getTime();
 		}
 		return xSeries;
 	}
