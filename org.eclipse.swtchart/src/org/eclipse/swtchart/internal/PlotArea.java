@@ -253,6 +253,7 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 		try {
 			image = new Image(getDisplay(), new ImageData(chartSize.x, chartSize.y, 32, new PaletteData(0xFF, 0xFF00, 0xFF0000)));
 			gc = new GC(this);
+			this.print(gc);
 			gc.copyArea(image, 0, 0);
 			imageData = image.getImageData();
 		} finally {
