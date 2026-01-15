@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,6 @@ import org.eclipse.swt.events.MouseMoveListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Control;
@@ -142,11 +141,11 @@ public interface IPlotArea {
 	void setBackgroundText(String text, Font font, Color color, int x, int y);
 
 	/**
-	 * Returns the image data of the plot area.
+	 * Returns the image of the plot area.
 	 * 
-	 * @return {@link ImageData}
+	 * @return {@link Image}
 	 */
-	ImageData getImageData();
+	Image getImage();
 
 	/**
 	 * Returns a point describing the size in points.
