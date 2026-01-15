@@ -161,7 +161,7 @@ public interface IPlotArea {
 
 	/**
 	 * 
-	 * @return the control that represents thsi plot area
+	 * @return the control that represents this plot area
 	 */
 	Control getControl();
 
@@ -180,7 +180,7 @@ public interface IPlotArea {
 	void setToolTipText(String tootlTipText);
 
 	/**
-	 * Register a listener that is notified about mous moves
+	 * Register a listener that is notified about mouse moves
 	 * 
 	 * @param mouseMoveListener
 	 */
