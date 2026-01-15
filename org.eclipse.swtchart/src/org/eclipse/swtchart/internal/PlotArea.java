@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,8 +26,6 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Composite;
@@ -243,19 +241,16 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 	}
 
 	@Override
-	public ImageData getImageData() {
+	public Image getImage() {
 
-		ImageData imageData = null;
 		Point chartSize = getSize();
-		Image image = null;
+		Image image = new Image(getDisplay(), chartSize.x, chartSize.y);
 		GC gc = null;
 
 		try {
-			image = new Image(getDisplay(), new ImageData(chartSize.x, chartSize.y, 32, new PaletteData(0xFF, 0xFF00, 0xFF0000)));
 			gc = new GC(this);
 			this.print(gc);
 			gc.copyArea(image, 0, 0);
-			imageData = image.getImageData();
 		} finally {
 			/*
 			 * Dispose GC
@@ -263,15 +258,9 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 			if(gc != null && !gc.isDisposed()) {
 				gc.dispose();
 			}
-			/*
-			 * Dispose Image
-			 */
-			if(image != null && !image.isDisposed()) {
-				image.dispose();
-			}
 		}
 
-		return imageData;
+		return image;
 	}
 
 	@Override

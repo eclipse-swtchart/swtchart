@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -115,12 +115,12 @@ public class PreferenceSupport {
 
 	public static boolean isPreventAccidentalZoom() {
 
-		boolean bufferedSelection = false;
+		boolean preventAccidentalZoom = false;
 		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 		if(preferenceStore != null) {
-			bufferedSelection = preferenceStore.getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM);
+			preventAccidentalZoom = preferenceStore.getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM);
 		}
-		return bufferedSelection;
+		return preventAccidentalZoom;
 	}
 
 	public static void setPreventAccidentalZoom(boolean selection) {

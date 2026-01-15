@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -49,7 +49,7 @@ public class MouseMoveSelectionEvent extends AbstractHandledEventProcessor imple
 		if(!plotArea.isBuffered()) {
 			if(baseChart.getChartSettings().isBufferSelection()) {
 				baseChart.suspendUpdate(true);
-				Image image = new Image(Display.getDefault(), baseChart.getPlotArea().getImageData());
+				Image image = baseChart.getPlotArea().getImage();
 				ISeriesSet set = baseChart.getSeriesSet();
 				ISeries<?>[] series = set.getSeries();
 				for(ISeries<?> serie : series) {
