@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -750,6 +750,8 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		addPrimaryAxisY(chartSettings);
 		addSecondaryAxesX(chartSettings);
 		addSecondaryAxesY(chartSettings);
+		adjustSecondaryAxisRangeX();
+		adjustSecondaryAxisRangeY();
 		/*
 		 * Range Info
 		 */
@@ -761,6 +763,51 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		updateRangeHintPaintListener();
 		setMenuItems();
 		setEventProcessors();
+	}
+
+	private void adjustSecondaryAxisRangeX() {
+
+		int primaryAxisID = BaseChart.ID_PRIMARY_X_AXIS;
+		IAxisSet axisSet = baseChart.getAxisSet();
+		IAxis axisX = axisSet.getXAxis(primaryAxisID);
+		Range rangeX = axisX.getRange();
+		for(int xAxisId : axisSet.getXAxisIds()) {
+			if(xAxisId != primaryAxisID) {
+				IAxis xAxisSecondary = axisSet.getXAxis(xAxisId);
+				IAxisSettings axisSettings = baseChart.getXAxisSettings(xAxisId);
+				adjustAxisSecondaryRange(xAxisSecondary, axisSettings, rangeX);
+			}
+		}
+	}
+
+	private void adjustSecondaryAxisRangeY() {
+
+		int primaryAxisID = BaseChart.ID_PRIMARY_Y_AXIS;
+		IAxisSet axisSet = baseChart.getAxisSet();
+		IAxis axisY = axisSet.getYAxis(primaryAxisID);
+		Range rangeY = axisY.getRange();
+		for(int yAxisId : axisSet.getYAxisIds()) {
+			if(yAxisId != primaryAxisID) {
+				IAxis yAxisSecondary = axisSet.getYAxis(yAxisId);
+				IAxisSettings axisSettings = baseChart.getYAxisSettings(yAxisId);
+				adjustAxisSecondaryRange(yAxisSecondary, axisSettings, rangeY);
+			}
+		}
+	}
+
+	private void adjustAxisSecondaryRange(IAxis axisSecondary, IAxisSettings axisSettings, Range rangeSource) {
+
+		if(axisSettings instanceof ISecondaryAxisSettings secondaryAxisSettings) {
+			IAxisScaleConverter axisScaleConverter = secondaryAxisSettings.getAxisScaleConverter();
+			double start = IAxis.DEFAULT_MIN;
+			double end = IAxis.DEFAULT_MAX;
+			if(rangeSource.lower != IAxis.DEFAULT_MIN || rangeSource.upper != IAxis.DEFAULT_MAX) {
+				start = axisScaleConverter.convertToSecondaryUnit(rangeSource.lower);
+				end = axisScaleConverter.convertToSecondaryUnit(rangeSource.upper);
+			}
+			Range range = new Range(start, end);
+			axisSecondary.setRange(range);
+		}
 	}
 
 	private boolean isLegendExtendedVisible() {

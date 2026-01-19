@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -20,6 +20,11 @@ import org.eclipse.swt.events.MouseEvent;
  * An axis which is composed of title and tick. Grid is associated with axis.
  */
 public interface IAxis {
+
+	/** the default minimum value of range */
+	double DEFAULT_MIN = 0d;
+	/** the default maximum value of range */
+	double DEFAULT_MAX = 1d;
 
 	/** An axis direction */
 	public enum Direction {
