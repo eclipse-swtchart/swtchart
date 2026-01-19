@@ -29,7 +29,6 @@ import java.util.Stack;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -562,47 +561,51 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		if(userSelection.isActive()) {
 			/*
-			 * Do we need to track the current settings?
-			 */
-			int currentLineStyle = e.gc.getLineStyle();
-			Color currentBackground = e.gc.getBackground();
-			int currentAlpha = e.gc.getAlpha();
-			/*
 			 * Region of interest
 			 */
 			int xMin = Math.min(userSelection.getStartX(), userSelection.getStopX());
 			int xMax = Math.max(userSelection.getStartX(), userSelection.getStopX());
 			int yMin = Math.min(userSelection.getStartY(), userSelection.getStopY());
 			int yMax = Math.max(userSelection.getStartY(), userSelection.getStopY());
+			int x = xMax - xMin;
+			int y = yMax - yMin;
+
 			RangeRestriction rangeRestriction = getRangeRestriction();
 			if(isSelectXY(rangeRestriction)) {
 				/*
 				 * X and Y zoom.
-				 * Draw the rectangle of the user selection.
 				 */
-				e.gc.setLineStyle(SWT.LINE_DOT);
-				e.gc.drawRectangle(xMin, yMin, xMax - xMin, yMax - yMin);
+				paintBorderSelection(e, xMin, yMin, x, y);
+				paintRectangleSelection(e, xMin, yMin, x, y);
 			} else {
 				/*
 				 * X or Y zoom.
-				 * Fill the rectangle of the user selection.
 				 */
-				e.gc.setLineStyle(SWT.LINE_SOLID);
-				e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_RED));
-				e.gc.setAlpha(50);
 				if(rangeRestriction.isRestrictSelectX()) {
-					e.gc.fillRectangle(xMin, 0, (xMax - xMin), e.height);
+					paintRectangleSelection(e, xMin, 0, x, e.height);
 				} else if(rangeRestriction.isRestrictSelectY()) {
-					e.gc.fillRectangle(0, yMin, e.width, (yMax - yMin));
+					paintRectangleSelection(e, 0, yMin, e.width, y);
 				}
 			}
-			/*
-			 * Default settings.
-			 */
-			e.gc.setLineStyle(currentLineStyle);
-			e.gc.setBackground(currentBackground);
-			e.gc.setAlpha(currentAlpha);
 		}
+	}
+
+	private void paintBorderSelection(PaintEvent e, int x, int y, int width, int height) {
+
+		e.gc.setLineWidth(2);
+		e.gc.setLineStyle(SWT.LINE_DOT);
+		e.gc.setAlpha(50);
+		e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_GRAY));
+		e.gc.drawRectangle(x, y, width, height);
+	}
+
+	private void paintRectangleSelection(PaintEvent e, int x, int y, int width, int height) {
+
+		e.gc.setLineWidth(1);
+		e.gc.setLineStyle(SWT.LINE_SOLID);
+		e.gc.setAlpha(50);
+		e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_RED));
+		e.gc.fillRectangle(x, y, width, height);
 	}
 
 	@Override
