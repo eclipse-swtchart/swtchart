@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,6 +29,7 @@ import java.util.Stack;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
@@ -561,10 +562,14 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 
 		if(userSelection.isActive()) {
 			/*
-			 * Draw the rectangle of the user selection.
+			 * Do we need to track the current settings?
 			 */
 			int currentLineStyle = e.gc.getLineStyle();
-			e.gc.setLineStyle(SWT.LINE_DOT);
+			Color currentBackground = e.gc.getBackground();
+			int currentAlpha = e.gc.getAlpha();
+			/*
+			 * Region of interest
+			 */
 			int xMin = Math.min(userSelection.getStartX(), userSelection.getStopX());
 			int xMax = Math.max(userSelection.getStartX(), userSelection.getStopX());
 			int yMin = Math.min(userSelection.getStartY(), userSelection.getStopY());
@@ -573,19 +578,30 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 			if(isSelectXY(rangeRestriction)) {
 				/*
 				 * X and Y zoom.
+				 * Draw the rectangle of the user selection.
 				 */
+				e.gc.setLineStyle(SWT.LINE_DOT);
 				e.gc.drawRectangle(xMin, yMin, xMax - xMin, yMax - yMin);
 			} else {
 				/*
 				 * X or Y zoom.
+				 * Fill the rectangle of the user selection.
 				 */
+				e.gc.setLineStyle(SWT.LINE_SOLID);
+				e.gc.setBackground(e.display.getSystemColor(SWT.COLOR_DARK_RED));
+				e.gc.setAlpha(50);
 				if(rangeRestriction.isRestrictSelectX()) {
-					e.gc.drawLine(xMin, yMin, xMax, yMin);
+					e.gc.fillRectangle(xMin, 0, (xMax - xMin), e.height);
 				} else if(rangeRestriction.isRestrictSelectY()) {
-					e.gc.drawLine(xMin, yMin, xMin, yMax);
+					e.gc.fillRectangle(0, yMin, e.width, (yMax - yMin));
 				}
 			}
+			/*
+			 * Default settings.
+			 */
 			e.gc.setLineStyle(currentLineStyle);
+			e.gc.setBackground(currentBackground);
+			e.gc.setAlpha(currentAlpha);
 		}
 	}
 
