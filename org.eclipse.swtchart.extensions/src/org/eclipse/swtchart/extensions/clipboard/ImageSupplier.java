@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -110,6 +110,7 @@ public class ImageSupplier {
 			 */
 			image = new Image(chart.getDisplay(), chartImageDataProvider);
 			gc = new GC(chart);
+			chart.print(gc);
 			gc.copyArea(image, 0, 0);
 			/*
 			 * Retrieve image data
