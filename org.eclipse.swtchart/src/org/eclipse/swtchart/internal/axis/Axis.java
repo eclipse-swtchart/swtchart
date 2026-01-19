@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -40,10 +40,6 @@ public class Axis implements IAxis {
 
 	/** the margin in pixels */
 	public final static int MARGIN = 5;
-	/** the default minimum value of range */
-	public final static double DEFAULT_MIN = 0d;
-	/** the default maximum value of range */
-	public final static double DEFAULT_MAX = 1d;
 	/** the default minimum value of log scale range */
 	public final static double DEFAULT_LOG_SCALE_MIN = 0.1d;
 	/** the default maximum value of log scale range */
