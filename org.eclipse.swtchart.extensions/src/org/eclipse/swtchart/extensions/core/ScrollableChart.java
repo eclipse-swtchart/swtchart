@@ -805,8 +805,13 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				start = axisScaleConverter.convertToSecondaryUnit(rangeSource.lower);
 				end = axisScaleConverter.convertToSecondaryUnit(rangeSource.upper);
 			}
-			Range range = new Range(start, end);
-			axisSecondary.setRange(range);
+			/*
+			 * Final Range Check
+			 */
+			if(start >= 0 && end > start) {
+				Range range = new Range(start, end);
+				axisSecondary.setRange(range);
+			}
 		}
 	}
 
