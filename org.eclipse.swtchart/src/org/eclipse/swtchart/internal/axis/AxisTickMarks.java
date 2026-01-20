@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2021 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -11,6 +11,7 @@
  * yoshitaka - initial API and implementation
  * Christoph Läubrich - take line width into account when calculate clippings
  * Philip Wenig - option to skip drawing the axis line
+ * Lorenz Gerber - Null check
  *******************************************************************************/
 package org.eclipse.swtchart.internal.axis;
 
@@ -173,6 +174,16 @@ public class AxisTickMarks implements PaintListener {
 
 	@Override
 	public void paintControl(PaintEvent e) {
+
+		if(bounds == null) {
+			chart.getDisplay().asyncExec(() -> {
+				if(!chart.isDisposed()) {
+					chart.layout(true, true);
+					chart.redraw();
+				}
+			});
+			return;
+		}
 
 		if(bounds.width > 0 && bounds.height > 0) {
 			ArrayList<Integer> tickLabelPositions = axis.getTick().getAxisTickLabels().getTickLabelPositions();
