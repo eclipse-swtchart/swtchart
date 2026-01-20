@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,6 +13,7 @@
  * Frank Buloup - Internationalization
  * Philip Wenig - x/y axis position marker
  * Sebastien Darche - Implement arbitrary base log scale
+ * Lorenz Gerber - Null check
  *******************************************************************************/
 package org.eclipse.swtchart.internal.axis;
 
@@ -726,6 +727,16 @@ public class AxisTickLabels implements PaintListener {
 	public void paintControl(PaintEvent e) {
 
 		if(!axis.getTick().isVisible()) {
+			return;
+		}
+
+		if(bounds == null) {
+			chart.getDisplay().asyncExec(() -> {
+				if(!chart.isDisposed()) {
+					chart.layout(true, true);
+					chart.redraw();
+				}
+			});
 			return;
 		}
 

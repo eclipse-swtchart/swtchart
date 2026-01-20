@@ -1216,46 +1216,98 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private void addSecondaryAxesX(IChartSettings chartSettings) {
 
 		IAxisSet axisSet = baseChart.getAxisSet();
-		for(int id : axisSet.getXAxisIds()) {
+
+		List<ISecondaryAxisSettings> newSettings = chartSettings.getSecondaryAxisSettingsListX();
+		int[] existingIds = axisSet.getXAxisIds();
+
+		// Count existing secondary axes (exclude primary)
+		int existingSecondaryCount = 0;
+		for(int id : existingIds) {
 			if(id != BaseChart.ID_PRIMARY_X_AXIS) {
-				axisSet.deleteXAxis(id);
+				existingSecondaryCount++;
 			}
 		}
-		/*
-		 * Remove all items except the primary axis settings.
-		 */
-		baseChart.removeXAxisSettings();
-		/*
-		 * Add the axis settings.
-		 */
-		for(ISecondaryAxisSettings secondaryAxisSettings : chartSettings.getSecondaryAxisSettingsListX()) {
-			int xAxisId = axisSet.createXAxis();
-			IAxis xAxisSecondary = axisSet.getXAxis(xAxisId);
-			setAxisSettings(xAxisSecondary, secondaryAxisSettings);
-			baseChart.putXAxisSettings(xAxisId, secondaryAxisSettings);
+
+		// Only recreate if the count has changed
+		if(existingSecondaryCount != newSettings.size()) {
+			// Delete all secondary axes
+			for(int id : existingIds) {
+				if(id != BaseChart.ID_PRIMARY_X_AXIS) {
+					axisSet.deleteXAxis(id);
+				}
+			}
+
+			// Remove all secondary axis settings
+			baseChart.removeXAxisSettings();
+
+			// Create new secondary axes
+			for(ISecondaryAxisSettings secondaryAxisSettings : newSettings) {
+				int xAxisId = axisSet.createXAxis();
+				IAxis xAxisSecondary = axisSet.getXAxis(xAxisId);
+				setAxisSettings(xAxisSecondary, secondaryAxisSettings);
+				baseChart.putXAxisSettings(xAxisId, secondaryAxisSettings);
+			}
+		} else {
+			// Just update existing secondary axes settings
+			int index = 0;
+			for(int id : existingIds) {
+				if(id != BaseChart.ID_PRIMARY_X_AXIS && index < newSettings.size()) {
+					IAxis xAxisSecondary = axisSet.getXAxis(id);
+					ISecondaryAxisSettings secondaryAxisSettings = newSettings.get(index);
+					setAxisSettings(xAxisSecondary, secondaryAxisSettings);
+					baseChart.putXAxisSettings(id, secondaryAxisSettings);
+					index++;
+				}
+			}
 		}
 	}
 
 	private void addSecondaryAxesY(IChartSettings chartSettings) {
 
 		IAxisSet axisSet = baseChart.getAxisSet();
-		for(int id : axisSet.getYAxisIds()) {
+
+		List<ISecondaryAxisSettings> newSettings = chartSettings.getSecondaryAxisSettingsListY();
+		int[] existingIds = axisSet.getYAxisIds();
+
+		// Count existing secondary axes (exclude primary)
+		int existingSecondaryCount = 0;
+		for(int id : existingIds) {
 			if(id != BaseChart.ID_PRIMARY_Y_AXIS) {
-				axisSet.deleteYAxis(id);
+				existingSecondaryCount++;
 			}
 		}
-		/*
-		 * Remove all items except the primary axis settings.
-		 */
-		baseChart.removeYAxisSettings();
-		/*
-		 * Add the axis settings.
-		 */
-		for(ISecondaryAxisSettings secondaryAxisSettings : chartSettings.getSecondaryAxisSettingsListY()) {
-			int yAxisId = axisSet.createYAxis();
-			IAxis yAxisSecondary = axisSet.getYAxis(yAxisId);
-			setAxisSettings(yAxisSecondary, secondaryAxisSettings);
-			baseChart.putYAxisSettings(yAxisId, secondaryAxisSettings);
+
+		// Only recreate if the count has changed
+		if(existingSecondaryCount != newSettings.size()) {
+			// Delete all secondary axes
+			for(int id : existingIds) {
+				if(id != BaseChart.ID_PRIMARY_Y_AXIS) {
+					axisSet.deleteYAxis(id);
+				}
+			}
+
+			// Remove all secondary axis settings
+			baseChart.removeYAxisSettings();
+
+			// Create new secondary axes
+			for(ISecondaryAxisSettings secondaryAxisSettings : newSettings) {
+				int yAxisId = axisSet.createYAxis();
+				IAxis yAxisSecondary = axisSet.getYAxis(yAxisId);
+				setAxisSettings(yAxisSecondary, secondaryAxisSettings);
+				baseChart.putYAxisSettings(yAxisId, secondaryAxisSettings);
+			}
+		} else {
+			// Just update existing secondary axes settings
+			int index = 0;
+			for(int id : existingIds) {
+				if(id != BaseChart.ID_PRIMARY_Y_AXIS && index < newSettings.size()) {
+					IAxis yAxisSecondary = axisSet.getYAxis(id);
+					ISecondaryAxisSettings secondaryAxisSettings = newSettings.get(index);
+					setAxisSettings(yAxisSecondary, secondaryAxisSettings);
+					baseChart.putYAxisSettings(id, secondaryAxisSettings);
+					index++;
+				}
+			}
 		}
 	}
 
