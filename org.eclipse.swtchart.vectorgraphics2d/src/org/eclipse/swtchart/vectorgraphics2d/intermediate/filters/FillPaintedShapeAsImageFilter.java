@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,8 +41,8 @@ public class FillPaintedShapeAsImageFilter extends StreamingFilter {
 	public Command<?> next() {
 
 		Command<?> nextCommand = super.next();
-		if(nextCommand instanceof SetPaintCommand) {
-			lastSetPaintCommand = (SetPaintCommand)nextCommand;
+		if(nextCommand instanceof SetPaintCommand setPaintCommand) {
+			lastSetPaintCommand = setPaintCommand;
 		} else if(nextCommand instanceof DisposeCommand) {
 			lastSetPaintCommand = null;
 		}
@@ -73,8 +73,7 @@ public class FillPaintedShapeAsImageFilter extends StreamingFilter {
 	@Override
 	protected List<Command<?>> filter(Command<?> command) {
 
-		if(lastSetPaintCommand != null && command instanceof FillShapeCommand) {
-			FillShapeCommand fillShapeCommand = (FillShapeCommand)command;
+		if(lastSetPaintCommand != null && command instanceof FillShapeCommand fillShapeCommand) {
 			DrawImageCommand drawImageCommand = getDrawImageCommand(fillShapeCommand, lastSetPaintCommand);
 			return Collections.singletonList(drawImageCommand);
 		}

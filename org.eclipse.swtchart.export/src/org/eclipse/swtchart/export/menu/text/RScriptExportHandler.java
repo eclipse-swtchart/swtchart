@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -105,8 +105,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 					 */
 					IAxisSettings axisSettingsX = baseChart.getXAxisSettings(indexAxisX);
 					IAxisScaleConverter axisScaleConverterX = null;
-					if(axisSettingsX instanceof ISecondaryAxisSettings) {
-						ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsX;
+					if(axisSettingsX instanceof ISecondaryAxisSettings secondaryAxisSettings) {
 						axisScaleConverterX = secondaryAxisSettings.getAxisScaleConverter();
 					}
 					/*
@@ -114,8 +113,7 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 					 */
 					IAxisSettings axisSettingsY = baseChart.getYAxisSettings(indexAxisY);
 					IAxisScaleConverter axisScaleConverterY = null;
-					if(axisSettingsY instanceof ISecondaryAxisSettings) {
-						ISecondaryAxisSettings secondaryAxisSettings = (ISecondaryAxisSettings)axisSettingsY;
+					if(axisSettingsY instanceof ISecondaryAxisSettings secondaryAxisSettings) {
 						axisScaleConverterY = secondaryAxisSettings.getAxisScaleConverter();
 					}
 					/*

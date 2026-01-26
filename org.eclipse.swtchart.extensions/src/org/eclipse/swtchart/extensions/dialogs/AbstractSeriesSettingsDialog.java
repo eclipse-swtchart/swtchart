@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2025 Lablicate GmbH.
+ * Copyright (c) 2022, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -146,8 +146,8 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 			@Override
 			public String getText(Object element) {
 
-				if(element instanceof IEnumLabel) {
-					return ((IEnumLabel)element).label();
+				if(element instanceof IEnumLabel enumLabel) {
+					return enumLabel.label();
 				}
 
 				return null;
@@ -268,8 +268,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		ComboViewer comboViewer = createComboViewer(parent, title, SettingsStatus.values(), SettingsStatus.NORMAL, getGridData(GridData.FILL_HORIZONTAL, 2), object -> {
 
 			if(settingsSelected != null) {
-				if(object instanceof SettingsStatus) {
-					SettingsStatus settingsStatus = (SettingsStatus)object;
+				if(object instanceof SettingsStatus settingsStatus) {
 					if(SettingsStatus.HIGHLIGHT.equals(settingsStatus)) {
 						settingsSelected = settingsHighlight;
 					} else {

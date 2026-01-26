@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -151,9 +151,7 @@ public class VectorGraphics2D extends Graphics2D implements Cloneable {
 
 	private static Shape intersectShapes(Shape s1, Shape s2) {
 
-		if(s1 instanceof Rectangle2D && s2 instanceof Rectangle2D) {
-			Rectangle2D r1 = (Rectangle2D)s1;
-			Rectangle2D r2 = (Rectangle2D)s2;
+		if(s1 instanceof Rectangle2D r1 && s2 instanceof Rectangle2D r2) {
 			double x1 = Math.max(r1.getMinX(), r2.getMinX());
 			double y1 = Math.max(r1.getMinY(), r2.getMinY());
 			double x2 = Math.min(r1.getMaxX(), r2.getMaxX());
@@ -384,8 +382,8 @@ public class VectorGraphics2D extends Graphics2D implements Cloneable {
 		if(isDisposed() || paint == null) {
 			return;
 		}
-		if(paint instanceof Color) {
-			setColor((Color)paint);
+		if(paint instanceof Color color) {
+			setColor(color);
 			return;
 		}
 		if(getPaint().equals(paint)) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -43,9 +43,7 @@ public class MappingsComparator extends ViewerComparator {
 	public int compare(Viewer viewer, Object e1, Object e2) {
 
 		int sortOrder = 0;
-		if(e1 instanceof MappedSeriesSettings && e2 instanceof MappedSeriesSettings) {
-			MappedSeriesSettings mappedSeriesSettings1 = (MappedSeriesSettings)e1;
-			MappedSeriesSettings mappedSeriesSettings2 = (MappedSeriesSettings)e2;
+		if(e1 instanceof MappedSeriesSettings mappedSeriesSettings1 && e2 instanceof MappedSeriesSettings mappedSeriesSettings2) {
 
 			switch(propertyIndex) {
 				case 0:

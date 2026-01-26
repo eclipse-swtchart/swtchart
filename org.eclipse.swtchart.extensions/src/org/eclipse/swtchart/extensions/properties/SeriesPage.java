@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -144,15 +144,15 @@ public class SeriesPage extends AbstractSelectorPage {
 		for(int i = 0; i < series.length; i++) {
 			visibleStates[i] = series[i].isVisible();
 			stackedStates[i] = series[i].isStackEnabled();
-			if(series[i] instanceof ILineSeries) {
-				lineColors[i] = ((ILineSeries<?>)series[i]).getLineColor().getRGB();
-				lineStyles[i] = ((ILineSeries<?>)series[i]).getLineStyle();
-				symbolColors[i] = ((ILineSeries<?>)series[i]).getSymbolColor().getRGB();
-				symbolTypes[i] = ((ILineSeries<?>)series[i]).getSymbolType();
-				symbolSizes[i] = ((ILineSeries<?>)series[i]).getSymbolSize();
-			} else if(series[i] instanceof IBarSeries) {
-				barColors[i] = ((IBarSeries<?>)series[i]).getBarColor().getRGB();
-				paddings[i] = ((IBarSeries<?>)series[i]).getBarPadding();
+			if(series[i] instanceof ILineSeries lineSeries) {
+				lineColors[i] = lineSeries.getLineColor().getRGB();
+				lineStyles[i] = lineSeries.getLineStyle();
+				symbolColors[i] = lineSeries.getSymbolColor().getRGB();
+				symbolTypes[i] = lineSeries.getSymbolType();
+				symbolSizes[i] = lineSeries.getSymbolSize();
+			} else if(series[i] instanceof IBarSeries barSeries) {
+				barColors[i] = barSeries.getBarColor().getRGB();
+				paddings[i] = barSeries.getBarPadding();
 			}
 			xAxisIds[i] = series[i].getXAxisId();
 			yAxisIds[i] = series[i].getYAxisId();
@@ -391,8 +391,7 @@ public class SeriesPage extends AbstractSelectorPage {
 
 		for(int i = 0; i < series.length; i++) {
 			series[i].setVisible(visibleStates[i]);
-			if(series[i] instanceof ILineSeries<?>) {
-				ILineSeries<?> lineSeries = (ILineSeries<?>)series[i];
+			if(series[i] instanceof ILineSeries<?> lineSeries) {
 				Color lineColor = ResourceSupport.getColor(lineColors[i]);
 				Color symbolColor = ResourceSupport.getColor(symbolColors[i]);
 				lineSeries.setLineColor(lineColor);
@@ -400,8 +399,7 @@ public class SeriesPage extends AbstractSelectorPage {
 				lineSeries.setLineStyle(lineStyles[i]);
 				lineSeries.setSymbolType(symbolTypes[i]);
 				lineSeries.setSymbolSize(symbolSizes[i]);
-			} else if(series[i] instanceof IBarSeries<?>) {
-				IBarSeries<?> barSeries = (IBarSeries<?>)series[i];
+			} else if(series[i] instanceof IBarSeries<?> barSeries) {
 				Color barColor = ResourceSupport.getColor(barColors[i]);
 				barSeries.setBarColor(barColor);
 				barSeries.setBarPadding(paddings[i]);

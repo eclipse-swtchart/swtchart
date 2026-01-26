@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -376,8 +376,7 @@ public abstract class AbstractExtendedChart extends AbstractHandledChart impleme
 						Node node = circularSeries.getNodeById(label);
 						Color color = colors[i] != null ? colors[i] : Display.getDefault().getSystemColor(SWT.COLOR_RED);
 						ISeriesSettings seriesSettingsCopy = MappingsSupport.copySettings(circularSeriesSettings);
-						if(seriesSettingsCopy instanceof ICircularSeriesSettings) {
-							ICircularSeriesSettings circularSeriesSettingsCopy = (ICircularSeriesSettings)seriesSettingsCopy;
+						if(seriesSettingsCopy instanceof ICircularSeriesSettings circularSeriesSettingsCopy) {
 							circularSeriesSettingsCopy.setVisible(node.isVisible());
 							circularSeriesSettingsCopy.setVisibleInLegend(node.isVisibleInLegend());
 							circularSeriesSettingsCopy.setDescription(node.getDescription());

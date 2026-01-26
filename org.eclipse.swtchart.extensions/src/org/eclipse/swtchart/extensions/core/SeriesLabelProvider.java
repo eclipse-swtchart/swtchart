@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -135,8 +135,7 @@ public class SeriesLabelProvider extends ColumnLabelProvider implements ITableLa
 	public String getColumnText(Object element, int columnIndex) {
 
 		String text = ""; //$NON-NLS-1$
-		if(element instanceof ISeries) {
-			ISeries<?> series = (ISeries<?>)element;
+		if(element instanceof ISeries series) {
 			switch(columnIndex) {
 				case 0:
 					text = series.getId();

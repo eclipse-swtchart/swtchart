@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -295,8 +295,8 @@ public class BarSeries<T> extends Series<T> implements IBarSeries<T> {
 	protected void setCompressor() {
 
 		CartesianSeriesModel<T> dataModel = getDataModel();
-		if(dataModel instanceof DoubleArraySeriesModel) {
-			if(((DoubleArraySeriesModel)dataModel).isXMonotoneIncreasing()) {
+		if(dataModel instanceof DoubleArraySeriesModel doubleArraySeriesModel) {
+			if(doubleArraySeriesModel.isXMonotoneIncreasing()) {
 				compressor = new CompressBarSeries();
 				return;
 			}

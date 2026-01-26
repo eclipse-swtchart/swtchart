@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -49,7 +49,7 @@ public abstract class VectorHints {
 		@Override
 		public boolean isCompatibleValue(Object val) {
 
-			return val instanceof Value && ((Value)val).isCompatibleKey(this);
+			return val instanceof Value v && v.isCompatibleKey(this);
 		}
 
 		@Override

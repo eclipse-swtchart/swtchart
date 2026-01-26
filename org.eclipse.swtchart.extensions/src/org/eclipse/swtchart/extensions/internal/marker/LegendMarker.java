@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,7 +24,6 @@ import org.eclipse.swtchart.extensions.core.IAxisSettings;
 import org.eclipse.swtchart.extensions.core.IExtendedChart;
 import org.eclipse.swtchart.extensions.marker.AbstractPositionPaintListener;
 import org.eclipse.swtchart.extensions.marker.IPositionPaintListener;
-import org.eclipse.swtchart.internal.series.CircularSeries;
 import org.eclipse.swtchart.model.Node;
 
 public class LegendMarker extends AbstractPositionPaintListener implements IPositionPaintListener {
@@ -60,9 +59,9 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 			// this is for circular charts
 			boolean isCircularChart = false;
 			for(ISeries<?> series : baseChart.getSeriesSet().getSeries()) {
-				if(series instanceof ICircularSeries) {
+				if(series instanceof ICircularSeries circularSeries) {
 					isCircularChart = true;
-					drawNodes(primaryValueX, primaryValueY, (CircularSeries)series);
+					drawNodes(primaryValueX, primaryValueY, circularSeries);
 				}
 			}
 			// for Cartesian charts
@@ -74,7 +73,7 @@ public class LegendMarker extends AbstractPositionPaintListener implements IPosi
 		}
 	}
 
-	private void drawNodes(double primaryValueX, double primaryValueY, CircularSeries series) {
+	private void drawNodes(double primaryValueX, double primaryValueY, ICircularSeries<?> series) {
 
 		String id = "---";
 		String value = "---";

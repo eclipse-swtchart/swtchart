@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -82,8 +82,7 @@ public class InteractiveChart extends Chart implements PaintListener {
 
 		selection = new SelectionRectangle();
 		IPlotArea area = getPlotArea();
-		if(area instanceof Control) {
-			Control plot = (Control)area;
+		if(area instanceof Control plot) {
 			plot.addListener(SWT.Resize, this);
 			plot.addListener(SWT.MouseMove, this);
 			plot.addListener(SWT.MouseDown, this);
@@ -360,10 +359,9 @@ public class InteractiveChart extends Chart implements PaintListener {
 	 */
 	private void handleSelectionEvent(Event event) {
 
-		if(!(event.widget instanceof MenuItem)) {
+		if(!(event.widget instanceof MenuItem menuItem)) {
 			return;
 		}
-		MenuItem menuItem = (MenuItem)event.widget;
 		if(menuItem.getText().equals(ChartMenuMessages.ADJUST_AXIS_RANGE)) {
 			getAxisSet().adjustRange();
 		} else if(menuItem.getText().equals(ChartMenuMessages.ADJUST_X_AXIS_RANGE)) {

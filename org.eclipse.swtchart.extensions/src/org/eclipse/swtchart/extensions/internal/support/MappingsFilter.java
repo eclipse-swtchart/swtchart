@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,8 +34,7 @@ public class MappingsFilter extends ViewerFilter {
 			return true;
 		}
 
-		if(element instanceof MappedSeriesSettings) {
-			MappedSeriesSettings mappedSeriesSettings = (MappedSeriesSettings)element;
+		if(element instanceof MappedSeriesSettings mappedSeriesSettings) {
 			String mappingsType = mappedSeriesSettings.getMappingsType().label();
 			String identifier = mappedSeriesSettings.getIdentifier();
 			String description = mappedSeriesSettings.getDescription();

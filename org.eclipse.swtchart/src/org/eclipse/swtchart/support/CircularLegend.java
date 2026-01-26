@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -262,9 +262,9 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 				if(!series.isVisibleInLegend()) {
 					continue;
 				}
-				if(series instanceof ICircularSeries) {
-					if(((ICircularSeries<?>)series).getLabels() != null) {
-						String[] labels = ((ICircularSeries<?>)series).getLabels();
+				if(series instanceof ICircularSeries circularSeries) {
+					if(circularSeries.getLabels() != null) {
+						String[] labels = circularSeries.getLabels();
 						for(int i = 0; i != labels.length; i++) {
 							int textWidth = Util.getExtentInGC(getFont(), labels[i]).x;
 							int cellWidth = textWidth + SYMBOL_WIDTH + MARGIN * 3;
@@ -291,9 +291,9 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 				if(!series.isVisibleInLegend()) {
 					continue;
 				}
-				if(series instanceof ICircularSeries) {
-					if(((ICircularSeries<?>)series).getLabels() != null) {
-						String[] labels = ((ICircularSeries<?>)series).getLabels();
+				if(series instanceof ICircularSeries circularSeries) {
+					if(circularSeries.getLabels() != null) {
+						String[] labels = circularSeries.getLabels();
 						for(int i = 0; i != labels.length; i++) {
 							int textWidth = Util.getExtentInGC(getFont(), labels[i]).x;
 							int cellWidth = textWidth + SYMBOL_WIDTH + MARGIN * 3;
@@ -371,8 +371,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 				continue;
 			}
 
-			if(seriesArray[i] instanceof ICircularSeries) {
-				ICircularSeries<?> pieSeries = (ICircularSeries<?>)seriesArray[i];
+			if(seriesArray[i] instanceof ICircularSeries pieSeries) {
 				String[] labels = pieSeries.getLabels();
 				Color[] color = pieSeries.getColors();
 				for(int j = 0; j != labels.length; j++) {

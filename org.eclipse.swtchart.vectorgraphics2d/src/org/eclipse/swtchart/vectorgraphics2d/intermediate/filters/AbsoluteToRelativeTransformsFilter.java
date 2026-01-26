@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,8 +41,7 @@ public class AbsoluteToRelativeTransformsFilter extends StreamingFilter {
 	public Command<?> next() {
 
 		Command<?> nextCommand = super.next();
-		if(nextCommand instanceof AffineTransformCommand) {
-			AffineTransformCommand affineTransformCommand = (AffineTransformCommand)nextCommand;
+		if(nextCommand instanceof AffineTransformCommand affineTransformCommand) {
 			getCurrentTransform().concatenate(affineTransformCommand.getValue());
 		} else if(nextCommand instanceof CreateCommand) {
 			AffineTransform newTransform = transforms.isEmpty() ? new AffineTransform() : new AffineTransform(getCurrentTransform());
@@ -56,8 +55,7 @@ public class AbsoluteToRelativeTransformsFilter extends StreamingFilter {
 	@Override
 	protected List<Command<?>> filter(Command<?> command) {
 
-		if(command instanceof SetTransformCommand) {
-			SetTransformCommand setTransformCommand = (SetTransformCommand)command;
+		if(command instanceof SetTransformCommand setTransformCommand) {
 			AffineTransform absoluteTransform = setTransformCommand.getValue();
 			AffineTransform relativeTransform = new AffineTransform();
 			try {

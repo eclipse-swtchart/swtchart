@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2023 Lablicate GmbH.
+ * Copyright (c) 2021, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,10 +22,10 @@ public class SeriesContentProvider implements IStructuredContentProvider {
 	@Override
 	public Object[] getElements(Object input) {
 
-		if(input instanceof ISeriesSet) {
-			return ((ISeriesSet)input).getSeries();
-		} else if(input instanceof List<?>) {
-			return ((List<?>)input).toArray();
+		if(input instanceof ISeriesSet seriesSet) {
+			return seriesSet.getSeries();
+		} else if(input instanceof List<?> list) {
+			return list.toArray();
 		} else {
 			return null;
 		}

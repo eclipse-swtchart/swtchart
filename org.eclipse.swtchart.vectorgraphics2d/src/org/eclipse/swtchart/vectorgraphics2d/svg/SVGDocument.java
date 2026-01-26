@@ -237,32 +237,26 @@ class SVGDocument extends SizedDocument {
 
 	public void handle(Command<?> command) {
 
-		if(command instanceof Group) {
-			Group c = (Group)command;
+		if(command instanceof Group c) {
 			applyStateCommands(c.getValue());
 			if(containsGroupCommand(c.getValue())) {
 				newGroup();
 			}
-		} else if(command instanceof DrawImageCommand) {
-			DrawImageCommand c = (DrawImageCommand)command;
+		} else if(command instanceof DrawImageCommand c) {
 			Element e = getElement(c.getValue(), c.getX(), c.getY(), c.getWidth(), c.getHeight());
 			addToGroup(e);
-		} else if(command instanceof DrawShapeCommand) {
-			DrawShapeCommand c = (DrawShapeCommand)command;
+		} else if(command instanceof DrawShapeCommand c) {
 			Element e = getElement(c.getValue());
 			e.setAttribute("style", getStyle(false));
 			addToGroup(e);
-		} else if(command instanceof DrawStringCommand) {
-			DrawStringCommand c = (DrawStringCommand)command;
+		} else if(command instanceof DrawStringCommand c) {
 			Element e = getElement(c.getValue(), c.getX(), c.getY());
 			e.setAttribute("style", getStyle(getCurrentState().getFont()));
 			addToGroup(e);
-		} else if(command instanceof FillShapeCommand) {
-			FillShapeCommand c = (FillShapeCommand)command;
+		} else if(command instanceof FillShapeCommand c) {
 			Shape shape = c.getValue();
 			Element e = getElement(shape);
-			if(shape instanceof Path2D) {
-				Path2D path = (Path2D)shape;
+			if(shape instanceof Path2D path) {
 				e.setAttribute("style", getStyle(true, path.getWindingRule() == Path2D.WIND_NON_ZERO));
 			} else {
 				e.setAttribute("style", getStyle(true));
@@ -275,38 +269,28 @@ class SVGDocument extends SizedDocument {
 
 		for(Command<?> command : commands) {
 			GraphicsState state = getCurrentState();
-			if(command instanceof SetBackgroundCommand) {
-				SetBackgroundCommand c = (SetBackgroundCommand)command;
+			if(command instanceof SetBackgroundCommand c) {
 				state.setBackground(c.getValue());
-			} else if(command instanceof SetClipCommand) {
-				SetClipCommand c = (SetClipCommand)command;
+			} else if(command instanceof SetClipCommand c) {
 				state.setClip(c.getValue());
-			} else if(command instanceof SetColorCommand) {
-				SetColorCommand c = (SetColorCommand)command;
+			} else if(command instanceof SetColorCommand c) {
 				state.setColor(c.getValue());
-			} else if(command instanceof SetCompositeCommand) {
-				SetCompositeCommand c = (SetCompositeCommand)command;
+			} else if(command instanceof SetCompositeCommand c) {
 				state.setComposite(c.getValue());
-			} else if(command instanceof SetFontCommand) {
-				SetFontCommand c = (SetFontCommand)command;
+			} else if(command instanceof SetFontCommand c) {
 				state.setFont(c.getValue());
-			} else if(command instanceof SetPaintCommand) {
-				SetPaintCommand c = (SetPaintCommand)command;
+			} else if(command instanceof SetPaintCommand c) {
 				state.setPaint(c.getValue());
-			} else if(command instanceof SetStrokeCommand) {
-				SetStrokeCommand c = (SetStrokeCommand)command;
+			} else if(command instanceof SetStrokeCommand c) {
 				state.setStroke(c.getValue());
-			} else if(command instanceof SetTransformCommand) {
-				SetTransformCommand c = (SetTransformCommand)command;
+			} else if(command instanceof SetTransformCommand c) {
 				state.setTransform(c.getValue());
-			} else if(command instanceof AffineTransformCommand) {
-				AffineTransformCommand c = (AffineTransformCommand)command;
+			} else if(command instanceof AffineTransformCommand c) {
 				AffineTransform stateTransform = state.getTransform();
 				AffineTransform transformToBeApplied = c.getValue();
 				stateTransform.concatenate(transformToBeApplied);
 				state.setTransform(stateTransform);
-			} else if(command instanceof SetHintCommand) {
-				SetHintCommand c = (SetHintCommand)command;
+			} else if(command instanceof SetHintCommand c) {
 				state.getHints().put(c.getKey(), c.getValue());
 			} else if(command instanceof CreateCommand) {
 				try {
@@ -359,8 +343,7 @@ class SVGDocument extends SizedDocument {
 				appendStyle(style, "stroke-opacity", opacity);
 			}
 			Stroke stroke = getCurrentState().getStroke();
-			if(stroke instanceof BasicStroke) {
-				BasicStroke bs = (BasicStroke)stroke;
+			if(stroke instanceof BasicStroke bs) {
 				if(bs.getLineWidth() != 1f) {
 					appendStyle(style, "stroke-width", bs.getLineWidth());
 				}
@@ -506,22 +489,19 @@ class SVGDocument extends SizedDocument {
 	private Element getElement(Shape shape) {
 
 		Element elem;
-		if(shape instanceof Line2D) {
-			Line2D s = (Line2D)shape;
+		if(shape instanceof Line2D s) {
 			elem = doc.createElement("line");
 			elem.setAttribute("x1", DataUtils.format(s.getX1()));
 			elem.setAttribute("y1", DataUtils.format(s.getY1()));
 			elem.setAttribute("x2", DataUtils.format(s.getX2()));
 			elem.setAttribute("y2", DataUtils.format(s.getY2()));
-		} else if(shape instanceof Rectangle2D) {
-			Rectangle2D s = (Rectangle2D)shape;
+		} else if(shape instanceof Rectangle2D s) {
 			elem = doc.createElement("rect");
 			elem.setAttribute("x", DataUtils.format(s.getX()));
 			elem.setAttribute("y", DataUtils.format(s.getY()));
 			elem.setAttribute("width", DataUtils.format(s.getWidth()));
 			elem.setAttribute("height", DataUtils.format(s.getHeight()));
-		} else if(shape instanceof RoundRectangle2D) {
-			RoundRectangle2D s = (RoundRectangle2D)shape;
+		} else if(shape instanceof RoundRectangle2D s) {
 			elem = doc.createElement("rect");
 			elem.setAttribute("x", DataUtils.format(s.getX()));
 			elem.setAttribute("y", DataUtils.format(s.getY()));
@@ -529,8 +509,7 @@ class SVGDocument extends SizedDocument {
 			elem.setAttribute("height", DataUtils.format(s.getHeight()));
 			elem.setAttribute("rx", DataUtils.format(s.getArcWidth() / 2.0));
 			elem.setAttribute("ry", DataUtils.format(s.getArcHeight() / 2.0));
-		} else if(shape instanceof Ellipse2D) {
-			Ellipse2D s = (Ellipse2D)shape;
+		} else if(shape instanceof Ellipse2D s) {
 			elem = doc.createElement("ellipse");
 			elem.setAttribute("cx", DataUtils.format(s.getCenterX()));
 			elem.setAttribute("cy", DataUtils.format(s.getCenterY()));

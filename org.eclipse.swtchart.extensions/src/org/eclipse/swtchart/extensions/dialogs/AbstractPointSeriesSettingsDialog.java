@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2025 Lablicate GmbH.
+ * Copyright (c) 2022, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -65,8 +65,8 @@ public abstract class AbstractPointSeriesSettingsDialog<T extends IPointSeriesSe
 
 			IPointSeriesSettings settings = getSettings();
 			if(settings != null) {
-				if(object instanceof PlotSymbolType) {
-					settings.setSymbolType((PlotSymbolType)object);
+				if(object instanceof PlotSymbolType plotSymbolType) {
+					settings.setSymbolType(plotSymbolType);
 				}
 			}
 		});

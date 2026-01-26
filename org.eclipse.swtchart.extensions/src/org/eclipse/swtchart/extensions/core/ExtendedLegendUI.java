@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -402,8 +402,7 @@ public class ExtendedLegendUI extends Composite {
 					Iterator<?> iterator = seriesListUI.getStructuredSelection().iterator();
 					while(iterator.hasNext()) {
 						Object object = iterator.next();
-						if(object instanceof ISeries) {
-							ISeries<?> series = (ISeries<?>)object;
+						if(object instanceof ISeries series) {
 							builder.append(series.getId());
 							builder.append(TextClipboardSupport.LINE_DELIMITER);
 						}
@@ -493,8 +492,8 @@ public class ExtendedLegendUI extends Composite {
 		if(seriesSet != null) {
 			if(seriesSet.getSeries().length > 0) {
 				ISeries<?> series = seriesSet.getSeries()[0];
-				if(series instanceof ICircularSeries<?>) {
-					circularSeries = (ICircularSeries<?>)series;
+				if(series instanceof ICircularSeries<?> s) {
+					circularSeries = s;
 				}
 			}
 		}

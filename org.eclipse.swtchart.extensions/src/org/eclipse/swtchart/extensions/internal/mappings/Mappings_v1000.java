@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2025 Lablicate GmbH.
+ * Copyright (c) 2021, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -109,14 +109,14 @@ public class Mappings_v1000 {
 		values.add(seriesSettings.isVisibleInLegend());
 		values.add(ResourceSupport.getColor(SeriesLabelProvider.getColor(seriesSettings)));
 
-		if(seriesSettings instanceof IBarSeriesSettings) {
-			exportBarSeriesSetting(values, (IBarSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof ICircularSeriesSettings) {
-			exportCircularSeriesSetting(values, (ICircularSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof ILineSeriesSettings) {
-			exportLineSeriesSetting(values, (ILineSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof IScatterSeriesSettings) {
-			exportScatterSeriesSetting(values, (IScatterSeriesSettings)seriesSettings);
+		if(seriesSettings instanceof IBarSeriesSettings barSeriesSettings) {
+			exportBarSeriesSetting(values, barSeriesSettings);
+		} else if(seriesSettings instanceof ICircularSeriesSettings circularSeriesSettings) {
+			exportCircularSeriesSetting(values, circularSeriesSettings);
+		} else if(seriesSettings instanceof ILineSeriesSettings lineSeriesSettings) {
+			exportLineSeriesSetting(values, lineSeriesSettings);
+		} else if(seriesSettings instanceof IScatterSeriesSettings scatterSeriesSettings) {
+			exportScatterSeriesSetting(values, scatterSeriesSettings);
 		}
 	}
 
@@ -129,14 +129,14 @@ public class Mappings_v1000 {
 			SeriesLabelProvider.setColor(seriesSettings, ResourceSupport.getColor(values[index++]));
 		}
 
-		if(seriesSettings instanceof IBarSeriesSettings) {
-			index = importBarSeriesSetting(values, index, (IBarSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof ICircularSeriesSettings) {
-			index = importCircularSeriesSetting(values, index, (ICircularSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof ILineSeriesSettings) {
-			index = importLineSeriesSetting(values, index, (ILineSeriesSettings)seriesSettings);
-		} else if(seriesSettings instanceof IScatterSeriesSettings) {
-			index = importScatterSeriesSetting(values, index, (IScatterSeriesSettings)seriesSettings);
+		if(seriesSettings instanceof IBarSeriesSettings barSeriesSettings) {
+			index = importBarSeriesSetting(values, index, barSeriesSettings);
+		} else if(seriesSettings instanceof ICircularSeriesSettings circularSeriesSettings) {
+			index = importCircularSeriesSetting(values, index, circularSeriesSettings);
+		} else if(seriesSettings instanceof ILineSeriesSettings lineSeriesSettings) {
+			index = importLineSeriesSetting(values, index, lineSeriesSettings);
+		} else if(seriesSettings instanceof IScatterSeriesSettings scatterSeriesSettings) {
+			index = importScatterSeriesSetting(values, index, scatterSeriesSettings);
 		}
 
 		return index;

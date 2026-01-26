@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2025 Lablicate GmbH.
+ * Copyright (c) 2025, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -38,8 +38,8 @@ public class SWTChartElementProvider implements IElementProvider {
 	@Override
 	public Element getElement(Object element, CSSEngine engine) {
 
-		if(element instanceof ScrollableChart) {
-			return new ScrollableChartElement((ScrollableChart)element, engine);
+		if(element instanceof ScrollableChart scrollableChart) {
+			return new ScrollableChartElement(scrollableChart, engine);
 		}
 		return null;
 	}

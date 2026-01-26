@@ -382,11 +382,11 @@ public class AxisTickLabels implements PaintListener {
 		}
 
 		Object parsed = format.parseObject(label);
-		if(!(parsed instanceof Number)) {
+		if(!(parsed instanceof Number parsedNumber)) {
 			throw new ParseException(label, 0);
 		}
 
-		return ((Number)parsed).doubleValue();
+		return parsedNumber.doubleValue();
 	}
 
 	/**
