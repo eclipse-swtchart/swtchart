@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -317,25 +317,25 @@ public class GraphicsUtilsTest {
 
 	private static void assertShapeEquals(Shape expected, Shape actual) {
 
-		if((expected instanceof Line2D) && (actual instanceof Line2D)) {
-			assertEquals(((Line2D)expected).getP1(), ((Line2D)actual).getP1());
-			assertEquals(((Line2D)expected).getP2(), ((Line2D)actual).getP2());
-		} else if((expected instanceof Polygon) && (actual instanceof Polygon)) {
-			int n = ((Polygon)actual).npoints;
-			assertEquals(((Polygon)expected).npoints, n);
+		if((expected instanceof Line2D expected2d) && (actual instanceof Line2D actual2d)) {
+			assertEquals(expected2d.getP1(), actual2d.getP1());
+			assertEquals(expected2d.getP2(), actual2d.getP2());
+		} else if((expected instanceof Polygon expectedP) && (actual instanceof Polygon actualP)) {
+			int n = actualP.npoints;
+			assertEquals(expectedP.npoints, n);
 			if(n > 0) {
-				assertArrayEquals(((Polygon)expected).xpoints, ((Polygon)actual).xpoints);
-				assertArrayEquals(((Polygon)expected).ypoints, ((Polygon)actual).ypoints);
+				assertArrayEquals(expectedP.xpoints, actualP.xpoints);
+				assertArrayEquals(expectedP.ypoints, actualP.ypoints);
 			}
-		} else if((expected instanceof QuadCurve2D) && (actual instanceof QuadCurve2D)) {
-			assertEquals(((QuadCurve2D)expected).getP1(), ((QuadCurve2D)actual).getP1());
-			assertEquals(((QuadCurve2D)expected).getCtrlPt(), ((QuadCurve2D)actual).getCtrlPt());
-			assertEquals(((QuadCurve2D)expected).getP2(), ((QuadCurve2D)actual).getP2());
-		} else if((expected instanceof CubicCurve2D) && (actual instanceof CubicCurve2D)) {
-			assertEquals(((CubicCurve2D)expected).getP1(), ((CubicCurve2D)actual).getP1());
-			assertEquals(((CubicCurve2D)expected).getCtrlP1(), ((CubicCurve2D)actual).getCtrlP1());
-			assertEquals(((CubicCurve2D)expected).getCtrlP2(), ((CubicCurve2D)actual).getCtrlP2());
-			assertEquals(((CubicCurve2D)expected).getP2(), ((CubicCurve2D)actual).getP2());
+		} else if((expected instanceof QuadCurve2D expectedQC) && (actual instanceof QuadCurve2D actualQC)) {
+			assertEquals(expectedQC.getP1(), actualQC.getP1());
+			assertEquals(expectedQC.getCtrlPt(), actualQC.getCtrlPt());
+			assertEquals(expectedQC.getP2(), actualQC.getP2());
+		} else if((expected instanceof CubicCurve2D expectedCC) && (actual instanceof CubicCurve2D actualCC)) {
+			assertEquals(expectedCC.getP1(), actualCC.getP1());
+			assertEquals(expectedCC.getCtrlP1(), actualCC.getCtrlP1());
+			assertEquals(expectedCC.getCtrlP2(), actualCC.getCtrlP2());
+			assertEquals(expectedCC.getP2(), actualCC.getP2());
 		} else if((expected instanceof Path2D) && (actual instanceof Path2D)) {
 			PathIterator itExpected = expected.getPathIterator(null);
 			PathIterator itActual = actual.getPathIterator(null);

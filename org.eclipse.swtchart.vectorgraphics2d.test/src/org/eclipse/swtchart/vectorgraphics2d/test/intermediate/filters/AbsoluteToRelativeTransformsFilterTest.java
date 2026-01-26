@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -69,8 +69,8 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		TransformCommand transformCommand = null;
 		while(filter.hasNext()) {
 			Command<?> filteredCommand = filter.next();
-			if(filteredCommand instanceof TransformCommand) {
-				transformCommand = (TransformCommand)filteredCommand;
+			if(filteredCommand instanceof TransformCommand tCommand) {
+				transformCommand = tCommand;
 			}
 		}
 		AffineTransform relativeTransform = transformCommand.getValue();
@@ -88,8 +88,8 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		AbsoluteToRelativeTransformsFilter filter = new AbsoluteToRelativeTransformsFilter(commands);
 		TransformCommand lastTransformCommand = null;
 		for(Command<?> filteredCommand : filter) {
-			if(filteredCommand instanceof TransformCommand) {
-				lastTransformCommand = (TransformCommand)filteredCommand;
+			if(filteredCommand instanceof TransformCommand tCommand) {
+				lastTransformCommand = tCommand;
 			}
 		}
 		assertThat(lastTransformCommand.getValue(), is(absoluteTransform));
