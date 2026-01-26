@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,6 +17,7 @@ import static org.eclipse.swtchart.vectorgraphics2d.test.core.TestUtils.assertTe
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
 import org.eclipse.swtchart.vectorgraphics2d.core.Document;
@@ -43,7 +44,7 @@ public class EPSProcessorTest {
 		}
 		Document processed = epsProcessor.getDocument(sequence, PAGE_SIZE);
 		processed.writeTo(bytes);
-		return bytes.toString("ISO-8859-1");
+		return bytes.toString(StandardCharsets.ISO_8859_1);
 	}
 
 	@Test

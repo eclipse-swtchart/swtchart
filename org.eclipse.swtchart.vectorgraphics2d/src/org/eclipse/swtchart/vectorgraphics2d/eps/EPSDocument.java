@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,7 +83,6 @@ class EPSDocument extends SizedDocument {
 	 * (1/72th inch).
 	 */
 	private static final double UNITS_PER_MM = 72.0 / 25.4;
-	private static final String CHARSET = "ISO-8859-1";
 	private static final String EOL = "\n";
 	private static final int MAX_LINE_WIDTH = 255;
 	private static final Pattern ELEMENT_SEPARATION_PATTERN = Pattern.compile("(.{1," + MAX_LINE_WIDTH + "})(\\s+|$)");
@@ -117,7 +117,7 @@ class EPSDocument extends SizedDocument {
 
 	public void writeTo(OutputStream out) throws IOException {
 
-		OutputStreamWriter o = new OutputStreamWriter(out, CHARSET);
+		OutputStreamWriter o = new OutputStreamWriter(out, StandardCharsets.ISO_8859_1);
 		for(String element : elements) {
 			if(element == null) {
 				continue;
@@ -362,7 +362,7 @@ class EPSDocument extends SizedDocument {
 		try {
 			DataUtils.transfer(imageDataStream, compressionStream, 1024);
 			compressionStream.close();
-			String compressed = outBytes.toString(CHARSET);
+			String compressed = outBytes.toString(StandardCharsets.ISO_8859_1);
 			out.append(compressed).append(EOL);
 		} catch(IOException e) {
 			// TODO Handle exception

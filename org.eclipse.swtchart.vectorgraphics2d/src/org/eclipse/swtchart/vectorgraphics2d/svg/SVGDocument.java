@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -31,6 +31,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -95,7 +96,6 @@ class SVGDocument extends SizedDocument {
 	private static final String XLINK_NAMESPACE_URI = "http://www.w3.org/1999/xlink";
 	private static final String PREFIX_CLIP = "clip";
 	// TODO Resolution settings
-	private static final String CHARSET = "UTF-8";
 	private final Stack<GraphicsState> states;
 	private final Document doc;
 	private final Element root;
@@ -165,7 +165,7 @@ class SVGDocument extends SizedDocument {
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty(OutputKeys.STANDALONE, "no");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-			transformer.setOutputProperty(OutputKeys.ENCODING, CHARSET);
+			transformer.setOutputProperty(OutputKeys.ENCODING, StandardCharsets.UTF_8.name());
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, doc.getDoctype().getPublicId());
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, doc.getDoctype().getSystemId());
 			transformer.transform(new DOMSource(doc), new StreamResult(out));
@@ -180,7 +180,7 @@ class SVGDocument extends SizedDocument {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		try {
 			writeTo(out);
-			return out.toString(CHARSET);
+			return out.toString(StandardCharsets.UTF_8);
 		} catch(IOException e) {
 			return "";
 		}
@@ -496,7 +496,7 @@ class SVGDocument extends SizedDocument {
 		try {
 			ImageIO.write(bufferedImage, format, encodeStream);
 			encodeStream.close();
-			String encoded = byteStream.toString("ISO-8859-1");
+			String encoded = byteStream.toString(StandardCharsets.ISO_8859_1);
 			return String.format("data:image/%s;base64,%s", format, encoded);
 		} catch(IOException e) {
 			return "";
