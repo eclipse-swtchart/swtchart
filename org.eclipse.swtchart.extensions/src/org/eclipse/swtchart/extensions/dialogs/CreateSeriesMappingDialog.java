@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023, 2025 Lablicate GmbH.
+ * Copyright (c) 2023, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -133,8 +133,8 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 			@Override
 			public String getText(Object element) {
 
-				if(element instanceof IEnumLabel) {
-					return ((IEnumLabel)element).label();
+				if(element instanceof IEnumLabel enumLabel) {
+					return enumLabel.label();
 				}
 
 				return null;
@@ -150,8 +150,8 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 			public void widgetSelected(SelectionEvent e) {
 
 				Object object = comboViewer.getStructuredSelection().getFirstElement();
-				if(object instanceof MappingsType) {
-					mappingsType = (MappingsType)object;
+				if(object instanceof MappingsType m) {
+					mappingsType = m;
 				}
 				validate();
 			}

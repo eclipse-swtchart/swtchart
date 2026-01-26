@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -147,17 +147,17 @@ public class ChartLayout extends Layout {
 	private boolean parseControls(Composite composite) {
 
 		for(Control child : composite.getChildren()) {
-			if(child instanceof Legend) {
-				legend = (Legend)child;
-			} else if(child instanceof PlotArea) {
-				plot = (PlotArea)child;
+			if(child instanceof Legend l) {
+				legend = l;
+			} else if(child instanceof PlotArea p) {
+				plot = p;
 			}
 		}
-		if(composite instanceof Chart) {
-			IAxisSet axisSet = ((Chart)composite).getAxisSet();
+		if(composite instanceof Chart c) {
+			IAxisSet axisSet = c.getAxisSet();
 			if(axisSet != null) {
 				axes = (Axis[])axisSet.getAxes();
-				if(((Chart)composite).getOrientation() == SWT.HORIZONTAL) {
+				if(c.getOrientation() == SWT.HORIZONTAL) {
 					horizontalAxes = (Axis[])axisSet.getXAxes();
 					verticalAxes = (Axis[])axisSet.getYAxes();
 				} else {
@@ -165,7 +165,7 @@ public class ChartLayout extends Layout {
 					horizontalAxes = (Axis[])axisSet.getYAxes();
 				}
 			}
-			title = (ChartTitle)((Chart)composite).getTitle();
+			title = (ChartTitle)c.getTitle();
 		}
 		if(title == null || legend == null || plot == null || axes == null) {
 			// the initialization of chart is not completed yet

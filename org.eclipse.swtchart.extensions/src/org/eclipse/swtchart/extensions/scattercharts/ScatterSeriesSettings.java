@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -45,9 +45,8 @@ public class ScatterSeriesSettings extends AbstractPointSeriesSettings implement
 	public boolean transfer(ISeriesSettings seriesSettingsSink) {
 
 		boolean success = false;
-		if(seriesSettingsSink instanceof IScatterSeriesSettings) {
+		if(seriesSettingsSink instanceof IScatterSeriesSettings sink) {
 			IScatterSeriesSettings source = this;
-			IScatterSeriesSettings sink = (IScatterSeriesSettings)seriesSettingsSink;
 			sink.setDescription(source.getDescription());
 			sink.setVisible(source.isVisible());
 			sink.setVisibleInLegend(source.isVisibleInLegend());

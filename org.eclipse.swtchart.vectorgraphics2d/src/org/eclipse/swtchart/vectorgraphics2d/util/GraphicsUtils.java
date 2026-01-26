@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -85,8 +85,7 @@ public abstract class GraphicsUtils {
 
 		ColorModel cm;
 		// If buffered image, the color model is readily available
-		if(image instanceof BufferedImage) {
-			BufferedImage bimage = (BufferedImage)image;
+		if(image instanceof BufferedImage bimage) {
 			cm = bimage.getColorModel();
 		} else {
 			// Use a pixel grabber to retrieve the image's color model;
@@ -145,8 +144,8 @@ public abstract class GraphicsUtils {
 	 */
 	public static BufferedImage toBufferedImage(RenderedImage image) {
 
-		if(image instanceof BufferedImage) {
-			return (BufferedImage)image;
+		if(image instanceof BufferedImage bimage) {
+			return bimage;
 		}
 		ColorModel cm = image.getColorModel();
 		WritableRaster raster = cm.createCompatibleWritableRaster(image.getWidth(), image.getHeight());
@@ -173,8 +172,8 @@ public abstract class GraphicsUtils {
 	 */
 	public static BufferedImage toBufferedImage(Image image) {
 
-		if(image instanceof BufferedImage) {
-			return (BufferedImage)image;
+		if(image instanceof BufferedImage bimage) {
+			return bimage;
 		}
 		// This code ensures that all the pixels in the image are loaded
 		image = new ImageIcon(image).getImage();
@@ -237,8 +236,7 @@ public abstract class GraphicsUtils {
 		} else if(shape instanceof Arc2D) {
 			clone = (shape instanceof Arc2D.Float) ? new Arc2D.Float() : new Arc2D.Double();
 			((Arc2D)clone).setArc((Arc2D)shape);
-		} else if(shape instanceof Polygon) {
-			Polygon p = (Polygon)shape;
+		} else if(shape instanceof Polygon p) {
 			clone = new Polygon(p.xpoints, p.ypoints, p.npoints);
 		} else if(shape instanceof CubicCurve2D) {
 			clone = (shape instanceof CubicCurve2D.Float) ? new CubicCurve2D.Float() : new CubicCurve2D.Double();

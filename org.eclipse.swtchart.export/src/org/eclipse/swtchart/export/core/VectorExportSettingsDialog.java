@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -150,28 +150,20 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 			public void mouseDoubleClick(MouseEvent e) {
 
 				Object object = seriesListUI.getStructuredSelection().getFirstElement();
-				if(object instanceof ISeries<?>) {
-					/*
-					 * Series
-					 */
-					ISeries<?> series = (ISeries<?>)object;
+				if(object instanceof ISeries<?> series) {
 					ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
 					Shell shell = e.display.getActiveShell();
 					AbstractSeriesSettingsDialog<?> settingsDialog = null;
 					/*
 					 * Dialog
 					 */
-					if(seriesSettings instanceof IBarSeriesSettings) {
-						IBarSeriesSettings settings = (IBarSeriesSettings)seriesSettings;
+					if(seriesSettings instanceof IBarSeriesSettings settings) {
 						settingsDialog = new BarSeriesSettingsDialog(shell, settings);
-					} else if(seriesSettings instanceof ICircularSeriesSettings) {
-						ICircularSeriesSettings settings = (ICircularSeriesSettings)seriesSettings;
+					} else if(seriesSettings instanceof ICircularSeriesSettings settings) {
 						settingsDialog = new CircularSeriesSettingsDialog(shell, settings);
-					} else if(seriesSettings instanceof ILineSeriesSettings) {
-						ILineSeriesSettings settings = (ILineSeriesSettings)seriesSettings;
+					} else if(seriesSettings instanceof ILineSeriesSettings settings) {
 						settingsDialog = new LineSeriesSettingsDialog(shell, settings);
-					} else if(seriesSettings instanceof IScatterSeriesSettings) {
-						IScatterSeriesSettings settings = (IScatterSeriesSettings)seriesSettings;
+					} else if(seriesSettings instanceof IScatterSeriesSettings settings) {
 						settingsDialog = new ScatterSeriesSettingsDialog(shell, settings);
 					}
 					/*

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -49,13 +49,10 @@ public class SeriesComparator extends ViewerComparator {
 	public int compare(Viewer viewer, Object e1, Object e2) {
 
 		int sortOrder = 0;
-		if(e1 instanceof ISeries && e2 instanceof ISeries && viewer instanceof SeriesListUI) {
-			SeriesListUI seriesListUI = (SeriesListUI)viewer;
+		if(e1 instanceof ISeries series1 && e2 instanceof ISeries series2 && viewer instanceof SeriesListUI seriesListUI) {
 			BaseChart baseChart = seriesListUI.getBaseChart();
-			ISeries<?> series1 = (ISeries<?>)e1;
 			ISeriesSettings seriesSettings1 = baseChart.getSeriesSettings(series1.getId());
 			Color color1 = SeriesLabelProvider.getColor(seriesSettings1);
-			ISeries<?> series2 = (ISeries<?>)e2;
 			ISeriesSettings seriesSettings2 = baseChart.getSeriesSettings(series2.getId());
 			Color color2 = SeriesLabelProvider.getColor(seriesSettings2);
 

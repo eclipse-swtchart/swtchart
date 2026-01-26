@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2024 Lablicate GmbH.
+ * Copyright (c) 2022, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -97,8 +97,7 @@ public class BoxPlotMarker extends AbstractBaseChartPaintListener implements IBa
 
 	private void grawPointSymbols(GC gc, ISeries<?> series, IAxis xAxis, IAxis yAxis, int xCenter, int boxWidth) {
 
-		if(series instanceof ILineSeries) {
-			ILineSeries<?> lineSeries = (ILineSeries<?>)series;
+		if(series instanceof ILineSeries lineSeries) {
 			Color[] symbolColors = lineSeries.getSymbolColors();
 			PlotSymbolType symbolType = boxPlotChart.getPlotSymbolType(series.getId());
 			int symbolSize = lineSeries.getSymbolSize();

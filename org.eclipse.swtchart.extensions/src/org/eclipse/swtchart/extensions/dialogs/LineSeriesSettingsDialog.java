@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2025 Lablicate GmbH.
+ * Copyright (c) 2022, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -79,8 +79,8 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 			ILineSeriesSettings settings = getSettings();
 			if(settings != null) {
-				if(object instanceof LineStyle) {
-					settings.setLineStyle((LineStyle)object);
+				if(object instanceof LineStyle lineStyle) {
+					settings.setLineStyle(lineStyle);
 				}
 			}
 		});
@@ -129,8 +129,8 @@ public class LineSeriesSettingsDialog extends AbstractPointSeriesSettingsDialog<
 
 			ILineSeriesSettings settings = getSettings();
 			if(settings != null) {
-				if(object instanceof Antialias) {
-					settings.setAntialias(((Antialias)object).value());
+				if(object instanceof Antialias antialias) {
+					settings.setAntialias(antialias.value());
 				}
 			}
 		});

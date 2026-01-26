@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -65,10 +65,9 @@ public class CompressConfig {
 	@Override
 	public boolean equals(Object obj) {
 
-		if(obj == null || !(obj instanceof CompressConfig)) {
+		if(obj == null || !(obj instanceof CompressConfig config)) {
 			return false;
 		}
-		CompressConfig config = (CompressConfig)obj;
 		if(widthInPixels != config.getWidthInPixel() || heightInPixels != config.getHeightInPixel()) {
 			return false;
 		}

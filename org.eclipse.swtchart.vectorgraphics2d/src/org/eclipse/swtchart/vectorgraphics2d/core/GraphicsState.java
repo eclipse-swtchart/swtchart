@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -242,10 +242,9 @@ public class GraphicsState implements Cloneable {
 		if(this == obj) {
 			return true;
 		}
-		if(!(obj instanceof GraphicsState)) {
+		if(!(obj instanceof GraphicsState o)) {
 			return false;
 		}
-		GraphicsState o = (GraphicsState)obj;
 		// Compare all attributes
 		return !(!hints.equals(o.hints) || !background.equals(o.background) || !color.equals(o.color) || !composite.equals(o.composite) || !font.equals(o.font) || !paint.equals(o.paint) || !stroke.equals(o.stroke) || !transform.equals(o.transform) || !xorMode.equals(o.xorMode) || ((clip == null || o.clip == null) && clip != o.clip) || (clip != null && !clip.equals(o.clip)));
 	}

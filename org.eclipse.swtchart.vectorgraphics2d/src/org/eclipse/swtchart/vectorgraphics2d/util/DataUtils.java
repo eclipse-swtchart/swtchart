@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -238,8 +238,8 @@ public abstract class DataUtils {
 	 */
 	public static String format(Object obj) {
 
-		if(obj instanceof Number) {
-			return format((Number)obj);
+		if(obj instanceof Number n) {
+			return format(n);
 		} else {
 			return obj.toString();
 		}

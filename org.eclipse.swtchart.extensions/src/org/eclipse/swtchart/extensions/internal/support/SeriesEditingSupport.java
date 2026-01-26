@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -97,11 +97,10 @@ public class SeriesEditingSupport extends EditingSupport {
 	protected Object getValue(Object element) {
 
 		Object object = null;
-		if(element instanceof ISeries) {
+		if(element instanceof ISeries series) {
 			/*
 			 * Series Settings
 			 */
-			ISeries<?> series = (ISeries<?>)element;
 			BaseChart baseChart = seriesListUI.getBaseChart();
 			ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
 
@@ -133,11 +132,10 @@ public class SeriesEditingSupport extends EditingSupport {
 	@Override
 	protected void setValue(Object element, Object object) {
 
-		if(element instanceof ISeries) {
+		if(element instanceof ISeries series) {
 			/*
 			 * Series Settings
 			 */
-			ISeries<?> series = (ISeries<?>)element;
 			BaseChart baseChart = getBaseChart();
 			ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
 

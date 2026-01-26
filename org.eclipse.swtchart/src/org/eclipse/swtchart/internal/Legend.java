@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -271,8 +271,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 					continue;
 				}
 
-				if(series instanceof ICircularSeries) {
-					ICircularSeries<?> circularSeries = (ICircularSeries<?>)series;
+				if(series instanceof ICircularSeries circularSeries) {
 					String[] labels = circularSeries.getLabels();
 					if(labels != null) {
 						for(int i = 0; i < labels.length; i++) {
@@ -320,8 +319,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 					continue;
 				}
 
-				if(series instanceof ICircularSeries) {
-					ICircularSeries<?> circularSeries = (ICircularSeries<?>)series;
+				if(series instanceof ICircularSeries circularSeries) {
 					String[] labels = circularSeries.getLabels();
 					if(labels != null) {
 						for(int i = 0; i < labels.length; i++) {
@@ -392,11 +390,11 @@ public class Legend extends Composite implements ILegend, PaintListener {
 		if(!visible) {
 			return;
 		}
-		if(series instanceof ILineSeries) {
+		if(series instanceof ILineSeries lineSeries) {
 			// draw plot line
-			gc.setForeground(((ILineSeries<?>)series).getLineColor());
+			gc.setForeground(lineSeries.getLineColor());
 			gc.setLineWidth(LINE_WIDTH);
-			int lineStyle = ((ILineSeries<?>)series).getLineStyle().value();
+			int lineStyle = lineSeries.getLineStyle().value();
 			int x = r.x;
 			int y = r.y + r.height / 2;
 			if(lineStyle != SWT.NONE) {
@@ -404,15 +402,15 @@ public class Legend extends Composite implements ILegend, PaintListener {
 				gc.drawLine(x, y, x + SYMBOL_WIDTH, y);
 			}
 			// draw series symbol
-			Color color = ((ILineSeries<?>)series).getSymbolColor();
-			Color[] colors = ((ILineSeries<?>)series).getSymbolColors();
+			Color color = lineSeries.getSymbolColor();
+			Color[] colors = lineSeries.getSymbolColors();
 			if(colors != null && colors.length > 0) {
 				color = colors[0];
 			}
 			((LineSeries<?>)series).drawSeriesSymbol(gc, x + SYMBOL_WIDTH / 2, y, color);
-		} else if(series instanceof IBarSeries) {
+		} else if(series instanceof IBarSeries barSeries) {
 			// draw riser
-			gc.setBackground(((IBarSeries<?>)series).getBarColor());
+			gc.setBackground(barSeries.getBarColor());
 			int size = SYMBOL_WIDTH / 2;
 			int x = r.x + size / 2;
 			int y = (int)(r.y - size / 2d + r.height / 2d);
@@ -447,8 +445,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 				continue;
 			}
 
-			if(seriesArray[i] instanceof ICircularSeries) {
-				ICircularSeries<?> circularSeries = (ICircularSeries<?>)seriesArray[i];
+			if(seriesArray[i] instanceof ICircularSeries circularSeries) {
 				String[] labels = circularSeries.getLabels();
 				if(labels != null) {
 					Color[] colors = circularSeries.getColors();

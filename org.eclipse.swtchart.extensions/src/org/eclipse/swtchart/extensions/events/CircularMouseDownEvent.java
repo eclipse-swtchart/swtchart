@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -70,8 +70,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 	public void handleEvent(BaseChart baseChart, Event event) {
 
 		for(ISeries<?> series : baseChart.getSeriesSet().getSeries()) {
-			if(series instanceof CircularSeries) {
-				CircularSeries circularSeries = (CircularSeries)series;
+			if(series instanceof CircularSeries circularSeries) {
 				double primaryValueX = baseChart.getSelectedPrimaryAxisValue(event.x, IExtendedChart.X_AXIS);
 				double primaryValueY = baseChart.getSelectedPrimaryAxisValue(event.y, IExtendedChart.Y_AXIS);
 				Node node = circularSeries.getPieSliceFromPosition(primaryValueX, primaryValueY);
@@ -134,8 +133,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 							nodeId = node.getId();
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
 								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
-									if(linkedSeries instanceof CircularSeries) {
-										CircularSeries circularSeriesLinked = (CircularSeries)linkedSeries;
+									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										Node correspondingNode = circularSeriesLinked.getNodeById(nodeId);
 										if(circularSeriesLinked.getRootPointer() == correspondingNode) {
 											if(!fillEntireSpace) {
@@ -162,8 +160,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 							 */
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
 								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
-									if(linkedSeries instanceof CircularSeries) {
-										CircularSeries circularSeriesLinked = (CircularSeries)linkedSeries;
+									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										circularSeries.setRootPointer(circularSeriesLinked.getRootNode());
 									}
 								}

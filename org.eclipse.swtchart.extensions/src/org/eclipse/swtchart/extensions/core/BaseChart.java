@@ -845,8 +845,7 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 		/*
 		 * Apply series settings.
 		 */
-		if(series instanceof ILineSeries) {
-			ILineSeries<?> lineSeries = (ILineSeries<?>)series;
+		if(series instanceof ILineSeries lineSeries) {
 			if(seriesSettings instanceof ILineSeriesSettings lineSeriesSettings) {
 				/*
 				 * Line Series
@@ -858,16 +857,14 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				 */
 				applyScatterSeriesSettings(lineSeries, scatterSeriesSettings);
 			}
-		} else if(series instanceof IBarSeries) {
-			IBarSeries<?> barSeries = (IBarSeries<?>)series;
+		} else if(series instanceof IBarSeries barSeries) {
 			if(seriesSettings instanceof IBarSeriesSettings barSeriesSettings) {
 				/*
 				 * Bar Series
 				 */
 				applyBarSeriesSettings(barSeries, barSeriesSettings);
 			}
-		} else if(series instanceof ICircularSeries) {
-			ICircularSeries<?> circularSeries = (ICircularSeries<?>)series;
+		} else if(series instanceof ICircularSeries circularSeries) {
 			if(seriesSettings instanceof ICircularSeriesSettings circularSeriesSettings) {
 				/*
 				 * Pie Series

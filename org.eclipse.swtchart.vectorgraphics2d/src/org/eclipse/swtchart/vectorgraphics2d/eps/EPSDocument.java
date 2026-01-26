@@ -151,32 +151,25 @@ class EPSDocument extends SizedDocument {
 			if(clip != null) {
 				elements.add(getOutput(clip) + " clip");
 			}
-		} else if(command instanceof SetColorCommand) {
-			SetColorCommand c = (SetColorCommand)command;
+		} else if(command instanceof SetColorCommand c) {
 			elements.add(getOutput(c.getValue()));
-		} else if(command instanceof SetCompositeCommand) {
-			SetCompositeCommand c = (SetCompositeCommand)command;
+		} else if(command instanceof SetCompositeCommand c) {
 			// TODO Implement composite rendering for EPS
 			elements.add("% composite not yet implemented: " + c.getValue());
-		} else if(command instanceof SetFontCommand) {
-			SetFontCommand c = (SetFontCommand)command;
+		} else if(command instanceof SetFontCommand c) {
 			elements.add(getOutput(c.getValue()));
-		} else if(command instanceof SetPaintCommand) {
-			SetPaintCommand c = (SetPaintCommand)command;
+		} else if(command instanceof SetPaintCommand c) {
 			// TODO Implement paint rendering for EPS
 			elements.add("% paint not yet implemented: " + c.getValue());
-		} else if(command instanceof SetStrokeCommand) {
-			SetStrokeCommand c = (SetStrokeCommand)command;
+		} else if(command instanceof SetStrokeCommand c) {
 			elements.add(getOutput(c.getValue()));
-		} else if(command instanceof SetTransformCommand) {
-			SetTransformCommand c = (SetTransformCommand)command;
+		} else if(command instanceof SetTransformCommand c) {
 			StringBuilder e = new StringBuilder();
 			double[] matrix = new double[6];
 			c.getValue().getMatrix(matrix);
 			e.append("basematrix setmatrix [").append(DataUtils.join(" ", matrix)).append("] concat");
 			elements.add(e.toString());
-		} else if(command instanceof RotateCommand) {
-			RotateCommand c = (RotateCommand)command;
+		} else if(command instanceof RotateCommand c) {
 			StringBuilder e = new StringBuilder();
 			double x = c.getCenterX();
 			double y = c.getCenterY();
@@ -190,37 +183,29 @@ class EPSDocument extends SizedDocument {
 				e.append(-x).append(" ").append(-y).append(" translate");
 			}
 			elements.add(e.toString());
-		} else if(command instanceof ScaleCommand) {
-			ScaleCommand c = (ScaleCommand)command;
+		} else if(command instanceof ScaleCommand c) {
 			elements.add(DataUtils.format(c.getScaleX()) + " " + DataUtils.format(c.getScaleY()) + " scale");
-		} else if(command instanceof ShearCommand) {
-			ShearCommand c = (ShearCommand)command;
+		} else if(command instanceof ShearCommand c) {
 			elements.add("[1 " + DataUtils.format(c.getShearY()) + " " + DataUtils.format(c.getShearX()) + " 1 0 0] concat");
-		} else if(command instanceof TransformCommand) {
-			TransformCommand c = (TransformCommand)command;
+		} else if(command instanceof TransformCommand c) {
 			StringBuilder e = new StringBuilder();
 			double[] matrix = new double[6];
 			c.getValue().getMatrix(matrix);
 			e.append("[").append(DataUtils.join(" ", matrix)).append("] concat");
 			elements.add(e.toString());
-		} else if(command instanceof TranslateCommand) {
-			TranslateCommand c = (TranslateCommand)command;
+		} else if(command instanceof TranslateCommand c) {
 			elements.add(String.valueOf(c.getDeltaX()) + " " + c.getDeltaY() + " translate");
-		} else if(command instanceof DrawImageCommand) {
-			DrawImageCommand c = (DrawImageCommand)command;
+		} else if(command instanceof DrawImageCommand c) {
 			String e = getOutput(c.getValue(), c.getImageWidth(), c.getImageHeight(), c.getX(), c.getY(), c.getWidth(), c.getHeight());
 			elements.add(e);
-		} else if(command instanceof DrawShapeCommand) {
-			DrawShapeCommand c = (DrawShapeCommand)command;
+		} else if(command instanceof DrawShapeCommand c) {
 			elements.add(getOutput(c.getValue()) + " stroke");
-		} else if(command instanceof DrawStringCommand) {
-			DrawStringCommand c = (DrawStringCommand)command;
+		} else if(command instanceof DrawStringCommand c) {
 			elements.add(getOutput(c.getValue(), c.getX(), c.getY()));
-		} else if(command instanceof FillShapeCommand) {
-			FillShapeCommand c = (FillShapeCommand)command;
+		} else if(command instanceof FillShapeCommand c) {
 			String fillMethod = " fill";
 			Shape shape = c.getValue();
-			if(shape instanceof Path2D && ((Path2D)shape).getWindingRule() == Path2D.WIND_EVEN_ODD) {
+			if(shape instanceof Path2D path2d && path2d.getWindingRule() == Path2D.WIND_EVEN_ODD) {
 				fillMethod = " eofill";
 			}
 			elements.add(getOutput(c.getValue()) + fillMethod);
@@ -241,21 +226,17 @@ class EPSDocument extends SizedDocument {
 
 		StringBuilder out = new StringBuilder();
 		out.append("newpath ");
-		if(s instanceof Line2D) {
-			Line2D l = (Line2D)s;
+		if(s instanceof Line2D l) {
 			out.append(l.getX1()).append(" ").append(l.getY1()).append(" M ").append(l.getX2()).append(" ").append(l.getY2()).append(" L");
-		} else if(s instanceof Rectangle2D) {
-			Rectangle2D r = (Rectangle2D)s;
+		} else if(s instanceof Rectangle2D r) {
 			out.append(r.getX()).append(" ").append(r.getY()).append(" ").append(r.getWidth()).append(" ").append(r.getHeight()).append(" rect Z");
-		} else if(s instanceof Ellipse2D) {
-			Ellipse2D e = (Ellipse2D)s;
+		} else if(s instanceof Ellipse2D e) {
 			double x = e.getX() + e.getWidth() / 2.0;
 			double y = e.getY() + e.getHeight() / 2.0;
 			double rx = e.getWidth() / 2.0;
 			double ry = e.getHeight() / 2.0;
 			out.append(x).append(" ").append(y).append(" ").append(rx).append(" ").append(ry).append(" ").append(360.0).append(" ").append(0.0).append(" ellipse Z");
-		} else if(s instanceof Arc2D) {
-			Arc2D e = (Arc2D)s;
+		} else if(s instanceof Arc2D e) {
 			double x = (e.getX() + e.getWidth() / 2.0);
 			double y = (e.getY() + e.getHeight() / 2.0);
 			double rx = e.getWidth() / 2.0;
@@ -387,8 +368,7 @@ class EPSDocument extends SizedDocument {
 	private static String getOutput(Stroke s) {
 
 		StringBuilder out = new StringBuilder();
-		if(s instanceof BasicStroke) {
-			BasicStroke bs = (BasicStroke)s;
+		if(s instanceof BasicStroke bs) {
 			out.append(bs.getLineWidth()).append(" setlinewidth ").append(STROKE_LINEJOIN.get(bs.getLineJoin())).append(" setlinejoin ").append(STROKE_ENDCAPS.get(bs.getEndCap())).append(" setlinecap ").append("[").append(DataUtils.join(" ", bs.getDashArray())).append("] ").append(bs.getDashPhase()).append(" setdash");
 		} else {
 			out.append("% Custom strokes aren't supported at the moment");

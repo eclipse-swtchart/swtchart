@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -52,8 +52,8 @@ public class SeriesLabelMarker extends AbstractBaseChartPaintListener implements
 					 * Only draw is series is visible.
 					 */
 					int symbolSize = 1;
-					if(seriesSettings instanceof IPointSeriesSettings) {
-						symbolSize = ((IPointSeriesSettings)seriesSettings).getSymbolSize();
+					if(seriesSettings instanceof IPointSeriesSettings pointSeriesSettings) {
+						symbolSize = pointSeriesSettings.getSymbolSize();
 					}
 					/*
 					 * Draw the label
