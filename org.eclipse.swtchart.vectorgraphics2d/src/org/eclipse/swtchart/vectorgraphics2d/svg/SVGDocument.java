@@ -32,6 +32,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -71,7 +72,6 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetHintComman
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetPaintCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetStrokeCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetTransformCommand;
-import org.eclipse.swtchart.vectorgraphics2d.util.Base64EncodeStream;
 import org.eclipse.swtchart.vectorgraphics2d.util.DataUtils;
 import org.eclipse.swtchart.vectorgraphics2d.util.GraphicsUtils;
 import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
@@ -492,7 +492,7 @@ class SVGDocument extends SizedDocument {
 	private static String encodeImage(BufferedImage bufferedImage, String format) {
 
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		Base64EncodeStream encodeStream = new Base64EncodeStream(byteStream);
+		OutputStream encodeStream = Base64.getEncoder().wrap(byteStream);
 		try {
 			ImageIO.write(bufferedImage, format, encodeStream);
 			encodeStream.close();
