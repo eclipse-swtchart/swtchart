@@ -1,5 +1,5 @@
 ###############################################################################
-# Copyright (c) 2022, 2025 SWTChart project
+# Copyright (c) 2022, 2026 SWTChart project
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License 2.0 which is available at
@@ -36,7 +36,7 @@ jobs:
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-        maven-version: 3.9.11
+        maven-version: 3.9.12
 
     - name: Build with Maven on X Window Virtual Framebuffer
       run: xvfb-run --auto-servernum mvn -Pjavadoc --T 1C verify --B -ntp -Dstyle.color=always
