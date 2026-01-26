@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,7 @@
 package org.eclipse.swtchart.vectorgraphics2d.test.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
@@ -161,10 +162,9 @@ public abstract class TestUtils {
 		@Override
 		public boolean equals(Object o) {
 
-			if(!(o instanceof XMLFragment)) {
+			if(!(o instanceof XMLFragment frag)) {
 				return false;
 			}
-			XMLFragment frag = (XMLFragment)o;
 			if(!type.equals(frag.type) || !name.equals(frag.name)) {
 				return false;
 			}
@@ -218,11 +218,10 @@ public abstract class TestUtils {
 			if(lineExpected == null) {
 				continue;
 			}
-			assertTrue(lineActual instanceof String, String.format("Line is of type %s, expected String.", lineActual.getClass()));
+			assertInstanceOf(String.class, lineActual, String.format("Line is of type %s, expected String.", lineActual.getClass()));
 			if(lineExpected instanceof String) {
 				assertEquals(lineExpected, lineActual);
-			} else if(lineExpected instanceof Pattern) {
-				Pattern expectedPattern = (Pattern)lineExpected;
+			} else if(lineExpected instanceof Pattern expectedPattern) {
 				Matcher matcher = expectedPattern.matcher((String)lineActual);
 				assertTrue(matcher.matches(), String.format("Line didn't match pattern.\nExpected: \"%s\"\nActual: \"%s\"", matcher.pattern(), lineActual));
 			}

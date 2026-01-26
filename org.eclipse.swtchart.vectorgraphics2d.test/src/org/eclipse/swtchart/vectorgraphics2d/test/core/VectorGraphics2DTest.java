@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,11 +13,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.core;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,7 +43,7 @@ public class VectorGraphics2DTest {
 		Iterator<Command<?>> commandIterator = commands.iterator();
 		assertTrue(commandIterator.hasNext());
 		Command<?> firstCommand = commandIterator.next();
-		assertThat(firstCommand, instanceOf(CreateCommand.class));
+		assertInstanceOf(CreateCommand.class, firstCommand);
 		// TODO: Move this assertion into a separate test case
 		assertEquals(g, ((CreateCommand)firstCommand).getValue());
 	}
@@ -58,8 +58,8 @@ public class VectorGraphics2DTest {
 		VectorGraphics2D g2 = (VectorGraphics2D)g.create();
 		CreateCommand g2CreateCommand = null;
 		for(Command<?> g2Command : g2.getCommands()) {
-			if(g2Command instanceof CreateCommand) {
-				g2CreateCommand = (CreateCommand)g2Command;
+			if(g2Command instanceof CreateCommand createCommand) {
+				g2CreateCommand = createCommand;
 			}
 		}
 		assertNotEquals(gCreateCommand, g2CreateCommand);
@@ -79,7 +79,7 @@ public class VectorGraphics2DTest {
 		for(Command<?> command : commands) {
 			lastCommand = command;
 		}
-		assertTrue(lastCommand instanceof DisposeCommand);
+		assertInstanceOf(DisposeCommand.class, lastCommand);
 		assertEquals(Color.BLUE, ((DisposeCommand)lastCommand).getValue().getColor());
 	}
 
