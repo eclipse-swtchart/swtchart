@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Lablicate GmbH.
+ * Copyright (c) 2019, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,7 +14,7 @@ package org.eclipse.swtchart.export;
  * THIS CLASS IS NOT SUITED FOR PRODUCTIVE USE!<br/>
  * IT IS A TESTCLASS!
  */
-public class TestPathHelper extends PathResolver {
+public class TestPathHelper {
 
 	/*
 	 * IMPORT
@@ -26,4 +26,5 @@ public class TestPathHelper extends PathResolver {
 	 * EXPORT
 	 */
 	public static final String TESTFOLDER_EXPORT = "testData/files/export";
+	
 }

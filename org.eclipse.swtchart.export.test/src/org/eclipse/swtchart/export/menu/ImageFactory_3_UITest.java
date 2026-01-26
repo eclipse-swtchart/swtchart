@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
+import static org.eclipse.swtchart.export.TestPathHelper.TESTFOLDER_EXPORT;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,7 +24,6 @@ import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
 import org.eclipse.swtchart.customcharts.core.PCAChart;
-import org.eclipse.swtchart.export.PathResolver;
 import org.eclipse.swtchart.export.SeriesConverter;
 import org.eclipse.swtchart.export.TestPathHelper;
 import org.eclipse.swtchart.export.images.ImageFactory;
@@ -57,7 +57,7 @@ public class ImageFactory_3_UITest {
 		PCAChart pcaChart = imageFactory.getChart();
 		BaseChart baseChart = pcaChart.getBaseChart();
 		pcaChart.setBackground(baseChart.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(PathResolver.getAbsolutePath(TestPathHelper.TESTFILE_SCATTER_SERIES_1));
+		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(TestPathHelper.TESTFILE_SCATTER_SERIES_1);
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 
 		for(ISeriesData seriesData : scatterSeriesList) {
@@ -93,22 +93,21 @@ public class ImageFactory_3_UITest {
 		/*
 		 * Export the images.
 		 */
-		String exportFolder = PathResolver.getAbsolutePath(TestPathHelper.TESTFOLDER_EXPORT);
 		String prefix = "ScatterSeries1";
 
-		String png = exportFolder + File.separator + prefix + ".png";
+		String png = TESTFOLDER_EXPORT + File.separator + prefix + ".png";
 		imageFactory.saveImage(png, SWT.IMAGE_PNG);
 		File filePng = new File(png);
 		assertTrue(filePng.exists());
 		filePng.delete();
 
-		String jpg = exportFolder + File.separator + prefix + ".jpg";
+		String jpg = TESTFOLDER_EXPORT + File.separator + prefix + ".jpg";
 		imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
 		File fileJpg = new File(jpg);
 		assertTrue(fileJpg.exists());
 		fileJpg.delete();
 
-		String bmp = exportFolder + File.separator + prefix + ".bmp";
+		String bmp = TESTFOLDER_EXPORT + File.separator + prefix + ".bmp";
 		imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
 		File fileBmp = new File(bmp);
 		assertTrue(fileBmp.exists());
