@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,7 +22,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.customcharts.core.ChromatogramChart;
 import org.eclipse.swtchart.extensions.core.ISeriesData;
 import org.eclipse.swtchart.extensions.core.SeriesData;
@@ -44,7 +43,6 @@ public class LineSeries_Random_Part extends Composite {
 	private Button buttonReset;
 	private ChromatogramChart chromatogramChart;
 
-	private Display display = getDisplay();
 	private Acquisition acquisition;
 	private Recording recording;
 
@@ -85,7 +83,7 @@ public class LineSeries_Random_Part extends Composite {
 			if(acquisition.isRecordData()) {
 				chromatogramChart.appendSeries(getRandomSeriesData());
 			}
-			display.timerExec(500, this);
+			getDisplay().timerExec(500, this);
 		}
 	}
 
@@ -112,7 +110,7 @@ public class LineSeries_Random_Part extends Composite {
 			public void widgetSelected(SelectionEvent e) {
 
 				acquisition.setRecordData(true);
-				display.asyncExec(recording);
+				getDisplay().asyncExec(recording);
 
 				setButtonsEnabled(true);
 			}
@@ -129,7 +127,7 @@ public class LineSeries_Random_Part extends Composite {
 			public void widgetSelected(SelectionEvent e) {
 
 				acquisition.setRecordData(false);
-				display.timerExec(-1, recording);
+				getDisplay().timerExec(-1, recording);
 
 				setButtonsEnabled(false);
 			}
@@ -146,7 +144,7 @@ public class LineSeries_Random_Part extends Composite {
 			public void widgetSelected(SelectionEvent e) {
 
 				acquisition.setRecordData(false);
-				display.timerExec(-1, recording);
+				getDisplay().timerExec(-1, recording);
 
 				chromatogramChart.deleteSeries();
 				x = 0;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -41,7 +41,6 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 	private int borderWidthHighlight = 3;
 	private int borderStyleHighlight = SWT.LINE_SOLID;
 
-	private Chart chart;
 	private NodeDataModel nodeDataModel;
 	private Node rootNode;
 	private Node rootPointer;
@@ -52,7 +51,6 @@ public abstract class CircularSeries extends Series implements ICircularSeries {
 	public CircularSeries(Chart chart, String id) {
 
 		super(chart, id);
-		this.chart = chart;
 		initialize();
 
 		nodeDataModel = new NodeDataModel(id);
