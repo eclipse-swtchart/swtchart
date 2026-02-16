@@ -202,7 +202,7 @@
             <plugin>
               <groupId>org.eclipse.cbi.maven.plugins</groupId>
               <artifactId>eclipse-jarsigner-plugin</artifactId>
-              <version>1.5.2</version>
+              <version>1.5.3</version>
               <executions>
                 <execution>
                   <id>sign</id>
@@ -242,7 +242,7 @@
                <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-source-plugin</artifactId>
-                  <version>3.3.1</version>
+                  <version>3.4.0</version>
                   <executions>
                      <execution>
                         <id>attach-sources</id>
@@ -288,7 +288,7 @@
               <plugin>
                   <groupId>org.apache.maven.plugins</groupId>
                   <artifactId>maven-javadoc-plugin</artifactId>
-                  <version>3.11.2</version>
+                  <version>3.12.0</version>
                   <executions>
                       <execution>
                           <id>attach-javadocs</id>
