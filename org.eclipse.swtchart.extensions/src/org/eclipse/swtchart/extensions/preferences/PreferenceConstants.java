@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -21,6 +21,8 @@ public class PreferenceConstants {
 	public static final boolean DEF_BUFFER_SELECTION = false;
 	public static final String P_PREVENT_ACCIDENTAL_ZOOM = "preventAccidentalZoom";
 	public static final boolean DEF_PREVENT_ACCIDENTAL_ZOOM = true;
+	public static final String P_FILL_RECTANGLE_SELECTION = "fillRectangleSelection";
+	public static final boolean DEF_FILL_RECTANGLE_SELECTION = true;
 
 	public static final String P_KEEP_SERIES_DESCRIPTION = "keepSeriesDescription";
 	public static final boolean DEF_KEEP_SERIES_DESCRIPTION = false;

@@ -97,37 +97,50 @@ public class PreferenceSupport {
 	 */
 	public static boolean isBufferedSelection() {
 
-		boolean bufferedSelection = false;
-		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
-		if(preferenceStore != null) {
-			bufferedSelection = preferenceStore.getBoolean(PreferenceConstants.P_BUFFER_SELECTION);
-		}
-		return bufferedSelection;
+		return getBoolean(PreferenceConstants.P_BUFFER_SELECTION, PreferenceConstants.DEF_BUFFER_SELECTION);
+
 	}
 
-	public static void setBufferedSelection(boolean active) {
+	public static void setBufferedSelection(boolean selection) {
 
-		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
-		if(preferenceStore != null) {
-			preferenceStore.setValue(PreferenceConstants.P_BUFFER_SELECTION, active);
-		}
+		setBoolean(PreferenceConstants.P_BUFFER_SELECTION, selection);
 	}
 
 	public static boolean isPreventAccidentalZoom() {
 
-		boolean preventAccidentalZoom = false;
-		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
-		if(preferenceStore != null) {
-			preventAccidentalZoom = preferenceStore.getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM);
-		}
-		return preventAccidentalZoom;
+		return getBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, PreferenceConstants.DEF_PREVENT_ACCIDENTAL_ZOOM);
 	}
 
 	public static void setPreventAccidentalZoom(boolean selection) {
 
+		setBoolean(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, selection);
+	}
+
+	public static boolean isFillRectangleSelection() {
+
+		return getBoolean(PreferenceConstants.P_FILL_RECTANGLE_SELECTION, PreferenceConstants.DEF_FILL_RECTANGLE_SELECTION);
+	}
+
+	public static void setFillRectangleSelection(boolean selection) {
+
+		setBoolean(PreferenceConstants.P_FILL_RECTANGLE_SELECTION, selection);
+	}
+
+	public static boolean getBoolean(String preference, boolean defaultValue) {
+
 		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
 		if(preferenceStore != null) {
-			preferenceStore.setValue(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, selection);
+			return preferenceStore.getBoolean(preference);
+		}
+
+		return defaultValue;
+	}
+
+	public static void setBoolean(String preference, boolean selection) {
+
+		IPreferenceStore preferenceStore = ResourceSupport.getPreferenceStore();
+		if(preferenceStore != null) {
+			preferenceStore.setValue(preference, selection);
 		}
 	}
 }
