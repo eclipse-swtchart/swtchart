@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -40,6 +40,7 @@ public class PreferencePage extends FieldEditorPreferencePage implements IWorkbe
 
 		addField(new BooleanFieldEditor(PreferenceConstants.P_BUFFER_SELECTION, Messages.getString(Messages.BUFFERED_SELECTION), getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, Messages.getString(Messages.PREVENT_ACCIDENTAL_ZOOM), getFieldEditorParent()));
+		addField(new BooleanFieldEditor(PreferenceConstants.P_FILL_RECTANGLE_SELECTION, Messages.getString(Messages.FILL_RECTANGLE_SELECTION), getFieldEditorParent()));
 		addField(new BooleanFieldEditor(PreferenceConstants.P_KEEP_SERIES_DESCRIPTION, Messages.getString(Messages.KEEP_SERIES_DESCRIPTION), getFieldEditorParent()));
 		addField(new IntegerFieldEditor(PreferenceConstants.P_MOVE_LEGEND_X, Messages.getString(Messages.MOVE_LEGEND_X), getFieldEditorParent()));
 		addField(new IntegerFieldEditor(PreferenceConstants.P_MOVE_LEGEND_Y, Messages.getString(Messages.MOVE_LEGEND_Y), getFieldEditorParent()));

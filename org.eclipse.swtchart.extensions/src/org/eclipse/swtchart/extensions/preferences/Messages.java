@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWT Chart Project
+ * Copyright (c) 2020, 2026 SWT Chart Project
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,6 +27,7 @@ public class Messages {
 	public static final String BOTTOM = "BOTTOM";
 	public static final String BUFFERED_SELECTION = "BUFFERED_SELECTION";
 	public static final String PREVENT_ACCIDENTAL_ZOOM = "PREVENT_ACCIDENTAL_ZOOM";
+	public static final String FILL_RECTANGLE_SELECTION = "FILL_RECTANGLE_SELECTION";
 	public static final String CIRCLE = "CIRCLE";
 	public static final String CROSS = "CROSS";
 	public static final String DASH = "DASH";

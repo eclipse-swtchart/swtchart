@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -25,6 +25,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		if(preferenceStore != null) {
 			preferenceStore.setDefault(PreferenceConstants.P_BUFFER_SELECTION, PreferenceConstants.DEF_BUFFER_SELECTION);
 			preferenceStore.setDefault(PreferenceConstants.P_PREVENT_ACCIDENTAL_ZOOM, PreferenceConstants.DEF_PREVENT_ACCIDENTAL_ZOOM);
+			preferenceStore.setDefault(PreferenceConstants.P_FILL_RECTANGLE_SELECTION, PreferenceConstants.DEF_FILL_RECTANGLE_SELECTION);
 			preferenceStore.setDefault(PreferenceConstants.P_KEEP_SERIES_DESCRIPTION, PreferenceConstants.DEF_KEEP_SERIES_DESCRIPTION);
 			preferenceStore.setDefault(PreferenceConstants.P_MOVE_LEGEND_X, PreferenceConstants.DEF_MOVE_LEGEND_X);
 			preferenceStore.setDefault(PreferenceConstants.P_MOVE_LEGEND_Y, PreferenceConstants.DEF_MOVE_LEGEND_Y);

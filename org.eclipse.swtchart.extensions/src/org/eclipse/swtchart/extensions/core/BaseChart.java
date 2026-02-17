@@ -55,6 +55,7 @@ import org.eclipse.swtchart.extensions.model.CustomSeries;
 import org.eclipse.swtchart.extensions.model.ICustomSeries;
 import org.eclipse.swtchart.extensions.piecharts.ICircularSeriesSettings;
 import org.eclipse.swtchart.extensions.preferences.PreferenceConstants;
+import org.eclipse.swtchart.extensions.preferences.PreferenceSupport;
 import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesSettings;
 import org.eclipse.swtchart.model.Node;
 import org.eclipse.swtchart.model.NodeDataModel;
@@ -576,7 +577,9 @@ public class BaseChart extends AbstractExtendedChart implements IChartDataCoordi
 				 * X and Y zoom.
 				 */
 				paintBorderSelection(e, xMin, yMin, x, y);
-				paintRectangleSelection(e, xMin, yMin, x, y);
+				if(PreferenceSupport.isFillRectangleSelection()) {
+					paintRectangleSelection(e, xMin, yMin, x, y);
+				}
 			} else {
 				/*
 				 * X or Y zoom.
