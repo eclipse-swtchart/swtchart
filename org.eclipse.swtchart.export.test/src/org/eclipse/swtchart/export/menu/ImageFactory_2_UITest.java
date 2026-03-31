@@ -64,6 +64,7 @@ public class ImageFactory_2_UITest {
 		 * Export the images.
 		 */
 		String prefix = "BarSeries1";
+		System.out.println("test");
 
 		String png = TESTFOLDER_EXPORT + File.separator + prefix + ".png";
 		imageFactory.saveImage(png, SWT.IMAGE_PNG);
