@@ -22,6 +22,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        java-version: ['21', '25']
+
     steps:
     - name: Checkout SWTChart
       uses: actions/checkout@v6
@@ -30,13 +34,13 @@ jobs:
       uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
-        java-version: '21'
+        java-version: ${{ matrix.java-version }}
         cache: 'maven'
 
     - name: Set up Maven
       uses: stCarolas/setup-maven@v5
       with:
-        maven-version: 3.9.12
+        maven-version: 3.9.14
 
     - name: Build with Maven on X Window Virtual Framebuffer
       run: xvfb-run --auto-servernum mvn -Pjavadoc --T 1C verify --B -ntp -Dstyle.color=always
