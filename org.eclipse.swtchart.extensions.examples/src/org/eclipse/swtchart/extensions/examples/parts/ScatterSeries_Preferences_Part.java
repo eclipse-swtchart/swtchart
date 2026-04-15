@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -62,14 +62,10 @@ public class ScatterSeries_Preferences_Part extends Composite {
 	public ScatterSeries_Preferences_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		try {
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		this.setLayout(new GridLayout(1, true));
 		/*
@@ -128,7 +124,7 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		button.setImage(Activator.getDefault() != null ? Activator.getDefault().getImage(Activator.ICON_OPEN_SETTINGS) : null);
 	}
 
-	private void applyChartSettings() throws Exception {
+	private void applyChartSettings() {
 
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));

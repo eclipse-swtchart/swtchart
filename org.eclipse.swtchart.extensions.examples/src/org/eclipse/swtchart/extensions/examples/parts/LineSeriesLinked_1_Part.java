@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -25,14 +25,10 @@ public class LineSeriesLinked_1_Part {
 	@Inject
 	public LineSeriesLinked_1_Part(Composite parent) {
 
-		try {
-			initialize(parent);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize(parent);
 	}
 
-	private void initialize(Composite parent) throws Exception {
+	private void initialize(Composite parent) {
 
 		parent.setBackground(parent.getDisplay().getSystemColor(SWT.COLOR_WHITE));
 

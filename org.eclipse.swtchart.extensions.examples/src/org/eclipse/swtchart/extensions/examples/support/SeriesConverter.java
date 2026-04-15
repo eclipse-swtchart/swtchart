@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,7 +13,6 @@
 package org.eclipse.swtchart.extensions.examples.support;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +95,6 @@ public class SeriesConverter {
 		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))) {
 			String line;
 			int i = 0;
-			;
 			while((line = bufferedReader.readLine()) != null) {
 				if(!line.startsWith("#")) {
 					String[] values = line.split("\t");
@@ -117,24 +115,14 @@ public class SeriesConverter {
 		int size = getNumberOfLines(fileName);
 		double[] ySeries = new double[size];
 
-		BufferedReader bufferedReader = null;
-		try {
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))){
 			String line;
 			int i = 0;
-			bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)));
 			while((line = bufferedReader.readLine()) != null) {
 				ySeries[i++] = Double.parseDouble(line.trim());
 			}
 		} catch(Exception e) {
 
-		} finally {
-			if(bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch(IOException e) {
-
-				}
-			}
 		}
 
 		ISeriesData seriesData = new SeriesData(ySeries, fileName);
@@ -145,10 +133,8 @@ public class SeriesConverter {
 
 		List<ISeriesData> scatterSeriesList = new ArrayList<>();
 
-		BufferedReader bufferedReader = null;
-		try {
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))){
 			String line;
-			bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)));
 			while((line = bufferedReader.readLine()) != null) {
 				String[] values = line.split("\t");
 				String id = values[0].trim();
@@ -159,14 +145,6 @@ public class SeriesConverter {
 			}
 		} catch(Exception e) {
 
-		} finally {
-			if(bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch(IOException e) {
-
-				}
-			}
 		}
 		return scatterSeriesList;
 	}
@@ -205,24 +183,11 @@ public class SeriesConverter {
 
 	private static int getNumberOfLines(String fileName) {
 
-		int i = 0;
-		BufferedReader bufferedReader = null;
-		try {
-			bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)));
-			while((bufferedReader.readLine()) != null) {
-				i++;
-			}
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(SeriesConverter.class.getResourceAsStream(fileName)))){
+			return (int)bufferedReader.lines().count();
 		} catch(Exception e) {
 
-		} finally {
-			if(bufferedReader != null) {
-				try {
-					bufferedReader.close();
-				} catch(IOException e) {
-
-				}
-			}
 		}
-		return i;
+		return 0;
 	}
 }

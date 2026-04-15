@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class ImageFactory_2_UITest {
 	}
 
 	@Test
-	public void test2() throws InstantiationException, IllegalAccessException {
+	public void test2() throws InstantiationException, IllegalAccessException, NumberFormatException, IOException {
 
 		/*
 		 * Create the factory.

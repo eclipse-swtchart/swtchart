@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2022, 2025 Lablicate GmbH.
+ * Copyright (c) 2022, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -34,14 +34,10 @@ public class PeakSeries_1_Part extends ChromatogramChart {
 	public PeakSeries_1_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		try {
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		/*
 		 * Chart Settings

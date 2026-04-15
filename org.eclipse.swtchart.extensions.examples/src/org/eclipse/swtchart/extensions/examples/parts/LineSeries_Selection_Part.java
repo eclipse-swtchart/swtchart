@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -72,11 +72,7 @@ public class LineSeries_Selection_Part extends Composite {
 	public LineSeries_Selection_Part(Composite parent) {
 
 		super(parent, SWT.NONE);
-		try {
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 
 	@Override
@@ -85,7 +81,7 @@ public class LineSeries_Selection_Part extends Composite {
 		super.dispose();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		this.setLayout(new GridLayout(1, true));
 		this.setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
@@ -135,18 +131,14 @@ public class LineSeries_Selection_Part extends Composite {
 			textX.setText(decimalFormatX.format(x));
 			textY.setText(decimalFormatY.format(y));
 
-			try {
-				ISeries<?> series = baseChart.getSeriesSet().getSeries(DATA_POINT_SERIES);
-				double xSelected = xValues.floor(x);
-				double ySelected = yValues.get(xSelected);
-				double[] xSeries = new double[]{xSelected};
-				double[] ySeries = new double[]{ySelected};
-				series.setXSeries(xSeries);
-				series.setYSeries(ySeries);
-				baseChart.redraw();
-			} catch(Exception e) {
-
-			}
+			ISeries<?> series = baseChart.getSeriesSet().getSeries(DATA_POINT_SERIES);
+			double xSelected = xValues.floor(x);
+			double ySelected = yValues.get(xSelected);
+			double[] xSeries = new double[]{xSelected};
+			double[] ySeries = new double[]{ySelected};
+			series.setXSeries(xSeries);
+			series.setYSeries(ySeries);
+			baseChart.redraw();
 		});
 		applyChartSettings();
 	}
@@ -190,7 +182,7 @@ public class LineSeries_Selection_Part extends Composite {
 		});
 	}
 
-	private void applyChartSettings() throws Exception {
+	private void applyChartSettings() {
 
 		/*
 		 * Chart Settings

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,14 +42,10 @@ public class StepSeries_1_Part extends ChromatogramChart {
 		super(parent, SWT.NONE);
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 
-		try {
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		/*
 		 * Chart Settings
