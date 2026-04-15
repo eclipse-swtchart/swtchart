@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmi:id="_b5zzsE-jEeexM-n8e6XN8g">
-  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Lk3wIE-kEeexM-n8e6XN8g" featurename="snippets" parentElementId="org.eclipse.e4.legacy.ide.application">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_Lk3wIE-kEeexM-n8e6XN8g" featurename="snippets" parentElementId="xpath:/">
     <elements xsi:type="advanced:Perspective" xmi:id="_Pf-TwE-kEeexM-n8e6XN8g" elementId="org.eclipse.swtchart.extensions.examples.perspective.overview" label="Demo - SWTChart Extensions (Overview)">
       <children xsi:type="basic:PartSashContainer" xmi:id="_TapZkE-kEeexM-n8e6XN8g" elementId="org.eclipse.swtchart.extensions.examples.partsashcontainer.0">
         <children xsi:type="basic:PartSashContainer" xmi:id="_T1oscE-kEeexM-n8e6XN8g" elementId="org.eclipse.swtchart.extensions.examples.partsashcontainer.1" horizontal="true">
