@@ -74,8 +74,8 @@ public class SeriesConverter {
 			while((line = bufferedReader.readLine()) != null) {
 				String[] values = line.split("\t");
 				String id = values[0].trim();
-				double[] xSeries = new double[]{Double.parseDouble(values[1].trim())};
-				double[] ySeries = new double[]{Double.parseDouble(values[2].trim())};
+				double[] xSeries = {Double.parseDouble(values[1].trim())};
+				double[] ySeries = {Double.parseDouble(values[2].trim())};
 				ISeriesData seriesData = new SeriesData(xSeries, ySeries, id);
 				scatterSeriesList.add(seriesData);
 			}
