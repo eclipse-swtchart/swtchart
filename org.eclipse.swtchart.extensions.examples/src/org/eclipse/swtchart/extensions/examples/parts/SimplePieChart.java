@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -46,16 +46,12 @@ public class SimplePieChart extends PieChart {
 	public SimplePieChart(Composite parent, boolean doughnut, boolean highlightSeries) {
 
 		super(parent, SWT.NONE);
-		try {
-			this.doughnut = doughnut;
-			this.highlightSeries = highlightSeries;
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		this.doughnut = doughnut;
+		this.highlightSeries = highlightSeries;
+		initialize();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		/*
 		 * Create series.

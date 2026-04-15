@@ -51,13 +51,9 @@ public class LineSeries_Random_Part extends Composite {
 
 		super(parent, SWT.NONE);
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		try {
-			initialize();
-			acquisition = new Acquisition();
-			recording = new Recording();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
+		acquisition = new Acquisition();
+		recording = new Recording();
 	}
 
 	private class Acquisition {
@@ -87,7 +83,7 @@ public class LineSeries_Random_Part extends Composite {
 		}
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		this.setLayout(new GridLayout(1, true));
 		/*

@@ -62,52 +62,48 @@ public class CustomLineChart1 extends LineChart {
 
 	private void configureChart() {
 
-		try {
-			IChartSettings chartSettings = getChartSettings();
-			chartSettings.setOrientation(SWT.HORIZONTAL);
-			chartSettings.setEnableRangeSelector(enableRangeSelector);
-			chartSettings.setHorizontalSliderVisible(enableHorizontalSlider);
-			chartSettings.setVerticalSliderVisible(enableHorizontalSlider);
-			chartSettings.getRangeRestriction().setZeroX(true);
-			chartSettings.getRangeRestriction().setZeroY(true);
+		IChartSettings chartSettings = getChartSettings();
+		chartSettings.setOrientation(SWT.HORIZONTAL);
+		chartSettings.setEnableRangeSelector(enableRangeSelector);
+		chartSettings.setHorizontalSliderVisible(enableHorizontalSlider);
+		chartSettings.setVerticalSliderVisible(enableHorizontalSlider);
+		chartSettings.getRangeRestriction().setZeroX(true);
+		chartSettings.getRangeRestriction().setZeroY(true);
 
-			IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
-			primaryAxisSettingsX.setTitle("Time [ms]");
-			primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0##"), new DecimalFormatSymbols(Locale.ENGLISH)));
-			primaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-			primaryAxisSettingsX.setPosition(Position.Secondary);
-			primaryAxisSettingsX.setVisible(false);
-			primaryAxisSettingsX.setGridLineStyle(LineStyle.NONE);
+		IPrimaryAxisSettings primaryAxisSettingsX = chartSettings.getPrimaryAxisSettingsX();
+		primaryAxisSettingsX.setTitle("Time [ms]");
+		primaryAxisSettingsX.setDecimalFormat(new DecimalFormat(("0.0##"), new DecimalFormatSymbols(Locale.ENGLISH)));
+		primaryAxisSettingsX.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
+		primaryAxisSettingsX.setPosition(Position.Secondary);
+		primaryAxisSettingsX.setVisible(false);
+		primaryAxisSettingsX.setGridLineStyle(LineStyle.NONE);
 
-			IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
-			primaryAxisSettingsY.setTitle("Intensity [counts]");
-			primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH)));
-			primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-			primaryAxisSettingsY.setPosition(Position.Primary);
-			primaryAxisSettingsY.setVisible(true);
-			primaryAxisSettingsY.setGridLineStyle(LineStyle.NONE);
-			/*
-			 * Secondary X-Axes
-			 */
-			String axisTitle = (showAxisTitle) ? "Minutes" : "";
-			ISecondaryAxisSettings secondaryAxisSettingsX1 = new SecondaryAxisSettings(axisTitle, "Time [min]", new MillisecondsToMinuteConverter());
-			secondaryAxisSettingsX1.setPosition(Position.Primary);
-			secondaryAxisSettingsX1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
-			secondaryAxisSettingsX1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-			chartSettings.getSecondaryAxisSettingsListX().add(secondaryAxisSettingsX1);
-			/*
-			 * Secondary Y-Axes
-			 */
-			ISecondaryAxisSettings secondaryAxisSettingsY1 = new SecondaryAxisSettings("Intensity [%]", new PercentageConverter(SWT.VERTICAL, true));
-			secondaryAxisSettingsY1.setPosition(Position.Secondary);
-			secondaryAxisSettingsY1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
-			secondaryAxisSettingsY1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
-			chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY1);
+		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
+		primaryAxisSettingsY.setTitle("Intensity [counts]");
+		primaryAxisSettingsY.setDecimalFormat(new DecimalFormat(("0.0#E0"), new DecimalFormatSymbols(Locale.ENGLISH)));
+		primaryAxisSettingsY.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
+		primaryAxisSettingsY.setPosition(Position.Primary);
+		primaryAxisSettingsY.setVisible(true);
+		primaryAxisSettingsY.setGridLineStyle(LineStyle.NONE);
+		/*
+		 * Secondary X-Axes
+		 */
+		String axisTitle = (showAxisTitle) ? "Minutes" : "";
+		ISecondaryAxisSettings secondaryAxisSettingsX1 = new SecondaryAxisSettings(axisTitle, "Time [min]", new MillisecondsToMinuteConverter());
+		secondaryAxisSettingsX1.setPosition(Position.Primary);
+		secondaryAxisSettingsX1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
+		secondaryAxisSettingsX1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
+		chartSettings.getSecondaryAxisSettingsListX().add(secondaryAxisSettingsX1);
+		/*
+		 * Secondary Y-Axes
+		 */
+		ISecondaryAxisSettings secondaryAxisSettingsY1 = new SecondaryAxisSettings("Intensity [%]", new PercentageConverter(SWT.VERTICAL, true));
+		secondaryAxisSettingsY1.setPosition(Position.Secondary);
+		secondaryAxisSettingsY1.setDecimalFormat(new DecimalFormat(("0.00"), new DecimalFormatSymbols(Locale.ENGLISH)));
+		secondaryAxisSettingsY1.setColor(getDisplay().getSystemColor(SWT.COLOR_BLACK));
+		chartSettings.getSecondaryAxisSettingsListY().add(secondaryAxisSettingsY1);
 
-			applySettings(chartSettings);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		applySettings(chartSettings);
 	}
 
 	private void addDemoSeries() {

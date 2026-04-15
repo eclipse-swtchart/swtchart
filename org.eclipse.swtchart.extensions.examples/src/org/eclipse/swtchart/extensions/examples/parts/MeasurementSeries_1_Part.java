@@ -40,14 +40,10 @@ public class MeasurementSeries_1_Part extends LineChart {
 
 		super(parent, SWT.NONE);
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		try {
-			initialize();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		initialize();
 	}
 
-	private void initialize() throws Exception {
+	private void initialize() {
 
 		/*
 		 * Chart Settings

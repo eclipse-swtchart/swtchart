@@ -13,6 +13,7 @@
 package org.eclipse.swtchart.export;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import org.eclipse.swtchart.extensions.core.SeriesData;
 
 public class SeriesConverter {
 
-	public static ISeriesData getSeriesXY(String file) {
+	public static ISeriesData getSeriesXY(String file) throws NumberFormatException, IOException {
 
 		int size = getNumberOfLines(file);
 		double[] xSeries = new double[size];
@@ -41,15 +42,13 @@ public class SeriesConverter {
 					i++;
 				}
 			}
-		} catch(Exception e) {
-
 		}
 
 		ISeriesData seriesData = new SeriesData(xSeries, ySeries, file);
 		return seriesData;
 	}
 
-	public static ISeriesData getSeriesFromY(String fileName) {
+	public static ISeriesData getSeriesFromY(String fileName) throws IOException {
 
 		int size = getNumberOfLines(fileName);
 		double[] ySeries = new double[size];
@@ -60,15 +59,13 @@ public class SeriesConverter {
 			while((line = bufferedReader.readLine()) != null) {
 				ySeries[i++] = Double.parseDouble(line.trim());
 			}
-		} catch(Exception e) {
-
 		}
 
 		ISeriesData seriesData = new SeriesData(ySeries, fileName);
 		return seriesData;
 	}
 
-	public static List<ISeriesData> getSeriesScatter(String fileName) {
+	public static List<ISeriesData> getSeriesScatter(String fileName) throws NumberFormatException, IOException {
 
 		List<ISeriesData> scatterSeriesList = new ArrayList<>();
 
@@ -82,21 +79,17 @@ public class SeriesConverter {
 				ISeriesData seriesData = new SeriesData(xSeries, ySeries, id);
 				scatterSeriesList.add(seriesData);
 			}
-		} catch(Exception e) {
-
 		}
 		return scatterSeriesList;
 	}
 
-	private static int getNumberOfLines(String file) {
+	private static int getNumberOfLines(String file) throws IOException {
 
 		int i = 0;
 		try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(file))) {
 			while((bufferedReader.readLine()) != null) {
 				i++;
 			}
-		} catch(Exception e) {
-
 		}
 		return i;
 	}
