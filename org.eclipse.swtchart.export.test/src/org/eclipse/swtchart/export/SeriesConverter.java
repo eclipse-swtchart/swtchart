@@ -85,12 +85,8 @@ public class SeriesConverter {
 
 	private static int getNumberOfLines(String file) throws IOException {
 
-		int i = 0;
-		try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(file))) {
-			while((bufferedReader.readLine()) != null) {
-				i++;
-			}
-		}
-		return i;
+		    try (var lines = Files.lines(Path.of(file))) {
+		        return (int)lines.count();
+		    }
 	}
 }
