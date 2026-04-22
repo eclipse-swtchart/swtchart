@@ -15,37 +15,12 @@ package org.eclipse.swtchart.extensions.clipboard;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.ImageDataProvider;
 import org.eclipse.swt.graphics.ImageLoader;
-import org.eclipse.swt.graphics.PaletteData;
-import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 
 public class ImageSupplier {
-
-	/*
-	 * Image data provider used locally to represent chart image
-	 */
-	private class ChartImageDataProvider implements ImageDataProvider {
-
-		private ImageData imageData;
-
-		public ChartImageDataProvider(int width, int height) {
-
-			PaletteData palette = new PaletteData(0xFF, 0xFF00, 0xFF0000);
-			imageData = new ImageData(width, height, 32, palette);
-		}
-
-		@Override
-		public ImageData getImageData(int zoom) {
-
-			if(zoom != 100) {
-				return null;
-			}
-			return imageData;
-		}
-	}
 
 	/**
 	 * Save image data representation to a file with specific format (BMP, PNG or JPG)
@@ -92,14 +67,6 @@ public class ImageSupplier {
 		chart.redraw();
 		chart.update();
 		/*
-		 * Chart size
-		 */
-		Point baseChartSize = chart.getSize();
-		/*
-		 * Create the image provider
-		 */
-		ChartImageDataProvider chartImageDataProvider = new ChartImageDataProvider(baseChartSize.x, baseChartSize.y);
-		/*
 		 * Surround main stuff with try/finally to prevent memory leakage
 		 */
 		Image image = null;
@@ -108,7 +75,8 @@ public class ImageSupplier {
 			/*
 			 * Copy chart into the image
 			 */
-			image = new Image(chart.getDisplay(), chartImageDataProvider);
+			Rectangle bounds = chart.getBounds();
+			image = new Image(chart.getDisplay(), bounds.width, bounds.height);
 			gc = new GC(chart);
 			chart.print(gc);
 			gc.copyArea(image, 0, 0);
