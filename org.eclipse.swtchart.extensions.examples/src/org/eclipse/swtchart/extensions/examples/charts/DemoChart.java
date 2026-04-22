@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,6 +24,9 @@ import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.IAxisSet;
 import org.eclipse.swtchart.IAxisTick;
 import org.eclipse.swtchart.ITitle;
+import org.eclipse.swtchart.export.menu.bitmap.BMPExportHandler;
+import org.eclipse.swtchart.export.menu.bitmap.JPGExportHandler;
+import org.eclipse.swtchart.export.menu.bitmap.PNGExportHandler;
 import org.eclipse.swtchart.extensions.core.IChartSettings;
 import org.eclipse.swtchart.extensions.core.ISecondaryAxisSettings;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
@@ -55,6 +58,9 @@ public class DemoChart {
 		chartSettings.setBufferSelection(true);
 		addClipboardMenuEntry(chartSettings);
 		addToggleAxisLinesMenuEntry(chartSettings);
+		chartSettings.addMenuEntry(new PNGExportHandler());
+		chartSettings.addMenuEntry(new BMPExportHandler());
+		chartSettings.addMenuEntry(new JPGExportHandler());
 		scrollableChart.applySettings(chartSettings);
 
 		while(!shell.isDisposed()) {
