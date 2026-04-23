@@ -55,7 +55,6 @@ import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
 import org.eclipse.swtchart.extensions.piecharts.ICircularSeriesSettings;
 import org.eclipse.swtchart.extensions.preferences.PreferenceConstants;
 import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesSettings;
-import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 
 public class VectorExportSettingsDialog extends TitleAreaDialog {
 
@@ -211,7 +210,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 		label.setText(Messages.getString(Messages.X_AXIS));
 
 		String[] axisLabelsX = baseChart.getAxisLabels(IExtendedChart.X_AXIS);
-		comboScaleX = ExtendedCombo.create(container, SWT.READ_ONLY);
+		comboScaleX = new Combo(container, SWT.READ_ONLY);
 		comboScaleX.setItems(axisLabelsX);
 		comboScaleX.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		comboScaleX.addSelectionListener(new SelectionAdapter() {
@@ -246,7 +245,7 @@ public class VectorExportSettingsDialog extends TitleAreaDialog {
 		label.setText(Messages.getString(Messages.Y_AXIS));
 
 		String[] axisLabelsY = baseChart.getAxisLabels(IExtendedChart.Y_AXIS);
-		comboScaleY = ExtendedCombo.create(container, SWT.READ_ONLY);
+		comboScaleY = new Combo(container, SWT.READ_ONLY);
 		comboScaleY.setItems(axisLabelsY);
 		comboScaleY.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		comboScaleY.addSelectionListener(new SelectionAdapter() {

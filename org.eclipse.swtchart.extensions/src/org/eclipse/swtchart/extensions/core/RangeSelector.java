@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,7 +27,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.Range;
-import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 
 public class RangeSelector extends Composite {
 
@@ -122,7 +121,7 @@ public class RangeSelector extends Composite {
 		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
 
-		comboScaleX = ExtendedCombo.create(this, SWT.READ_ONLY);
+		comboScaleX = new Combo(this, SWT.READ_ONLY);
 		comboScaleX.setLayoutData(getComboGridData());
 		comboScaleX.addSelectionListener(new SelectionAdapter() {
 
@@ -149,7 +148,7 @@ public class RangeSelector extends Composite {
 		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
 
-		comboScaleY = ExtendedCombo.create(this, SWT.READ_ONLY);
+		comboScaleY = new Combo(this, SWT.READ_ONLY);
 		comboScaleY.setLayoutData(getComboGridData());
 		comboScaleY.addSelectionListener(new SelectionAdapter() {
 

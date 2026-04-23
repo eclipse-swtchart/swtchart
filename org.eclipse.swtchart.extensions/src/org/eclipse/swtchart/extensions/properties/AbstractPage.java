@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -26,7 +26,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtchart.extensions.charts.InteractiveChart;
-import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 
 /**
  * Abstract class for properties page.
@@ -167,7 +166,7 @@ public abstract class AbstractPage extends PreferencePage {
 	 */
 	protected Combo createComboControl(Composite parent, String[] items) {
 
-		Combo combo = ExtendedCombo.create(parent, SWT.BORDER | SWT.SINGLE);
+		Combo combo = new Combo(parent, SWT.BORDER | SWT.SINGLE);
 		combo.setItems(items);
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 1;

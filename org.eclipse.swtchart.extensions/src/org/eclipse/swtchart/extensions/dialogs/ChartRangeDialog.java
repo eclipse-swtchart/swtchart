@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,7 +32,6 @@ import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IChartSettings;
 import org.eclipse.swtchart.extensions.core.IExtendedChart;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
-import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 
 public class ChartRangeDialog extends TitleAreaDialog {
 
@@ -106,7 +105,7 @@ public class ChartRangeDialog extends TitleAreaDialog {
 		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
 
-		comboScaleX = ExtendedCombo.create(parent, SWT.READ_ONLY);
+		comboScaleX = new Combo(parent, SWT.READ_ONLY);
 		comboScaleX.setLayoutData(getComboGridData());
 		comboScaleX.addSelectionListener(new SelectionAdapter() {
 
@@ -136,7 +135,7 @@ public class ChartRangeDialog extends TitleAreaDialog {
 		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
 
-		comboScaleY = ExtendedCombo.create(parent, SWT.READ_ONLY);
+		comboScaleY = new Combo(parent, SWT.READ_ONLY);
 		comboScaleY.setLayoutData(getComboGridData());
 		comboScaleY.addSelectionListener(new SelectionAdapter() {
 
