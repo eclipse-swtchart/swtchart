@@ -47,7 +47,6 @@ import org.eclipse.swtchart.extensions.linecharts.ILineSeriesData;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
 import org.eclipse.swtchart.extensions.linecharts.LineChart;
 import org.eclipse.swtchart.extensions.linecharts.LineSeriesData;
-import org.eclipse.swtchart.extensions.widgets.ExtendedCombo;
 
 import jakarta.inject.Inject;
 
@@ -212,7 +211,7 @@ public class LineSeries_Edit_Part extends Composite {
 
 	private void createCombo(Composite parent) {
 
-		comboSelectSeries = ExtendedCombo.create(parent, SWT.BORDER | SWT.READ_ONLY);
+		comboSelectSeries = new Combo(parent, SWT.BORDER | SWT.READ_ONLY);
 		comboSelectSeries.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -232,7 +231,7 @@ public class LineSeries_Edit_Part extends Composite {
 
 	private void createComboScaleX(Composite parent) {
 
-		comboScaleX = ExtendedCombo.create(parent, SWT.READ_ONLY);
+		comboScaleX = new Combo(parent, SWT.READ_ONLY);
 		comboScaleX.setLayoutData(getGridData());
 	}
 
@@ -285,7 +284,7 @@ public class LineSeries_Edit_Part extends Composite {
 
 	private void createComboScaleY(Composite parent) {
 
-		comboScaleY = ExtendedCombo.create(parent, SWT.READ_ONLY);
+		comboScaleY = new Combo(parent, SWT.READ_ONLY);
 		comboScaleY.setLayoutData(getGridData());
 	}
 
