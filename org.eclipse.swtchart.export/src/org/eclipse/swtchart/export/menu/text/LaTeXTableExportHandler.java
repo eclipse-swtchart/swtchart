@@ -29,7 +29,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.export.core.AbstractSeriesExportHandler;
 import org.eclipse.swtchart.export.core.AxisSettings;
-import org.eclipse.swtchart.export.core.ISeriesExportConverter;
 import org.eclipse.swtchart.export.core.VectorExportSettingsDialog;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
@@ -38,7 +37,7 @@ import org.eclipse.swtchart.extensions.core.ISecondaryAxisSettings;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 
-public class LaTeXTableExportHandler extends AbstractSeriesExportHandler implements ISeriesExportConverter {
+public class LaTeXTableExportHandler extends AbstractSeriesExportHandler {
 
 	private static final String FILE_EXTENSION = "*.tex"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.LATEX_TABLE), FILE_EXTENSION);

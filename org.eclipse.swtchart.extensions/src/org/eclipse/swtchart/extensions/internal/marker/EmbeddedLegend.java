@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -21,9 +21,8 @@ import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
 import org.eclipse.swtchart.extensions.core.SeriesLabelProvider;
 import org.eclipse.swtchart.extensions.marker.AbstractBaseChartPaintListener;
-import org.eclipse.swtchart.extensions.marker.IBaseChartPaintListener;
 
-public class EmbeddedLegend extends AbstractBaseChartPaintListener implements IBaseChartPaintListener {
+public class EmbeddedLegend extends AbstractBaseChartPaintListener {
 
 	private int x = 0;
 	private int y = 0;

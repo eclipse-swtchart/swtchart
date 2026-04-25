@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -22,7 +22,7 @@ import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IMouseSupport;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
 
-public class MouseMoveCursorEvent extends AbstractHandledEventProcessor implements IHandledEventProcessor {
+public class MouseMoveCursorEvent extends AbstractHandledEventProcessor {
 
 	private Cursor defaultCursor = null;
 	private ToolTip tooltip = null;

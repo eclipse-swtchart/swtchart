@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2024 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 
-public class FormattingWriter implements Closeable, Flushable, AutoCloseable {
+public class FormattingWriter implements Closeable, Flushable {
 
 	private final OutputStream out;
 	private final Charset encoding;

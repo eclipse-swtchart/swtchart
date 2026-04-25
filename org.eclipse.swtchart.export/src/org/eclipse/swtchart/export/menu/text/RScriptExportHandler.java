@@ -35,7 +35,6 @@ import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.export.core.AbstractSeriesExportHandler;
 import org.eclipse.swtchart.export.core.AxisSettings;
-import org.eclipse.swtchart.export.core.ISeriesExportConverter;
 import org.eclipse.swtchart.export.core.VectorExportSettingsDialog;
 import org.eclipse.swtchart.extensions.barcharts.BarChart;
 import org.eclipse.swtchart.extensions.core.BaseChart;
@@ -49,7 +48,7 @@ import org.eclipse.swtchart.extensions.linecharts.LineChart;
 import org.eclipse.swtchart.extensions.linecharts.StepChart;
 import org.eclipse.swtchart.extensions.scattercharts.ScatterChart;
 
-public class RScriptExportHandler extends AbstractSeriesExportHandler implements ISeriesExportConverter {
+public class RScriptExportHandler extends AbstractSeriesExportHandler {
 
 	private static final String FILE_EXTENSION = "*.R"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.IMAGE_R_SCRIPT), FILE_EXTENSION);
@@ -356,7 +355,6 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 			printWriter.println(""); //$NON-NLS-1$
 		}
 
-
 		int size = seriesSize;
 		int k;
 		printWriter.println("legend('topleft',"); //$NON-NLS-1$
@@ -604,7 +602,6 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 			printWriter.println(""); //$NON-NLS-1$
 		}
 
-
 		printWriter.println("abline(h=0)"); //$NON-NLS-1$
 		printWriter.println("abline(v=0)"); //$NON-NLS-1$
 	}
@@ -681,7 +678,6 @@ public class RScriptExportHandler extends AbstractSeriesExportHandler implements
 			printWriter.println("}"); //$NON-NLS-1$
 			printWriter.println(""); //$NON-NLS-1$
 		}
-
 
 		int size = seriesSize;
 		int k;

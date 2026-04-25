@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,9 +17,8 @@ import java.util.List;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.marker.AbstractBaseChartPaintListener;
-import org.eclipse.swtchart.extensions.marker.IBaseChartPaintListener;
 
-public class CustomSeriesMarker extends AbstractBaseChartPaintListener implements IBaseChartPaintListener {
+public class CustomSeriesMarker extends AbstractBaseChartPaintListener {
 
 	public CustomSeriesMarker(BaseChart baseChart) {
 

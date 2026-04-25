@@ -29,7 +29,7 @@ import org.eclipse.swtchart.ISeriesSet;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.scattercharts.BoxPlotChart;
 
-public class BoxPlotMarker extends AbstractBaseChartPaintListener implements IBaseChartPaintListener {
+public class BoxPlotMarker extends AbstractBaseChartPaintListener {
 
 	private static final int MAX_BOX_WIDTH = 80;
 	private BoxPlotChart boxPlotChart;

@@ -25,7 +25,7 @@ import org.eclipse.swtchart.extensions.piecharts.CircularSeriesLegend;
 import org.eclipse.swtchart.internal.series.CircularSeries;
 import org.eclipse.swtchart.model.Node;
 
-public class CircularMouseDownEvent extends AbstractHandledEventProcessor implements IHandledEventProcessor {
+public class CircularMouseDownEvent extends AbstractHandledEventProcessor {
 
 	private ScrollableChart scrollableChart;
 	private boolean redrawOnClick;
