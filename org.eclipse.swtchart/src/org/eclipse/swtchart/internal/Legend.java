@@ -460,7 +460,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 							if(color != null) {
 								boolean draw = node != null ? node.isVisibleInLegend() : true;
 								if(draw) {
-									drawPieSymbol(gc, label, color, new Rectangle(r.x + MARGIN, r.y + MARGIN, SYMBOL_WIDTH, r.height - MARGIN * 2));
+									drawPieSymbol(gc, color, new Rectangle(r.x + MARGIN, r.y + MARGIN, SYMBOL_WIDTH, r.height - MARGIN * 2));
 									gc.setBackground(getBackground());
 									gc.setForeground(getForeground());
 									gc.drawText(label, r.x + SYMBOL_WIDTH + MARGIN * 2, r.y, true);
@@ -483,7 +483,7 @@ public class Legend extends Composite implements ILegend, PaintListener {
 		}
 	}
 
-	private void drawPieSymbol(GC gc, String string, Color color, Rectangle r) {
+	private void drawPieSymbol(GC gc, Color color, Rectangle r) {
 
 		gc.setBackground(color);
 		int size = SYMBOL_WIDTH / 2;

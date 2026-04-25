@@ -380,7 +380,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 						String labelPie = labels[j];
 						Color colorPie = color[j];
 						if(labelPie != null && colorPie != null) {
-							drawPieSymbol(gc, labelPie, colorPie, new Rectangle(r.x + MARGIN, r.y + MARGIN, SYMBOL_WIDTH, r.height - MARGIN * 2));
+							drawPieSymbol(gc, colorPie, new Rectangle(r.x + MARGIN, r.y + MARGIN, SYMBOL_WIDTH, r.height - MARGIN * 2));
 							gc.setBackground(getBackground());
 							gc.setForeground(getForeground());
 							gc.drawText(labelPie, r.x + SYMBOL_WIDTH + MARGIN * 2, r.y, true);
@@ -401,7 +401,7 @@ public class CircularLegend extends Composite implements ILegend, PaintListener 
 		}
 	}
 
-	private void drawPieSymbol(GC gc, String string, Color color, Rectangle r) {
+	private void drawPieSymbol(GC gc, Color color, Rectangle r) {
 
 		gc.setBackground(color);
 		int size = SYMBOL_WIDTH / 2;

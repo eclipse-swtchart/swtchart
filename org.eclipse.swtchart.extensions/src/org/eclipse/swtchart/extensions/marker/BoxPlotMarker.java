@@ -91,11 +91,11 @@ public class BoxPlotMarker extends AbstractBaseChartPaintListener implements IBa
 			gc.drawLine(xCenter, yMax, xCenter, q3Y);
 			gc.drawLine(xMin, q2Y, xMax, q2Y);
 			gc.setAlpha(originalAlpha);
-			grawPointSymbols(gc, series[categoryIndex], xAxis, yAxis, xCenter, boxWidth);
+			grawPointSymbols(gc, series[categoryIndex], yAxis, xCenter, boxWidth);
 		}
 	}
 
-	private void grawPointSymbols(GC gc, ISeries<?> series, IAxis xAxis, IAxis yAxis, int xCenter, int boxWidth) {
+	private void grawPointSymbols(GC gc, ISeries<?> series, IAxis yAxis, int xCenter, int boxWidth) {
 
 		if(series instanceof ILineSeries lineSeries) {
 			Color[] symbolColors = lineSeries.getSymbolColors();

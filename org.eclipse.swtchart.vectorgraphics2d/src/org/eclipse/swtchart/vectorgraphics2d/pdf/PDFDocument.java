@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -101,7 +101,7 @@ class PDFDocument extends SizedDocument {
 
 	private PDDocument createDocument(CommandSequence commands, PageSize pageSize) {
 
-		Scale scale = getScale(pageSize, commands);
+		Scale scale = getScale(commands);
 		PDDocument document = new PDDocument();
 		PDRectangle rectangle = getRectangle(pageSize, scale);
 		PDPage page = new PDPage(rectangle);
@@ -328,7 +328,7 @@ class PDFDocument extends SizedDocument {
 		return new PDRectangle(width, height);
 	}
 
-	private Scale getScale(PageSize pageSize, CommandSequence commands) {
+	private Scale getScale(CommandSequence commands) {
 
 		double scaleX = 1.0d;
 		double scaleY = 1.0d;
