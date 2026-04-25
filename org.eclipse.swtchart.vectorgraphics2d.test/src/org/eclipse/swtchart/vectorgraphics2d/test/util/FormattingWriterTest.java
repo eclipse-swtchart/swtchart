@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -163,8 +163,8 @@ public class FormattingWriterTest {
 	public void closeClosesOutputStream() throws IOException {
 
 		MockOutputStream mockStream = new MockOutputStream();
-		FormattingWriter writer = new FormattingWriter(mockStream, StandardCharsets.ISO_8859_1, DEFAULT_EOL);
-		writer.close();
+		try (FormattingWriter writer = new FormattingWriter(mockStream, StandardCharsets.ISO_8859_1, DEFAULT_EOL)) {
+		}
 		assertTrue(mockStream.closed);
 	}
 

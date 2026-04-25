@@ -310,10 +310,10 @@ class PDFDocument extends SizedDocument {
 		PDRectangle originalSize = page.getMediaBox();
 		float scaleX = targetSize.getWidth() / originalSize.getWidth();
 		float scaleY = targetSize.getHeight() / originalSize.getHeight();
-		PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.PREPEND, false);
-		Matrix matrix = Matrix.getScaleInstance(scaleX, scaleY);
-		contentStream.transform(matrix);
-		contentStream.close();
+		try (PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.PREPEND, false)) {
+			Matrix matrix = Matrix.getScaleInstance(scaleX, scaleY);
+			contentStream.transform(matrix);
+		}
 		page.setMediaBox(targetSize);
 	}
 
