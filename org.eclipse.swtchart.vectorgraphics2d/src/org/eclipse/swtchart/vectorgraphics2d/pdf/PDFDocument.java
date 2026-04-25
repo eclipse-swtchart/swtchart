@@ -83,7 +83,7 @@ class PDFDocument extends SizedDocument {
 		}
 	}
 
-	public PDFDocument(CommandSequence commands, PageSize pageSize, boolean compressed) throws IOException {
+	public PDFDocument(CommandSequence commands, PageSize pageSize, boolean compressed) {
 
 		super(pageSize, compressed);
 		document = createDocument(commands, pageSize);
