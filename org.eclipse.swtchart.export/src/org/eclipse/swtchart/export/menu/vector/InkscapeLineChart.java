@@ -378,7 +378,6 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		int widthPlotArea = baseChart.getPlotArea().getSize().x;
 		int heightPlotArea = baseChart.getPlotArea().getSize().y;
 		IAxisSet axisSet = baseChart.getAxisSet();
-		int index = 0;
 		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null && dataSeries.isVisible()) {
 				ILineSeries<?> lineSeries = (ILineSeries<?>)dataSeries;
@@ -387,7 +386,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 				if(lineStyle != LineStyle.NONE) {
 					string = printLineData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 				} else {
-					string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, index++, axisSet, isReversedX, isReversedY);
+					string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 				}
 				builder.append(string);
 			}

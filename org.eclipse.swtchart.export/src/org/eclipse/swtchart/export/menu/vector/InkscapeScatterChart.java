@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2025 Lablicate GmbH.
+ * Copyright (c) 2019, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -238,10 +238,9 @@ public class InkscapeScatterChart extends AbstractInkscapeLineChart {
 					int widthPlotArea = baseChart.getPlotArea().getSize().x;
 					int heightPlotArea = baseChart.getPlotArea().getSize().y;
 					IAxisSet axisSet = baseChart.getAxisSet();
-					int index = 0;
 					for(ISeries<?> dataSeries : series) {
 						if(dataSeries != null && dataSeries.isVisible()) {
-							StringBuilder string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, index++, axisSet, isReversedX, isReversedY);
+							StringBuilder string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 							out.append(string);
 						}
 					}
