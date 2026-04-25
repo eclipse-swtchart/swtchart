@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 Lablicate GmbH.
+ * Copyright (c) 2021, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -45,6 +45,7 @@ public class MouseMoveShiftEventX extends MouseMoveShiftEvent {
 		super.handleEvent(baseChart, event);
 	}
 
+	@Override
 	protected boolean isSingleClick(Event event) {
 
 		System.out.println("Event (MouseMoveShift): " + event);

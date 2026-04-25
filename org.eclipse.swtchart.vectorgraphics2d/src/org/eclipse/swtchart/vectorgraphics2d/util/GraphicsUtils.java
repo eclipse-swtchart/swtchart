@@ -256,6 +256,7 @@ public abstract class GraphicsUtils {
 
 		private static final int[] STYLES = {Font.PLAIN, Font.ITALIC, Font.BOLD, Font.BOLD | Font.ITALIC};
 
+		@Override
 		public int compare(Font font1, Font font2) {
 
 			if(font1 == font2) {

@@ -38,6 +38,7 @@ public class DoughnutSeries extends CircularSeries {
 	 * @param xAxis
 	 * @param yAxis
 	 */
+	@Override
 	protected void drawNode(Node node, GC gc, Axis xAxis, Axis yAxis) {
 
 		// children drawn first as parent overrides it's section of drawing
@@ -102,6 +103,7 @@ public class DoughnutSeries extends CircularSeries {
 	 * @param xAxis
 	 * @param yAxis
 	 */
+	@Override
 	protected void setBothAxisRange(int width, int height, Axis xAxis, Axis yAxis) {
 
 		setMaxTreeDepth(getRootPointer().getMaxSubTreeDepth() - 1);
@@ -135,6 +137,7 @@ public class DoughnutSeries extends CircularSeries {
 		return new Range(-getMaxTreeDepth() - 1, getMaxTreeDepth() + 1);
 	}
 
+	@Override
 	public Node getPieSliceFromPosition(double primaryValueX, double primaryValueY) {
 
 		double radius = Math.sqrt(primaryValueX * primaryValueX + primaryValueY * primaryValueY);

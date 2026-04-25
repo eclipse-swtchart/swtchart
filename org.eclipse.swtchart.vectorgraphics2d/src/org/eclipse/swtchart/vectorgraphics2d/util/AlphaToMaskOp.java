@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,6 +42,7 @@ public class AlphaToMaskOp implements BufferedImageOp {
 		return inverted;
 	}
 
+	@Override
 	public BufferedImage filter(BufferedImage src, BufferedImage dest) {
 
 		ColorModel cm = src.getColorModel();
@@ -71,6 +72,7 @@ public class AlphaToMaskOp implements BufferedImageOp {
 		return dest;
 	}
 
+	@Override
 	public Rectangle2D getBounds2D(BufferedImage src) {
 
 		Rectangle2D bounds = new Rectangle2D.Double();
@@ -78,6 +80,7 @@ public class AlphaToMaskOp implements BufferedImageOp {
 		return bounds;
 	}
 
+	@Override
 	public BufferedImage createCompatibleDestImage(BufferedImage src, ColorModel destCM) {
 
 		if(destCM == null) {
@@ -97,6 +100,7 @@ public class AlphaToMaskOp implements BufferedImageOp {
 		return bimage;
 	}
 
+	@Override
 	public Point2D getPoint2D(Point2D srcPt, Point2D dstPt) {
 
 		if(dstPt == null) {
@@ -106,6 +110,7 @@ public class AlphaToMaskOp implements BufferedImageOp {
 		return dstPt;
 	}
 
+	@Override
 	public RenderingHints getRenderingHints() {
 
 		return null;

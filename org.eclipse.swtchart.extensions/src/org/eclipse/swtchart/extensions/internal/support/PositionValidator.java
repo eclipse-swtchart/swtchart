@@ -22,6 +22,7 @@ public class PositionValidator implements IValidator<String> {
 
 	private int position = 0;
 
+	@Override
 	public IStatus validate(String value) {
 
 		this.position = 0;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,11 +32,13 @@ public abstract class StreamingFilter implements Iterator<Command<?>>, Filter {
 		iterator = stream.iterator();
 	}
 
+	@Override
 	public Iterator<Command<?>> iterator() {
 
 		return this;
 	}
 
+	@Override
 	public boolean hasNext() {
 
 		findNextCommand();
@@ -54,12 +56,14 @@ public abstract class StreamingFilter implements Iterator<Command<?>>, Filter {
 		}
 	}
 
+	@Override
 	public Command<?> next() {
 
 		findNextCommand();
 		return buffer.poll();
 	}
 
+	@Override
 	public void remove() {
 
 	}

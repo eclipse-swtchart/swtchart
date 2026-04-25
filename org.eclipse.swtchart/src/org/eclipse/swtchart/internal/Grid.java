@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -57,11 +57,13 @@ public class Grid implements IGrid {
 		isVisible = true;
 	}
 
+	@Override
 	public boolean isVisible() {
 
 		return isVisible;
 	}
 
+	@Override
 	public void setVisible(boolean isVisible) {
 
 		this.isVisible = isVisible;

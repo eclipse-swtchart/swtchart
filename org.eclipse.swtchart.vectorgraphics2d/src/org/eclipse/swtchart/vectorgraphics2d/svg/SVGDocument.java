@@ -157,6 +157,7 @@ class SVGDocument extends SizedDocument {
 		root.setAttribute("viewBox", DataUtils.join(" ", new double[]{x, y, width, height}));
 	}
 
+	@Override
 	public void writeTo(OutputStream out) throws IOException {
 
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
