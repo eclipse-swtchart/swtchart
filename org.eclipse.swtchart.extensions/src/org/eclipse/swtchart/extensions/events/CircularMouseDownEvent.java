@@ -84,7 +84,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor {
 						}
 
 						for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-							for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+							for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 								if(linkedSeries instanceof CircularSeries) {
 									Node correspondingNode = ((CircularSeries)linkedSeries).getNodeById(nodeId);
 									((CircularSeries)linkedSeries).setHighlightedNode(correspondingNode);
@@ -132,7 +132,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor {
 						if(node != null) {
 							nodeId = node.getId();
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+								for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										Node correspondingNode = circularSeriesLinked.getNodeById(nodeId);
 										if(circularSeriesLinked.getRootPointer() == correspondingNode) {
@@ -159,7 +159,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor {
 							 * When node is not selected, undo everything to rootNode
 							 */
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+								for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										circularSeries.setRootPointer(circularSeriesLinked.getRootNode());
 									}

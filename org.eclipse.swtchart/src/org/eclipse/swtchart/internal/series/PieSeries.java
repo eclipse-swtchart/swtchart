@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -107,18 +107,18 @@ public class PieSeries extends CircularSeries {
 		yAxis.setRange(new Range(-rangeMax, rangeMax));
 		if(width > height) {
 			if(xAxis.isHorizontalAxis()) {
-				double ratio = 2 * rangeMax * width / (double)height;
+				double ratio = 2 * rangeMax * width / height;
 				xAxis.setRange(new Range(-ratio / 2, ratio / 2));
 			} else {
-				double ratio = 2 * rangeMax * width / (double)height;
+				double ratio = 2 * rangeMax * width / height;
 				yAxis.setRange(new Range(ratio / 2, ratio / 2));
 			}
 		} else {
 			if(xAxis.isHorizontalAxis()) {
-				double ratio = 2 * rangeMax * height / (double)width;
+				double ratio = 2 * rangeMax * height / width;
 				yAxis.setRange(new Range(-ratio / 2, ratio / 2));
 			} else {
-				double ratio = 2 * rangeMax * height / (double)width;
+				double ratio = 2 * rangeMax * height / width;
 				xAxis.setRange(new Range(-ratio / 2, ratio / 2));
 			}
 		}
@@ -143,8 +143,8 @@ public class PieSeries extends CircularSeries {
 
 		if(level < getNodeDataModel().getNodes().length) {
 			for(Node nodeX : getNodeDataModel().getNodes()[level]) {
-				double lowerBound = (nodeX.getAngleBounds().x * Math.PI) / (double)180.0;
-				double upperBound = ((nodeX.getAngleBounds().x + nodeX.getAngleBounds().y) * Math.PI) / (double)180.0;
+				double lowerBound = (nodeX.getAngleBounds().x * Math.PI) / 180.0;
+				double upperBound = ((nodeX.getAngleBounds().x + nodeX.getAngleBounds().y) * Math.PI) / 180.0;
 				if((lowerBound <= angleOfInspection) && (upperBound >= angleOfInspection)) {
 					node = nodeX;
 					break;

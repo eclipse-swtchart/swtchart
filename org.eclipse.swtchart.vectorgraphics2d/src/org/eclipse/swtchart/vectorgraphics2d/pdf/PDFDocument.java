@@ -109,7 +109,7 @@ class PDFDocument extends SizedDocument {
 		float height = rectangle.getHeight();
 
 		Matrix matrixScale = Matrix.getScaleInstance(1, -1);
-		Matrix matrixTranslate = Matrix.getTranslateInstance(0, -(float)height);
+		Matrix matrixTranslate = Matrix.getTranslateInstance(0, -height);
 		Matrix matrixFlip = Matrix.concatenate(matrixScale, matrixTranslate);
 
 		AffineTransform affineTransform = null;
@@ -152,19 +152,19 @@ class PDFDocument extends SizedDocument {
 							float[] dashArray = basicStroke.getDashArray();
 							float[] dashArrayAdjusted = new float[dashArray.length];
 							for(int i = 0; i < dashArray.length; i++) {
-								dashArrayAdjusted[i] = (float)(dashArray[i]);
+								dashArrayAdjusted[i] = dashArray[i];
 							}
-							contentStream.setLineDashPattern(dashArrayAdjusted, (float)(basicStroke.getDashPhase()));
+							contentStream.setLineDashPattern(dashArrayAdjusted, basicStroke.getDashPhase());
 						}
 						contentStream.setLineJoinStyle(basicStroke.getLineJoin());
-						contentStream.setLineWidth((float)(basicStroke.getLineWidth()));
+						contentStream.setLineWidth(basicStroke.getLineWidth());
 					}
 				} else if(command instanceof SetFontCommand c) {
 					/*
 					 * Font
 					 */
 					Font fontx = c.getValue();
-					fontSize = (float)fontx.getSize2D();
+					fontSize = fontx.getSize2D();
 				} else if(command instanceof SetTransformCommand c) {
 					/*
 					 * Detect Rotation

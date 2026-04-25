@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,7 +29,7 @@ public class PositionValidator implements IValidator<String> {
 
 		if(value != null) {
 			try {
-				position = Integer.parseInt(((String)value).trim());
+				position = Integer.parseInt(value.trim());
 				parseError = false;
 			} catch(NumberFormatException e) {
 				// Don't catch it here.
