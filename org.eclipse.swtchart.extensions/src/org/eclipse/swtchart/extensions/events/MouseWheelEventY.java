@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024 Lablicate GmbH.
+ * Copyright (c) 2024, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,6 +27,7 @@ public class MouseWheelEventY extends AbstractMouseEvent {
 		return SWT.MOD2;
 	}
 
+	@Override
 	protected void runAction(BaseChart baseChart, Event event) {
 
 		if((event.stateMask & SWT.MOD3) == SWT.MOD3) {

@@ -23,7 +23,7 @@ import org.eclipse.swtchart.ISeriesSet;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IMouseSupport;
 
-public class MouseMoveSelectionEvent extends AbstractHandledEventProcessor implements IHandledEventProcessor {
+public class MouseMoveSelectionEvent extends AbstractHandledEventProcessor {
 
 	private Cursor cursorCross = Display.getDefault().getSystemCursor(SWT.CURSOR_CROSS);
 

@@ -30,7 +30,6 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.export.core.AbstractSeriesExportHandler;
 import org.eclipse.swtchart.export.core.AxisSettings;
-import org.eclipse.swtchart.export.core.ISeriesExportConverter;
 import org.eclipse.swtchart.export.core.VectorExportSettingsDialog;
 import org.eclipse.swtchart.extensions.barcharts.BarChart;
 import org.eclipse.swtchart.extensions.core.BaseChart;
@@ -43,7 +42,7 @@ import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.extensions.linecharts.LineChart;
 import org.eclipse.swtchart.extensions.scattercharts.ScatterChart;
 
-public class SVGExportHandler extends AbstractSeriesExportHandler implements ISeriesExportConverter {
+public class SVGExportHandler extends AbstractSeriesExportHandler {
 
 	private static final String FILE_EXTENSION = "*.svg"; //$NON-NLS-1$
 	private static final String NAME = MessageFormat.format(Messages.getString(Messages.SVG), FILE_EXTENSION);

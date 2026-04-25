@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,11 +15,11 @@ package org.eclipse.swtchart.extensions.internal.marker;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.marker.AbstractPositionPaintListener;
-import org.eclipse.swtchart.extensions.marker.IPositionPaintListener;
 
-public class PositionMarker extends AbstractPositionPaintListener implements IPositionPaintListener {
+public class PositionMarker extends AbstractPositionPaintListener {
 
 	public PositionMarker(BaseChart baseChart) {
+
 		super(baseChart);
 	}
 

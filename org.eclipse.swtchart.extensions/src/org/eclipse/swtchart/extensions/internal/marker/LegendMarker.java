@@ -23,10 +23,9 @@ import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 import org.eclipse.swtchart.extensions.core.IAxisSettings;
 import org.eclipse.swtchart.extensions.core.IExtendedChart;
 import org.eclipse.swtchart.extensions.marker.AbstractPositionPaintListener;
-import org.eclipse.swtchart.extensions.marker.IPositionPaintListener;
 import org.eclipse.swtchart.model.Node;
 
-public class LegendMarker extends AbstractPositionPaintListener implements IPositionPaintListener {
+public class LegendMarker extends AbstractPositionPaintListener {
 
 	private StringBuilder stringBuilder;
 	private String[] axisLabelsX;

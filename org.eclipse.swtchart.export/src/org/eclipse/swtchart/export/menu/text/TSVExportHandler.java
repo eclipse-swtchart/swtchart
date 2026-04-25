@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,9 +16,8 @@ package org.eclipse.swtchart.export.menu.text;
 import java.text.MessageFormat;
 
 import org.eclipse.swtchart.export.core.AbstractSeparatedValueHandler;
-import org.eclipse.swtchart.export.core.ISeriesExportConverter;
 
-public class TSVExportHandler extends AbstractSeparatedValueHandler implements ISeriesExportConverter {
+public class TSVExportHandler extends AbstractSeparatedValueHandler {
 
 	private static final String FILE_EXTENSION = "*.tsv"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.TAB_SEPARATED_VALUES), FILE_EXTENSION);

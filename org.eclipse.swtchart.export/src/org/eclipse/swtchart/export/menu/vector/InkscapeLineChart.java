@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2025 Lablicate GmbH.
+ * Copyright (c) 2019, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -378,16 +378,15 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 		int widthPlotArea = baseChart.getPlotArea().getSize().x;
 		int heightPlotArea = baseChart.getPlotArea().getSize().y;
 		IAxisSet axisSet = baseChart.getAxisSet();
-		int index = 0;
 		for(ISeries<?> dataSeries : series) {
 			if(dataSeries != null && dataSeries.isVisible()) {
 				ILineSeries<?> lineSeries = (ILineSeries<?>)dataSeries;
 				LineStyle lineStyle = lineSeries.getLineStyle();
 				StringBuilder string = null;
 				if(lineStyle != LineStyle.NONE) {
-					string = printLineData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, index++, axisSet, isReversedX, isReversedY);
+					string = printLineData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 				} else {
-					string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, index++, axisSet, isReversedX, isReversedY);
+					string = printScatterData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 				}
 				builder.append(string);
 			}
@@ -399,7 +398,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 	/*
 	 * returns the data series to be replaced in the data series in template
 	 */
-	private StringBuilder printLineData(ISeries<?> dataSeries, int widthPlotArea, int heightPlotArea, AxisSettings axisSettings, int index, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
+	private StringBuilder printLineData(ISeries<?> dataSeries, int widthPlotArea, int heightPlotArea, AxisSettings axisSettings, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
 
 		StringBuilder builder = new StringBuilder("");
 		StringBuilder data = new StringBuilder(HEADER_DATA);
@@ -429,9 +428,9 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 					 */
 					Point point = dataSeries.getPixelCoordinates(i);
 					if((point.x >= 0 && point.x <= widthPlotArea) && (point.y >= 0 && point.y <= heightPlotArea)) {
-						rep.append(printValueLinePlot(AXIS_X, index, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
+						rep.append(printValueLinePlot(AXIS_X, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
 						rep.append(",");
-						rep.append(printValueLinePlot(AXIS_Y, index, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
+						rep.append(printValueLinePlot(AXIS_Y, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
 						rep.append(" ");
 					}
 				}
@@ -446,7 +445,7 @@ public class InkscapeLineChart extends AbstractInkscapeLineChart {
 	/*
 	 * returns value scaled to the appropriate coordinates in SVG
 	 */
-	private String printValueLinePlot(String axis, int index, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
+	private String printValueLinePlot(String axis, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
 
 		String line = "";
 		double x = 255.5 - 23.5;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -83,7 +83,7 @@ class PDFDocument extends SizedDocument {
 		}
 	}
 
-	public PDFDocument(CommandSequence commands, PageSize pageSize, boolean compressed) throws IOException {
+	public PDFDocument(CommandSequence commands, PageSize pageSize, boolean compressed) {
 
 		super(pageSize, compressed);
 		document = createDocument(commands, pageSize);
@@ -101,7 +101,7 @@ class PDFDocument extends SizedDocument {
 
 	private PDDocument createDocument(CommandSequence commands, PageSize pageSize) {
 
-		Scale scale = getScale(pageSize, commands);
+		Scale scale = getScale(commands);
 		PDDocument document = new PDDocument();
 		PDRectangle rectangle = getRectangle(pageSize, scale);
 		PDPage page = new PDPage(rectangle);
@@ -109,7 +109,7 @@ class PDFDocument extends SizedDocument {
 		float height = rectangle.getHeight();
 
 		Matrix matrixScale = Matrix.getScaleInstance(1, -1);
-		Matrix matrixTranslate = Matrix.getTranslateInstance(0, -(float)height);
+		Matrix matrixTranslate = Matrix.getTranslateInstance(0, -height);
 		Matrix matrixFlip = Matrix.concatenate(matrixScale, matrixTranslate);
 
 		AffineTransform affineTransform = null;
@@ -152,19 +152,19 @@ class PDFDocument extends SizedDocument {
 							float[] dashArray = basicStroke.getDashArray();
 							float[] dashArrayAdjusted = new float[dashArray.length];
 							for(int i = 0; i < dashArray.length; i++) {
-								dashArrayAdjusted[i] = (float)(dashArray[i]);
+								dashArrayAdjusted[i] = dashArray[i];
 							}
-							contentStream.setLineDashPattern(dashArrayAdjusted, (float)(basicStroke.getDashPhase()));
+							contentStream.setLineDashPattern(dashArrayAdjusted, basicStroke.getDashPhase());
 						}
 						contentStream.setLineJoinStyle(basicStroke.getLineJoin());
-						contentStream.setLineWidth((float)(basicStroke.getLineWidth()));
+						contentStream.setLineWidth(basicStroke.getLineWidth());
 					}
 				} else if(command instanceof SetFontCommand c) {
 					/*
 					 * Font
 					 */
 					Font fontx = c.getValue();
-					fontSize = (float)fontx.getSize2D();
+					fontSize = fontx.getSize2D();
 				} else if(command instanceof SetTransformCommand c) {
 					/*
 					 * Detect Rotation
@@ -310,10 +310,10 @@ class PDFDocument extends SizedDocument {
 		PDRectangle originalSize = page.getMediaBox();
 		float scaleX = targetSize.getWidth() / originalSize.getWidth();
 		float scaleY = targetSize.getHeight() / originalSize.getHeight();
-		PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.PREPEND, false);
-		Matrix matrix = Matrix.getScaleInstance(scaleX, scaleY);
-		contentStream.transform(matrix);
-		contentStream.close();
+		try (PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.PREPEND, false)) {
+			Matrix matrix = Matrix.getScaleInstance(scaleX, scaleY);
+			contentStream.transform(matrix);
+		}
 		page.setMediaBox(targetSize);
 	}
 
@@ -328,7 +328,7 @@ class PDFDocument extends SizedDocument {
 		return new PDRectangle(width, height);
 	}
 
-	private Scale getScale(PageSize pageSize, CommandSequence commands) {
+	private Scale getScale(CommandSequence commands) {
 
 		double scaleX = 1.0d;
 		double scaleY = 1.0d;

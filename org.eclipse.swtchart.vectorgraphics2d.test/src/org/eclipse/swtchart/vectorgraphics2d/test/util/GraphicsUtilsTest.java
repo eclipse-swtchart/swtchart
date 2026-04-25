@@ -431,7 +431,7 @@ public class GraphicsUtilsTest {
 	}
 
 	@Test
-	public void cloneNullReturnsNull() throws InstantiationException, IllegalAccessException {
+	public void cloneNullReturnsNull() {
 
 		Shape result = GraphicsUtils.clone(null);
 		assertNull(result);

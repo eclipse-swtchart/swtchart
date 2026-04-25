@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -461,7 +461,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 					points[1] = p0[1];
 					points[points.length - 2] = pn[2];
 					points[points.length - 1] = pn[3];
-					drawAreaStrict(gc, points, isHorizontal);
+					drawAreaStrict(gc, points);
 				}
 			}
 		} else {
@@ -654,7 +654,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		gc.setBackground(oldBackground);
 	}
 
-	private void drawAreaStrict(GC gc, int[] p, boolean isHorizontal) {
+	private void drawAreaStrict(GC gc, int[] p) {
 
 		int alpha = gc.getAlpha();
 		gc.setAlpha(ALPHA);

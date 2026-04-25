@@ -31,7 +31,7 @@ import org.eclipse.swtchart.extensions.core.IAxisSettings;
 import org.eclipse.swtchart.extensions.core.ISecondaryAxisSettings;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 
-public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExportHandler implements ISeriesExportConverter {
+public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExportHandler {
 
 	private String title;
 	private String fileExtension;

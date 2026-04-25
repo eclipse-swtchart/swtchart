@@ -179,8 +179,8 @@ public class ChartLayout extends Layout {
 	 */
 	private void initTitleAndLegendSize() {
 
-		titleWidth = ((ChartLayoutData)title.getLayoutData()).widthHint;
-		titleHeight = ((ChartLayoutData)title.getLayoutData()).heightHint;
+		titleWidth = title.getLayoutData().widthHint;
+		titleHeight = title.getLayoutData().heightHint;
 		legendWidth = ((ChartLayoutData)legend.getLayoutData()).widthHint;
 		legendHeight = ((ChartLayoutData)legend.getLayoutData()).heightHint;
 	}
@@ -592,7 +592,7 @@ public class ChartLayout extends Layout {
 			axisTickLabels = axisTick.getAxisTickLabels();
 			axisPositionMarker = axisTick.getAxisPositionMarker();
 			axisTitle = (AxisTitle)axis.getTitle();
-			titleLayoutdata = (ChartLayoutData)axisTitle.getLayoutData();
+			titleLayoutdata = axisTitle.getLayoutData();
 			tickLabelsLayoutdata = axisTickLabels.getLayoutData();
 			tickMarksLayoutdata = axisTickMarks.getLayoutData();
 		}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2025 Lablicate GmbH.
+ * Copyright (c) 2019, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -239,12 +239,10 @@ public class InkscapeBarChart extends AbstractInkscapeTemplate {
 				} else if(Pattern.matches(data_series, line)) {
 					StringBuilder out = new StringBuilder("");
 					int widthPlotArea = baseChart.getPlotArea().getSize().x;
-					int heightPlotArea = baseChart.getPlotArea().getSize().y;
 					IAxisSet axisSet = baseChart.getAxisSet();
-					int index = 0;
 					for(ISeries<?> dataSeries : series) {
 						if(dataSeries != null && dataSeries.isVisible()) {
-							StringBuilder string = printBarData(dataSeries, widthPlotArea, heightPlotArea, axisSettings, index++, axisSet, isReversedX, isReversedY);
+							StringBuilder string = printBarData(dataSeries, widthPlotArea, axisSettings, axisSet, isReversedX, isReversedY);
 							out.append(string);
 						}
 					}
@@ -262,7 +260,7 @@ public class InkscapeBarChart extends AbstractInkscapeTemplate {
 	/*
 	 * returns the data series to be replaced in the data series in template
 	 */
-	private StringBuilder printBarData(ISeries<?> dataSeries, int widthPlotArea, int heightPlotArea, AxisSettings axisSettings, int index, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
+	private StringBuilder printBarData(ISeries<?> dataSeries, int widthPlotArea, AxisSettings axisSettings, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
 
 		StringBuilder out = new StringBuilder("");
 		/* BarSeries to be added to the template during export */
@@ -291,9 +289,9 @@ public class InkscapeBarChart extends AbstractInkscapeTemplate {
 			Point point = dataSeries.getPixelCoordinates(i);
 			if((point.x >= 0 && point.x <= widthPlotArea)) {
 				double offset = 0.25;
-				double x = Double.parseDouble(printValueBarPlot(AXIS_X, index, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
-				double y = Double.parseDouble(printValueBarPlot(AXIS_Y, index, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
-				double base = Double.parseDouble(printValueBarPlot(AXIS_Y, index, 0.0, indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
+				double x = Double.parseDouble(printValueBarPlot(AXIS_X, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
+				double y = Double.parseDouble(printValueBarPlot(AXIS_Y, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
+				double base = Double.parseDouble(printValueBarPlot(AXIS_Y, 0.0, indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
 				double height = Math.abs(y - base);
 				/* Width for BarSeries in the Export */
 				double width = 1.0;
@@ -361,7 +359,7 @@ public class InkscapeBarChart extends AbstractInkscapeTemplate {
 	/*
 	 * returns value scaled to the appropriate coordinates in SVG
 	 */
-	private String printValueBarPlot(String axis, int index, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
+	private String printValueBarPlot(String axis, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
 
 		String ret = null;
 		double x = 255.5 - 23.5;

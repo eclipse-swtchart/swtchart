@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -14,10 +14,9 @@ package org.eclipse.swtchart.extensions.axisconverter;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swtchart.extensions.core.AbstractAxisScaleConverter;
-import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 import org.eclipse.swtchart.extensions.core.IChartDataCoordinates;
 
-public class PercentageConverter extends AbstractAxisScaleConverter implements IAxisScaleConverter {
+public class PercentageConverter extends AbstractAxisScaleConverter {
 
 	private static final double REFERENCE = 100.0d;
 
@@ -30,6 +29,7 @@ public class PercentageConverter extends AbstractAxisScaleConverter implements I
 	 * Y-AXis: SWT.VERTICAL
 	 */
 	public PercentageConverter(int orientation, boolean isZeroBased) {
+
 		this.orientation = orientation;
 		this.isZeroBased = isZeroBased;
 	}

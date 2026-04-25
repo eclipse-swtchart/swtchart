@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -46,6 +46,7 @@ public class CircularSeriesData extends SeriesData implements ICircularSeriesDat
 		this.seriesSettings.setDescription(seriesData.getTitle());
 	}
 
+	@Override
 	public String getTitle() {
 
 		return nodeDataModel.getId();
@@ -76,6 +77,7 @@ public class CircularSeriesData extends SeriesData implements ICircularSeriesDat
 		return nodeDataModel;
 	}
 
+	@Override
 	public void setDataModel(NodeDataModel data) {
 
 		this.nodeDataModel = data;

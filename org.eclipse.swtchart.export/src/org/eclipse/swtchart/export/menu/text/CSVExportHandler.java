@@ -1,5 +1,5 @@
 /*******************************************************************************
- * * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,10 +17,9 @@ import java.text.MessageFormat;
 
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtchart.export.core.AbstractSeparatedValueHandler;
-import org.eclipse.swtchart.export.core.ISeriesExportConverter;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
 
-public class CSVExportHandler extends AbstractSeparatedValueHandler implements ISeriesExportConverter {
+public class CSVExportHandler extends AbstractSeparatedValueHandler {
 
 	private static final String FILE_EXTENSION = "*.csv"; //$NON-NLS-1$
 	public static final String NAME = MessageFormat.format(Messages.getString(Messages.COMMA_SEPARATED_VALUES), FILE_EXTENSION);

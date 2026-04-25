@@ -20,9 +20,8 @@ import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IPointSeriesSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
 import org.eclipse.swtchart.extensions.marker.AbstractBaseChartPaintListener;
-import org.eclipse.swtchart.extensions.marker.IBaseChartPaintListener;
 
-public class SeriesLabelMarker extends AbstractBaseChartPaintListener implements IBaseChartPaintListener {
+public class SeriesLabelMarker extends AbstractBaseChartPaintListener {
 
 	private boolean useDescription = false;
 

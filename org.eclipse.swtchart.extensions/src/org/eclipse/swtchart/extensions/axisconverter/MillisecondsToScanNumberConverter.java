@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,9 +16,8 @@ package org.eclipse.swtchart.extensions.axisconverter;
 import java.security.InvalidParameterException;
 
 import org.eclipse.swtchart.extensions.core.AbstractAxisScaleConverter;
-import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 
-public class MillisecondsToScanNumberConverter extends AbstractAxisScaleConverter implements IAxisScaleConverter {
+public class MillisecondsToScanNumberConverter extends AbstractAxisScaleConverter {
 
 	private int scanDelay;
 	private int scanInterval;

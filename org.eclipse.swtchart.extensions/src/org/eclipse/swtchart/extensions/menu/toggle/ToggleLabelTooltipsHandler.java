@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -17,9 +17,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.extensions.menu.AbstractChartMenuEntry;
 import org.eclipse.swtchart.extensions.menu.IChartMenuCategories;
-import org.eclipse.swtchart.extensions.menu.IChartMenuEntry;
 
-public class ToggleLabelTooltipsHandler extends AbstractChartMenuEntry implements IChartMenuEntry {
+public class ToggleLabelTooltipsHandler extends AbstractChartMenuEntry {
 
 	@Override
 	public String getCategory() {

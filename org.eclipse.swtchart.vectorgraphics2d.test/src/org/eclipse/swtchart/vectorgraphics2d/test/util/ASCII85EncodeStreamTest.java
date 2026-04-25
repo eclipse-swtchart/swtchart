@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -24,19 +24,18 @@ import java.nio.charset.StandardCharsets;
 import org.eclipse.swtchart.vectorgraphics2d.util.ASCII85EncodeStream;
 import org.junit.jupiter.api.Test;
 
-
 public class ASCII85EncodeStreamTest {
 
 	private static void assertEncodedString(String expected, String input) throws IOException {
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
 		ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-		OutputStream encodeStream = new ASCII85EncodeStream(outStream);
-		byte[] buffer = new byte[1024];
-		for(int count = inputStream.read(buffer); count >= 0; count = inputStream.read(buffer)) {
-			encodeStream.write(buffer, 0, count);
+		try (OutputStream encodeStream = new ASCII85EncodeStream(outStream)) {
+			byte[] buffer = new byte[1024];
+			for(int count = inputStream.read(buffer); count >= 0; count = inputStream.read(buffer)) {
+				encodeStream.write(buffer, 0, count);
+			}
 		}
-		encodeStream.close();
 		String encoded = outStream.toString(StandardCharsets.ISO_8859_1);
 		assertEquals(expected, encoded);
 	}

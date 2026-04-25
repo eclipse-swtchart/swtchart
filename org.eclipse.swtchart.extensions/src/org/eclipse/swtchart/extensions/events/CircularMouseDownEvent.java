@@ -25,7 +25,7 @@ import org.eclipse.swtchart.extensions.piecharts.CircularSeriesLegend;
 import org.eclipse.swtchart.internal.series.CircularSeries;
 import org.eclipse.swtchart.model.Node;
 
-public class CircularMouseDownEvent extends AbstractHandledEventProcessor implements IHandledEventProcessor {
+public class CircularMouseDownEvent extends AbstractHandledEventProcessor {
 
 	private ScrollableChart scrollableChart;
 	private boolean redrawOnClick;
@@ -84,7 +84,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 						}
 
 						for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-							for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+							for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 								if(linkedSeries instanceof CircularSeries) {
 									Node correspondingNode = ((CircularSeries)linkedSeries).getNodeById(nodeId);
 									((CircularSeries)linkedSeries).setHighlightedNode(correspondingNode);
@@ -132,7 +132,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 						if(node != null) {
 							nodeId = node.getId();
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+								for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										Node correspondingNode = circularSeriesLinked.getNodeById(nodeId);
 										if(circularSeriesLinked.getRootPointer() == correspondingNode) {
@@ -159,7 +159,7 @@ public class CircularMouseDownEvent extends AbstractHandledEventProcessor implem
 							 * When node is not selected, undo everything to rootNode
 							 */
 							for(ScrollableChart linkedChart : scrollableChart.getLinkedScrollableCharts()) {
-								for(ISeries<?> linkedSeries : (ISeries<?>[])linkedChart.getBaseChart().getSeriesSet().getSeries()) {
+								for(ISeries<?> linkedSeries : linkedChart.getBaseChart().getSeriesSet().getSeries()) {
 									if(linkedSeries instanceof CircularSeries circularSeriesLinked) {
 										circularSeries.setRootPointer(circularSeriesLinked.getRootNode());
 									}

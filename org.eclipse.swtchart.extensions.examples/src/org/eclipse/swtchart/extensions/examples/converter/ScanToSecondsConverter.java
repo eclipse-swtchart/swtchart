@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,9 +13,8 @@
 package org.eclipse.swtchart.extensions.examples.converter;
 
 import org.eclipse.swtchart.extensions.core.AbstractAxisScaleConverter;
-import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 
-public class ScanToSecondsConverter extends AbstractAxisScaleConverter implements IAxisScaleConverter {
+public class ScanToSecondsConverter extends AbstractAxisScaleConverter {
 
 	private static final double SECOND_CORRELATION_FACTOR = 16383.78d;
 

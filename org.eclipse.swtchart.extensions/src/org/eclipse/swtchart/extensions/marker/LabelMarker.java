@@ -28,7 +28,7 @@ import org.eclipse.swtchart.IPlotArea;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 
-public class LabelMarker extends AbstractBaseChartPaintListener implements IBaseChartPaintListener {
+public class LabelMarker extends AbstractBaseChartPaintListener {
 
 	private Map<Integer, String> labels = new HashMap<>();
 	private int indexSeries = -1;

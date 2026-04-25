@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2025 Lablicate GmbH.
+ * Copyright (c) 2025, 2026  Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -28,12 +28,12 @@ public class ScrollableChartCSSPropertyHandler implements ICSSPropertyHandler {
 	public boolean applyCSSProperty(Object element, String property, CSSValue value, String pseudo, CSSEngine engine) throws Exception {
 
 		if("grid-color".equals(property)) {
-			applyCSSPropertyGridColor(element, value, pseudo, engine);
+			applyCSSPropertyGridColor(element, value, engine);
 		}
 		return false;
 	}
 
-	private void applyCSSPropertyGridColor(Object element, CSSValue value, String pseudo, CSSEngine engine) throws Exception {
+	private void applyCSSPropertyGridColor(Object element, CSSValue value, CSSEngine engine) throws Exception {
 
 		Widget widget = (Widget)((WidgetElement)element).getNativeWidget();
 		if(value.getCssValueType() == CSSValue.CSS_PRIMITIVE_VALUE) {

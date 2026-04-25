@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2025 Lablicate GmbH.
+ * Copyright (c) 2019, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -28,7 +28,7 @@ import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 
 public abstract class AbstractInkscapeLineChart extends AbstractInkscapeTemplate {
 
-	protected StringBuilder printScatterData(ISeries<?> dataSeries, int widthPlotArea, int heightPlotArea, AxisSettings axisSettings, int index, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
+	protected StringBuilder printScatterData(ISeries<?> dataSeries, int widthPlotArea, int heightPlotArea, AxisSettings axisSettings, IAxisSet axisSet, boolean isReversedX, boolean isReversedY) {
 
 		StringBuilder out = new StringBuilder("");
 		StringBuilder data = new StringBuilder("<circle\n" + "         style=\"opacity:1;fill:%COLOR%;fill-opacity:1;stroke:none;stroke-width:0.96499991;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1\"\n" + "         id=\"rect901\"\n" + "	 cx=\"%x-coordinate%\"\n" + "	 cy=\"%y-coordinate%\"\n" + "	 r=\"1\" />");
@@ -54,8 +54,8 @@ public abstract class AbstractInkscapeLineChart extends AbstractInkscapeTemplate
 			 */
 			Point point = dataSeries.getPixelCoordinates(i);
 			if((point.x >= 0 && point.x <= widthPlotArea) && (point.y >= 0 && point.y <= heightPlotArea)) {
-				double x = Double.parseDouble(printValueScatterPlot(AXIS_X, index, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
-				double y = Double.parseDouble(printValueScatterPlot(AXIS_Y, index, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
+				double x = Double.parseDouble(printValueScatterPlot(AXIS_X, xSeries[i], indexAxisX, axisSet, BaseChart.ID_PRIMARY_X_AXIS, axisScaleConverterX, isReversedX, isReversedY));
+				double y = Double.parseDouble(printValueScatterPlot(AXIS_Y, ySeries[i], indexAxisY, axisSet, BaseChart.ID_PRIMARY_Y_AXIS, axisScaleConverterY, isReversedX, isReversedY));
 				for(String string : split) {
 					if(Pattern.matches(match1, string)) {
 						string = string.replace("%COLOR%", color);
@@ -72,7 +72,7 @@ public abstract class AbstractInkscapeLineChart extends AbstractInkscapeTemplate
 		return out;
 	}
 
-	private String printValueScatterPlot(String axis, int index, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
+	private String printValueScatterPlot(String axis, double value, int indexAxis, IAxisSet axisSet, int indexPrimaryAxis, IAxisScaleConverter axisScaleConverter, boolean isReversedX, boolean isReversedY) {
 
 		String ret = null;
 		double x = 255.5 - 23.5;

@@ -157,6 +157,7 @@ class SVGDocument extends SizedDocument {
 		root.setAttribute("viewBox", DataUtils.join(" ", new double[]{x, y, width, height}));
 	}
 
+	@Override
 	public void writeTo(OutputStream out) throws IOException {
 
 		TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -475,10 +476,8 @@ class SVGDocument extends SizedDocument {
 	private static String encodeImage(BufferedImage bufferedImage, String format) {
 
 		ByteArrayOutputStream byteStream = new ByteArrayOutputStream();
-		OutputStream encodeStream = Base64.getEncoder().wrap(byteStream);
-		try {
+		try (OutputStream encodeStream = Base64.getEncoder().wrap(byteStream)) {
 			ImageIO.write(bufferedImage, format, encodeStream);
-			encodeStream.close();
 			String encoded = byteStream.toString(StandardCharsets.ISO_8859_1);
 			return String.format("data:image/%s;base64,%s", format, encoded);
 		} catch(IOException e) {

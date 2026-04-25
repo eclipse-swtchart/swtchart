@@ -60,7 +60,7 @@ import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesSettings;
 import org.eclipse.swtchart.model.Node;
 import org.eclipse.swtchart.model.NodeDataModel;
 
-public class BaseChart extends AbstractExtendedChart implements IChartDataCoordinates, IRangeSupport, IExtendedChart, IKeyboardSupport {
+public class BaseChart extends AbstractExtendedChart implements IKeyboardSupport {
 
 	public static final int ID_PRIMARY_X_AXIS = 0;
 	public static final int ID_PRIMARY_Y_AXIS = 0;
