@@ -193,6 +193,27 @@
         </configuration>
       </plugin>
     </plugins>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.5</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<phase>integration-test</phase>
+						<configuration>
+							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</pluginManagement>
   </build>
   <profiles>
       <profile>
