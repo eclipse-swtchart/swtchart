@@ -51,4 +51,16 @@
          id="org.eclipse.swtchart.export.extended"
          version="0.0.0"/>
 
+   <plugin
+         id="org.eclipse.swtchart.vectorgraphics2d"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.pdfbox"
+         version="0.0.0"/>
+
+   <plugin
+         id="org.apache.pdfbox.fontbox"
+         version="0.0.0"/>
+
 </feature>

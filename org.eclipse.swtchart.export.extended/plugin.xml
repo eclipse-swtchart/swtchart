@@ -6,5 +6,8 @@
       <MenuItemSupplier
             MenuEntry="org.eclipse.swtchart.export.extended.menu.vector.SVGExportHandler">
       </MenuItemSupplier>           
+      <MenuItemSupplier
+            MenuEntry="org.eclipse.swtchart.export.extended.menu.vector.PDFExportHandler">
+      </MenuItemSupplier>
    </extension>
 </plugin>
