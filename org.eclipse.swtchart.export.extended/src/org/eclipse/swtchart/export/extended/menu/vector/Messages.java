@@ -22,6 +22,8 @@ public class Messages {
 
 	public static final String EXPORT_TO_SVG = "EXPORT_TO_SVG";
 	public static final String EXPORT_TO_PDF = "EXPORT_TO_PDF";
+	public static final String EXPORT_TO_PDF_INTERRUPTED = "EXPORT_TO_PDF_INTERRUPTED";
+	public static final String PDF_EXPORT_ERROR = "PDF_EXPORT_ERROR";
 	public static final String SAVE_AS_PDF = "SAVE_AS_PDF";
 	public static final String PDF = "PDF";
 	public static final String SAVE_AS_SVG = "SAVE_AS_SVG";

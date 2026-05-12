@@ -80,7 +80,8 @@ public class PDFExportHandler extends AbstractSeriesExportHandler {
 									MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_OK);
 								} catch(IOException e) {
 									e.printStackTrace();
-									MessageDialog.openInformation(fileDialog.getParent(), TITLE, MESSAGE_ERROR);
+									String reason = e.getMessage() != null ? e.getMessage() : MESSAGE_ERROR;
+									MessageDialog.openError(fileDialog.getParent(), TITLE, MessageFormat.format(Messages.getString(Messages.PDF_EXPORT_ERROR), reason));
 								} finally {
 									monitor.done();
 								}
@@ -88,6 +89,7 @@ public class PDFExportHandler extends AbstractSeriesExportHandler {
 						} catch(InterruptedException e) {
 							e.printStackTrace();
 							Thread.currentThread().interrupt();
+							MessageDialog.openInformation(fileDialog.getParent(), TITLE, Messages.getString(Messages.EXPORT_TO_PDF_INTERRUPTED));
 						}
 					}
 				}
