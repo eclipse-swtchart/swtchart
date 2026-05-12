@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
-import static org.eclipse.swtchart.export.TestPathHelper.TESTFOLDER_EXPORT;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,7 +25,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
 import org.eclipse.swtchart.customcharts.core.PCAChart;
 import org.eclipse.swtchart.export.SeriesConverter;
-import org.eclipse.swtchart.export.TestPathHelper;
 import org.eclipse.swtchart.export.images.ImageFactory;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.ISeriesData;
@@ -58,7 +56,7 @@ public class ImageFactory_3_UITest {
 		PCAChart pcaChart = imageFactory.getChart();
 		BaseChart baseChart = pcaChart.getBaseChart();
 		pcaChart.setBackground(baseChart.getDisplay().getSystemColor(SWT.COLOR_WHITE));
-		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter(TestPathHelper.TESTFILE_SCATTER_SERIES_1);
+		List<ISeriesData> scatterSeriesList = SeriesConverter.getSeriesScatter("testData/files/import/ScatterSeries1");
 		List<IScatterSeriesData> scatterSeriesDataList = new ArrayList<>();
 
 		for(ISeriesData seriesData : scatterSeriesList) {
@@ -96,19 +94,19 @@ public class ImageFactory_3_UITest {
 		 */
 		String prefix = "ScatterSeries1";
 
-		String png = TESTFOLDER_EXPORT + File.separator + prefix + ".png";
+		String png = "testData/files/export" + File.separator + prefix + ".png";
 		imageFactory.saveImage(png, SWT.IMAGE_PNG);
 		File filePng = new File(png);
 		assertTrue(filePng.exists());
 		filePng.delete();
 
-		String jpg = TESTFOLDER_EXPORT + File.separator + prefix + ".jpg";
+		String jpg = "testData/files/export" + File.separator + prefix + ".jpg";
 		imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
 		File fileJpg = new File(jpg);
 		assertTrue(fileJpg.exists());
 		fileJpg.delete();
 
-		String bmp = TESTFOLDER_EXPORT + File.separator + prefix + ".bmp";
+		String bmp = "testData/files/export" + File.separator + prefix + ".bmp";
 		imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
 		File fileBmp = new File(bmp);
 		assertTrue(fileBmp.exists());
