@@ -66,12 +66,12 @@ public class PDFExportHandler extends AbstractSeriesExportHandler {
 					if(indexAxisX >= 0 && indexAxisY >= 0) {
 						try {
 							ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(fileDialog.getParent());
-							monitorDialog.run(false, false, monitor -> {
+							monitorDialog.run(false, true, monitor -> {
 
 								monitor.beginTask(Messages.getString(Messages.EXPORT_TO_PDF), IProgressMonitor.UNKNOWN);
 								try (OutputStream output = new FileOutputStream(fileName)) {
 									VectorGraphics2D graphics2D = new VectorGraphics2D();
-									new ChartToGraphics2D(baseChart, indexAxisX, indexAxisY, graphics2D);
+									graphics2D = (VectorGraphics2D)new ChartToGraphics2D(baseChart, indexAxisX, indexAxisY, graphics2D).getGraphics2D();
 
 									Processor processor = Processors.get("pdf"); //$NON-NLS-1$
 									PageSize pageSize = new PageSize(0.0d, 0.0d, baseChart.getSize().x, baseChart.getSize().y);
