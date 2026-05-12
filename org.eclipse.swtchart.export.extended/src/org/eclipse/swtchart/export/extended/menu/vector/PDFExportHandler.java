@@ -51,7 +51,7 @@ public class PDFExportHandler extends AbstractSeriesExportHandler {
 		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setOverwrite(true);
 		fileDialog.setText(NAME);
-		fileDialog.setFilterExtensions(new String[]{FILE_EXTENSION});
+		fileDialog.setFilterExtensions(FILE_EXTENSION);
 		fileDialog.setFileName(scrollableChart.getFileName());
 
 		String fileName = fileDialog.open();
