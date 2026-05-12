@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -267,8 +267,8 @@ public class MappingsDialog extends Dialog {
 
 				FileDialog fileDialog = new FileDialog(e.display.getActiveShell(), SWT.READ_ONLY);
 				fileDialog.setText(MappedSeriesSettings.DESCRIPTION);
-				fileDialog.setFilterExtensions(new String[]{MappedSeriesSettings.FILTER_EXTENSION});
-				fileDialog.setFilterNames(new String[]{MappedSeriesSettings.FILTER_NAME});
+				fileDialog.setFilterExtensions(MappedSeriesSettings.FILTER_EXTENSION);
+				fileDialog.setFilterNames(MappedSeriesSettings.FILTER_NAME);
 				fileDialog.setFilterPath(preferenceStore.getString(PreferenceConstants.P_PATH_MAPPINGS_IMPORT));
 				String path = fileDialog.open();
 				if(path != null) {
@@ -303,8 +303,8 @@ public class MappingsDialog extends Dialog {
 				FileDialog fileDialog = new FileDialog(e.display.getActiveShell(), SWT.SAVE);
 				fileDialog.setOverwrite(true);
 				fileDialog.setText(MappedSeriesSettings.DESCRIPTION);
-				fileDialog.setFilterExtensions(new String[]{MappedSeriesSettings.FILTER_EXTENSION});
-				fileDialog.setFilterNames(new String[]{MappedSeriesSettings.FILTER_NAME});
+				fileDialog.setFilterExtensions(MappedSeriesSettings.FILTER_EXTENSION);
+				fileDialog.setFilterNames(MappedSeriesSettings.FILTER_NAME);
 				fileDialog.setFileName(MappedSeriesSettings.FILE_NAME);
 				fileDialog.setFilterPath(preferenceStore.getString(PreferenceConstants.P_PATH_MAPPINGS_EXPORT));
 				String path = fileDialog.open();

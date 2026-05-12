@@ -63,7 +63,7 @@ public abstract class AbstractBitmapExportHandler extends AbstractSeriesExportHa
 		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setOverwrite(true);
 		fileDialog.setText(name);
-		fileDialog.setFilterExtensions(filterExtensions); // $NON-NLS-1$ //$NON-NLS-2$
+		fileDialog.setFilterExtensions(filterExtensions);
 		fileDialog.setFileName(scrollableChart.getFileName());
 
 		String fileName = fileDialog.open();

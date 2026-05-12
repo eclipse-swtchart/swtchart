@@ -54,7 +54,7 @@ public abstract class AbstractSeparatedValueHandler extends AbstractSeriesExport
 		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setOverwrite(true);
 		fileDialog.setText(title);
-		fileDialog.setFilterExtensions(new String[]{fileExtension});
+		fileDialog.setFilterExtensions(fileExtension);
 		fileDialog.setFileName(scrollableChart.getFileName());
 
 		String fileName = fileDialog.open();
