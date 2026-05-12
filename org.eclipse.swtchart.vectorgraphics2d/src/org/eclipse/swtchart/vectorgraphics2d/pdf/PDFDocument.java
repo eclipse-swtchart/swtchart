@@ -38,6 +38,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts.FontName;
 import org.apache.pdfbox.pdmodel.graphics.state.PDExtendedGraphicsState;
 import org.apache.pdfbox.util.Matrix;
 import org.eclipse.swtchart.vectorgraphics2d.core.SizedDocument;
@@ -116,7 +117,7 @@ class PDFDocument extends SizedDocument {
 		boolean useAffineTransform = false;
 		Color colorBackground = Color.WHITE;
 		Color colorForeground = Color.BLACK;
-		PDFont font = PDType1Font.HELVETICA;
+		PDFont font = new PDType1Font(FontName.HELVETICA);
 		float fontSize = 8.0f;
 		Map<Integer, PDExtendedGraphicsState> opacityMap = new HashMap<>();
 
