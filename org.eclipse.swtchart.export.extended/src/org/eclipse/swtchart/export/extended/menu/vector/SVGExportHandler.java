@@ -53,7 +53,7 @@ public class SVGExportHandler extends AbstractSeriesExportHandler {
 		FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
 		fileDialog.setOverwrite(true);
 		fileDialog.setText(NAME);
-		fileDialog.setFilterExtensions(new String[]{"*.svg"}); //$NON-NLS-1$
+		fileDialog.setFilterExtensions(FILE_EXTENSION);
 		fileDialog.setFileName(scrollableChart.getFileName());
 
 		String fileName = fileDialog.open();
