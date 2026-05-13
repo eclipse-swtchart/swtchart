@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.Range;

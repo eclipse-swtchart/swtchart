@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.export.core.AbstractSeriesExportHandler;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.extensions.barcharts.BarChart;
 import org.eclipse.swtchart.extensions.core.ChartType;
 import org.eclipse.swtchart.extensions.core.IChartSettings;

@@ -25,6 +25,7 @@ import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.export.core.VectorExportSettingsDialog;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 import org.eclipse.swtchart.extensions.core.IAxisSettings;

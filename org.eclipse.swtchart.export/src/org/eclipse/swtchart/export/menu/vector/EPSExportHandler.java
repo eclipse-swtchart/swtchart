@@ -17,7 +17,7 @@ import java.io.File;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.export.menu.vector.internal.AbstractExportHandler;
-import org.eclipse.swtchart.export.menu.vector.internal.PageSizeOption;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.vectorgraphics2d.eps.EPSProcessor;

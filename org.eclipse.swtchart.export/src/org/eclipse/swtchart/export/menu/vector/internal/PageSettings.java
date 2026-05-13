@@ -19,6 +19,8 @@ import java.awt.Font;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.LineStyle;
+import org.eclipse.swtchart.export.vector.model.ChartSettings;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
 
 public class PageSettings {
