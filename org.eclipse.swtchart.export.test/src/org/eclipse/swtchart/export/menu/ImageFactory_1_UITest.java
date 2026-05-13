@@ -12,9 +12,6 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu;
 
-
-import static org.eclipse.swtchart.export.TestPathHelper.TESTFILE_LINE_SERIES_1;
-import static org.eclipse.swtchart.export.TestPathHelper.TESTFOLDER_EXPORT;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -56,7 +53,7 @@ public class ImageFactory_1_UITest {
 		chromatogramChart.setBackground(chromatogramChart.getBaseChart().getDisplay().getSystemColor(SWT.COLOR_WHITE));
 		List<ILineSeriesData> lineSeriesDataList = new ArrayList<>();
 
-		ISeriesData seriesData = SeriesConverter.getSeriesXY(TESTFILE_LINE_SERIES_1);
+		ISeriesData seriesData = SeriesConverter.getSeriesXY("testData/files/import/LineSeries1");
 		ILineSeriesData lineSeriesData = new LineSeriesData(seriesData);
 		ILineSeriesSettings lineSerieSettings = lineSeriesData.getSettings();
 		lineSerieSettings.setEnableArea(true);
@@ -67,19 +64,19 @@ public class ImageFactory_1_UITest {
 		 */
 		String prefix = "LineSeries1";
 
-		String png = TESTFOLDER_EXPORT + File.separator + prefix + ".png";
+		String png = "testData/files/export" + File.separator + prefix + ".png";
 		imageFactory.saveImage(png, SWT.IMAGE_PNG);
 		File filePng = new File(png);
 		assertTrue(filePng.exists());
 		filePng.delete();
 
-		String jpg = TESTFOLDER_EXPORT + File.separator + prefix + ".jpg";
+		String jpg = "testData/files/export" + File.separator + prefix + ".jpg";
 		imageFactory.saveImage(jpg, SWT.IMAGE_JPEG);
 		File fileJpg = new File(jpg);
 		assertTrue(fileJpg.exists());
 		fileJpg.delete();
 
-		String bmp = TESTFOLDER_EXPORT + File.separator + prefix + ".bmp";
+		String bmp = "testData/files/export" + File.separator + prefix + ".bmp";
 		imageFactory.saveImage(bmp, SWT.IMAGE_BMP);
 		File fileBmp = new File(bmp);
 		assertTrue(fileBmp.exists());
