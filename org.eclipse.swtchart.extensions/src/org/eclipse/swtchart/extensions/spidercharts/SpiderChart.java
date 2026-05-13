@@ -18,7 +18,6 @@ import java.util.Set;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.PaintEvent;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Device;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Point;
@@ -230,7 +229,7 @@ public class SpiderChart extends Canvas {
 			}
 
 			if(chartSettings.isFillPolygon()) {
-				Color fill = blendWithWhite(gc.getDevice(), color, 50);
+				Color fill = blendWithWhite(color, 50);
 				gc.setBackground(fill);
 				gc.setAlpha(80);
 				gc.fillPolygon(pts);
@@ -294,12 +293,12 @@ public class SpiderChart extends Canvas {
 		return pts;
 	}
 
-	private static Color blendWithWhite(Device device, Color c, int alpha) {
+	private static Color blendWithWhite(Color c, int alpha) {
 
 		int r = c.getRed() + (255 - c.getRed()) * (255 - alpha) / 255;
 		int g = c.getGreen() + (255 - c.getGreen()) * (255 - alpha) / 255;
 		int b = c.getBlue() + (255 - c.getBlue()) * (255 - alpha) / 255;
 
-		return new Color(device, r, g, b);
+		return new Color(r, g, b);
 	}
 }

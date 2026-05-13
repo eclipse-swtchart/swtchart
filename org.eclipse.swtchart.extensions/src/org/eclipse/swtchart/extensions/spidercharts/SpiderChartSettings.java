@@ -29,10 +29,10 @@ public class SpiderChartSettings {
 	private boolean fillPolygon = true;
 	private int lineWidth = 2;
 	private int pointRadius = 4;
-	private Color colorGrid = new Color(Display.getDefault(), 180, 180, 180);
-	private Color colorAxisLine = new Color(Display.getDefault(), 100, 100, 100);
-	private Color colorBackground = new Color(Display.getDefault(), 255, 255, 255);
-	private Color colorLabelText = new Color(Display.getDefault(), 40, 40, 40);
+	private Color colorGrid = new Color(180, 180, 180);
+	private Color colorAxisLine = new Color(100, 100, 100);
+	private Color colorBackground = new Color(255, 255, 255);
+	private Color colorLabelText = new Color(40, 40, 40);
 	private Font labelFont = new Font(Display.getDefault(), "Arial", 9, SWT.BOLD);
 	private Font legendFont = new Font(Display.getDefault(), "Arial", 8, SWT.NORMAL);
 
