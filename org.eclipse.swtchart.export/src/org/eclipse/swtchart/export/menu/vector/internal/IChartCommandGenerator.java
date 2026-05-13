@@ -13,6 +13,7 @@
 package org.eclipse.swtchart.export.menu.vector.internal;
 
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.CommandSequence;
 

@@ -14,6 +14,7 @@ package org.eclipse.swtchart.export.menu.vector.internal;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.swtchart.export.vector.model.PageSizeOption;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.prefs.BackingStoreException;
 

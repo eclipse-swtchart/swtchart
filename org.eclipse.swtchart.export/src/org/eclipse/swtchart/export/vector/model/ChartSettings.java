@@ -10,7 +10,7 @@
  * Contributors:
  * Philip Wenig - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart.export.menu.vector.internal;
+package org.eclipse.swtchart.export.vector.model;
 
 import java.util.Objects;
 
