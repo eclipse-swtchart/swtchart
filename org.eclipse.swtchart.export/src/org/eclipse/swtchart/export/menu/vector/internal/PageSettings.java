@@ -13,11 +13,8 @@
 package org.eclipse.swtchart.export.menu.vector.internal;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Font;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.export.vector.model.ChartSettings;
 import org.eclipse.swtchart.export.vector.model.PageSizeOption;
@@ -44,10 +41,6 @@ public class PageSettings {
 	private double borderBottomY = 0;
 	private double intentX = 0;
 	private double intentY = 0;
-
-	private Color colorBlack = AWTUtils.convertColor(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
-	private Color colorDarkGray = AWTUtils.convertColor(Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY));
-	private Color colorGray = AWTUtils.convertColor(Display.getDefault().getSystemColor(SWT.COLOR_GRAY));
 
 	private Font font;
 
@@ -152,21 +145,6 @@ public class PageSettings {
 	public double getIntentY() {
 
 		return intentY;
-	}
-
-	public Color getColorBlack() {
-
-		return colorBlack;
-	}
-
-	public Color getColorDarkGray() {
-
-		return colorDarkGray;
-	}
-
-	public Color getColorGray() {
-
-		return colorGray;
 	}
 
 	public Font getFont() {
