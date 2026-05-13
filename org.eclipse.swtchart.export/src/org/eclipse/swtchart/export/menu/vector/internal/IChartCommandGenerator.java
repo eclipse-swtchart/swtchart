@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023 Lablicate GmbH.
+ * Copyright (c) 2023, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -10,12 +10,15 @@
  * Contributors:
  * Philip Wenig - initial API and implementation
  *******************************************************************************/
-package org.eclipse.swtchart.export.menu.vector;
+package org.eclipse.swtchart.export.menu.vector.internal;
 
-import org.eclipse.swtchart.export.core.AxisSettings;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
+import org.eclipse.swtchart.vectorgraphics2d.intermediate.CommandSequence;
 
-public interface IVectorDataExport {
+public interface IChartCommandGenerator {
 
-	String generate(ScrollableChart scrollableChart, AxisSettings axisSettings) throws Exception;
+	CommandSequence getCommandSequence(Shell shell, PageSizeOption pageSizeOption, ScrollableChart scrollableChart);
+
+	CommandSequence getCommandSequence(PageSizeOption pageSizeOption, int indexAxisX, int indexAxisY, ScrollableChart scrollableChart);
 }

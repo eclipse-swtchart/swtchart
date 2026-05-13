@@ -20,16 +20,16 @@ import org.eclipse.swtchart.export.menu.vector.internal.AbstractExportHandler;
 import org.eclipse.swtchart.export.menu.vector.internal.PageSizeOption;
 import org.eclipse.swtchart.extensions.core.ResourceSupport;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
-import org.eclipse.swtchart.vectorgraphics2d.svg.SVGProcessor;
+import org.eclipse.swtchart.vectorgraphics2d.eps.EPSProcessor;
 
-public class SVGExportHandler extends AbstractExportHandler {
+public class EPSExportHandler extends AbstractExportHandler {
 
 	public static final String DESCRIPTION = "Vector Graphics 2D";
-	public static final String FILE_EXTENSION = ".svg";
+	public static final String FILE_EXTENSION = ".eps";
 	public static final String FILE_NAME = DESCRIPTION.replaceAll("\\s", "") + FILE_EXTENSION;
 	public static final String FILTER_EXTENSION = "*" + FILE_EXTENSION;
 	public static final String FILTER_NAME = DESCRIPTION + " (*" + FILE_EXTENSION + ")";
-	public static final String TYPE_NAME = "image/svg+xml";
+	public static final String TYPE_NAME = "application/postscript";
 
 	@Override
 	public String getName() {
@@ -47,7 +47,7 @@ public class SVGExportHandler extends AbstractExportHandler {
 	public void execute(Shell shell, ScrollableChart scrollableChart) {
 
 		String fileName = scrollableChart.getFileName().isEmpty() ? FILE_NAME : scrollableChart.getFileName();
-		execute(shell, scrollableChart, new SVGProcessor(), TYPE_NAME, FILTER_NAME, FILTER_EXTENSION, fileName);
+		execute(shell, scrollableChart, new EPSProcessor(), TYPE_NAME, FILTER_NAME, FILTER_EXTENSION, fileName);
 	}
 
 	/**
@@ -64,6 +64,6 @@ public class SVGExportHandler extends AbstractExportHandler {
 	 */
 	public boolean execute(File file, Shell shell, PageSizeOption pageSizeOption, int indexAxisX, int indexAxisY, ScrollableChart scrollableChart) {
 
-		return execute(file, shell, pageSizeOption, scrollableChart, indexAxisX, indexAxisY, new SVGProcessor());
+		return execute(file, shell, pageSizeOption, scrollableChart, indexAxisX, indexAxisY, new EPSProcessor());
 	}
 }

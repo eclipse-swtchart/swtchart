@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -68,6 +68,8 @@ public class ResourceSupport extends Resources {
 	public static final String ICON_PRINT = "print.svg"; // $NON-NLS-1$
 	public static final String ICON_TEX = "tex.gif"; // $NON-NLS-1$
 	public static final String ICON_R = "r.gif"; // $NON-NLS-1$
+	public static final String ICON_VECTOR_DOCUMENT = "vectorDocument.png"; // $NON-NLS-1$
+	public static final String ICON_PDF = "pdf.gif"; // $NON-NLS-1$
 	public static final String ICON_TRANSFER = "transfer.png"; // $NON-NLS-1$
 	public static final String ICON_SAVE = "save.svg"; // $NON-NLS-1$
 	public static final String ICON_ADD = "add.svg"; // $NON-NLS-1$
@@ -138,7 +140,7 @@ public class ResourceSupport extends Resources {
 
 		return resourceManager.createImageWithDefault(imageRegistry.getDescriptor(key));
 	}
-	
+
 	/**
 	 * Returns the given image disabled. There is no need to
 	 * dispose this image. It's handled by the
@@ -211,6 +213,8 @@ public class ResourceSupport extends Resources {
 		imageSet.add(ICON_PRINT);
 		imageSet.add(ICON_TEX);
 		imageSet.add(ICON_R);
+		imageSet.add(ICON_VECTOR_DOCUMENT);
+		imageSet.add(ICON_PDF);
 		imageSet.add(ICON_TRANSFER);
 		imageSet.add(ICON_SAVE);
 		imageSet.add(ICON_ADD);
@@ -229,8 +233,9 @@ public class ResourceSupport extends Resources {
 	 * @return ImageDescriptor
 	 */
 	private static ImageDescriptor createImageDescriptor(String fileName) {
+
 		URL url;
-		if (fileName.endsWith("svg")) {
+		if(fileName.endsWith("svg")) {
 			url = ResourceSupport.class.getResource("/resources/icons/svg/" + fileName);
 		} else {
 			url = ResourceSupport.class.getResource("/resources/icons/16x16/" + fileName);
