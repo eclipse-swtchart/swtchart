@@ -225,7 +225,6 @@ public class LineSeries_Edit_Part extends Composite {
 	private void createTextShiftX(Composite parent) {
 
 		textShiftX = new Text(parent, SWT.BORDER);
-		textShiftX.setText("");
 		textShiftX.setLayoutData(getGridData());
 	}
 
@@ -278,7 +277,6 @@ public class LineSeries_Edit_Part extends Composite {
 	private void createTextShiftY(Composite parent) {
 
 		textShiftY = new Text(parent, SWT.BORDER);
-		textShiftY.setText("");
 		textShiftY.setLayoutData(getGridData());
 	}
 

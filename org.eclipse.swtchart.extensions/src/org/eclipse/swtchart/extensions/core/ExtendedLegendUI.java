@@ -143,7 +143,6 @@ public class ExtendedLegendUI extends Composite {
 	private Button createButtonToggleVisibility(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.TOGGLE_VISIBILITY));
 		button.setImage(getVisibilityIcon(true));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -188,7 +187,6 @@ public class ExtendedLegendUI extends Composite {
 	private Button createButtonToggleLegend(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.TOGGLE_VISIBILITY_OF_EMBEDDED_LEGEND));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_LEGEND));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -213,7 +211,6 @@ public class ExtendedLegendUI extends Composite {
 	private void createButtonToggleSort(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.SORT_TABLE));
 		button.setImage(getSortedIcon(preferenceStore.getBoolean(PreferenceConstants.P_SORT_LEGEND_TABLE)));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -240,7 +237,6 @@ public class ExtendedLegendUI extends Composite {
 	private Button createButtonTransferMappings(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.TRANSFER_MAPPINGS_OF_SELECTED_SERIES));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_TRANSFER));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -265,7 +261,6 @@ public class ExtendedLegendUI extends Composite {
 	private Button createButtonShowMappings(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.DISPLAY_MAPPINGS));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_MAPPINGS));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -288,7 +283,6 @@ public class ExtendedLegendUI extends Composite {
 	private Button createButtonSettings(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.OPEN_SETTINGS_PAGE));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_SETTINGS));
 		button.addSelectionListener(new SelectionAdapter() {

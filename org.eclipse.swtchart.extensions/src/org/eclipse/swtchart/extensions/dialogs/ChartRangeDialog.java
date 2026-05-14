@@ -98,11 +98,9 @@ public class ChartRangeDialog extends TitleAreaDialog {
 	private void createSectionAxisX(Composite parent) {
 
 		textStartX = new Text(parent, SWT.BORDER);
-		textStartX.setText(""); //$NON-NLS-1$
 		textStartX.setLayoutData(getTextGridData());
 
 		textStopX = new Text(parent, SWT.BORDER);
-		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
 
 		comboScaleX = new Combo(parent, SWT.READ_ONLY);
@@ -128,11 +126,9 @@ public class ChartRangeDialog extends TitleAreaDialog {
 	private void createSectionAxisY(Composite parent) {
 
 		textStartY = new Text(parent, SWT.BORDER);
-		textStartY.setText(""); //$NON-NLS-1$
 		textStartY.setLayoutData(getTextGridData());
 
 		textStopY = new Text(parent, SWT.BORDER);
-		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
 
 		comboScaleY = new Combo(parent, SWT.READ_ONLY);

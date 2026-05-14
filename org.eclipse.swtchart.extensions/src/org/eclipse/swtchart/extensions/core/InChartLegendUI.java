@@ -129,7 +129,6 @@ public class InChartLegendUI extends Composite {
 	private Button createButtonMove(Composite parent, String icon, String tooltip) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(tooltip);
 		button.setImage(ResourceSupport.getImage(icon));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -176,7 +175,6 @@ public class InChartLegendUI extends Composite {
 	private Text createTextPositionX(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText(""); //$NON-NLS-1$
 		text.setToolTipText(Messages.getString(Messages.LEGEND_POSITION_X));
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.grabExcessHorizontalSpace = true;
@@ -207,7 +205,6 @@ public class InChartLegendUI extends Composite {
 	private Text createTextPositionY(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText(""); //$NON-NLS-1$
 		text.setToolTipText(Messages.getString(Messages.LEGEND_POSITION_Y));
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.grabExcessHorizontalSpace = true;
@@ -238,7 +235,6 @@ public class InChartLegendUI extends Composite {
 	private Button createButtonSetPosition(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.SET_LEGEND_POSITION));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_POSITION));
 		button.addSelectionListener(new SelectionAdapter() {

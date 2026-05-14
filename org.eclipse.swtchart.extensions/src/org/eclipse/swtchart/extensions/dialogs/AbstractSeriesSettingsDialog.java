@@ -186,8 +186,6 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 	protected Text createColorChoser(Composite parent, String title, GridData gridData, Consumer<Color> consumer) {
 
 		Text text = new Text(parent, SWT.BORDER | SWT.READ_ONLY);
-		text.setText("");
-		text.setToolTipText("");
 		text.setLayoutData(getGridData(GridData.FILL_HORIZONTAL, 1));
 
 		Button button = new Button(parent, SWT.PUSH);
