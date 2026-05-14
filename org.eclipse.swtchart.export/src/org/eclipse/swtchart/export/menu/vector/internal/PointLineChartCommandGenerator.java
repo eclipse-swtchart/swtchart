@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 
 		VectorGraphics2D graphics2D = new VectorGraphics2D();
 		PageSettings pageSettings = new PageSettings(PageSettings.FULL_LANDSCAPE);
-		Point scale = calculateScale(graphics2D, pageSizeOption, pageSettings);
+		Point2D.Double scale = calculateScale(graphics2D, pageSizeOption, pageSettings);
 		/*
 		 * Create using the given axes.
 		 */
@@ -73,7 +74,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 		return graphics2D.getCommands();
 	}
 
-	private void drawStandardSeries(Graphics2D graphics2D, Point scale, BaseChart baseChart, PageSettings pageSettings) {
+	private void drawStandardSeries(Graphics2D graphics2D, Point2D.Double scale, BaseChart baseChart, PageSettings pageSettings) {
 
 		double width = pageSettings.getWidth();
 		double height = pageSettings.getHeight();
@@ -120,7 +121,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 						 * Collect
 						 */
 						double xb = 0;
-						List<Point> points = new ArrayList<>();
+						List<Point2D.Double> points = new ArrayList<>();
 						for(int i = 0; i < xSeries.length; i++) {
 							double x = xSeries[i];
 							if(x >= xMin && x <= xMax) {
@@ -132,7 +133,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 									if(x >= xMin && x <= xMax) {
 										int x1 = (int)((factorX * (x - xMin)) + xBorderLeft);
 										int y1 = (int)((height - factorY * (ySeries[i] - yMin)) - yBorderBottom);
-										points.add(new Point(x1, y1));
+										points.add(new Point2D.Double(x1, y1));
 										xb = x;
 									}
 								}
@@ -152,7 +153,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 		}
 	}
 
-	private void printLine(Graphics2D graphics2D, List<Point> points, int minValue, ILineSeriesSettings lineSeriesSettings, PageSettings pageSettings) {
+	private void printLine(Graphics2D graphics2D, List<Point2D.Double> points, int minValue, ILineSeriesSettings lineSeriesSettings, PageSettings pageSettings) {
 
 		/*
 		 * Line
@@ -169,7 +170,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 				int[] xvals = new int[size];
 				int[] yvals = new int[size];
 				for(int i = 0; i < size; i++) {
-					Point point = points.get(i);
+					Point2D.Double point = points.get(i);
 					xvals[i] = (int)point.getX();
 					yvals[i] = (int)point.getY();
 				}
@@ -228,7 +229,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 		return valsTransformed;
 	}
 
-	private void printSymbols(Graphics2D graphics2D, Point scale, List<Point> points, IPointSeriesSettings pointSeriesSettings, PageSettings pageSettings) {
+	private void printSymbols(Graphics2D graphics2D, Point2D.Double scale, List<Point2D.Double> points, IPointSeriesSettings pointSeriesSettings, PageSettings pageSettings) {
 
 		/*
 		 * Symbols
@@ -240,13 +241,13 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 			double size = (symbolSize * pageSettings.getFactorGraphicsFullLandscape());
 			graphics2D.setFont(pageSettings.getFont(symbolSize * 2.0f));
 			graphics2D.setColor(AWTUtils.convertColor(pointSeriesSettings.getSymbolColor()));
-			for(Point point : points) {
+			for(Point2D.Double point : points) {
 				drawSymbol(graphics2D, scale, point, size, symbolType);
 			}
 		}
 	}
 
-	private void drawSymbol(Graphics2D graphics2D, Point scale, Point point, double size, PlotSymbolType symbolType) {
+	private void drawSymbol(Graphics2D graphics2D, Point2D.Double scale, Point2D.Double point, double size, PlotSymbolType symbolType) {
 
 		/*
 		 * Determine X|Y

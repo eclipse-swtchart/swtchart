@@ -14,6 +14,7 @@ package org.eclipse.swtchart.export.menu.vector.internal;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class BarChartCommandGenerator extends AbstractCommandGenerator {
 
 		VectorGraphics2D graphics2D = new VectorGraphics2D();
 		PageSettings pageSettings = new PageSettings(PageSettings.FULL_LANDSCAPE);
-		Point scale = calculateScale(graphics2D, pageSizeOption, pageSettings);
+		Point2D.Double scale = calculateScale(graphics2D, pageSizeOption, pageSettings);
 		/*
 		 * Create using the given axes.
 		 */
@@ -60,7 +61,7 @@ public class BarChartCommandGenerator extends AbstractCommandGenerator {
 		return graphics2D.getCommands();
 	}
 
-	private void drawStandardSeries(Graphics2D graphics2D, Point scale, BaseChart baseChart, PageSettings pageSettings) {
+	private void drawStandardSeries(Graphics2D graphics2D, Point2D.Double scale, BaseChart baseChart, PageSettings pageSettings) {
 
 		double width = pageSettings.getWidth();
 		double height = pageSettings.getHeight();
@@ -105,7 +106,7 @@ public class BarChartCommandGenerator extends AbstractCommandGenerator {
 					 * Collect
 					 */
 					double xb = 0;
-					List<Point> points = new ArrayList<>();
+					List<Point2D.Double> points = new ArrayList<>();
 					for(int i = 0; i < xSeries.length; i++) {
 						double x = xSeries[i];
 						if(x >= xMin && x <= xMax) {
@@ -117,7 +118,7 @@ public class BarChartCommandGenerator extends AbstractCommandGenerator {
 								if(x >= xMin && x <= xMax) {
 									int x1 = (int)((factorX * (x - xMin)) + xBorderLeft);
 									int y1 = (int)((height - factorY * (ySeries[i] - yMin)) - yBorderBottom);
-									points.add(new Point(x1, y1));
+									points.add(new Point2D.Double(x1, y1));
 									xb = x;
 								}
 							}
@@ -136,14 +137,14 @@ public class BarChartCommandGenerator extends AbstractCommandGenerator {
 		}
 	}
 
-	private void printBars(Graphics2D graphics2D, List<Point> points, Point scale, int minValue, IBarSeriesSettings barSeriesSettings, PageSettings pageSettings) {
+	private void printBars(Graphics2D graphics2D, List<Point2D.Double> points, Point2D.Double scale, int minValue, IBarSeriesSettings barSeriesSettings, PageSettings pageSettings) {
 
 		int barWidth = barSeriesSettings.getBarWidth();
 		if(barWidth > 0 && !points.isEmpty()) {
 			Color color = AWTUtils.convertColor(barSeriesSettings.getBarColor());
 			graphics2D.setColor(color);
 
-			for(Point point : points) {
+			for(Point2D.Double point : points) {
 				int x = (int)point.getX();
 				int y = (int)point.getY();
 
