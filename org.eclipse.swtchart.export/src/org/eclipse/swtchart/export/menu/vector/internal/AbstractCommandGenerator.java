@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.swtchart.export.menu.vector.internal;
 
+import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
@@ -109,7 +110,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 */
 		graphics2D.setFont(pageSettings.getFont());
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
-		graphics2D.setColor(pageSettings.getColorBlack());
+		graphics2D.setColor(Color.BLACK);
 		FontMetrics fontMetrics = graphics2D.getFontMetrics();
 		/*
 		 * X Axis
@@ -146,7 +147,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 */
 		if(isGridDisplayed(baseChart.getChartSettings())) {
 			graphics2D.setStroke(pageSettings.getStrokeDash());
-			graphics2D.setColor(pageSettings.getColorGray());
+			graphics2D.setColor(Color.LIGHT_GRAY);
 			for(int i = 1; i <= numberTics; i++) {
 				int x = (int)(xBorderLeft + i * deltaWidth);
 				int y1 = (int)(yBorderTop);
@@ -158,7 +159,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 * Tics
 		 */
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
-		graphics2D.setColor(pageSettings.getColorBlack());
+		graphics2D.setColor(Color.BLACK);
 		for(int i = 1; i <= numberTics; i++) {
 			double xMin = rangeX.lower + i * deltaRange;
 			String label = decimalFormatX.format(axisScaleConverterX != null ? axisScaleConverterX.convertToSecondaryUnit(xMin) : xMin);
@@ -197,7 +198,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 */
 		graphics2D.setFont(pageSettings.getFont());
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
-		graphics2D.setColor(pageSettings.getColorBlack());
+		graphics2D.setColor(Color.BLACK);
 		FontMetrics fontMetrics = graphics2D.getFontMetrics();
 		/*
 		 * Y Axis
@@ -235,7 +236,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 */
 		if(isGridDisplayed(baseChart.getChartSettings())) {
 			graphics2D.setStroke(pageSettings.getStrokeDash());
-			graphics2D.setColor(pageSettings.getColorGray());
+			graphics2D.setColor(Color.LIGHT_GRAY);
 			for(int i = 0; i < numberTics; i++) {
 				int x1 = (int)(xBorderLeft);
 				int x2 = (int)(width - xBorderRight);
@@ -247,7 +248,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 * Tics
 		 */
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
-		graphics2D.setColor(pageSettings.getColorBlack());
+		graphics2D.setColor(Color.BLACK);
 		for(int i = 0; i < numberTics; i++) {
 			double yMin = lower + (numberTics - i) * deltaRange;
 			String label = decimalFormatY.format((axisScaleConverterY != null) ? axisScaleConverterY.convertToSecondaryUnit(yMin) : yMin);
@@ -351,7 +352,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		double yBorderTop = pageSettings.getBorderTopY();
 
 		graphics2D.setFont(pageSettings.getFont());
-		graphics2D.setColor(pageSettings.getColorDarkGray());
+		graphics2D.setColor(Color.GRAY);
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
 
 		String label = "https://openchrom.net";
@@ -371,7 +372,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 			double yBorderTop = pageSettings.getBorderTopY();
 
 			graphics2D.setFont(pageSettings.getFont());
-			graphics2D.setColor(pageSettings.getColorDarkGray());
+			graphics2D.setColor(Color.GRAY);
 			graphics2D.setStroke(pageSettings.getStrokeSolid());
 
 			String label = chartSettings.getTitle();
@@ -397,7 +398,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		double extendMaxY = raneRangeRestriction.getExtendMaxY();
 
 		graphics2D.setFont(pageSettings.getFont());
-		graphics2D.setColor(pageSettings.getColorBlack());
+		graphics2D.setColor(Color.BLACK);
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
 		FontMetrics fontMetrics = graphics2D.getFontMetrics();
 
