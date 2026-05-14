@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Point2D;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		return null;
 	}
 
-	public Point calculateScale(VectorGraphics2D graphics2D, PageSizeOption pageSizeOption, PageSettings pageSettings) {
+	public Point2D.Double calculateScale(VectorGraphics2D graphics2D, PageSizeOption pageSizeOption, PageSettings pageSettings) {
 
 		/*
 		 * Use the full landscape and then scale the image.
@@ -76,21 +77,21 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		/*
 		 * Scale to selected end format.
 		 */
-		Point scale;
+		Point2D.Double scale;
 		if(PageSettings.FULL_LANDSCAPE.equals(pageSizeOption)) {
-			scale = new Point(1.0, 1.0);
+			scale = new Point2D.Double(1.0, 1.0);
 		} else {
 			PageSize pageSizeFull = PageSettings.FULL_LANDSCAPE.pageSize();
 			double x = pageSize.getWidth() / pageSizeFull.getWidth();
 			double y = pageSize.getHeight() / pageSizeFull.getHeight();
-			scale = new Point(x, y);
+			scale = new Point2D.Double(x, y);
 		}
 		graphics2D.scale(scale.getX(), scale.getY());
 
 		return scale;
 	}
 
-	public void drawAxes(Graphics2D graphics2D, Point scale, BaseChart baseChart, int indexAxisX, int indexAxisY, PageSettings pageSettings) {
+	public void drawAxes(Graphics2D graphics2D, Point2D.Double scale, BaseChart baseChart, int indexAxisX, int indexAxisY, PageSettings pageSettings) {
 
 		drawAxisX(graphics2D, baseChart, indexAxisX, pageSettings);
 		drawAxisY(graphics2D, scale, baseChart, indexAxisY, pageSettings);
@@ -184,7 +185,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		graphics2D.drawLine(x11, y11, x12, y12);
 	}
 
-	private void drawAxisY(Graphics2D graphics2D, Point scale, BaseChart baseChart, int indexAxisY, PageSettings pageSettings) {
+	private void drawAxisY(Graphics2D graphics2D, Point2D.Double scale, BaseChart baseChart, int indexAxisY, PageSettings pageSettings) {
 
 		int numberTics = pageSettings.getChartSettings().getNumberTics();
 		double width = pageSettings.getWidth();
@@ -272,7 +273,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		graphics2D.drawLine(x21, y21, x22, y22);
 	}
 
-	private void drawStringCentered(Graphics2D graphics2D, Point scale, String label, int rotation, int x, int y, int widthText, int heightText) {
+	private void drawStringCentered(Graphics2D graphics2D, Point2D.Double scale, String label, int rotation, int x, int y, int widthText, int heightText) {
 
 		int x1 = (int)(x + heightText / 2.0d);
 		int y1 = (int)(y + widthText / 2.0d);
@@ -285,7 +286,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		graphics2D.setTransform(affineTransformDefault);
 	}
 
-	public void drawStringNormal(Graphics2D graphics2D, Point scale, String label, int rotation, int x, int y, int widthText, int heightText) {
+	public void drawStringNormal(Graphics2D graphics2D, Point2D.Double scale, String label, int rotation, int x, int y, int widthText, int heightText) {
 
 		int x1 = (int)(x + (heightText / 4.0d));
 		int y1 = (int)(y - (heightText / 4.0d)); // Small distance
@@ -337,7 +338,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		return axisSettings.isVisible() && !LineStyle.NONE.equals(axisSettings.getGridLineStyle());
 	}
 
-	public AffineTransform createAffineTransform(Point scale) {
+	public AffineTransform createAffineTransform(Point2D.Double scale) {
 
 		AffineTransform affineTransform = new AffineTransform();
 		affineTransform.scale(scale.getX(), scale.getY());
@@ -384,7 +385,7 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		}
 	}
 
-	public void drawCustomSeries(Graphics2D graphics2D, Point scale, BaseChart baseChart, PageSettings pageSettings) {
+	public void drawCustomSeries(Graphics2D graphics2D, Point2D.Double scale, BaseChart baseChart, PageSettings pageSettings) {
 
 		double width = pageSettings.getWidth();
 		double height = pageSettings.getHeight();
