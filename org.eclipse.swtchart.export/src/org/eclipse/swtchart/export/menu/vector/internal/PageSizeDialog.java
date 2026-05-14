@@ -146,7 +146,6 @@ public class PageSizeDialog extends Dialog {
 	private void createTextPageWidth(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setToolTipText("Page Width");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		text.addModifyListener(e -> {
@@ -166,7 +165,6 @@ public class PageSizeDialog extends Dialog {
 	private void createTextPageHeight(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setToolTipText("Page Height");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		text.addModifyListener(e -> {
@@ -232,7 +230,6 @@ public class PageSizeDialog extends Dialog {
 	private void createTextGraphicsFactor(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setToolTipText("Graphics Factor (1 = 100%)");
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 3;
@@ -259,7 +256,6 @@ public class PageSizeDialog extends Dialog {
 	private void createTextFontFactor(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setToolTipText("Font Factor (1 = 100%)");
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 3;

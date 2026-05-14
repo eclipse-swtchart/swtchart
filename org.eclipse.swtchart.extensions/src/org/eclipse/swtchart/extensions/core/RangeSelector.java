@@ -114,11 +114,9 @@ public class RangeSelector extends Composite {
 		setLayout(new GridLayout(9, false));
 
 		textStartX = new Text(this, SWT.BORDER);
-		textStartX.setText(""); //$NON-NLS-1$
 		textStartX.setLayoutData(getTextGridData());
 
 		textStopX = new Text(this, SWT.BORDER);
-		textStopX.setText(""); //$NON-NLS-1$
 		textStopX.setLayoutData(getTextGridData());
 
 		comboScaleX = new Combo(this, SWT.READ_ONLY);
@@ -141,11 +139,9 @@ public class RangeSelector extends Composite {
 		});
 
 		textStartY = new Text(this, SWT.BORDER);
-		textStartY.setText(""); //$NON-NLS-1$
 		textStartY.setLayoutData(getTextGridData());
 
 		textStopY = new Text(this, SWT.BORDER);
-		textStopY.setText(""); //$NON-NLS-1$
 		textStopY.setLayoutData(getTextGridData());
 
 		comboScaleY = new Combo(this, SWT.READ_ONLY);
@@ -168,7 +164,6 @@ public class RangeSelector extends Composite {
 		});
 
 		Button buttonSetRange = new Button(this, SWT.PUSH);
-		buttonSetRange.setText(""); //$NON-NLS-1$
 		buttonSetRange.setImage(ResourceSupport.getImage(ResourceSupport.ICON_SET_RANGE));
 		buttonSetRange.setToolTipText(Messages.getString(Messages.SET_CURRENT_SELECTION));
 		buttonSetRange.setLayoutData(getButtonGridData());
@@ -186,7 +181,6 @@ public class RangeSelector extends Composite {
 		});
 
 		Button buttonResetRange = new Button(this, SWT.PUSH);
-		buttonResetRange.setText(""); //$NON-NLS-1$
 		buttonResetRange.setImage(ResourceSupport.getImage(ResourceSupport.ICON_RESET));
 		buttonResetRange.setToolTipText(Messages.getString(Messages.RESET_RANGE));
 		buttonResetRange.setLayoutData(getButtonGridData());
@@ -204,7 +198,6 @@ public class RangeSelector extends Composite {
 		});
 
 		Button buttonHide = new Button(this, SWT.PUSH);
-		buttonHide.setText(""); //$NON-NLS-1$
 		buttonHide.setImage(ResourceSupport.getImage(ResourceSupport.ICON_HIDE));
 		buttonHide.setToolTipText(Messages.getString(Messages.HIDE_RANGE_SELECTOR_UI));
 		buttonHide.setLayoutData(getButtonGridData());

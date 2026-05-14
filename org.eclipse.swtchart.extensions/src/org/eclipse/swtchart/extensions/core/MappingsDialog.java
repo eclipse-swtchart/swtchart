@@ -168,7 +168,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonAdd(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.ADD_MAPPING));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_ADD));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -197,7 +196,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonDelete(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.DELETE_SELECTED_MAPPING));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_DELETE));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -231,7 +229,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonDeleteAll(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.DELETE_ALL_MAPPINGS));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_DELETE_ALL));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -257,7 +254,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonImport(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.IMPORT));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_IMPORT));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -292,7 +288,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonExport(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.EXPORT));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_EXPORT));
 		button.addSelectionListener(new SelectionAdapter() {
@@ -324,7 +319,6 @@ public class MappingsDialog extends Dialog {
 	private Button createButtonSave(Composite parent) {
 
 		Button button = new Button(parent, SWT.PUSH);
-		button.setText(""); //$NON-NLS-1$
 		button.setToolTipText(Messages.getString(Messages.SAVE_MAPPINGS));
 		button.setImage(ResourceSupport.getImage(ResourceSupport.ICON_SAVE));
 		button.addSelectionListener(new SelectionAdapter() {

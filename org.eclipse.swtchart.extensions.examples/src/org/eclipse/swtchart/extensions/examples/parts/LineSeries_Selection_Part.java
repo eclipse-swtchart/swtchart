@@ -152,7 +152,6 @@ public class LineSeries_Selection_Part extends Composite {
 	private Text createText(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.widthHint = 150;
 		text.setLayoutData(gridData);

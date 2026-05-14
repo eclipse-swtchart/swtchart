@@ -111,7 +111,6 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 	private Text createTextDescription(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		text.addModifyListener(e -> {
 
@@ -164,7 +163,6 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 	private Text createTextRegularExpression(Composite parent) {
 
 		Text text = new Text(parent, SWT.BORDER);
-		text.setText("");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		text.addModifyListener(e -> {
 
