@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,9 +13,7 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.core;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.eclipse.swtchart.vectorgraphics2d.core.Processor;
@@ -43,6 +41,6 @@ public class ProcessorsTest {
 	public void testGetReturnsNonNullWhenFormatIsKnown(String format) {
 
 		Processor processor = Processors.get(format);
-		assertThat(processor, is(notNullValue()));
+		assertNotNull(processor);
 	}
 }

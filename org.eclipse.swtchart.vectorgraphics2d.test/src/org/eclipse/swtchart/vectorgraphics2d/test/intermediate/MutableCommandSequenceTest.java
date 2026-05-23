@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,8 +13,9 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.intermediate;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.stream.StreamSupport;
 
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.MutableCommandSequence;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
@@ -29,6 +30,6 @@ public class MutableCommandSequenceTest {
 		Command<?> command = new Command<>(null) {
 		};
 		commands.add(command);
-		assertThat(commands, hasItem(command));
+		assertTrue(StreamSupport.stream(commands.spliterator(), false).anyMatch(command::equals));
 	}
 }
