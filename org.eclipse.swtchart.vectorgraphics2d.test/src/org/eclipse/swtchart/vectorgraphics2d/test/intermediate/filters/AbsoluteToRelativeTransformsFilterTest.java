@@ -13,13 +13,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.intermediate.filters;
 
-import static org.hamcrest.CoreMatchers.any;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.awt.geom.AffineTransform;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.CommandSequence;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.MutableCommandSequence;
@@ -42,7 +40,7 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		absoluteTransform.translate(4.0, 2.0);
 		CommandSequence commands = wrapCommands(new SetTransformCommand(absoluteTransform));
 		AbsoluteToRelativeTransformsFilter filter = new AbsoluteToRelativeTransformsFilter(commands);
-		assertThat(filter, not(hasItem(any(SetTransformCommand.class))));
+		assertFalse(StreamSupport.stream(filter.spliterator(), false).anyMatch(SetTransformCommand.class::isInstance));
 	}
 
 	@Test
@@ -55,7 +53,7 @@ public class AbsoluteToRelativeTransformsFilterTest {
 		AbsoluteToRelativeTransformsFilter filter = new AbsoluteToRelativeTransformsFilter(commands);
 		filter.next();
 		AffineTransform relativeTransform = ((TransformCommand)filter.next()).getValue();
-		assertThat(relativeTransform, is(absoluteTransform));
+		assertEquals(absoluteTransform, relativeTransform);
 	}
 
 	@Test
@@ -74,8 +72,8 @@ public class AbsoluteToRelativeTransformsFilterTest {
 			}
 		}
 		AffineTransform relativeTransform = transformCommand.getValue();
-		assertThat(relativeTransform.getTranslateX(), is(4.4));
-		assertThat(relativeTransform.getTranslateY(), is(6.4));
+		assertEquals(4.4, relativeTransform.getTranslateX());
+		assertEquals(6.4, relativeTransform.getTranslateY());
 	}
 
 	@Test
@@ -92,7 +90,7 @@ public class AbsoluteToRelativeTransformsFilterTest {
 				lastTransformCommand = tCommand;
 			}
 		}
-		assertThat(lastTransformCommand.getValue(), is(absoluteTransform));
+		assertEquals(absoluteTransform, lastTransformCommand.getValue());
 	}
 
 	private CommandSequence wrapCommands(Command<?>... commands) {

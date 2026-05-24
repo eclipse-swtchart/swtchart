@@ -13,12 +13,10 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.core;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
@@ -102,7 +100,7 @@ public class VectorGraphics2DTest {
 		Rectangle2D clipShape = new Rectangle2D.Double(5, 10, 20, 30);
 		vg2d.setClip(clipShape);
 		vg2d.clip(null);
-		assertThat(vg2d.getClip(), is(nullValue()));
+		assertNull(vg2d.getClip());
 	}
 
 	@Test
@@ -111,6 +109,6 @@ public class VectorGraphics2DTest {
 		VectorGraphics2D vg2d = new VectorGraphics2D();
 		Color backgroundColor = Color.DARK_GRAY;
 		vg2d.setBackground(backgroundColor);
-		assertThat(vg2d.getBackground(), is(backgroundColor));
+		assertEquals(backgroundColor, vg2d.getBackground());
 	}
 }

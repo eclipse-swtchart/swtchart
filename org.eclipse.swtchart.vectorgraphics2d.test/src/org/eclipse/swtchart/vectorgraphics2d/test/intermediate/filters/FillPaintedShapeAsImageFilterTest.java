@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2025 VectorGraphics2D project.
+ * Copyright (c) 2010, 2026 VectorGraphics2D project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,17 +13,15 @@
  *******************************************************************************/
 package org.eclipse.swtchart.vectorgraphics2d.test.intermediate.filters;
 
-import static org.hamcrest.CoreMatchers.any;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.MutableCommandSequence;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
@@ -44,8 +42,8 @@ public class FillPaintedShapeAsImageFilterTest {
 		commands.add(new RotateCommand(10.0, 4.0, 2.0));
 		commands.add(new FillShapeCommand(new Rectangle2D.Double(10.0, 10.0, 100.0, 100.0)));
 		FillPaintedShapeAsImageFilter filter = new FillPaintedShapeAsImageFilter(commands);
-		assertThat(filter, hasItem(any(DrawImageCommand.class)));
-		assertThat(filter, not(hasItem(any(FillShapeCommand.class))));
+		assertTrue(StreamSupport.stream(filter.spliterator(), false).anyMatch(DrawImageCommand.class::isInstance));
+		assertFalse(StreamSupport.stream(filter.spliterator(), false).anyMatch(FillShapeCommand.class::isInstance));
 	}
 
 	@Test
