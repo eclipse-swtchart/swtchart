@@ -85,7 +85,7 @@
   -->
   <properties>
     <!-- VERSIONS -->
-    <tycho.version>5.0.2</tycho.version>
+    <tycho.version>5.0.3</tycho.version>
     <tycho.sbom.url>https://projects.eclipse.org/projects/science.swtchart</tycho.sbom.url>
     <tycho.scmUrl>scm:git:https://github.com/eclipse-swtchart/swtchart</tycho.scmUrl>
     <!-- IDS -->
