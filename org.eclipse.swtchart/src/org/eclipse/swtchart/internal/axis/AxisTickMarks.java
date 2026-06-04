@@ -183,9 +183,7 @@ public class AxisTickMarks implements PaintListener {
 				}
 			});
 			return;
-		}
-
-		if(bounds.width > 0 && bounds.height > 0) {
+		} else if(bounds.width > 0 && bounds.height > 0) {
 			ArrayList<Integer> tickLabelPositions = axis.getTick().getAxisTickLabels().getTickLabelPositions();
 			Color oldBackground = e.gc.getBackground();
 			e.gc.setBackground(chart.getBackground());
