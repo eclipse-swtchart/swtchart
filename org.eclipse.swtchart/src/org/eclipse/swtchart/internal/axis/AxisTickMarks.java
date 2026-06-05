@@ -247,7 +247,7 @@ public class AxisTickMarks implements PaintListener {
 		/*
 		 * Draw axis line (X)
 		 */
-		if(axis.isDrawAxisLine()) {
+		if(axis.isDrawAxisLine() && bounds != null) {
 			if(position == Position.Primary) {
 				gc.drawLine(bounds.x, bounds.y, bounds.x + bounds.width - 1, bounds.y);
 			} else {
@@ -281,7 +281,7 @@ public class AxisTickMarks implements PaintListener {
 					} else {
 						y = (int)(tickLabelPositions.get(i - 1).intValue() + step / 2d);
 					}
-					if(position == Position.Primary) {
+					if(position == Position.Primary && bounds != null) {
 						x = bounds.width - 1 - LINE_WIDTH - TICK_LENGTH;
 					} else {
 						x = LINE_WIDTH;
@@ -293,7 +293,7 @@ public class AxisTickMarks implements PaintListener {
 			int y = 0;
 			for(int i = 0; i < tickLabelPositions.size(); i++) {
 				int x = 0;
-				if(position == Position.Primary) {
+				if(position == Position.Primary && bounds != null) {
 					x = bounds.width - 1 - LINE_WIDTH - TICK_LENGTH;
 				} else {
 					x = LINE_WIDTH;
@@ -305,7 +305,7 @@ public class AxisTickMarks implements PaintListener {
 		/*
 		 * Draw axis line (Y)
 		 */
-		if(axis.isDrawAxisLine()) {
+		if(axis.isDrawAxisLine() && bounds != null) {
 			if(position == Position.Primary) {
 				gc.drawLine(bounds.x + bounds.width - 1, bounds.y, bounds.x + bounds.width - 1, bounds.y + bounds.height - 1);
 			} else {
