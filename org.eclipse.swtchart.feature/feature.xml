@@ -39,16 +39,4 @@
          id="org.eclipse.swtchart.vectorgraphics2d"
          version="0.0.0"/>
 
-   <plugin
-         id="org.apache.pdfbox"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.apache.pdfbox.fontbox"
-         version="0.0.0"/>
-
-   <plugin
-         id="org.apache.pdfbox.io"
-         version="0.0.0"/>
-
 </feature>
