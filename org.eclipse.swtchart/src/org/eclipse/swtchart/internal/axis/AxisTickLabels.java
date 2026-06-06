@@ -761,7 +761,11 @@ public class AxisTickLabels implements PaintListener {
 	 */
 	private void drawXTick(GC gc) {
 
-		int offset = axis.getTick().getAxisTickMarks().getBounds().x;
+		Rectangle axisTickBounds = axis.getTick().getAxisTickMarks().getBounds();
+		if(axisTickBounds == null) {
+			return;
+		}
+		int offset = axisTickBounds.x;
 		// draw tick labels
 		gc.setFont(axis.getTick().getFont());
 		int angle = axis.getTick().getTickLabelAngle();
@@ -837,8 +841,10 @@ public class AxisTickLabels implements PaintListener {
 				if(tickLabels.get(0).startsWith("-") && !text.startsWith("-")) { //$NON-NLS-1$ //$NON-NLS-2$
 					x += gc.textExtent("-").x; //$NON-NLS-1$
 				}
-				int y = (int)(bounds.height - 1 - tickLabelPositions.get(i) - figureHeight / 2.0 - margin);
-				gc.drawText(text, bounds.x + x, bounds.y + y);
+				if(bounds != null) {
+					int y = (int)(bounds.height - 1 - tickLabelPositions.get(i) - figureHeight / 2.0 - margin);
+					gc.drawText(text, bounds.x + x, bounds.y + y);
+				}
 			}
 		}
 	}
