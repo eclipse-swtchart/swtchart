@@ -15,39 +15,9 @@
 		<repository location="https://download.eclipse.org/cbi/updates/license/"/>
 		<unit id="org.eclipse.license.feature.group"/>
 	</location>
-	<location includeDependencyDepth="none" includeDependencyScopes="compile" includeSource="true" label="org.apache.pdfbox" missingManifest="generate" type="Maven">
-		<dependencies>
-			<dependency>
-				<groupId>org.apache.pdfbox</groupId>
-				<artifactId>fontbox</artifactId>
-				<version>3.0.7</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.pdfbox</groupId>
-				<artifactId>pdfbox</artifactId>
-				<version>3.0.7</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.pdfbox</groupId>
-				<artifactId>pdfbox-io</artifactId>
-				<version>3.0.7</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.pdfbox</groupId>
-				<artifactId>preflight</artifactId>
-				<version>3.0.7</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.pdfbox</groupId>
-				<artifactId>xmpbox</artifactId>
-				<version>3.0.7</version>
-				<type>jar</type>
-			</dependency>
-		</dependencies>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2026-06"/>
+		<unit id="org.apache.pdfbox"/>
 	</location>
 </locations>
 </target>
