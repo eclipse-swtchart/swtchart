@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -16,6 +16,7 @@
 package org.eclipse.swtchart;
 
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swtchart.model.DrawingMode;
 
 /**
  * Line series.
@@ -151,6 +152,10 @@ public interface ILineSeries<T> extends ISeries<T> {
 	 */
 	void setSymbolColors(Color[] colors);
 
+	DrawingMode getDrawingMode();
+
+	void setDrawingMode(DrawingMode mode);
+
 	/**
 	 * Gets line style.
 	 *
@@ -247,7 +252,7 @@ public interface ILineSeries<T> extends ISeries<T> {
 	 * <code>SWT.DEFAULT</code>.
 	 *
 	 * @return the anti-aliasing value which can be <code>SWT.DEFAULT</code>,
-	 * <code>SWT.ON</code> or <code>SWT.OFF</code>.
+	 *         <code>SWT.ON</code> or <code>SWT.OFF</code>.
 	 */
 	int getAntialias();
 
