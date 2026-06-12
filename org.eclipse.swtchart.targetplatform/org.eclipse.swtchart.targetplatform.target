@@ -3,7 +3,7 @@
 <target name="Eclipse SWTChart" sequenceNumber="5">
 <locations>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<repository location="https://download.eclipse.org/releases/2026-03/"/>
+		<repository location="https://download.eclipse.org/releases/2026-06/"/>
 		<unit id="org.eclipse.swt"/>
 		<unit id="org.eclipse.ui"/>
 		<unit id="org.eclipse.core.runtime"/>
