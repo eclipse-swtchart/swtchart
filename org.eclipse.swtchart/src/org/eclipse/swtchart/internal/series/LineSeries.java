@@ -6,12 +6,12 @@
  * which is available at https://www.eclipse.org/legal/epl-2.0/
  *
  * SPDX-License-Identifier: EPL-2.0
- * 
+ *
  * Contributors:
  * yoshitaka - initial API and implementation
  * Christoph Läubrich - add support for datamodel
  * Frank Buloup = Internationalization
- * Philip Wenig - series settings mappings
+ * Philip Wenig - series settings mappings, Bresenham drawing mode
  *******************************************************************************/
 package org.eclipse.swtchart.internal.series;
 
@@ -22,33 +22,27 @@ import java.util.stream.IntStream;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.IAxis.Direction;
 import org.eclipse.swtchart.ILineSeries;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.Range;
+import org.eclipse.swtchart.internal.LineDrawingBresenham;
 import org.eclipse.swtchart.internal.axis.Axis;
 import org.eclipse.swtchart.internal.compress.CompressLineSeries;
 import org.eclipse.swtchart.internal.compress.CompressScatterSeries;
 import org.eclipse.swtchart.model.CartesianSeriesModel;
 import org.eclipse.swtchart.model.DoubleArraySeriesModel;
+import org.eclipse.swtchart.model.DrawingMode;
 
 public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 
-	private int symbolSize = 4;
-	private Color symbolColor = Display.getDefault().getSystemColor(DEFAULT_SYMBOL_COLOR);
-	private Color[] symbolColors = new Color[0];
-	private PlotSymbolType symbolType = DEFAULT_SYMBOL_TYPE;
-	private LineStyle lineStyle = DEFAULT_LINE_STYLE;
-	private Color lineColor = Display.getDefault().getSystemColor(DEFAULT_LINE_COLOR);
-	private int lineWidth = DEFAULT_LINE_WIDTH;
-	private boolean areaEnabled = false;
-	private boolean areaStrict = false;
-	private boolean stepEnabled = false;
-	private int antialias = DEFAULT_ANTIALIAS;
-	private String extendedSymbolType = "😂"; //$NON-NLS-1$
 	private static final int ALPHA = 50;
 	private static final LineStyle DEFAULT_LINE_STYLE = LineStyle.SOLID;
 	private static final int DEFAULT_LINE_WIDTH = 1;
@@ -59,18 +53,36 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 	private static final int DEFAULT_ANTIALIAS = SWT.DEFAULT;
 	private static final int MARGIN_AT_MIN_MAX_PLOT = 6;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param chart
-	 *            the chart
-	 * @param id
-	 *            the series id
-	 */
+	private int symbolSize = 4;
+	private Color symbolColor = Display.getDefault().getSystemColor(DEFAULT_SYMBOL_COLOR);
+	private Color[] symbolColors = new Color[0];
+	private PlotSymbolType symbolType = DEFAULT_SYMBOL_TYPE;
+	private DrawingMode drawingMode = DrawingMode.CLASSIC;
+	private LineStyle lineStyle = DEFAULT_LINE_STYLE;
+	private Color lineColor = Display.getDefault().getSystemColor(DEFAULT_LINE_COLOR);
+	private int lineWidth = DEFAULT_LINE_WIDTH;
+	private boolean areaEnabled = false;
+	private boolean areaStrict = false;
+	private boolean stepEnabled = false;
+	private int antialias = DEFAULT_ANTIALIAS;
+	private String extendedSymbolType = "😂"; //$NON-NLS-1$
+
 	protected LineSeries(Chart chart, String id) {
 
 		super(chart, id);
 		compressor = new CompressLineSeries();
+	}
+
+	@Override
+	public DrawingMode getDrawingMode() {
+
+		return drawingMode;
+	}
+
+	@Override
+	public void setDrawingMode(DrawingMode mode) {
+
+		drawingMode = mode != null ? mode : DrawingMode.CLASSIC;
 	}
 
 	@Override
@@ -296,23 +308,6 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		this.antialias = antialias;
 	}
 
-	/**
-	 * Gets the line points to draw line and area.
-	 *
-	 * @param xseries
-	 *            the horizontal series
-	 * @param yseries
-	 *            the vertical series
-	 * @param indexes
-	 *            the series indexes
-	 * @param index
-	 *            the index of series
-	 * @param xAxis
-	 *            the X axis
-	 * @param yAxis
-	 *            the Y axis
-	 * @return the line points
-	 */
 	private int[] getLinePoints(double[] xseries, double[] yseries, int[] indexes, int index, Axis xAxis, Axis yAxis) {
 
 		int x1 = xAxis.getPixelCoordinate(xseries[index]);
@@ -341,86 +336,66 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		return new int[]{y1, x1, y2, x2, y3, x3, y4, x4};
 	}
 
+	private boolean isUseAreaStrict() {
+
+		return areaEnabled && areaStrict && !stepEnabled;
+	}
+
 	@Override
 	protected void draw(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
+
+		if(drawingMode == DrawingMode.BRESENHAM) {
+			drawBresenham(gc, width, height, xAxis, yAxis);
+		} else {
+			drawClassic(gc, width, height, xAxis, yAxis);
+		}
+	}
+
+	private void drawClassic(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
 
 		int oldAntialias = gc.getAntialias();
 		int oldLineWidth = gc.getLineWidth();
 		gc.setAntialias(antialias);
 		gc.setLineWidth(lineWidth);
-
 		if(lineStyle != LineStyle.NONE) {
-			drawLineAndArea(gc, width, height, xAxis, yAxis);
+			drawLineAndAreaClassic(gc, width, height, xAxis, yAxis);
 		}
-
 		if(symbolType != PlotSymbolType.NONE || getLabel().isVisible() || getXErrorBar().isVisible() || getYErrorBar().isVisible()) {
 			drawSymbolAndLabel(gc, width, height, xAxis, yAxis);
 		}
-
 		gc.setAntialias(oldAntialias);
 		gc.setLineWidth(oldLineWidth);
 	}
 
-	/**
-	 * Draws the line and area.
-	 *
-	 * @param gc
-	 *            the graphics context
-	 * @param width
-	 *            the width to draw series
-	 * @param height
-	 *            the height to draw series
-	 * @param xAxis
-	 *            the x axis
-	 * @param yAxis
-	 *            the y axis
-	 */
-	private void drawLineAndArea(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
+	private void drawLineAndAreaClassic(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
 
-		// get x and y series
 		double[] xseries = compressor.getCompressedXSeries();
 		double[] yseries = compressor.getCompressedYSeries();
 		if(xseries.length == 0 || yseries.length == 0) {
 			return;
 		}
-
 		int[] indexes = compressor.getCompressedIndexes();
 		if(xAxis.isValidCategoryAxis()) {
 			for(int i = 0; i < xseries.length; i++) {
 				xseries[i] = indexes[i];
 			}
 		}
-
 		gc.setLineStyle(lineStyle.value());
 		Color oldForeground = gc.getForeground();
 		gc.setForeground(getLineColor());
 		boolean isHorizontal = xAxis.isHorizontalAxis();
 		if(stepEnabled || areaEnabled || stackEnabled) {
-			/*
-			 * Area Strict
-			 * If true, the area is not drawn to the Y or X zero line.
-			 */
 			boolean useAreaStrict = isUseAreaStrict();
 			int length = xseries.length - 1;
 			int numberValues = 4;
 			int[] points = useAreaStrict ? new int[length * numberValues] : null;
-			/*
-			 * Additionally get the first and last point array of the
-			 * full range. Otherwise, the polygon would only show
-			 * the min ranges of the selection, which leads to an
-			 * odd display if zoomed in.
-			 */
 			double[] x = getXSeries();
 			double[] y = getYSeries();
 			int[] idx = useAreaStrict ? IntStream.range(0, x.length - 1).toArray() : null;
 			int[] p0 = useAreaStrict ? getLinePoints(x, y, idx, 0, xAxis, yAxis) : null;
 			int[] pn = useAreaStrict ? getLinePoints(x, y, idx, idx.length - 1, xAxis, yAxis) : null;
-
 			for(int i = 0; i < length; i++) {
 				int[] p = getLinePoints(xseries, yseries, indexes, i, xAxis, yAxis);
-				/*
-				 * Draw Line
-				 */
 				if(lineStyle != LineStyle.NONE) {
 					if(stepEnabled) {
 						if(isHorizontal) {
@@ -434,9 +409,6 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 						gc.drawLine(p[0], p[1], p[2], p[3]);
 					}
 				}
-				/*
-				 * Draw Area (strict = false)
-				 */
 				if(areaEnabled) {
 					if(useAreaStrict) {
 						for(int j = 0; j < numberValues; j++) {
@@ -447,47 +419,30 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 					}
 				}
 			}
-			/*
-			 * Draw Area (strict = true)
-			 */
-			if(useAreaStrict) {
-				/*
-				 * Adjust the first and last x|y pair
-				 * to correctly display the polygon
-				 * even if zoomed in.
-				 */
-				if(points.length > 2) {
-					points[0] = p0[0];
-					points[1] = p0[1];
-					points[points.length - 2] = pn[2];
-					points[points.length - 1] = pn[3];
-					drawAreaStrict(gc, points);
-				}
+			if(useAreaStrict && points.length > 2) {
+				points[0] = p0[0];
+				points[1] = p0[1];
+				points[points.length - 2] = pn[2];
+				points[points.length - 1] = pn[3];
+				drawAreaStrict(gc, points);
 			}
 		} else {
 			if(lineStyle == LineStyle.SOLID) {
-				drawLine(gc, xAxis, yAxis, xseries, yseries, isHorizontal);
-			} else if(lineStyle != LineStyle.NONE) {
+				drawLineGC(gc, xAxis, yAxis, xseries, yseries, isHorizontal);
+			} else {
 				drawLineWithStyle(gc, xAxis, yAxis, xseries, yseries, isHorizontal);
 			}
 		}
 		gc.setForeground(oldForeground);
 	}
 
-	private boolean isUseAreaStrict() {
-
-		return areaEnabled && areaStrict && !stepEnabled;
-	}
-
 	/*
-	 * This method basically does the same things as drawLineWithStyle(), but is
-	 * kept being used. The reason is that, drawLineWithStyle() has a workaround
-	 * for eclipse bug #243588, and there could be a case that the workaround
-	 * doesn't work. To minimize the risk of side effect, this method remains
-	 * for solid line style until that bug is fixed and the workaround is
-	 * removed.
+	 * Optimized solid-line draw via GC. Collapses multiple data points at the
+	 * same x-pixel into a single vertical line segment to avoid redundant overdraw.
+	 * Kept separate from drawLineWithStyle() to avoid touching the workaround for
+	 * Eclipse bug #243588 until that bug is resolved.
 	 */
-	private static void drawLine(GC gc, Axis xAxis, Axis yAxis, double[] xseries, double[] yseries, boolean isHorizontal) {
+	private static void drawLineGC(GC gc, Axis xAxis, Axis yAxis, double[] xseries, double[] yseries, boolean isHorizontal) {
 
 		double xLower = xAxis.getRange().lower;
 		double xUpper = xAxis.getRange().upper;
@@ -503,17 +458,14 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 			int y = yAxis.getPixelCoordinate(yseries[i + 1], yLower, yUpper);
 			if(x == prevX && i < xseries.length - 2) {
 				if(drawVerticalLine) {
-					// extend vertical line
 					verticalLineYLower = Math.min(verticalLineYLower, y);
 					verticalLineYUpper = Math.max(verticalLineYUpper, y);
 				} else {
-					// init vertical line
 					verticalLineYLower = Math.min(prevY, y);
 					verticalLineYUpper = Math.max(prevY, y);
 					drawVerticalLine = true;
 				}
 			} else {
-				// draw vertical line
 				if(drawVerticalLine) {
 					if(isHorizontal) {
 						gc.drawLine(prevX, verticalLineYLower, prevX, verticalLineYUpper);
@@ -522,7 +474,6 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 					}
 					drawVerticalLine = false;
 				}
-				// draw non-vertical line
 				if(isHorizontal) {
 					gc.drawLine(prevX, prevY, x, y);
 				} else {
@@ -534,29 +485,10 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		}
 	}
 
-	/**
-	 * Draws the line segments with line style.
-	 * <p>
-	 * When there are multiple data points at the same x pixel coordinate, it is
-	 * inefficient to simply draw vertical lines connecting them by overlaying.
-	 * Instead, only a single vertical line representing the overlaid multiple
-	 * vertical lines is drawn at that x pixel coordinate.
-	 * <p>
-	 * That's why vertical line is handled differently from non-vertical line in
-	 * this method.
-	 * 
-	 * @param gc
-	 *            the graphic context
-	 * @param xAxis
-	 *            the x axis
-	 * @param yAxis
-	 *            the y axis
-	 * @param xseries
-	 *            the x series
-	 * @param yseries
-	 *            the y series
-	 * @param isHorizontal
-	 *            true if orientation is horizontal
+	/*
+	 * Workaround for Eclipse bug #243588: gc.setAdvanced(true) is required
+	 * before drawing a polyline with a non-solid line style.
+	 * Collapses same-x vertical sequences into a single vertical segment.
 	 */
 	private static void drawLineWithStyle(GC gc, Axis xAxis, Axis yAxis, double[] xseries, double[] yseries, boolean isHorizontal) {
 
@@ -567,7 +499,6 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		List<Integer> pointList = new ArrayList<>();
 		int prevX = xAxis.getPixelCoordinate(xseries[0], xLower, xUpper);
 		int prevY = yAxis.getPixelCoordinate(yseries[0], yLower, yUpper);
-		// add initial point
 		addPoint(pointList, prevX, prevY, isHorizontal);
 		boolean drawVerticalLine = false;
 		int verticalLineYLower = 0;
@@ -577,23 +508,19 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 			int y = yAxis.getPixelCoordinate(yseries[i + 1], yLower, yUpper);
 			if(x == prevX && i < xseries.length - 2) {
 				if(drawVerticalLine) {
-					// extend vertical line
 					verticalLineYLower = Math.min(verticalLineYLower, y);
 					verticalLineYUpper = Math.max(verticalLineYUpper, y);
 				} else {
-					// init vertical line
 					verticalLineYLower = Math.min(prevY, y);
 					verticalLineYUpper = Math.max(prevY, y);
 					drawVerticalLine = true;
 				}
 			} else {
-				// add vertical line
 				if(drawVerticalLine) {
 					addPoint(pointList, prevX, verticalLineYLower, isHorizontal);
 					addPoint(pointList, prevX, verticalLineYUpper, isHorizontal);
 					addPoint(pointList, prevX, prevY, isHorizontal);
 				}
-				// add non-vertical line
 				addPoint(pointList, x, y, isHorizontal);
 				drawVerticalLine = false;
 			}
@@ -605,7 +532,7 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 			polyline[i] = pointList.get(i);
 		}
 		boolean advanced = gc.getAdvanced();
-		gc.setAdvanced(true); // workaround
+		gc.setAdvanced(true); // workaround for eclipse bug #243588
 		gc.drawPolyline(polyline);
 		gc.setAdvanced(advanced);
 	}
@@ -621,23 +548,12 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		}
 	}
 
-	/**
-	 * Draws the area.
-	 *
-	 * @param gc
-	 *            the graphic context
-	 * @param p
-	 *            the line points
-	 * @param isHorizontal
-	 *            true if orientation is horizontal
-	 */
 	private void drawArea(GC gc, int[] p, boolean isHorizontal) {
 
 		int alpha = gc.getAlpha();
 		gc.setAlpha(ALPHA);
 		Color oldBackground = gc.getBackground();
 		gc.setBackground(getLineColor());
-
 		int[] pointArray;
 		if(stepEnabled) {
 			if(isHorizontal) {
@@ -648,40 +564,196 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		} else {
 			pointArray = new int[]{p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[0], p[1]};
 		}
-
 		gc.fillPolygon(pointArray);
 		gc.setAlpha(alpha);
 		gc.setBackground(oldBackground);
 	}
 
-	private void drawAreaStrict(GC gc, int[] p) {
+	private void drawAreaStrict(GC gc, int[] points) {
 
 		int alpha = gc.getAlpha();
 		gc.setAlpha(ALPHA);
 		Color oldBackground = gc.getBackground();
 		gc.setBackground(getLineColor());
-		gc.fillPolygon(p);
+		gc.fillPolygon(points);
 		gc.setAlpha(alpha);
 		gc.setBackground(oldBackground);
 	}
 
+	private void drawBresenham(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
+
+		int oldAntialias = gc.getAntialias();
+		int oldLineWidth = gc.getLineWidth();
+		gc.setAntialias(antialias);
+		gc.setLineWidth(lineWidth);
+		if(lineStyle != LineStyle.NONE) {
+			if(lineStyle == LineStyle.SOLID) {
+				/*
+				 * Area must be drawn first so lines appear on top
+				 */
+				if(areaEnabled) {
+					drawAreaBresenham(gc, width, height, xAxis, yAxis);
+				}
+				drawLinesBresenhamToGC(gc, width, height, xAxis, yAxis);
+			} else {
+				/*
+				 * Non-solid line styles are not supported by the pixel rasterizer;
+				 * delegate entirely to the GC path (area included)
+				 */
+				drawLineAndAreaClassic(gc, width, height, xAxis, yAxis);
+			}
+		}
+		if(symbolType != PlotSymbolType.NONE || getLabel().isVisible() || getXErrorBar().isVisible() || getYErrorBar().isVisible()) {
+			drawSymbolAndLabel(gc, width, height, xAxis, yAxis);
+		}
+		gc.setAntialias(oldAntialias);
+		gc.setLineWidth(oldLineWidth);
+	}
+
 	/**
-	 * Draws series symbol, label and error bars.
-	 *
-	 * @param gc
-	 *            the graphics context
-	 * @param width
-	 *            the width to draw series
-	 * @param height
-	 *            the height to draw series
-	 * @param xAxis
-	 *            the x axis
-	 * @param yAxis
-	 *            the y axis
+	 * Draws only the area fill (no lines) via GC so that the Bresenham line
+	 * image can be blitted on top afterwards.
 	 */
+	private void drawAreaBresenham(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
+
+		double[] xseries = compressor.getCompressedXSeries();
+		double[] yseries = compressor.getCompressedYSeries();
+		if(xseries.length == 0 || yseries.length == 0) {
+			return;
+		}
+		int[] indexes = compressor.getCompressedIndexes();
+		if(xAxis.isValidCategoryAxis()) {
+			for(int i = 0; i < xseries.length; i++) {
+				xseries[i] = indexes[i];
+			}
+		}
+		boolean isHorizontal = xAxis.isHorizontalAxis();
+		boolean useAreaStrict = isUseAreaStrict();
+		int length = xseries.length - 1;
+		int numberValues = 4;
+		int[] points = useAreaStrict ? new int[length * numberValues] : null;
+		double[] x = getXSeries();
+		double[] y = getYSeries();
+		int[] idx = useAreaStrict ? IntStream.range(0, x.length - 1).toArray() : null;
+		int[] p0 = useAreaStrict ? getLinePoints(x, y, idx, 0, xAxis, yAxis) : null;
+		int[] pn = useAreaStrict ? getLinePoints(x, y, idx, idx.length - 1, xAxis, yAxis) : null;
+		for(int i = 0; i < length; i++) {
+			int[] p = getLinePoints(xseries, yseries, indexes, i, xAxis, yAxis);
+			if(useAreaStrict) {
+				for(int j = 0; j < numberValues; j++) {
+					points[i * numberValues + j] = p[j];
+				}
+			} else {
+				drawArea(gc, p, isHorizontal);
+			}
+		}
+		if(useAreaStrict && points.length > 2) {
+			points[0] = p0[0];
+			points[1] = p0[1];
+			points[points.length - 2] = pn[2];
+			points[points.length - 1] = pn[3];
+			drawAreaStrict(gc, points);
+		}
+	}
+
+	/**
+	 * Draws all line segments into an ImageData using Bresenham's algorithm,
+	 * then blits the result onto the GC. Uses palette index 2 for line pixels
+	 * and index 0 (white) as the transparent background.
+	 */
+	private void drawLinesBresenhamToGC(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
+
+		double[] xseries = compressor.getCompressedXSeries();
+		double[] yseries = compressor.getCompressedYSeries();
+		if(xseries.length == 0 || yseries.length == 0) {
+			return;
+		}
+		int[] indexes = compressor.getCompressedIndexes();
+		if(xAxis.isValidCategoryAxis()) {
+			for(int i = 0; i < xseries.length; i++) {
+				xseries[i] = indexes[i];
+			}
+		}
+		PaletteData paletteData = new PaletteData(new RGB[]{new RGB(255, 255, 255), getSymbolColor().getRGB(), getLineColor().getRGB()});
+		ImageData imageData = new ImageData(width, height, 2, paletteData);
+		imageData.transparentPixel = 0;
+		int pixelSize = Math.max(1, lineWidth);
+		LineDrawingBresenham gcb = new LineDrawingBresenham(width, height, pixelSize);
+		gcb.setColorIndex(2);
+		boolean isHorizontal = xAxis.isHorizontalAxis();
+		if(stepEnabled || areaEnabled || stackEnabled) {
+			for(int i = 0; i < xseries.length - 1; i++) {
+				int[] p = getLinePoints(xseries, yseries, indexes, i, xAxis, yAxis);
+				if(stepEnabled) {
+					if(isHorizontal) {
+						gcb.drawLine(imageData, p[0], p[1], p[2], p[1]);
+						gcb.drawLine(imageData, p[2], p[1], p[2], p[3]);
+					} else {
+						gcb.drawLine(imageData, p[0], p[1], p[0], p[3]);
+						gcb.drawLine(imageData, p[0], p[3], p[2], p[3]);
+					}
+				} else {
+					gcb.drawLine(imageData, p[0], p[1], p[2], p[3]);
+				}
+			}
+		} else {
+			drawLineBresenham(imageData, xAxis, yAxis, xseries, yseries, isHorizontal, gcb);
+		}
+		Image image = new Image(Display.getCurrent(), imageData);
+		gc.drawImage(image, 0, 0);
+		image.dispose();
+	}
+
+	/*
+	 * Bresenham solid-line draw into ImageData. Collapses same-x-pixel vertical
+	 * sequences into a single vertical segment, matching the behaviour of
+	 * drawLineGC().
+	 */
+	private static void drawLineBresenham(ImageData imageData, Axis xAxis, Axis yAxis, double[] xseries, double[] yseries, boolean isHorizontal, LineDrawingBresenham gcb) {
+
+		double xLower = xAxis.getRange().lower;
+		double xUpper = xAxis.getRange().upper;
+		double yLower = yAxis.getRange().lower;
+		double yUpper = yAxis.getRange().upper;
+		int prevX = xAxis.getPixelCoordinate(xseries[0], xLower, xUpper);
+		int prevY = yAxis.getPixelCoordinate(yseries[0], yLower, yUpper);
+		boolean drawVerticalLine = false;
+		int verticalLineYLower = 0;
+		int verticalLineYUpper = 0;
+		for(int i = 0; i < xseries.length - 1; i++) {
+			int x = xAxis.getPixelCoordinate(xseries[i + 1], xLower, xUpper);
+			int y = yAxis.getPixelCoordinate(yseries[i + 1], yLower, yUpper);
+			if(x == prevX && i < xseries.length - 2) {
+				if(drawVerticalLine) {
+					verticalLineYLower = Math.min(verticalLineYLower, y);
+					verticalLineYUpper = Math.max(verticalLineYUpper, y);
+				} else {
+					verticalLineYLower = Math.min(prevY, y);
+					verticalLineYUpper = Math.max(prevY, y);
+					drawVerticalLine = true;
+				}
+			} else {
+				if(drawVerticalLine) {
+					if(isHorizontal) {
+						gcb.drawLine(imageData, prevX, verticalLineYLower, prevX, verticalLineYUpper);
+					} else {
+						gcb.drawLine(imageData, verticalLineYLower, prevX, verticalLineYUpper, prevX);
+					}
+					drawVerticalLine = false;
+				}
+				if(isHorizontal) {
+					gcb.drawLine(imageData, prevX, prevY, x, y);
+				} else {
+					gcb.drawLine(imageData, prevY, prevX, y, x);
+				}
+			}
+			prevX = x;
+			prevY = y;
+		}
+	}
+
 	private void drawSymbolAndLabel(GC gc, int width, int height, Axis xAxis, Axis yAxis) {
 
-		// get x and y series
 		double[] xseries = compressor.getCompressedXSeries();
 		double[] yseries = compressor.getCompressedYSeries();
 		int[] indexes = compressor.getCompressedIndexes();
@@ -694,7 +766,6 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 				}
 			}
 		}
-		// draw symbol and label
 		for(int i = 0; i < xseries.length; i++) {
 			Color color;
 			if(symbolColors.length > indexes[i]) {
@@ -720,14 +791,14 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 	}
 
 	/**
-	 * Draws series symbol.
+	 * Draws the symbol for a single data point.
 	 *
 	 * @param gc
 	 *            the GC object
 	 * @param h
-	 *            the horizontal coordinate to draw symbol
+	 *            the horizontal coordinate
 	 * @param v
-	 *            the vertical coordinate to draw symbol
+	 *            the vertical coordinate
 	 * @param color
 	 *            the symbol color
 	 */

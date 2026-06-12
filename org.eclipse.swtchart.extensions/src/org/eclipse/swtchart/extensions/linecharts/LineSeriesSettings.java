@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.extensions.core.AbstractPointSeriesSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
+import org.eclipse.swtchart.model.DrawingMode;
 
 public class LineSeriesSettings extends AbstractPointSeriesSettings implements ILineSeriesSettings {
 
@@ -29,6 +30,7 @@ public class LineSeriesSettings extends AbstractPointSeriesSettings implements I
 	private boolean enableStack = false;
 	private boolean enableStep = false;
 	private LineStyle lineStyle = LineStyle.SOLID;
+	private DrawingMode drawingMode = DrawingMode.CLASSIC;
 	private ILineSeriesSettings seriesSettingsHighlight = null;
 
 	@Override
@@ -128,6 +130,18 @@ public class LineSeriesSettings extends AbstractPointSeriesSettings implements I
 	}
 
 	@Override
+	public DrawingMode getDrawingMode() {
+
+		return drawingMode;
+	}
+
+	@Override
+	public void setDrawingMode(DrawingMode drawingMode) {
+
+		this.drawingMode = drawingMode;
+	}
+
+	@Override
 	public ISeriesSettings getSeriesSettingsHighlight() {
 
 		if(seriesSettingsHighlight == null) {
@@ -169,6 +183,7 @@ public class LineSeriesSettings extends AbstractPointSeriesSettings implements I
 			sink.setEnableStack(source.isEnableStack());
 			sink.setEnableStep(source.isEnableStep());
 			sink.setLineStyle(source.getLineStyle());
+			sink.setDrawingMode(source.getDrawingMode());
 			sink.setHighlight(source.isHighlight());
 			success = true;
 		}
