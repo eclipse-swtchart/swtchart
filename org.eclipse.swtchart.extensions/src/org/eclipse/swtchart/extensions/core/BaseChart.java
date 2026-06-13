@@ -98,6 +98,9 @@ public class BaseChart extends AbstractExtendedChart implements IKeyboardSupport
 	private List<ICustomSelectionHandler> customPointSelectionHandlers;
 	private List<ISeriesModificationListener> seriesModificationListeners;
 	private List<ISeriesStatusListener> seriesStatusListeners;
+	private List<IAxisRangeListener> axisRangeListeners;
+	private double lastFiredXMin = Double.NaN;
+	private double lastFiredXMax = Double.NaN;
 	private UserSelection userSelection;
 	private long clickStartTime;
 	private Set<String> selectedSeriesIds;
@@ -146,6 +149,7 @@ public class BaseChart extends AbstractExtendedChart implements IKeyboardSupport
 		customPointSelectionHandlers = new ArrayList<>();
 		seriesModificationListeners = new ArrayList<>();
 		seriesStatusListeners = new ArrayList<>();
+		axisRangeListeners = new ArrayList<>();
 		selectedSeriesIds = new HashSet<>();
 		initializeEventProcessors();
 		/*
@@ -521,6 +525,16 @@ public class BaseChart extends AbstractExtendedChart implements IKeyboardSupport
 	public boolean removeSeriesStatusListener(ISeriesStatusListener seriesSelectionListener) {
 
 		return seriesStatusListeners.remove(seriesSelectionListener);
+	}
+
+	public boolean addAxisRangeListener(IAxisRangeListener listener) {
+
+		return axisRangeListeners.add(listener);
+	}
+
+	public boolean removeAxisRangeListener(IAxisRangeListener listener) {
+
+		return axisRangeListeners.remove(listener);
 	}
 
 	public boolean hasSelectedSeries() {
@@ -1706,6 +1720,23 @@ public class BaseChart extends AbstractExtendedChart implements IKeyboardSupport
 
 		super.redraw();
 		fireSeriesStatusEvent("", ISeriesStatusListener.REDRAW); //$NON-NLS-1$
+		if(!axisRangeListeners.isEmpty()) {
+			IAxis xAxis = getAxisSet().getXAxis(ID_PRIMARY_X_AXIS);
+			if(xAxis != null) {
+				Range xRange = xAxis.getRange();
+				if(xRange != null && (xRange.lower != lastFiredXMin || xRange.upper != lastFiredXMax)) {
+					lastFiredXMin = xRange.lower;
+					lastFiredXMax = xRange.upper;
+					for(IAxisRangeListener listener : axisRangeListeners) {
+						try {
+							listener.rangeChanged(xRange.lower, xRange.upper);
+						} catch(Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**

@@ -79,6 +79,7 @@ import org.eclipse.swtchart.extensions.internal.marker.PlotCenterMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PositionMarker;
 import org.eclipse.swtchart.extensions.internal.marker.SeriesLabelMarker;
 import org.eclipse.swtchart.extensions.internal.marker.UserRestrictionMarker;
+import org.eclipse.swtchart.extensions.linecharts.ICompressionSupport;
 import org.eclipse.swtchart.extensions.linecharts.LineChart;
 import org.eclipse.swtchart.extensions.linecharts.StepChart;
 import org.eclipse.swtchart.extensions.menu.IChartMenuEntry;
@@ -90,7 +91,8 @@ import org.eclipse.swtchart.extensions.support.RangeSupport;
 
 public class ScrollableChart extends Composite implements IScrollableChart, IEventHandler, IExtendedChart {
 
-	public static final int NO_COMPRESS_TO_LENGTH = Integer.MAX_VALUE;
+	@Deprecated
+	public static final int NO_COMPRESS_TO_LENGTH = Integer.MAX_VALUE; // Use ICompressionSupport.NO_COMPRESSION
 	/*
 	 * Menu extensions via Equinox.
 	 */
@@ -99,7 +101,11 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 
 	private Map<String, Set<IChartMenuEntry>> categoryMenuEntriesMap = new HashMap<>();
 	private Map<String, IChartMenuEntry> menuEntryMap = new HashMap<>();
-
+	/*
+	 * Experimental (ISeriesDataSupplier)
+	 */
+	private final Map<String, ISeriesDataSupplier> seriesDataSuppliers = new HashMap<>();
+	private final Map<String, double[]> supplierLoadedRanges = new HashMap<>();
 	private AtomicReference<Slider> sliderVerticalControl = new AtomicReference<>();
 	private AtomicReference<Slider> sliderHorizontalControl = new AtomicReference<>();
 	private RangeSelector rangeSelector;
@@ -341,6 +347,8 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	@Override
 	public void deleteSeries() {
 
+		seriesDataSuppliers.clear();
+		supplierLoadedRanges.clear();
 		boolean wasSuspend = baseChart.isUpdateSuspended();
 		if(!wasSuspend) {
 			baseChart.suspendUpdate(true);
@@ -356,6 +364,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	@Override
 	public void deleteSeries(String id) {
 
+		removeSeriesDataSupplier(id);
 		baseChart.deleteSeries(id);
 		redraw();
 	}
@@ -582,9 +591,86 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		return rangeSelector;
 	}
 
+	/**
+	 * Experimental
+	 * Registers a viewport-aware data supplier for the given series.
+	 * The supplier is called automatically whenever the visible X range changes
+	 * enough to warrant a fresh fetch — either because the user panned outside
+	 * the last loaded window, or zoomed in past 50% of it.
+	 *
+	 * @param seriesId
+	 *            the series to attach the supplier to
+	 * @param supplier
+	 *            the supplier that returns data for a given xMin/xMax range
+	 */
+	protected void putSeriesDataSupplier(String seriesId, ISeriesDataSupplier supplier) {
+
+		seriesDataSuppliers.put(seriesId, supplier);
+		supplierLoadedRanges.remove(seriesId);
+	}
+
+	/**
+	 * Experimental
+	 * Removes a previously registered data supplier for the given series.
+	 *
+	 * @param seriesId
+	 *            the series whose supplier should be removed
+	 */
+	protected void removeSeriesDataSupplier(String seriesId) {
+
+		seriesDataSuppliers.remove(seriesId);
+		supplierLoadedRanges.remove(seriesId);
+	}
+
+	/*
+	 * Experimental
+	 */
+	private void reloadSupplierSeries(double xMin, double xMax) {
+
+		if(seriesDataSuppliers.isEmpty()) {
+			return;
+		}
+
+		boolean anyReloaded = false;
+		for(Map.Entry<String, ISeriesDataSupplier> entry : seriesDataSuppliers.entrySet()) {
+			String seriesId = entry.getKey();
+			ISeriesDataSupplier supplier = entry.getValue();
+			double[] loadedRange = supplierLoadedRanges.get(seriesId);
+			if(loadedRange != null && !isSupplierReloadNeeded(xMin, xMax, loadedRange[0], loadedRange[1])) {
+				continue;
+			}
+			ISeriesData seriesData = supplier.getData(seriesId, xMin, xMax, ICompressionSupport.HIGH_COMPRESSION);
+			if(seriesData == null) {
+				continue;
+			}
+			ISeries<?> series = baseChart.getSeriesSet().getSeries(seriesId);
+			if(series == null) {
+				continue;
+			}
+			series.setXSeries(seriesData.getXSeries());
+			series.setYSeries(seriesData.getYSeries());
+			supplierLoadedRanges.put(seriesId, new double[]{xMin, xMax});
+			anyReloaded = true;
+		}
+		if(anyReloaded) {
+			baseChart.redraw();
+		}
+	}
+
+	/*
+	 * Experimental
+	 */
+	private boolean isSupplierReloadNeeded(double xMin, double xMax, double loadedMin, double loadedMax) {
+
+		if(xMin < loadedMin || xMax > loadedMax) {
+			return true;
+		}
+		return (xMax - xMin) < (loadedMax - loadedMin) * 0.5;
+	}
+
 	protected ISeriesData calculateSeries(ISeriesData seriesData) {
 
-		return calculateSeries(seriesData, NO_COMPRESS_TO_LENGTH); // No compression.
+		return calculateSeries(seriesData, ICompressionSupport.NO_COMPRESSION);
 	}
 
 	/**
@@ -1524,6 +1610,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			}
 			updateLinkedCharts();
 		});
+		baseChart.addAxisRangeListener(this::reloadSupplierSeries);
 		/*
 		 * Activate the range info UI on double click.
 		 */
