@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -47,12 +47,13 @@ public class StepChart extends ScrollableChart implements ICompressionSupport {
 	/**
 	 * The data is compressed to the given length.
 	 * If you're unsure which length to set, then use one of the following variables:
-	 * 
+	 *
+	 * EXTREME_COMPRESSION
 	 * HIGH_COMPRESSION
 	 * MEDIUM_COMPRESSION
 	 * LOW_COMPRESSION
 	 * NO_COMPRESSION
-	 * 
+	 *
 	 * @param lineSeriesDataList
 	 * @param compressToLength
 	 */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  * 
  * Contributors:
- * Dr. Philip Wenig - initial API and implementation
+ * Philip Wenig - initial API and implementation
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.scattercharts;
 
@@ -20,8 +20,9 @@ import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.ISeriesData;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.extensions.exceptions.SeriesException;
+import org.eclipse.swtchart.extensions.linecharts.ICompressionSupport;
 
-public class ScatterChart extends ScrollableChart {
+public class ScatterChart extends ScrollableChart implements ICompressionSupport {
 
 	public ScatterChart() {
 
@@ -52,7 +53,7 @@ public class ScatterChart extends ScrollableChart {
 				 */
 				try {
 					ISeriesData seriesData = scatterSeriesData.getSeriesData();
-					ISeriesData optimizedSeriesData = calculateSeries(seriesData, ScrollableChart.NO_COMPRESS_TO_LENGTH);
+					ISeriesData optimizedSeriesData = calculateSeries(seriesData, NO_COMPRESSION);
 					IScatterSeriesSettings scatterSeriesSettings = scatterSeriesData.getSettings();
 					scatterSeriesSettings.getSeriesSettingsHighlight(); // Initialize
 					ILineSeries<?> scatterSeries = (ILineSeries<?>)createSeries(optimizedSeriesData, scatterSeriesSettings);
