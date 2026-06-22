@@ -33,7 +33,6 @@ import org.eclipse.swtchart.extensions.core.IAxisScaleConverter;
 import org.eclipse.swtchart.extensions.core.IAxisSettings;
 import org.eclipse.swtchart.extensions.core.IChartSettings;
 import org.eclipse.swtchart.extensions.core.ISecondaryAxisSettings;
-import org.eclipse.swtchart.extensions.core.RangeRestriction;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.extensions.model.ElementLine;
 import org.eclipse.swtchart.extensions.model.ElementPolygon;
@@ -219,8 +218,8 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		 * Settings
 		 */
 		Range rangeY = axisY.getRange();
-		double lower = baseChart.getMinY();
-		double deltaRange = (rangeY.upper - lower) / numberTics; // Watch Out: Force to have no offset
+		double lower = rangeY.lower;
+		double deltaRange = (rangeY.upper - lower) / numberTics;
 		double deltaHeight = (height - yBorderTop - yBorderBottom) / numberTics;
 		/*
 		 * Scale
@@ -394,10 +393,6 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		double yBorderTop = pageSettings.getBorderTopY();
 		double yBorderBottom = pageSettings.getBorderBottomY();
 
-		IChartSettings chartSettings = baseChart.getChartSettings();
-		RangeRestriction raneRangeRestriction = chartSettings.getRangeRestriction();
-		double extendMaxY = raneRangeRestriction.getExtendMaxY();
-
 		graphics2D.setFont(pageSettings.getFont());
 		graphics2D.setColor(Color.BLACK);
 		graphics2D.setStroke(pageSettings.getStrokeSolid());
@@ -408,13 +403,13 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 		Range rangeX = axisX.getRange();
 		Range rangeY = axisY.getRange();
 
-		double xMin = rangeX.lower; // baseChart.getMinX();
-		double xMax = rangeX.upper; // baseChart.getMaxX();
-		double yMin = baseChart.getMinY(); // Force to have no offset
-		double yMax = rangeY.upper; // baseChart.getMaxY();
+		double xMin = rangeX.lower;
+		double xMax = rangeX.upper;
+		double yMin = rangeY.lower;
+		double yMax = rangeY.upper;
 
 		double xDenumerator = xMax - xMin;
-		double yDenumerator = (yMax + yMax * extendMaxY) - yMin;
+		double yDenumerator = yMax - yMin;
 
 		if(xMax > 0 && yMax > 0) {
 			/*

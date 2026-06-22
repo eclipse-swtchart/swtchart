@@ -27,15 +27,12 @@ import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.extensions.core.BaseChart;
-import org.eclipse.swtchart.extensions.core.IChartSettings;
 import org.eclipse.swtchart.extensions.core.IPointSeriesSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
-import org.eclipse.swtchart.extensions.core.RangeRestriction;
 import org.eclipse.swtchart.extensions.core.ScrollableChart;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
 import org.eclipse.swtchart.vectorgraphics2d.core.VectorGraphics2D;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.CommandSequence;
-import org.eclipse.swtchart.vectorgraphics2d.util.PageSize;
 
 /*
  * Important to now:
@@ -63,14 +60,18 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 			 */
 			BaseChart baseChart = scrollableChart.getBaseChart();
 			drawAxes(graphics2D, scale, baseChart, indexAxisX, indexAxisY, pageSettings);
+			graphics2D.setClip(
+					(int)pageSettings.getBorderLeftX(),
+					(int)pageSettings.getBorderTopY(),
+					(int)(pageSettings.getWidth() - pageSettings.getBorderLeftX() - pageSettings.getBorderRightX()),
+					(int)(pageSettings.getHeight() - pageSettings.getBorderTopY() - pageSettings.getBorderBottomY()));
 			drawStandardSeries(graphics2D, scale, baseChart, pageSettings);
 			drawCustomSeries(graphics2D, scale, baseChart, pageSettings);
+			graphics2D.setClip(null);
 			drawTitle(graphics2D, pageSettings, scrollableChart);
 			drawBranding(graphics2D, pageSettings);
 		}
 
-		PageSize pageSize = pageSizeOption.pageSize();
-		graphics2D.setClip(0, 0, (int)Math.round(pageSize.getWidth()), (int)Math.round(pageSize.getHeight()));
 		return graphics2D.getCommands();
 	}
 
@@ -83,19 +84,15 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 		double yBorderTop = pageSettings.getBorderTopY();
 		double yBorderBottom = pageSettings.getBorderBottomY();
 
-		IChartSettings chartSettings = baseChart.getChartSettings();
-		RangeRestriction raneRangeRestriction = chartSettings.getRangeRestriction();
-		double extendMaxY = raneRangeRestriction.getExtendMaxY();
-
 		IAxis axisX = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis axisY = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
 		Range rangeX = axisX.getRange();
 		Range rangeY = axisY.getRange();
 
-		double xMin = rangeX.lower; // baseChart.getMinX();
-		double xMax = rangeX.upper; // baseChart.getMaxX();
-		double yMin = baseChart.getMinY(); // Watch Out: Force to have no offset
-		double yMax = rangeY.upper; // baseChart.getMaxY();
+		double xMin = rangeX.lower;
+		double xMax = rangeX.upper;
+		double yMin = rangeY.lower;
+		double yMax = rangeY.upper;
 
 		ISeries<?>[] seriesSet = baseChart.getSeriesSet().getSeries();
 		for(ISeries<?> series : seriesSet) {
@@ -109,7 +106,7 @@ public class PointLineChartCommandGenerator extends AbstractCommandGenerator {
 					double[] xSeries = series.getXSeries();
 					double[] ySeries = series.getYSeries();
 					double xDenumerator = xMax - xMin;
-					double yDenumerator = (yMax + yMax * extendMaxY) - yMin;
+					double yDenumerator = yMax - yMin;
 
 					if(xMax > 0 && yMax > 0) {
 						/*
