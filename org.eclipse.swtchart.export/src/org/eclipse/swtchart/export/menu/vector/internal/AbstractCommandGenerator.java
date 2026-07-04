@@ -287,8 +287,8 @@ public abstract class AbstractCommandGenerator implements IChartCommandGenerator
 
 	public void drawStringNormal(Graphics2D graphics2D, Point2D.Double scale, String label, int rotation, int x, int y, int widthText, int heightText) {
 
-		int x1 = (int)(x + (heightText / 4.0d));
-		int y1 = (int)(y - (heightText / 4.0d)); // Small distance
+		int x1 = (int)(rotation == 0 ? x - (widthText / 2.0d) : x + (heightText / 4.0d));
+		int y1 = (int)(rotation == 0 ? y + (heightText / 4.0d) : y - (heightText / 4.0d));
 
 		AffineTransform affineTransformDefault = graphics2D.getTransform();
 		AffineTransform affineTransform = createAffineTransform(scale);
