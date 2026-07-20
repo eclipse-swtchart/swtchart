@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -50,6 +50,12 @@ public class Title implements ITitle, PaintListener {
 	private StyleRange[] styleRanges;
 	/** the visibility state of axis */
 	private boolean isVisible;
+	/** forces horizontal rendering regardless of axis orientation */
+	private boolean horizontalTitle = false;
+	/** extra label drawn horizontally at the top of a vertical axis */
+	private String horizontalLabel = null;
+	/** top Y coordinate of the plot area, set by ChartLayout; -1 = not yet laid out */
+	private int plotTopY = -1;
 	/** the default font */
 	private final Font defaultFont;
 	/** the bounds of title */
@@ -206,6 +212,37 @@ public class Title implements ITitle, PaintListener {
 	}
 
 	@Override
+	public void setHorizontalTitle(boolean horizontalTitle) {
+
+		this.horizontalTitle = horizontalTitle;
+		chart.updateLayout();
+	}
+
+	@Override
+	public boolean isHorizontalTitle() {
+
+		return horizontalTitle;
+	}
+
+	@Override
+	public void setHorizontalLabel(String label) {
+
+		this.horizontalLabel = label;
+		chart.updateLayout();
+	}
+
+	@Override
+	public String getHorizontalLabel() {
+
+		return horizontalLabel;
+	}
+
+	public void setPlotTopY(int plotTopY) {
+
+		this.plotTopY = plotTopY;
+	}
+
+	@Override
 	public boolean isVisible() {
 
 		return isVisible;
@@ -246,7 +283,12 @@ public class Title implements ITitle, PaintListener {
 		if(isHorizontal()) {
 			setLayoutData(new ChartLayoutData(width, height));
 		} else {
-			setLayoutData(new ChartLayoutData(height, width));
+			int widthHint = height; // font height for the rotated title
+			if(horizontalLabel != null && !horizontalLabel.isEmpty()) {
+				Point labelSize = Util.getExtentInGC(getFont(), horizontalLabel);
+				widthHint = Math.max(widthHint, labelSize.x);
+			}
+			setLayoutData(new ChartLayoutData(widthHint, width));
 		}
 	}
 
@@ -284,17 +326,24 @@ public class Title implements ITitle, PaintListener {
 	@Override
 	public void paintControl(PaintEvent e) {
 
-		if(text == null || text.equals("") || !isVisible) { //$NON-NLS-1$
+		if(!isVisible) {
 			return;
 		}
 		Font oldFont = e.gc.getFont();
-		Color oldForeground = getForeground();
+		Color oldForeground = e.gc.getForeground();
 		e.gc.setFont(getFont());
 		e.gc.setForeground(getForeground());
-		if(isHorizontal()) {
-			drawHorizontalTitle(e.gc);
-		} else {
-			drawVerticalTitle(e.gc);
+		if(!(text == null || text.equals(""))) { //$NON-NLS-1$
+			if(isHorizontal()) {
+				drawHorizontalTitle(e.gc);
+			} else {
+				drawVerticalTitle(e.gc);
+			}
+		}
+		if(!isHorizontal() && horizontalLabel != null && !horizontalLabel.isEmpty() && plotTopY >= 0) {
+			Font labelFont = Resources.getFont(getFont().getFontData()[0].getName(), getFont().getFontData()[0].getHeight(), SWT.NORMAL);
+			e.gc.setFont(labelFont);
+			e.gc.drawText(horizontalLabel, getBounds().x, plotTopY, true);
 		}
 		e.gc.setFont(oldFont);
 		e.gc.setForeground(oldForeground);

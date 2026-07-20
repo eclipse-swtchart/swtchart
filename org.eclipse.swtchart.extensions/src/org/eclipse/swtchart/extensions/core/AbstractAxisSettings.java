@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -42,6 +42,9 @@ public abstract class AbstractAxisSettings implements IAxisSettings {
 	private boolean drawPositionMarker;
 	private int extraSpaceTitle;
 	private boolean integerDataPointAxis;
+	private boolean horizontalTitle = false;
+	private boolean ticksVisible = true;
+	private String horizontalLabel = null;
 	/*
 	 * The default font is only used if no font is set.
 	 */
@@ -320,5 +323,41 @@ public abstract class AbstractAxisSettings implements IAxisSettings {
 	public void setIntegerDataPointAxis(boolean isIntegerDataPointAxis) {
 
 		this.integerDataPointAxis = isIntegerDataPointAxis;
+	}
+
+	@Override
+	public boolean isHorizontalTitle() {
+
+		return horizontalTitle;
+	}
+
+	@Override
+	public void setHorizontalTitle(boolean horizontalTitle) {
+
+		this.horizontalTitle = horizontalTitle;
+	}
+
+	@Override
+	public boolean isTicksVisible() {
+
+		return ticksVisible;
+	}
+
+	@Override
+	public void setTicksVisible(boolean ticksVisible) {
+
+		this.ticksVisible = ticksVisible;
+	}
+
+	@Override
+	public String getHorizontalLabel() {
+
+		return horizontalLabel;
+	}
+
+	@Override
+	public void setHorizontalLabel(String label) {
+
+		this.horizontalLabel = label;
 	}
 }

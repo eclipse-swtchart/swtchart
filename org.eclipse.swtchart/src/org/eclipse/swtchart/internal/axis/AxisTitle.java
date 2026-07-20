@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2023 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -69,6 +69,6 @@ public class AxisTitle extends Title {
 	@Override
 	protected boolean isHorizontal() {
 
-		return axis.isHorizontalAxis();
+		return isHorizontalTitle() || axis.isHorizontalAxis();
 	}
 }

@@ -1406,10 +1406,12 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 			title.setText(axisText);
 			title.setVisible(axisSettings.isVisible() && axisSettings.isTitleVisible());
 			title.setFont(axisSettings.getTitleFont());
+			title.setHorizontalTitle(axisSettings.isHorizontalTitle());
+			title.setHorizontalLabel(axisSettings.getHorizontalLabel());
 
 			IAxisTick axisTick = axis.getTick();
 			axisTick.setFormat(axisSettings.getDecimalFormat());
-			axisTick.setVisible(axisSettings.isVisible());
+			axisTick.setVisible(axisSettings.isVisible() && axisSettings.isTicksVisible());
 
 			IGrid grid = axis.getGrid();
 			grid.setForeground(axisSettings.getGridColor());
