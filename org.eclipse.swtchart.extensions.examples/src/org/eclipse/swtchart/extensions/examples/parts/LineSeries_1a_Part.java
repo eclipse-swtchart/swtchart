@@ -12,15 +12,19 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.examples.parts;
 
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
 import org.eclipse.swtchart.customcharts.core.ChromatogramChart;
 import org.eclipse.swtchart.extensions.core.IChartSettings;
+import org.eclipse.swtchart.extensions.core.IPrimaryAxisSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesData;
+import org.eclipse.swtchart.extensions.examples.converter.MillionDecimalFormat;
 import org.eclipse.swtchart.extensions.examples.support.SeriesConverter;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesData;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
@@ -44,9 +48,17 @@ public class LineSeries_1a_Part extends ChromatogramChart {
 		 * Chart Settings
 		 */
 		IChartSettings chartSettings = getChartSettings();
+		chartSettings.setBackground(getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
+		chartSettings.setBackgroundChart(getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
+		chartSettings.setBackgroundPlotArea(getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND));
 		chartSettings.setOrientation(SWT.HORIZONTAL);
 		chartSettings.setCreateMenu(true);
 		chartSettings.getRangeRestriction().setForceZeroMinY(true);
+		IPrimaryAxisSettings primaryAxisSettingsY = chartSettings.getPrimaryAxisSettingsY();
+		primaryAxisSettingsY.setHorizontalLabel("×10⁶");
+		primaryAxisSettingsY.setDecimalFormat(new MillionDecimalFormat("0.#", new DecimalFormatSymbols(Locale.ENGLISH)));
+		chartSettings.getSecondaryAxisSettingsListY().clear();
+
 		applySettings(chartSettings);
 		/*
 		 * Create series.

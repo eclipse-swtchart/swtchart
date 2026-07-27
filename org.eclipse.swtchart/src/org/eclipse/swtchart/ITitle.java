@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -95,8 +95,35 @@ public interface ITitle {
 
 	/**
 	 * Gets the visibility state.
-	 * 
+	 *
 	 * @return true if title is visible
 	 */
 	boolean isVisible();
+
+	/**
+	 * Forces the title to be rendered horizontally regardless of axis orientation.
+	 *
+	 * @param horizontalTitle
+	 *            true to render the title horizontally
+	 */
+	void setHorizontalTitle(boolean horizontalTitle);
+
+	/**
+	 * Returns whether the title is forced to render horizontally.
+	 *
+	 * @return true if the title is forced horizontal
+	 */
+	boolean isHorizontalTitle();
+
+	/**
+	 * Sets a short label that is drawn horizontally at the top of a vertical axis
+	 * in addition to the regular (rotated) axis title. Typical use: unit annotations
+	 * like "×10⁶" above the Y-axis tick labels.
+	 *
+	 * @param label
+	 *            the horizontal label text, or null/empty to disable
+	 */
+	void setHorizontalLabel(String label);
+
+	String getHorizontalLabel();
 }

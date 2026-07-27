@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2023 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -110,4 +110,36 @@ public interface IAxisSettings {
 	boolean isIntegerDataPointAxis();
 
 	void setIntegerDataPointAxis(boolean isIntegerDataPointAxis);
+
+	/**
+	 * Returns whether the axis title should be rendered horizontally at the top of
+	 * the axis instead of rotated along it.
+	 *
+	 * @return true to render the title horizontally
+	 */
+	boolean isHorizontalTitle();
+
+	void setHorizontalTitle(boolean horizontalTitle);
+
+	/**
+	 * Short label drawn horizontally at the top of the axis column in addition to the
+	 * regular (rotated) axis title.
+	 *
+	 * @return the horizontal label, or null if not set
+	 */
+	String getHorizontalLabel();
+
+	void setHorizontalLabel(String label);
+
+	/**
+	 * Controls tick mark and tick label visibility independently of the axis title.
+	 * Use setVisible(false) to hide everything; use setTicksVisible(false) together
+	 * with setVisible(true) to show only the axis title (e.g. "Intensity") while
+	 * suppressing the tick labels.
+	 *
+	 * @return true if tick marks and labels are visible
+	 */
+	boolean isTicksVisible();
+
+	void setTicksVisible(boolean ticksVisible);
 }

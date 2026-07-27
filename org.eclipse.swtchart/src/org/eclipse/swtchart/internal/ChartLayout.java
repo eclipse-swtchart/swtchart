@@ -516,8 +516,9 @@ public class ChartLayout extends Layout {
 		int y = titleHeight + topAxisHeight + MARGIN + ((titleHeight == 0) ? 0 : PADDING) + (legendPosition == SWT.TOP ? legendHeight + (legendHeight == 0 ? 0 : PADDING) : 0);
 		leftAxisOffset += width;
 		int height = layoutData.titleLayoutdata.heightHint;
-		int titleY = y + (plotAreaHeight - height) / 2;
+		int titleY = layoutData.axisTitle.isHorizontalTitle() ? y : y + (plotAreaHeight - height) / 2;
 		layoutData.axisTitle.setBounds(x, titleY, width, height);
+		layoutData.axisTitle.setPlotTopY(y);
 		x += width;
 		width = layoutData.tickLabelsLayoutdata.widthHint;
 		leftAxisOffset += width;
@@ -546,8 +547,9 @@ public class ChartLayout extends Layout {
 		int y = titleHeight + topAxisHeight + MARGIN + ((titleHeight == 0) ? 0 : PADDING) + (legendPosition == SWT.TOP ? legendHeight + (legendHeight == 0 ? 0 : PADDING) : 0);
 		rightAxisOffset += width;
 		int height = layoutData.titleLayoutdata.heightHint;
-		int titleY = y + (plotAreaHeight - height) / 2;
+		int titleY = layoutData.axisTitle.isHorizontalTitle() ? y : y + (plotAreaHeight - height) / 2;
 		layoutData.axisTitle.setBounds(x, titleY, width, height);
+		layoutData.axisTitle.setPlotTopY(y);
 		width = layoutData.tickLabelsLayoutdata.widthHint;
 		x -= width;
 		rightAxisOffset += width;
