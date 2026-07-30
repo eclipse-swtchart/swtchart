@@ -1,7 +1,37 @@
 # Security Policy
 
-Vulnerabilities are tracked by the Eclipse security team, in cooperation with the SWTChart project lead. Fixing vulnerabilities is taken care of by the SWTChart project committers, with assistance and guidance of the security team. 
+This Eclipse Foundation SWTChart Project adheres to the [Eclipse Foundation Vulnerability Reporting Policy](https://www.eclipse.org/security/policy/).
 
-## Reporting a Vulnerability
+## How To Report a Vulnerability
 
-We recommend that in case of suspected vulnerabilities you do not use the SWTChart public issue tracker, but instead contact the Eclipse Security Team directly via security@eclipse.org.
+If you think you have found a vulnerability in this repository you can report it using one of the following ways:
+
+**Please do not report security vulnerabilities through public issues, discussions, or change requests.**
+
+Instead, report it using one of the following ways:
+
+* Contact the [Eclipse Foundation Security Team](mailto:security@eclipse-foundation.org) via email
+* Create a [confidential issue](https://gitlab.eclipse.org/security/vulnerability-reports/-/issues/new?issuable_template=new_vulnerability) in the Eclipse Foundation Vulnerability Reporting Tracker
+* Report a [vulnerability](https://github.com/eclipse-swtchart/swtchart/security/advisories/new) directly via private vulnerability reporting on GitHub
+
+You can find more information about reporting and disclosure at the [Eclipse Foundation Security page](https://www.eclipse.org/security/).
+
+Please include as much of the information listed below as you can to help us better understand and resolve the issue:
+
+* The type of issue (e.g., buffer overflow, SQL injection, or cross-site scripting)
+* Affected version(s)
+* Impact of the issue, including how an attacker might exploit the issue
+* Step-by-step instructions to reproduce the issue
+* The location of the affected source code (tag/branch/commit or direct URL)
+* Full paths of source file(s) related to the manifestation of the issue
+* Configuration required to reproduce the issue
+* Log files that are related to this issue (if possible)
+* Proof-of-concept or exploit code (if possible)
+
+This information will help us triage your report more quickly.
+
+## Supported Versions
+
+Supported versions are:
+
+* Version 1.2.0 (Latest Development)
