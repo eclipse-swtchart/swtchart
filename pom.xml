@@ -197,7 +197,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.5</version>
+				<version>3.5.6</version>
 				<executions>
 					<execution>
 						<id>test</id>
@@ -222,7 +222,7 @@
             <plugin>
               <groupId>org.eclipse.cbi.maven.plugins</groupId>
               <artifactId>eclipse-jarsigner-plugin</artifactId>
-              <version>1.5.4</version>
+              <version>1.5.7</version>
               <executions>
                 <execution>
                   <id>sign</id>
@@ -265,7 +265,7 @@
                               <dependency>
                                 <groupId>org.eclipse.pde</groupId>
                                 <artifactId>org.eclipse.pde.api.tools.annotations</artifactId>
-                                <version>1.4.0</version>
+                                <version>1.4.100</version>
                               </dependency>
                             </additionalDependencies>
                           </configuration>

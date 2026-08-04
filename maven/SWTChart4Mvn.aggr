@@ -5,9 +5,6 @@
       <repositories location="https://download.eclipse.org/swtchart/integration/develop/repository/">
         <features name="org.eclipse.swtchart.feature.feature.group"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/eclipse/updates/4.36/">
-        <bundles name="org.eclipse.swt"/>
-      </repositories>
     </contributions>
   </validationSets>
   <configurations architecture="x86_64"/>
