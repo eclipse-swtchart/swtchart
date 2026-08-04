@@ -265,7 +265,7 @@
                               <dependency>
                                 <groupId>org.eclipse.pde</groupId>
                                 <artifactId>org.eclipse.pde.api.tools.annotations</artifactId>
-                                <version>1.4.0</version>
+                                <version>1.4.100</version>
                               </dependency>
                             </additionalDependencies>
                           </configuration>
