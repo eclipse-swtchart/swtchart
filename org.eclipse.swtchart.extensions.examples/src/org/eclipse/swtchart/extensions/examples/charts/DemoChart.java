@@ -52,10 +52,12 @@ public class DemoChart {
 		 * environments.
 		 */
 		IChartSettings chartSettings = scrollableChart.getChartSettings();
+		chartSettings.setPlotAreaMaximized(false);
 		chartSettings.setTitle("Chromatogram Example");
 		chartSettings.setTitleVisible(true);
-		chartSettings.setLegendExtendedVisible(true);
+		chartSettings.setLegendExtendedVisible(false);
 		chartSettings.setBufferSelection(true);
+		addToggleMaximizeMenuEntry(chartSettings);
 		addClipboardMenuEntry(chartSettings);
 		addToggleAxisLinesMenuEntry(chartSettings);
 		chartSettings.addMenuEntry(new PNGExportHandler());
@@ -69,6 +71,38 @@ public class DemoChart {
 			}
 		}
 		display.dispose();
+	}
+
+	private static void addToggleMaximizeMenuEntry(IChartSettings chartSettings) {
+
+		chartSettings.addMenuEntry(new IChartMenuEntry() {
+
+			@Override
+			public String getName() {
+
+				return "Toggle Maximize";
+			}
+
+			@Override
+			public String getCategory() {
+
+				return "Tools";
+			}
+
+			@Override
+			public Image getIcon() {
+
+				return ResourceSupport.getImage(ResourceSupport.ICON_SET_RANGE);
+			}
+
+			@Override
+			public void execute(Shell shell, ScrollableChart scrollableChart) {
+
+				IChartSettings chartSettings = scrollableChart.getChartSettings();
+				chartSettings.setPlotAreaMaximized(!chartSettings.isPlotAreaMaximized());
+				scrollableChart.applySettings(chartSettings);
+			}
+		});
 	}
 
 	private static void addClipboardMenuEntry(IChartSettings chartSettings) {
