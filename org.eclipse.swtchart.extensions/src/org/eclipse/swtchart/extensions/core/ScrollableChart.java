@@ -849,6 +849,49 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		updateRangeHintPaintListener();
 		setMenuItems();
 		setEventProcessors();
+		/*
+		 * Maximize the plot area by hiding all surrounding UI elements.
+		 */
+		if(chartSettings.isPlotAreaMaximized()) {
+			applyPlotAreaMaximized();
+		}
+	}
+
+	private void applyPlotAreaMaximized() {
+
+		Slider sliderVertical = sliderVerticalControl.get();
+		GridData gridDataVertical = (GridData)sliderVertical.getLayoutData();
+		gridDataVertical.exclude = true;
+		sliderVertical.setVisible(false);
+
+		Slider sliderHorizontal = sliderHorizontalControl.get();
+		GridData gridDataHorizontal = (GridData)sliderHorizontal.getLayoutData();
+		gridDataHorizontal.exclude = true;
+		sliderHorizontal.setVisible(false);
+
+		GridData gridDataRange = (GridData)rangeSelector.getLayoutData();
+		gridDataRange.exclude = true;
+		rangeSelector.setVisible(false);
+
+		layout(true);
+
+		baseChart.getTitle().setVisible(false);
+		baseChart.getLegend().setVisible(false);
+		setLegendExtendedVisible(false);
+
+		IAxisSet axisSet = baseChart.getAxisSet();
+		for(int id : axisSet.getXAxisIds()) {
+			IAxis axis = axisSet.getXAxis(id);
+			axis.getTitle().setVisible(false);
+			axis.getTick().setVisible(false);
+			axis.setDrawAxisLine(false);
+		}
+		for(int id : axisSet.getYAxisIds()) {
+			IAxis axis = axisSet.getYAxis(id);
+			axis.getTitle().setVisible(false);
+			axis.getTick().setVisible(false);
+			axis.setDrawAxisLine(false);
+		}
 	}
 
 	private void adjustSecondaryAxisRangeX() {

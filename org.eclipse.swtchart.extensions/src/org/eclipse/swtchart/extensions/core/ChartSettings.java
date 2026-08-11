@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -61,6 +61,7 @@ public class ChartSettings implements IChartSettings {
 
 	private boolean bufferSelection = false;
 	private boolean preventAccidentalZoom = false;
+	private boolean plotAreaMaximized = false;
 
 	private boolean enableRangeSelector = false;
 	private boolean showRangeSelectorInitially = true;
@@ -741,5 +742,17 @@ public class ChartSettings implements IChartSettings {
 	public boolean isEnableTooltips() {
 
 		return enableTooltips;
+	}
+
+	@Override
+	public boolean isPlotAreaMaximized() {
+
+		return plotAreaMaximized;
+	}
+
+	@Override
+	public void setPlotAreaMaximized(boolean plotAreaMaximized) {
+
+		this.plotAreaMaximized = plotAreaMaximized;
 	}
 }
