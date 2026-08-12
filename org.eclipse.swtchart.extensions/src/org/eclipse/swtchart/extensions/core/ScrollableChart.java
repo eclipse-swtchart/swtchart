@@ -852,8 +852,28 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		/*
 		 * Maximize the plot area by hiding all surrounding UI elements.
 		 */
+		applyCompositeMargins(chartSettings.isPlotAreaMaximized());
 		if(chartSettings.isPlotAreaMaximized()) {
 			applyPlotAreaMaximized();
+		}
+	}
+
+	private void applyCompositeMargins(boolean plotAreaMaximized) {
+
+		int margin = plotAreaMaximized ? 0 : 5;
+		int spacing = plotAreaMaximized ? 0 : 5;
+
+		if(chartSection != null && chartSection.getLayout() instanceof GridLayout gridLayout) {
+			gridLayout.marginWidth = margin;
+			gridLayout.marginHeight = margin;
+			gridLayout.horizontalSpacing = spacing;
+			gridLayout.verticalSpacing = spacing;
+		}
+
+		if(compositeChart != null && compositeChart.getLayout() instanceof GridLayout gridLayout) {
+			gridLayout.marginWidth = margin;
+			gridLayout.marginHeight = margin;
+			gridLayout.verticalSpacing = spacing;
 		}
 	}
 
