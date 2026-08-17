@@ -17,7 +17,7 @@ jobs:
     uses: eclipse-dash/dash-licenses/.github/workflows/mavenLicenseCheck.yml@master
     with:
       projectId: science.swtchart
-      javaVersion: 21
+      javaVersion: 25
     secrets:
       gitlabAPIToken: ${{ secrets.GITLAB_API_TOKEN }}
     permissions:

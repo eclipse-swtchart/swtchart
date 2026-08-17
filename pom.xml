@@ -252,7 +252,7 @@
                               <goal>jar</goal>
                           </goals>
                           <configuration>
-                            <source>21</source>
+                            <source>25</source>
                             <failOnError>false</failOnError>
                             <legacyMode>true</legacyMode>
                             <doclint>accessibility,html,reference,syntax</doclint>
