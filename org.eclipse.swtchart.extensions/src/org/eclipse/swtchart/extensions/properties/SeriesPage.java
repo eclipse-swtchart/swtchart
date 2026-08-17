@@ -289,7 +289,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		stackLayout.topControl = lineSeriesGroup;
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.LINE_COLOR));
 		lineColorButton = createColorButtonControl(lineSeriesGroup);
-		lineColorButton.addListener(event -> lineColors[selectedIndex] = lineColorButton.getColorValue());
+		lineColorButton.addListener(_ -> lineColors[selectedIndex] = lineColorButton.getColorValue());
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.LINE_STYLE));
 		LineStyle[] styles = LineStyle.values();
 		String[] labels = new String[styles.length];
@@ -314,7 +314,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		});
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_COLOR));
 		symbolColorButton = createColorButtonControl(lineSeriesGroup);
-		symbolColorButton.addListener(event -> symbolColors[selectedIndex] = symbolColorButton.getColorValue());
+		symbolColorButton.addListener(_ -> symbolColors[selectedIndex] = symbolColorButton.getColorValue());
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_TYPE));
 		PlotSymbolType[] types = PlotSymbolType.values();
 		labels = new String[types.length];
@@ -339,7 +339,7 @@ public class SeriesPage extends AbstractSelectorPage {
 		});
 		createLabelControl(lineSeriesGroup, Messages.getString(Messages.SYMBOL_SIZE));
 		symbolSizeSpinner = createSpinnerControl(lineSeriesGroup, 1, 10);
-		symbolSizeSpinner.addModifyListener(e -> symbolSizes[selectedIndex] = symbolSizeSpinner.getSelection());
+		symbolSizeSpinner.addModifyListener(_ -> symbolSizes[selectedIndex] = symbolSizeSpinner.getSelection());
 	}
 
 	/**
@@ -356,10 +356,10 @@ public class SeriesPage extends AbstractSelectorPage {
 		Group group = createGroupControl(barSeriesGroup, Messages.getString(Messages.BAR_SERIES), true);
 		createLabelControl(group, Messages.getString(Messages.COLOR));
 		barColorButton = createColorButtonControl(group);
-		barColorButton.addListener(event -> barColors[selectedIndex] = barColorButton.getColorValue());
+		barColorButton.addListener(_ -> barColors[selectedIndex] = barColorButton.getColorValue());
 		createLabelControl(group, Messages.getString(Messages.PADDING_SIZE));
 		paddingSizeSpinner = createSpinnerControl(group, 0, 100);
-		paddingSizeSpinner.addModifyListener(e -> paddings[selectedIndex] = paddingSizeSpinner.getSelection());
+		paddingSizeSpinner.addModifyListener(_ -> paddings[selectedIndex] = paddingSizeSpinner.getSelection());
 	}
 
 	/**

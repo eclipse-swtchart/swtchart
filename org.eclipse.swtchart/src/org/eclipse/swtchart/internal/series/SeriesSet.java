@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -53,7 +53,7 @@ public class SeriesSet implements ISeriesSet {
 
 		this.chart = chart;
 		seriesMap = new LinkedHashMap<>();
-		chart.addDisposeListener(e -> dispose());
+		chart.addDisposeListener(_ -> dispose());
 	}
 
 	@SuppressWarnings("rawtypes")

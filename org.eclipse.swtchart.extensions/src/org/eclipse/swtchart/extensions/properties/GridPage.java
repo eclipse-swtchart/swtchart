@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -138,7 +138,7 @@ public class GridPage extends AbstractSelectorPage {
 		});
 		createLabelControl(group, Messages.getString(Messages.COLOR));
 		foregroundButton = createColorButtonControl(group);
-		foregroundButton.addListener(event -> foregroundColors[selectedIndex] = foregroundButton.getColorValue());
+		foregroundButton.addListener(_ -> foregroundColors[selectedIndex] = foregroundButton.getColorValue());
 	}
 
 	@Override

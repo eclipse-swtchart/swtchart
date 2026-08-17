@@ -1667,7 +1667,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		/*
 		 * Set the slider range.
 		 */
-		baseChart.addCustomRangeSelectionHandler(event -> {
+		baseChart.addCustomRangeSelectionHandler(_ -> {
 
 			setSliderSelection(false);
 			if(getChartSettings().isEnableRangeSelector()) {
