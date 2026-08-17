@@ -5,7 +5,7 @@ Bundle-Name: SWTChart Export Test
 Bundle-SymbolicName: org.eclipse.swtchart.export.test
 Bundle-Version: 1.2.0.qualifier
 Fragment-Host: org.eclipse.swtchart.export;bundle-version="1.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-21
+Bundle-RequiredExecutionEnvironment: JavaSE-25
 Bundle-Vendor: Eclipse SWTChart
 Require-Bundle: junit-jupiter-api;bundle-version="6.0.1",
  org.eclipse.swtchart.customcharts;bundle-version="1.2.0"
