@@ -39,7 +39,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtchart.IEnumLabel;
 import org.eclipse.swtchart.extensions.barcharts.IBarSeriesSettings;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
-import org.eclipse.swtchart.extensions.core.ResourceSupport;
 import org.eclipse.swtchart.extensions.linecharts.ILineSeriesSettings;
 import org.eclipse.swtchart.extensions.piecharts.ICircularSeriesSettings;
 import org.eclipse.swtchart.extensions.scattercharts.IScatterSeriesSettings;
@@ -200,7 +199,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 				colorDialog.setText(title);
 				RGB rgbNew = colorDialog.open();
 				if(rgbNew != null) {
-					Color colorNew = ResourceSupport.getColor(rgbNew);
+					Color colorNew = new Color(rgbNew);
 					text.setBackground(colorNew);
 					consumer.accept(colorNew);
 				}

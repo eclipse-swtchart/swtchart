@@ -35,7 +35,6 @@ import org.eclipse.swtchart.ILineSeries.PlotSymbolType;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.LineStyle;
 import org.eclipse.swtchart.extensions.charts.InteractiveChart;
-import org.eclipse.swtchart.extensions.core.ResourceSupport;
 
 /**
  * The series page on properties dialog.
@@ -392,15 +391,15 @@ public class SeriesPage extends AbstractSelectorPage {
 		for(int i = 0; i < series.length; i++) {
 			series[i].setVisible(visibleStates[i]);
 			if(series[i] instanceof ILineSeries<?> lineSeries) {
-				Color lineColor = ResourceSupport.getColor(lineColors[i]);
-				Color symbolColor = ResourceSupport.getColor(symbolColors[i]);
+				Color lineColor = new Color(lineColors[i]);
+				Color symbolColor = new Color(symbolColors[i]);
 				lineSeries.setLineColor(lineColor);
 				lineSeries.setSymbolColor(symbolColor);
 				lineSeries.setLineStyle(lineStyles[i]);
 				lineSeries.setSymbolType(symbolTypes[i]);
 				lineSeries.setSymbolSize(symbolSizes[i]);
 			} else if(series[i] instanceof IBarSeries<?> barSeries) {
-				Color barColor = ResourceSupport.getColor(barColors[i]);
+				Color barColor = new Color(barColors[i]);
 				barSeries.setBarColor(barColor);
 				barSeries.setBarPadding(paddings[i]);
 			}

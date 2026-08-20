@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -166,9 +166,9 @@ public class ChartPage extends AbstractPage {
 	@Override
 	public void apply() {
 
-		Color color = Resources.getColor(backgroundInPlotAreaButton.getColorValue());
+		Color color = new Color(backgroundInPlotAreaButton.getColorValue());
 		chart.getPlotArea().setBackground(color);
-		color = Resources.getColor(backgroundButton.getColorValue());
+		color = new Color(backgroundButton.getColorValue());
 		chart.setBackground(color);
 		chart.setOrientation(orientationButton.getSelection() ? SWT.VERTICAL : SWT.HORIZONTAL);
 		ITitle title = chart.getTitle();
@@ -178,7 +178,7 @@ public class ChartPage extends AbstractPage {
 		fontData.setHeight(fontSizeSpinner.getSelection());
 		Font font = Resources.getFont(fontData);
 		title.setFont(font);
-		color = Resources.getColor(titleColorButton.getColorValue());
+		color = new Color(titleColorButton.getColorValue());
 		title.setForeground(color);
 	}
 

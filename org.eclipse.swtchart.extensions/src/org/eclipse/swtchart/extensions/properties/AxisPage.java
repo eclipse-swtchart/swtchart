@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -303,7 +303,7 @@ public class AxisPage extends AbstractSelectorPage {
 			fontData.setHeight(titleFontSizes[i]);
 			Font font = Resources.getFont(fontData);
 			axes[i].getTitle().setFont(font);
-			Color color = Resources.getColor(titleColors[i]);
+			Color color = new Color(titleColors[i]);
 			axes[i].getTitle().setForeground(color);
 			axes[i].setRange(new Range(minRanges[i], maxRanges[i]));
 			axes[i].setPosition(positions[i]);

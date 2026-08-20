@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -28,7 +28,6 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.IAxis.Direction;
 import org.eclipse.swtchart.LineStyle;
-import org.eclipse.swtchart.Resources;
 import org.eclipse.swtchart.extensions.charts.InteractiveChart;
 
 /**
@@ -146,7 +145,7 @@ public class GridPage extends AbstractSelectorPage {
 
 		for(int i = 0; i < axes.length; i++) {
 			axes[i].getGrid().setStyle(styles[i]);
-			Color color = Resources.getColor(foregroundColors[i]);
+			Color color = new Color(foregroundColors[i]);
 			axes[i].getGrid().setForeground(color);
 		}
 	}

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -178,7 +178,7 @@ public class AxisTickPage extends AbstractSelectorPage {
 			fontData.setHeight(fontSizes[i]);
 			Font font = Resources.getFont(fontData);
 			axes[i].getTick().setFont(font);
-			Color color = Resources.getColor(foregroundColors[i]);
+			Color color = new Color(foregroundColors[i]);
 			axes[i].getTick().setForeground(color);
 		}
 	}

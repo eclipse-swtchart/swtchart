@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 Lablicate GmbH.
+ * Copyright (c) 2008, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.TextLayout;
 import org.eclipse.swt.widgets.Display;
 
@@ -37,7 +36,6 @@ public class Resources {
 	public static final int SMALL_FONT_SIZE = 9;
 	public static final String RGB_DELIMITER = ",";
 
-	private static final Map<RGB, Color> colorMap = new HashMap<>();
 	private static final Map<String, Font> fontMap = new HashMap<>();
 	private static final Map<String, TextLayout> textLayoutMap = new HashMap<>();
 
@@ -62,7 +60,7 @@ public class Resources {
 				int green = Integer.parseInt(values[1]);
 				int blue = Integer.parseInt(values[2]);
 
-				return getColor(new RGB(red, green, blue));
+				return new Color(red, green, blue);
 			}
 		}
 
@@ -84,38 +82,6 @@ public class Resources {
 		builder.append(color.getBlue());
 
 		return builder.toString();
-	}
-
-	/**
-	 * The color is mapped and disposed by this color support.
-	 * Hence, it doesn't need to be disposed manually.
-	 * 
-	 * @param rgb
-	 * @return color
-	 */
-	public static Color getColor(RGB rgb) {
-
-		Color color = colorMap.get(rgb);
-		if(color == null) {
-			color = new Color(rgb);
-			colorMap.put(rgb, color);
-		}
-		return color;
-	}
-
-	/**
-	 * The color is mapped and disposed by this color support.
-	 * Hence, it doesn't need to be disposed manually.
-	 * 
-	 * @param red
-	 * @param green
-	 * @param blue
-	 * @return color
-	 */
-	public static Color getColor(int red, int green, int blue) {
-
-		RGB rgb = new RGB(red, green, blue);
-		return getColor(rgb);
 	}
 
 	public static Font getFont(FontData fontData) {

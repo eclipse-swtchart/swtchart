@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021, 2025 Lablicate GmbH.
+ * Copyright (c) 2021, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -21,7 +21,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.ColorDialog;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swtchart.ISeries;
-import org.eclipse.swtchart.Resources;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
 import org.eclipse.swtchart.extensions.core.SeriesLabelProvider;
@@ -66,7 +65,7 @@ public class SetColorAction extends AbstractMenuListener {
 					if(rgbNew != null) {
 						for(ISeries<?> series : selectedSeries) {
 							ISeriesSettings seriesSettings = baseChart.getSeriesSettings(series.getId());
-							Color color = Resources.getColor(rgbNew);
+							Color color = new Color(rgbNew);
 							SeriesLabelProvider.setColor(seriesSettings, color);
 							baseChart.applySeriesSettings(series, seriesSettings, true);
 						}

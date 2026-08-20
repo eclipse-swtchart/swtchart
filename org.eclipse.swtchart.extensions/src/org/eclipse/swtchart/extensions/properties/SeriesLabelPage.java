@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -159,7 +159,7 @@ public class SeriesLabelPage extends AbstractSelectorPage {
 
 		for(int i = 0; i < series.length; i++) {
 			series[i].getLabel().setVisible(visibleStates[i]);
-			Color color = ResourceSupport.getColor(colors[i]);
+			Color color = new Color(colors[i]);
 			series[i].getLabel().setForeground(color);
 			FontData fontData = series[i].getLabel().getFont().getFontData()[0];
 			fontData.setHeight(fontSizes[i]);

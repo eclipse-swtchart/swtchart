@@ -22,7 +22,6 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 import org.eclipse.swtchart.extensions.core.ISeriesSettings;
-import org.eclipse.swtchart.extensions.core.ResourceSupport;
 import org.eclipse.swtchart.extensions.core.SeriesLabelProvider;
 import org.eclipse.swtchart.extensions.core.SeriesListUI;
 import org.eclipse.swtchart.extensions.core.SeriesMapper;
@@ -148,7 +147,7 @@ public class SeriesEditingSupport extends EditingSupport {
 					break;
 				case SeriesLabelProvider.INDEX_COLOR:
 					if(object instanceof RGB rgbNew) {
-						Color color = ResourceSupport.getColor(rgbNew);
+						Color color = new Color(rgbNew);
 						SeriesLabelProvider.setColor(seriesSettings, color);
 					}
 					break;
