@@ -22,10 +22,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        java-version: ['21', '25']
-
     steps:
     - name: Checkout SWTChart
       uses: actions/checkout@v7
@@ -34,7 +30,7 @@ jobs:
       uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
-        java-version: ${{ matrix.java-version }}
+        java-version: 25
         cache: 'maven'
 
     - name: Build with Maven on X Window Virtual Framebuffer

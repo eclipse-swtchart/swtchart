@@ -163,7 +163,7 @@ public class FormattingWriterTest {
 	public void closeClosesOutputStream() throws IOException {
 
 		MockOutputStream mockStream = new MockOutputStream();
-		try (FormattingWriter writer = new FormattingWriter(mockStream, StandardCharsets.ISO_8859_1, DEFAULT_EOL)) {
+		try (FormattingWriter _ = new FormattingWriter(mockStream, StandardCharsets.ISO_8859_1, DEFAULT_EOL)) {
 		}
 		assertTrue(mockStream.closed);
 	}

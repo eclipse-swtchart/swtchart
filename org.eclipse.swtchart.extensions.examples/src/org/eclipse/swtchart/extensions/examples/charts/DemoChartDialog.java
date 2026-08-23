@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2023, 2025 SWTChart project.
+ * Copyright (c) 2023, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -60,7 +60,7 @@ public class DemoChartDialog {
 						barSeries.setYSeries(ySeries);
 						chart.getAxisSet().adjustRange();
 
-						parent.addDisposeListener(e1 -> {
+						parent.addDisposeListener(_ -> {
 
 							if(chart != null && !chart.isDisposed()) {
 								System.out.println("Dispose Listener");

@@ -112,7 +112,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 
 		Text text = new Text(parent, SWT.BORDER);
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			description = text.getText().trim();
 			validate();
@@ -164,7 +164,7 @@ public class CreateSeriesMappingDialog extends TitleAreaDialog {
 
 		Text text = new Text(parent, SWT.BORDER);
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			regularExpression = text.getText().trim();
 			validate();

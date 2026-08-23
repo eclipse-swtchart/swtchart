@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -133,11 +133,11 @@ public class SeriesLabelPage extends AbstractSelectorPage {
 
 		colorLabel = createLabelControl(group, Messages.getString(Messages.COLOR));
 		colorButton = createColorButtonControl(group);
-		colorButton.addListener(event -> colors[selectedIndex] = colorButton.getColorValue());
+		colorButton.addListener(_ -> colors[selectedIndex] = colorButton.getColorValue());
 
 		fontSizeLabel = createLabelControl(group, Messages.getString(Messages.FONT_SIZE));
 		fontSizeSpinner = createSpinnerControl(group, 8, 30);
-		fontSizeSpinner.addModifyListener(e -> fontSizes[selectedIndex] = fontSizeSpinner.getSelection());
+		fontSizeSpinner.addModifyListener(_ -> fontSizes[selectedIndex] = fontSizeSpinner.getSelection());
 	}
 
 	/**
