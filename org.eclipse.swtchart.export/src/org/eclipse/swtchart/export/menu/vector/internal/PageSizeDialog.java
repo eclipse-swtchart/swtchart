@@ -148,7 +148,7 @@ public class PageSizeDialog extends Dialog {
 		Text text = new Text(parent, SWT.BORDER);
 		text.setToolTipText("Page Width");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			try {
 				double input = Double.parseDouble(text.getText().trim());
@@ -167,7 +167,7 @@ public class PageSizeDialog extends Dialog {
 		Text text = new Text(parent, SWT.BORDER);
 		text.setToolTipText("Page Height");
 		text.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			try {
 				double input = Double.parseDouble(text.getText().trim());
@@ -234,7 +234,7 @@ public class PageSizeDialog extends Dialog {
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 3;
 		text.setLayoutData(gridData);
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			try {
 				float factor = Float.parseFloat(text.getText().trim());
@@ -260,7 +260,7 @@ public class PageSizeDialog extends Dialog {
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.horizontalSpan = 3;
 		text.setLayoutData(gridData);
-		text.addModifyListener(e -> {
+		text.addModifyListener(_ -> {
 
 			try {
 				float factor = Float.parseFloat(text.getText().trim());

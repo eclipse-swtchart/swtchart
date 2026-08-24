@@ -261,7 +261,7 @@ public class AxisPage extends AbstractSelectorPage {
 		});
 		titleLabel = createLabelControl(group, Messages.getString(Messages.TEXT));
 		titleText = createTextControl(group);
-		titleText.addModifyListener(e -> titleTexts[selectedIndex] = titleText.getText());
+		titleText.addModifyListener(_ -> titleTexts[selectedIndex] = titleText.getText());
 		fontSizeLabel = createLabelControl(group, Messages.getString(Messages.FONT_SIZE));
 		fontSizeSpinner = createSpinnerControl(group, 8, 30);
 		fontSizeSpinner.addSelectionListener(new SelectionAdapter() {
@@ -274,7 +274,7 @@ public class AxisPage extends AbstractSelectorPage {
 		});
 		titleColorLabel = createLabelControl(group, Messages.getString(Messages.COLOR));
 		titleColorButton = createColorButtonControl(group);
-		titleColorButton.addListener(event -> titleColors[selectedIndex] = titleColorButton.getColorValue());
+		titleColorButton.addListener(_ -> titleColors[selectedIndex] = titleColorButton.getColorValue());
 	}
 
 	/**

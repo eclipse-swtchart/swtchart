@@ -137,7 +137,7 @@ public class GridPage extends AbstractSelectorPage {
 		});
 		createLabelControl(group, Messages.getString(Messages.COLOR));
 		foregroundButton = createColorButtonControl(group);
-		foregroundButton.addListener(event -> foregroundColors[selectedIndex] = foregroundButton.getColorValue());
+		foregroundButton.addListener(_ -> foregroundColors[selectedIndex] = foregroundButton.getColorValue());
 	}
 
 	@Override

@@ -20,7 +20,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.graphics.TextLayout;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 
 public class Resources {
@@ -37,7 +37,6 @@ public class Resources {
 	public static final String RGB_DELIMITER = ",";
 
 	private static final Map<String, Font> fontMap = new HashMap<>();
-	private static final Map<String, TextLayout> textLayoutMap = new HashMap<>();
 
 	/*
 	 * Only static methods are used here.
@@ -101,17 +100,6 @@ public class Resources {
 		return font;
 	}
 
-	public static TextLayout getTextLayout(String uuid) {
-
-		TextLayout textLayout = textLayoutMap.get(uuid);
-		if(textLayout == null) {
-			textLayout = new TextLayout(getDisplay());
-			textLayoutMap.put(uuid, textLayout);
-		}
-
-		return textLayout;
-	}
-
 	@Override
 	protected void finalize() throws Throwable {
 
@@ -121,14 +109,6 @@ public class Resources {
 		for(Font font : fontMap.values()) {
 			if(font != null && !font.isDisposed()) {
 				font.dispose();
-			}
-		}
-		/*
-		 * Text Layouts
-		 */
-		for(TextLayout textLayout : textLayoutMap.values()) {
-			if(textLayout != null && !textLayout.isDisposed()) {
-				textLayout.dispose();
 			}
 		}
 	}

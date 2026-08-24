@@ -177,7 +177,7 @@ public abstract class AbstractSeriesSettingsDialog<T extends ISeriesSettings> ex
 		text.setText(title);
 		text.setToolTipText(tooltip);
 		text.setLayoutData(gridData);
-		text.addModifyListener(e -> consumer.accept(text.getText().trim()));
+		text.addModifyListener(_ -> consumer.accept(text.getText().trim()));
 
 		return text;
 	}

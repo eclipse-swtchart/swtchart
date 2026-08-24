@@ -14,8 +14,6 @@
  *******************************************************************************/
 package org.eclipse.swtchart.internal;
 
-import java.util.UUID;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.events.PaintEvent;
@@ -71,7 +69,7 @@ public class Title implements ITitle, PaintListener {
 	/*
 	 * Used internally to track the text layout.
 	 */
-	private String textLayoutUUID = null;
+	private TextLayout textLayout = null;
 
 	public Title(Chart parent) {
 
@@ -93,7 +91,6 @@ public class Title implements ITitle, PaintListener {
 		 */
 		this.text = (text == null) ? getDefaultText() : text;
 		if(useTextLayout()) {
-			TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 			textLayout.setText(text);
 		}
 		chart.updateLayout();
@@ -181,7 +178,6 @@ public class Title implements ITitle, PaintListener {
 	public void setStyleRanges(StyleRange[] ranges) {
 
 		initializeTextLayout();
-		TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 		textLayout.setText(text);
 
 		styleRanges = ranges;
@@ -267,7 +263,6 @@ public class Title implements ITitle, PaintListener {
 		int width;
 		if(isVisible() && !text.trim().equals("")) { //$NON-NLS-1$
 			if(useTextLayout()) {
-				TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 				Rectangle rectangle = textLayout.getBounds();
 				width = rectangle.width;
 				height = rectangle.height;
@@ -320,6 +315,10 @@ public class Title implements ITitle, PaintListener {
 
 		if(!chart.isDisposed()) {
 			chart.removePaintListener(this);
+		}
+		if(textLayout != null) {
+			textLayout.dispose();
+			textLayout = null;
 		}
 	}
 
@@ -387,7 +386,6 @@ public class Title implements ITitle, PaintListener {
 		int x = getBounds().x;
 		int y = getBounds().y;
 		if(useTextLayout()) {
-			TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 			textLayout.draw(gc, x, y);
 		} else {
 			gc.drawText(text, x, y, true);
@@ -419,7 +417,6 @@ public class Title implements ITitle, PaintListener {
 			tmpGc.setBackground(chart.getBackground());
 			tmpGc.fillRectangle(image.getBounds());
 			if(useTextLayout()) {
-				TextLayout textLayout = Resources.getTextLayout(textLayoutUUID);
 				textLayout.draw(tmpGc, 0, 0);
 			} else {
 				tmpGc.setForeground(getForeground());
@@ -451,7 +448,7 @@ public class Title implements ITitle, PaintListener {
 	private boolean useTextLayout() {
 
 		boolean useTextLayout = (styleRanges != null);
-		if(useTextLayout && textLayoutUUID == null) {
+		if(useTextLayout && textLayout == null) {
 			initializeTextLayout();
 		}
 
@@ -460,8 +457,8 @@ public class Title implements ITitle, PaintListener {
 
 	private void initializeTextLayout() {
 
-		if(textLayoutUUID == null) {
-			textLayoutUUID = UUID.randomUUID().toString();
+		if(textLayout == null) {
+			textLayout = new TextLayout(Display.getDefault());
 		}
 	}
 }

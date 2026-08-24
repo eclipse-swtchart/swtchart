@@ -109,7 +109,7 @@ public abstract class AbstractBitmapExportHandler extends AbstractSeriesExportHa
 		imageShell.setSize(imageBounds.width, imageBounds.height);
 		imageShell.setLocation(0, 0);
 		imageShell.setBackground(Display.getDefault().getSystemColor(SWT.COLOR_WHITE));
-		imageShell.addListener(SWT.Paint, event -> {
+		imageShell.addListener(SWT.Paint, _ -> {
 
 			baseChart.setParent(imageShell);
 			baseChart.setBounds(0, 0, width, height);
