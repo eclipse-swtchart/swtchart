@@ -25,7 +25,6 @@ import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.IAxis.Direction;
 import org.eclipse.swtchart.IBarSeries;
 import org.eclipse.swtchart.Range;
-import org.eclipse.swtchart.Resources;
 import org.eclipse.swtchart.internal.axis.Axis;
 import org.eclipse.swtchart.internal.compress.CompressBarSeries;
 import org.eclipse.swtchart.internal.compress.CompressScatterSeries;
@@ -398,7 +397,7 @@ public class BarSeries<T> extends Series<T> implements IBarSeries<T> {
 		red *= (red > 128) ? 0.8 : 1.2;
 		green *= (green > 128) ? 0.8 : 1.2;
 		blue *= (blue > 128) ? 0.8 : 1.2;
-		return Resources.getColor(red, green, blue);
+		return new Color(red, green, blue);
 	}
 
 	@Override

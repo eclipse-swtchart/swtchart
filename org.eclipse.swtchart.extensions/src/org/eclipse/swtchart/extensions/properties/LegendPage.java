@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2025 SWTChart project.
+ * Copyright (c) 2008, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -145,9 +145,9 @@ public class LegendPage extends AbstractPage {
 	public void apply() {
 
 		legend.setVisible(showLegendButton.getSelection());
-		Color color = Resources.getColor(backgroundButton.getColorValue());
+		Color color = new Color(backgroundButton.getColorValue());
 		legend.setBackground(color);
-		color = Resources.getColor(foregroundButton.getColorValue());
+		color = new Color(foregroundButton.getColorValue());
 		legend.setForeground(color);
 		FontData fontData = legend.getFont().getFontData()[0];
 		Font font = Resources.getFont(fontData.getName(), fontSizeSpinner.getSelection(), fontData.getStyle());

@@ -159,7 +159,7 @@ public class SeriesLabelPage extends AbstractSelectorPage {
 
 		for(int i = 0; i < series.length; i++) {
 			series[i].getLabel().setVisible(visibleStates[i]);
-			Color color = ResourceSupport.getColor(colors[i]);
+			Color color = new Color(colors[i]);
 			series[i].getLabel().setForeground(color);
 			FontData fontData = series[i].getLabel().getFont().getFontData()[0];
 			fontData.setHeight(fontSizes[i]);

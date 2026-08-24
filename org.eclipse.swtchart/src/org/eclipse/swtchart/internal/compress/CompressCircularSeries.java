@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2023 SWTChart project.
+ * Copyright (c) 2020, 2026 SWTChart project.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -18,7 +18,6 @@ import java.util.List;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swtchart.Resources;
 import org.eclipse.swtchart.model.Node;
 import org.eclipse.swtchart.model.NodeDataModel;
 
@@ -60,7 +59,7 @@ public class CompressCircularSeries extends Compress {
 			float brightness = Math.max(0, (i - 1) / ((float)maxTreeDepth));
 			for(int j = 0; j != length; j++) {
 				RGB rgb = new RGB(anglePerNode * j, 1, 1 - brightness);
-				Color color = Resources.getColor(rgb);
+				Color color = new Color(rgb);
 				nodes[i].get(j).setSliceColor(color);
 			}
 		}

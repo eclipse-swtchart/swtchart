@@ -178,7 +178,7 @@ public class AxisTickPage extends AbstractSelectorPage {
 			fontData.setHeight(fontSizes[i]);
 			Font font = Resources.getFont(fontData);
 			axes[i].getTick().setFont(font);
-			Color color = Resources.getColor(foregroundColors[i]);
+			Color color = new Color(foregroundColors[i]);
 			axes[i].getTick().setForeground(color);
 		}
 	}
