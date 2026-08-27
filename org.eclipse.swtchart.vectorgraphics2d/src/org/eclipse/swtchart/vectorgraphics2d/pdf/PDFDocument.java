@@ -48,6 +48,7 @@ import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.Command;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DrawShapeCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.DrawStringCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.FillShapeCommand;
+import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetClipCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetColorCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetFontCommand;
 import org.eclipse.swtchart.vectorgraphics2d.intermediate.commands.SetStrokeCommand;
@@ -235,6 +236,22 @@ class PDFDocument extends SizedDocument {
 							}
 						}
 					}
+				} else if(command instanceof SetClipCommand c) {
+					/*
+					 * Clip
+					 */
+					Shape clip = c.getValue();
+					if(clip != null) {
+						contentStream.saveGraphicsState();
+						if(clip instanceof Rectangle rect) {
+							float clipX = rect.x;
+							float clipY = height - rect.y - rect.height;
+							contentStream.addRect(clipX, clipY, rect.width, rect.height);
+							contentStream.clip();
+						}
+					} else {
+						contentStream.restoreGraphicsState();
+					}
 				} else if(command instanceof DrawStringCommand c) {
 					/*
 					 * Label
@@ -258,7 +275,6 @@ class PDFDocument extends SizedDocument {
 					/*
 					 * TODO
 					 * The following commands need to be inspected and handled:
-					 * SetClipCommand
 					 * ScaleCommand
 					 * SetHintCommand
 					 * SetBackgroundCommand
