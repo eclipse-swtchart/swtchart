@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 Lablicate GmbH.
+ * Copyright (c) 2020, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 public class ChartSettings_2_Test {
 
-	private ChartSettings chartSettings = new ChartSettings();
+	private IChartSettings chartSettings = new ChartSettings();
 
 	@BeforeEach
 	public void setUp() {
