@@ -71,6 +71,21 @@ public interface IAxisTick {
 	 */
 	void setVisible(boolean isVisible);
 
+    /**
+     * Gets if minor ticks should also be visible.
+     *
+     * @return true if minor tick marks are visible
+     */
+    boolean getShowMinorTicks();
+
+    /**
+     * Sets if minor ticks should also be visible.
+     *
+     * @param showMinorTicks
+     *            true to make minor tick marks visible
+     */
+    void setShowMinorTicks(boolean showMinorTicks);
+
 	/**
 	 * Gets the tick mark step hint in pixels.
 	 *
