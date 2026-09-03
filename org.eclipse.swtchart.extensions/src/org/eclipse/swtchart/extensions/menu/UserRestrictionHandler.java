@@ -45,7 +45,7 @@ public class UserRestrictionHandler extends AbstractChartMenuEntry {
 	@Override
 	public String getName() {
 
-		return "User Restriction";
+		return IChartMenuCategories.USER_RESTRICTION;
 	}
 
 	@Override

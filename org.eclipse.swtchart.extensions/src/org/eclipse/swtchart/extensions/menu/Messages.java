@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWT Chart Project
+ * Copyright (c) 2020, 2026 SWT Chart Project
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,6 +32,7 @@ public class Messages {
 	public static final String SET_CHART_RANGE = "SET_CHART_RANGE";
 	public static final String ZOOM_IN = "ZOOM_IN";
 	public static final String ZOOM_OUT = "ZOOM_OUT";
+	public static final String USER_RESTRICTION = "USER_RESTRICTION";
 
 	private Messages() {
 
