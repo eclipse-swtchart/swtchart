@@ -60,11 +60,13 @@ public class LabelMarker extends AbstractBaseChartPaintListener {
 
 		this.orientation = orientation;
 		this.labels = (labels != null) ? labels : new HashMap<>();
+		redraw();
 	}
 
 	public void clear() {
 
 		labels.clear();
+		redraw();
 	}
 
 	@Override

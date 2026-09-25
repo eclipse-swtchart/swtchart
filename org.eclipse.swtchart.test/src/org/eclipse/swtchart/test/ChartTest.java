@@ -27,7 +27,9 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.IBarSeries;
+import org.eclipse.swtchart.ICustomPaintListener;
 import org.eclipse.swtchart.ILineSeries;
+import org.eclipse.swtchart.IPlotArea;
 import org.eclipse.swtchart.ISeries;
 import org.eclipse.swtchart.ISeries.SeriesType;
 import org.eclipse.swtchart.test.util.ChartTestCase;
@@ -448,6 +450,41 @@ public class ChartTest extends ChartTestCase {
 	}
 
 	/**
+	 * Test that adding or removing a custom paint listener repaints the plot area.
+	 */
+	@Test
+	public void testCustomPaintListenerRedraw() {
+
+		showChart();
+		int[] paintCount = {0};
+		IPlotArea plotArea = chart.getPlotArea();
+		plotArea.getControl().addPaintListener(_ -> paintCount[0]++);
+		ICustomPaintListener listener = _ -> {
+		};
+		waitForPendingPaints(paintCount);
+		plotArea.addCustomPaintListener(listener);
+		assertTrue(paintsWithin(paintCount) > 0, "not repainted when adding a custom paint listener");
+		waitForPendingPaints(paintCount);
+		plotArea.removeCustomPaintListener(listener);
+		assertTrue(paintsWithin(paintCount) > 0, "not repainted when removing a custom paint listener");
+		waitForPendingPaints(paintCount);
+		plotArea.removeCustomPaintListener(listener);
+		assertEquals(0, paintsWithin(paintCount), "repainted when removing a custom paint listener that isn't added");
+	}
+
+	/**
+	 * Runs the event loop for a while and returns the repaints counted meanwhile.
+	 */
+	private int paintsWithin(int[] paintCount) {
+
+		long time = System.currentTimeMillis();
+		while(System.currentTimeMillis() - time < 200) {
+			Display.getDefault().readAndDispatch();
+		}
+		return paintCount[0];
+	}
+
+	/**
 	 * Moves the mouse over the plot area and counts the repaints of the chart it causes.
 	 */
 	private int paintsOnMouseMove(int[] paintCount) {
@@ -457,11 +494,7 @@ public class ChartTest extends ChartTestCase {
 		event.x = 20;
 		event.y = 20;
 		chart.getPlotArea().getControl().notifyListeners(SWT.MouseMove, event);
-		long time = System.currentTimeMillis();
-		while(System.currentTimeMillis() - time < 200) {
-			Display.getDefault().readAndDispatch();
-		}
-		return paintCount[0];
+		return paintsWithin(paintCount);
 	}
 
 	/**

@@ -341,6 +341,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	public void redraw() {
 
 		resetSlider();
+		baseChart.redraw();
 		super.redraw();
 	}
 
@@ -359,6 +360,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		if(!wasSuspend) {
 			baseChart.suspendUpdate(false);
 		}
+		baseChart.redraw();
 	}
 
 	@Override

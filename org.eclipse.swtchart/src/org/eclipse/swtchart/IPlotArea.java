@@ -165,6 +165,16 @@ public interface IPlotArea {
 	Control getControl();
 
 	/**
+	 * Requests the repaint of this plot area, e.g. after the state drawn by a
+	 * custom paint listener has changed. The chart isn't repainted on each
+	 * mouse move, hence such changes are not shown otherwise.
+	 */
+	default void redraw() {
+
+		getControl().redraw();
+	}
+
+	/**
 	 * Returns the rectangle.
 	 * 
 	 * @return {@link Rectangle}

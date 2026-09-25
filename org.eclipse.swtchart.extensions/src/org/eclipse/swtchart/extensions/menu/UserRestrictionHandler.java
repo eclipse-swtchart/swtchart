@@ -69,5 +69,6 @@ public class UserRestrictionHandler extends AbstractChartMenuEntry {
 			Range rangeY = new Range(axisY.getRange());
 			userRestriction.setRange(rangeX, rangeY);
 		}
+		baseChart.redraw();
 	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -13,8 +13,11 @@
  *******************************************************************************/
 package org.eclipse.swtchart.extensions.marker;
 
+import java.util.Objects;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swtchart.IPlotArea;
 import org.eclipse.swtchart.extensions.core.BaseChart;
 
 public abstract class AbstractBaseChartPaintListener implements IBaseChartPaintListener {
@@ -44,7 +47,10 @@ public abstract class AbstractBaseChartPaintListener implements IBaseChartPaintL
 	@Override
 	public void setForegroundColor(Color foregroundColor) {
 
-		this.foregroundColor = foregroundColor;
+		if(!Objects.equals(this.foregroundColor, foregroundColor)) {
+			this.foregroundColor = foregroundColor;
+			redraw();
+		}
 	}
 
 	protected Color getForegroundColor() {
@@ -58,7 +64,10 @@ public abstract class AbstractBaseChartPaintListener implements IBaseChartPaintL
 	@Override
 	public void setBackgroundColor(Color backgroundColor) {
 
-		this.backgroundColor = backgroundColor;
+		if(!Objects.equals(this.backgroundColor, backgroundColor)) {
+			this.backgroundColor = backgroundColor;
+			redraw();
+		}
 	}
 
 	protected Color getBackgroundColor() {
@@ -78,6 +87,24 @@ public abstract class AbstractBaseChartPaintListener implements IBaseChartPaintL
 	@Override
 	public void setDraw(boolean draw) {
 
-		this.draw = draw;
+		if(this.draw != draw) {
+			this.draw = draw;
+			redraw();
+		}
+	}
+
+	/**
+	 * Requests the repaint of the plot area this listener draws on. Subclasses
+	 * call it after changing the state they draw, as the chart isn't repainted
+	 * on each mouse move.
+	 */
+	protected void redraw() {
+
+		if(baseChart != null && !baseChart.isDisposed()) {
+			IPlotArea plotArea = baseChart.getPlotArea();
+			if(plotArea != null) {
+				plotArea.redraw();
+			}
+		}
 	}
 }

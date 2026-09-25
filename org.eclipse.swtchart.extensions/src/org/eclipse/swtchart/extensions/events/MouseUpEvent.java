@@ -81,6 +81,7 @@ public class MouseUpEvent extends AbstractHandledEventProcessor {
 				baseChart.handleUserSelection(event);
 			} else {
 				baseChart.getUserSelection().reset();
+				baseChart.getPlotArea().redraw();
 			}
 		}
 	}

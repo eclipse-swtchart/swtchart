@@ -159,12 +159,25 @@ public class PlotArea extends Composite implements PaintListener, IPlotArea {
 	public void addCustomPaintListener(ICustomPaintListener listener) {
 
 		paintListeners.add(listener);
+		redrawIfNotDisposed();
 	}
 
 	@Override
 	public void removeCustomPaintListener(ICustomPaintListener listener) {
 
-		paintListeners.remove(listener);
+		if(paintListeners.remove(listener)) {
+			redrawIfNotDisposed();
+		}
+	}
+
+	/**
+	 * Adding or removing a custom paint listener changes what is drawn.
+	 */
+	private void redrawIfNotDisposed() {
+
+		if(!isDisposed()) {
+			redraw();
+		}
 	}
 
 	@Override
