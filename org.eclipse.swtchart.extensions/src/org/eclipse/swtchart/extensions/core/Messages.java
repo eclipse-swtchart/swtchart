@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020, 2025 SWT Chart Project
+ * Copyright (c) 2020, 2026 SWT Chart Project
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -32,6 +32,10 @@ public class Messages {
 	public static final String DELETE_SELECTED_MAPPING = "DELETE_SELECTED_MAPPING";
 	public static final String DESCRIPTION = "DESCRIPTION";
 	public static final String DISPLAY_MAPPINGS = "DISPLAY_MAPPINGS";
+	/**
+	 * @deprecated the range selector hint showing this message isn't drawn anymore
+	 */
+	@Deprecated(forRemoval = true)
 	public static final String DOUBLE_CLICK_TO_SHOW_RANGE_INFO = "DOUBLE_CLICK_TO_SHOW_RANGE_INFO";
 	public static final String DRAW = "DRAW";
 	public static final String EXPORT = "EXPORT";

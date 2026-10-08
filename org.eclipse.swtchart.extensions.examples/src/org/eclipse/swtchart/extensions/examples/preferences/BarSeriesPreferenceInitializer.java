@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2022 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,7 +27,6 @@ public class BarSeriesPreferenceInitializer extends AbstractPreferenceInitialize
 		 */
 		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR, BarSeriesPreferenceConstants.DEF_ENABLE_RANGE_SELECTOR);
 		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY, BarSeriesPreferenceConstants.DEF_SHOW_RANGE_SELECTOR_INITIALLY);
-		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR, BarSeriesPreferenceConstants.DEF_COLOR_HINT_RANGE_SELECTOR);
 		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_X, BarSeriesPreferenceConstants.DEF_RANGE_SELECTOR_DEFAULT_AXIS_X);
 		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_Y, BarSeriesPreferenceConstants.DEF_RANGE_SELECTOR_DEFAULT_AXIS_Y);
 		preferenceStore.setDefault(BarSeriesPreferenceConstants.P_VERTICAL_SLIDER_VISIBLE, BarSeriesPreferenceConstants.DEF_VERTICAL_SLIDER_VISIBLE);

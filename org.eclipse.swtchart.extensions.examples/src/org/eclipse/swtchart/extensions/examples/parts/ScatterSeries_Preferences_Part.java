@@ -129,7 +129,6 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 
-		Color colorHintRangeSelector = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
 		Color colorTitle = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_TITLE_COLOR));
 		Color colorBackground = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND));
 		Color colorBackgroundChart = new Color(PreferenceConverter.getColor(preferenceStore, ScatterSeriesPreferenceConstants.P_BACKGROUND_CHART));
@@ -147,7 +146,6 @@ public class ScatterSeries_Preferences_Part extends Composite {
 		IChartSettings chartSettings = scatterChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
 		chartSettings.setShowRangeSelectorInitially(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY));
-		chartSettings.setColorHintRangeSelector(colorHintRangeSelector);
 		chartSettings.setRangeSelectorDefaultAxisX(preferenceStore.getInt(ScatterSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_X));
 		chartSettings.setRangeSelectorDefaultAxisY(preferenceStore.getInt(ScatterSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_Y));
 		chartSettings.setVerticalSliderVisible(preferenceStore.getBoolean(ScatterSeriesPreferenceConstants.P_VERTICAL_SLIDER_VISIBLE));

@@ -39,12 +39,10 @@ import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.events.MouseAdapter;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.PaintEvent;
-import org.eclipse.swt.events.PaintListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
@@ -114,10 +112,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	private Composite compositeChart;
 	private BaseChart baseChart;
 	private ExtendedLegendUI extendedLegendUI;
-
-	private static final int MILLISECONDS_SHOW_RANGE_INFO_HINT = 1000;
-	private boolean showRangeSelectorHint = false;
-	private RangeHintPaintListener rangeHintPaintListener;
 	/*
 	 * This list contains all scrollable charts
 	 * that are linked with the current editor.
@@ -226,53 +220,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 	public void setMenuListener(MenuListener menuListener) {
 
 		this.menuListener = menuListener;
-	}
-
-	private class RangeHintPaintListener implements PaintListener {
-
-		@Override
-		public void paintControl(PaintEvent e) {
-
-			/*
-			 * Rectangle (Double Click -> show Range Info)
-			 */
-			IChartSettings chartSettings = baseChart.getChartSettings();
-			if(!rangeSelector.isVisible() && chartSettings.isEnableRangeSelector()) {
-				if(showRangeSelectorHint) {
-					int lineWidth = 1;
-					Rectangle rectangle = baseChart.getBounds();
-					int width = rectangle.width - lineWidth;
-					e.gc.setForeground(chartSettings.getColorHintRangeSelector());
-					e.gc.setLineWidth(lineWidth);
-					Rectangle rectangleInfo = new Rectangle(0, 0, width, 26);
-					e.gc.drawRectangle(rectangleInfo);
-
-					ITitle title = getBaseChart().getTitle();
-					if(title.getForeground().equals(baseChart.getBackground())) {
-						/*
-						 * Draw the message.
-						 */
-						String label = Messages.getString(Messages.DOUBLE_CLICK_TO_SHOW_RANGE_INFO);
-						Point labelSize = e.gc.textExtent(label);
-						e.gc.drawText(label, (int)(width / 2.0d - labelSize.x / 2.0d), 5, true);
-					}
-					/*
-					 * Hide the rectangle after x milliseconds.
-					 */
-					getBaseChart().getDisplay().asyncExec(() -> {
-
-						try {
-							Thread.sleep(MILLISECONDS_SHOW_RANGE_INFO_HINT);
-						} catch(InterruptedException e1) {
-							e1.printStackTrace();
-							Thread.currentThread().interrupt();
-						}
-						showRangeSelectorHint = false;
-						baseChart.redraw();
-					});
-				}
-			}
-		}
 	}
 
 	@Override
@@ -848,7 +795,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		 * Additional actions.
 		 */
 		setCustomPaintListener();
-		updateRangeHintPaintListener();
 		setMenuItems();
 		setEventProcessors();
 		/*
@@ -1215,16 +1161,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		sliderHorizontal.setVisible(chartSettings.isHorizontalSliderVisible());
 
 		layout(false);
-	}
-
-	private void updateRangeHintPaintListener() {
-
-		if(rangeHintPaintListener != null) {
-			baseChart.removePaintListener(rangeHintPaintListener);
-		}
-
-		rangeHintPaintListener = new RangeHintPaintListener();
-		baseChart.addPaintListener(rangeHintPaintListener);
 	}
 
 	private void showRangeSelector(boolean showRangeSelector) {
@@ -1679,7 +1615,7 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 		});
 		baseChart.addAxisRangeListener(this::reloadSupplierSeries);
 		/*
-		 * Activate the range info UI on double click.
+		 * Slide to the previous or next block on a double click on an axis.
 		 */
 		baseChart.addMouseListener(new MouseAdapter() {
 
@@ -1707,11 +1643,6 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				}
 			}
 		});
-		/*
-		 * Show the range info hint.
-		 */
-		rangeHintPaintListener = new RangeHintPaintListener();
-		baseChart.addPaintListener(rangeHintPaintListener);
 		/*
 		 * Add the listeners.
 		 */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -27,7 +27,6 @@ public class ScatterSeriesPreferenceInitializer extends AbstractPreferenceInitia
 		 */
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR, ScatterSeriesPreferenceConstants.DEF_ENABLE_RANGE_SELECTOR);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY, ScatterSeriesPreferenceConstants.DEF_SHOW_RANGE_SELECTOR_INITIALLY);
-		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR, ScatterSeriesPreferenceConstants.DEF_COLOR_HINT_RANGE_SELECTOR);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_X, ScatterSeriesPreferenceConstants.DEF_RANGE_SELECTOR_DEFAULT_AXIS_X);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_Y, ScatterSeriesPreferenceConstants.DEF_RANGE_SELECTOR_DEFAULT_AXIS_Y);
 		preferenceStore.setDefault(ScatterSeriesPreferenceConstants.P_VERTICAL_SLIDER_VISIBLE, ScatterSeriesPreferenceConstants.DEF_VERTICAL_SLIDER_VISIBLE);

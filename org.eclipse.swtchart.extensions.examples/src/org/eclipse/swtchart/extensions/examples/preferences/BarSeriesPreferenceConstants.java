@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2025 Lablicate GmbH.
+ * Copyright (c) 2017, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -28,8 +28,6 @@ public class BarSeriesPreferenceConstants {
 	public static final boolean DEF_ENABLE_RANGE_SELECTOR = true;
 	public static final String P_SHOW_RANGE_SELECTOR_INITIALLY = "showRangeSelectorInitially" + POSTFIX;
 	public static final boolean DEF_SHOW_RANGE_SELECTOR_INITIALLY = true;
-	public static final String P_COLOR_HINT_RANGE_SELECTOR = "colorHintRangeSelector" + POSTFIX;
-	public static final String DEF_COLOR_HINT_RANGE_SELECTOR = "255,0,0";
 	public static final String P_RANGE_SELECTOR_DEFAULT_AXIS_X = "rangeSelectorDefaultAxisX" + POSTFIX;
 	public static final int DEF_RANGE_SELECTOR_DEFAULT_AXIS_X = 0; // Index
 	public static final String P_RANGE_SELECTOR_DEFAULT_AXIS_Y = "rangeSelectorDefaultAxisY" + POSTFIX;

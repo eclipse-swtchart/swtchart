@@ -109,13 +109,19 @@ public interface IChartSettings {
 
 	/**
 	 * Returns the color of the hint rectangle of the range selector.
+	 *
+	 * @deprecated the hint isn't drawn anymore, so the color isn't used
 	 */
+	@Deprecated(forRemoval = true)
 	Color getColorHintRangeSelector();
 
 	/**
 	 * Sets the color of the hint rectangle that is drawn on top of the chart while the
 	 * range selector is enabled but currently hidden.
+	 *
+	 * @deprecated the hint isn't drawn anymore, so the color isn't used
 	 */
+	@Deprecated(forRemoval = true)
 	void setColorHintRangeSelector(Color colorHintRangeSelector);
 
 	/**

@@ -272,12 +272,14 @@ public class ChartSettings implements IChartSettings {
 		this.showRangeSelectorInitially = showRangeSelectorInitially;
 	}
 
+	@Deprecated(forRemoval = true)
 	@Override
 	public Color getColorHintRangeSelector() {
 
 		return colorHintRangeSelector;
 	}
 
+	@Deprecated(forRemoval = true)
 	@Override
 	public void setColorHintRangeSelector(Color colorHintRangeSelector) {
 

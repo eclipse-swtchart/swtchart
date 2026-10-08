@@ -137,7 +137,6 @@ public class BarSeries_Preferences_Part extends Composite {
 		IPreferenceStore preferenceStore = Activator.getDefault().getPreferenceStore();
 		setBackground(getDisplay().getSystemColor(SWT.COLOR_WHITE));
 
-		Color colorHintRangeSelector = new Color(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_COLOR_HINT_RANGE_SELECTOR));
 		Color colorTitle = new Color(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_TITLE_COLOR));
 		Color colorBackground = new Color(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BACKGROUND));
 		Color colorBackgroundChart = new Color(PreferenceConverter.getColor(preferenceStore, BarSeriesPreferenceConstants.P_BACKGROUND_CHART));
@@ -157,7 +156,6 @@ public class BarSeries_Preferences_Part extends Composite {
 		IChartSettings chartSettings = barChart.getChartSettings();
 		chartSettings.setEnableRangeSelector(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_ENABLE_RANGE_SELECTOR));
 		chartSettings.setShowRangeSelectorInitially(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_SHOW_RANGE_SELECTOR_INITIALLY));
-		chartSettings.setColorHintRangeSelector(colorHintRangeSelector);
 		chartSettings.setRangeSelectorDefaultAxisX(preferenceStore.getInt(BarSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_X));
 		chartSettings.setRangeSelectorDefaultAxisY(preferenceStore.getInt(BarSeriesPreferenceConstants.P_RANGE_SELECTOR_DEFAULT_AXIS_Y));
 		chartSettings.setVerticalSliderVisible(preferenceStore.getBoolean(BarSeriesPreferenceConstants.P_VERTICAL_SLIDER_VISIBLE));
