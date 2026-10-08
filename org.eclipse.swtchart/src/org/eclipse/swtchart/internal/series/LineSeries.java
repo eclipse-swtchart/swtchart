@@ -421,6 +421,11 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 			}
 			if(useAreaStrict && points.length > 2) {
 				double[] x = getXSeries();
+				if(xAxis.isValidCategoryAxis()) {
+					for(int i = 0; i < x.length; i++) {
+						x[i] = i;
+					}
+				}
 				double[] y = getYSeries();
 				int[] idx = IntStream.range(0, x.length).toArray();
 				int[] p0 = getLinePoints(x, y, idx, 0, xAxis, yAxis);
@@ -656,6 +661,11 @@ public class LineSeries<T> extends Series<T> implements ILineSeries<T> {
 		}
 		if(useAreaStrict && points.length > 2) {
 			double[] x = getXSeries();
+			if(xAxis.isValidCategoryAxis()) {
+				for(int i = 0; i < x.length; i++) {
+					x[i] = i;
+				}
+			}
 			double[] y = getYSeries();
 			int[] idx = IntStream.range(0, x.length).toArray();
 			int[] p0 = getLinePoints(x, y, idx, 0, xAxis, yAxis);

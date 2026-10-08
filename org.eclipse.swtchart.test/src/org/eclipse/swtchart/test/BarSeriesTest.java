@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.swtchart.test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -21,7 +22,10 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swtchart.Chart;
 import org.eclipse.swtchart.IAxis;
 import org.eclipse.swtchart.IBarSeries;
 import org.eclipse.swtchart.ISeries;
@@ -327,5 +331,50 @@ public class BarSeriesTest extends ChartTestCase {
 		assertEquals(new Rectangle(137, 111, 34, 106), rs[2]);
 		assertNull(rs[4]);
 		showChart();
+	}
+
+	/**
+	 * Test that bars with X values on a category axis are drawn at the same
+	 * positions, whether the category axis is set up before or after the data.
+	 */
+	@Test
+	public void testCategoryAxisBeforeData() {
+
+		Rectangle[] categoryAxisAfter = getBoundsOnCategoryAxis(false);
+		Rectangle[] categoryAxisBefore = getBoundsOnCategoryAxis(true);
+		assertEquals(categorySeries.length, categoryAxisAfter.length);
+		assertArrayEquals(categoryAxisAfter, categoryAxisBefore);
+	}
+
+	private static Rectangle[] getBoundsOnCategoryAxis(boolean categoryAxisFirst) {
+
+		Display display = Display.getDefault();
+		Shell shell = new Shell(display);
+		try {
+			shell.setSize(400, 300);
+			shell.setLayout(new FillLayout());
+			Chart chart = new Chart(shell, SWT.NONE);
+			IAxis xAxis = chart.getAxisSet().getXAxis(0);
+			if(categoryAxisFirst) {
+				xAxis.setCategorySeries(categorySeries);
+				xAxis.enableCategory(true);
+			}
+			IBarSeries<?> series = (IBarSeries<?>)chart.getSeriesSet().createSeries(SeriesType.BAR, "series");
+			// X values outside of the category indexes
+			series.setXSeries(new double[]{10, 20, 30, 40, 50});
+			series.setYSeries(ySeries1);
+			if(!categoryAxisFirst) {
+				xAxis.setCategorySeries(categorySeries);
+				xAxis.enableCategory(true);
+			}
+			chart.getAxisSet().adjustRange();
+			shell.open();
+			while(display.readAndDispatch()) {
+				// lay out the chart
+			}
+			return series.getBounds();
+		} finally {
+			shell.dispose();
+		}
 	}
 }

@@ -165,6 +165,13 @@ abstract public class Series<T> implements ISeries<T> {
 		setCompressor();
 		compressor.setXSeries(getXSeries());
 		compressor.setYSeries(getYSeries());
+		if(chart.getAxisSet().getXAxis(xAxisId) instanceof Axis xAxis && xAxis.isValidCategoryAxis()) {
+			/*
+			 * On a category axis the compressor works with the category indexes
+			 * instead of the X values, as when the category axis is set up later
+			 */
+			((SeriesSet)chart.getSeriesSet()).updateCompressor(xAxis);
+		}
 		Range xRange = getXRange();
 		if(xRange.lower <= 0) {
 			IAxis axis = chart.getAxisSet().getXAxis(xAxisId);
