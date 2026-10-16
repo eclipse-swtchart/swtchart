@@ -250,16 +250,26 @@ public class InteractiveChart extends Chart implements PaintListener {
 	private void handleMouseUpEvent(Event event) {
 
 		if(event.button == 1 && System.currentTimeMillis() - clickedTime > 100) {
-			for(IAxis axis : getAxisSet().getAxes()) {
-				Point range = null;
-				if((getOrientation() == SWT.HORIZONTAL && axis.getDirection() == Direction.X) || (getOrientation() == SWT.VERTICAL && axis.getDirection() == Direction.Y)) {
-					range = selection.getHorizontalRange();
-				} else {
-					range = selection.getVerticalRange();
+			/*
+			 * Lay out the chart once for all axes instead of once per axis,
+			 * and leave an update suspended by the caller suspended
+			 */
+			boolean suspended = isUpdateSuspended();
+			suspendUpdate(true);
+			try {
+				for(IAxis axis : getAxisSet().getAxes()) {
+					Point range = null;
+					if((getOrientation() == SWT.HORIZONTAL && axis.getDirection() == Direction.X) || (getOrientation() == SWT.VERTICAL && axis.getDirection() == Direction.Y)) {
+						range = selection.getHorizontalRange();
+					} else {
+						range = selection.getVerticalRange();
+					}
+					if(range != null && range.x != range.y) {
+						setRange(range, axis);
+					}
 				}
-				if(range != null && range.x != range.y) {
-					setRange(range, axis);
-				}
+			} finally {
+				suspendUpdate(suspended);
 			}
 		}
 
@@ -275,21 +285,31 @@ public class InteractiveChart extends Chart implements PaintListener {
 	 */
 	private void handleMouseWheel(Event event) {
 
-		for(IAxis axis : getAxes(SWT.HORIZONTAL)) {
-			double coordinate = axis.getDataCoordinate(event.x);
-			if(event.count > 0) {
-				axis.zoomIn(coordinate);
-			} else {
-				axis.zoomOut(coordinate);
+		/*
+		 * Lay out the chart once for all axes instead of once per axis,
+		 * and leave an update suspended by the caller suspended
+		 */
+		boolean suspended = isUpdateSuspended();
+		suspendUpdate(true);
+		try {
+			for(IAxis axis : getAxes(SWT.HORIZONTAL)) {
+				double coordinate = axis.getDataCoordinate(event.x);
+				if(event.count > 0) {
+					axis.zoomIn(coordinate);
+				} else {
+					axis.zoomOut(coordinate);
+				}
 			}
-		}
-		for(IAxis axis : getAxes(SWT.VERTICAL)) {
-			double coordinate = axis.getDataCoordinate(event.y);
-			if(event.count > 0) {
-				axis.zoomIn(coordinate);
-			} else {
-				axis.zoomOut(coordinate);
+			for(IAxis axis : getAxes(SWT.VERTICAL)) {
+				double coordinate = axis.getDataCoordinate(event.y);
+				if(event.count > 0) {
+					axis.zoomIn(coordinate);
+				} else {
+					axis.zoomOut(coordinate);
+				}
 			}
+		} finally {
+			suspendUpdate(suspended);
 		}
 		redraw();
 	}
