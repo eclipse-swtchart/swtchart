@@ -43,6 +43,12 @@ public class MouseMoveSelectionEvent extends AbstractHandledEventProcessor {
 	public void handleEvent(BaseChart baseChart, Event event) {
 
 		/*
+		 * Skip if Shift is pressed.
+		 */
+		if((event.stateMask & SWT.MOD2) == SWT.MOD2) {
+			return;
+		}
+		/*
 		 * Buffer the selection on the first event.
 		 */
 		IPlotArea plotArea = baseChart.getPlotArea();
