@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2024, 2025 Lablicate GmbH.
+ * Copyright (c) 2024, 2026 Lablicate GmbH.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -29,85 +29,102 @@ public class RangeSupport {
 	public static void applyHorizontalSlide(BaseChart baseChart, double factor, boolean slidePrevious) {
 
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
-		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
-
-		if(xAxis != null && yAxis != null) {
+		if(xAxis != null) {
 			/*
 			 * Slide to the previous or next block.
 			 */
-			double minX = baseChart.getMinX();
-			double maxX = baseChart.getMaxX();
 			double delta = (xAxis.getRange().upper - xAxis.getRange().lower) * factor;
-			double lower;
-			double upper;
-
-			if(slidePrevious) {
-				/*
-				 * Previous
-				 */
-				lower = xAxis.getRange().lower - delta;
-				upper = xAxis.getRange().upper - delta;
-				lower = (lower < minX) ? minX : lower;
-			} else {
-				/*
-				 * Next
-				 */
-				lower = xAxis.getRange().lower + delta;
-				upper = xAxis.getRange().upper + delta;
-				upper = (upper > maxX) ? maxX : upper;
-			}
-			/*
-			 * Validate the range.
-			 */
-			if(lower >= minX && upper <= maxX) {
-				Range range = new Range(lower, upper);
-				if(lower != upper) {
-					applyHorizontalSlide(baseChart, xAxis, yAxis, range, new Event());
-				}
-			}
+			applyHorizontalShift(baseChart, slidePrevious ? -delta : delta);
 		}
 	}
 
 	public static void applyVerticalSlide(BaseChart baseChart, double factor, boolean slidePrevious) {
 
+		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
+		if(yAxis != null) {
+			/*
+			 * Slide to the previous or next block.
+			 */
+			double delta = (yAxis.getRange().upper - yAxis.getRange().lower) * factor;
+			applyVerticalShift(baseChart, slidePrevious ? delta : -delta);
+		}
+	}
+
+	/**
+	 * Shifts the primary x axis range by the given data delta.
+	 * The width of the range is kept.
+	 * 
+	 * @param baseChart
+	 * @param shift
+	 */
+	public static void applyHorizontalShift(BaseChart baseChart, double shift) {
+
 		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
 		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
 
 		if(xAxis != null && yAxis != null) {
-			/*
-			 * Slide to the previous or next block.
-			 */
-			double minY = baseChart.getMinX();
-			double maxY = baseChart.getMaxX();
-			double delta = (yAxis.getRange().upper - yAxis.getRange().lower) * factor;
-			double lower;
-			double upper;
-
-			if(slidePrevious) {
-				/*
-				 * Previous
-				 */
-				lower = yAxis.getRange().lower + delta;
-				upper = yAxis.getRange().upper + delta;
-				upper = (upper > maxY) ? maxY : upper;
-			} else {
-				/*
-				 * Next
-				 */
-				lower = yAxis.getRange().lower - delta;
-				upper = yAxis.getRange().upper - delta;
-				lower = (lower < minY) ? minY : lower;
-			}
-			/*
-			 * Validate the range.
-			 */
-			if(lower >= minY && upper <= maxY) {
-				Range range = new Range(lower, upper);
-				if(lower != upper) {
-					applyVerticalSlide(baseChart, xAxis, yAxis, range, new Event());
-				}
+			Range range = calculateSlideRange(xAxis.getRange(), shift, baseChart.getMinX(), baseChart.getMaxX());
+			if(range != null) {
+				applyHorizontalSlide(baseChart, xAxis, yAxis, range, new Event());
 			}
 		}
+	}
+
+	/**
+	 * Shifts the primary y axis range by the given data delta.
+	 * The width of the range is kept.
+	 * 
+	 * @param baseChart
+	 * @param shift
+	 */
+	public static void applyVerticalShift(BaseChart baseChart, double shift) {
+
+		IAxis xAxis = baseChart.getAxisSet().getXAxis(BaseChart.ID_PRIMARY_X_AXIS);
+		IAxis yAxis = baseChart.getAxisSet().getYAxis(BaseChart.ID_PRIMARY_Y_AXIS);
+
+		if(xAxis != null && yAxis != null) {
+			Range range = calculateSlideRange(yAxis.getRange(), shift, baseChart.getMinY(), baseChart.getMaxY());
+			if(range != null) {
+				applyVerticalSlide(baseChart, xAxis, yAxis, range, new Event());
+			}
+		}
+	}
+
+	/**
+	 * Returns the range shifted by the given delta. The width of the
+	 * range is kept. The shift is limited by min/max.
+	 * Returns null if the range can't be shifted.
+	 * 
+	 * @param range
+	 * @param shift
+	 * @param min
+	 * @param max
+	 * @return Range
+	 */
+	public static Range calculateSlideRange(Range range, double shift, double min, double max) {
+
+		/*
+		 * The range might exceed the data min/max values, e.g. if
+		 * the range has been extended (scatter charts). Hence, the
+		 * current range is used as limit too. Otherwise, the shift
+		 * to the left/bottom would be rejected.
+		 */
+		double lowerLimit = Math.min(min, range.lower);
+		double upperLimit = Math.max(max, range.upper);
+		double delta;
+		if(shift < 0) {
+			delta = Math.max(shift, lowerLimit - range.lower);
+		} else {
+			delta = Math.min(shift, upperLimit - range.upper);
+		}
+		/*
+		 * Keep the width of the range.
+		 */
+		if(delta != 0 && !Double.isNaN(delta) && !Double.isInfinite(delta)) {
+			return new Range(range.lower + delta, range.upper + delta);
+		}
+
+		return null;
 	}
 
 	/**

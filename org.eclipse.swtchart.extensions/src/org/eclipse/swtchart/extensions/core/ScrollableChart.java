@@ -71,6 +71,7 @@ import org.eclipse.swtchart.Range;
 import org.eclipse.swtchart.extensions.barcharts.BarChart;
 import org.eclipse.swtchart.extensions.events.IHandledEventProcessor;
 import org.eclipse.swtchart.extensions.exceptions.SeriesException;
+import org.eclipse.swtchart.extensions.internal.support.AxisDragHandler;
 import org.eclipse.swtchart.extensions.internal.marker.AxisZeroMarker;
 import org.eclipse.swtchart.extensions.internal.marker.LegendMarker;
 import org.eclipse.swtchart.extensions.internal.marker.PlotCenterMarker;
@@ -1649,6 +1650,10 @@ public class ScrollableChart extends Composite implements IScrollableChart, IEve
 				}
 			}
 		});
+		/*
+		 * Move or zoom by dragging the axes.
+		 */
+		new AxisDragHandler(baseChart).register();
 		/*
 		 * Add the listeners.
 		 */
